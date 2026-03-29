@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Template</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-[#f5f5f7] text-slate-700">
+  <div class="min-h-screen">
+    <div class="flex min-h-screen">
+      
+      <!-- Sidebar -->
+      <aside class="hidden w-[260px] shrink-0 border-r border-slate-200 bg-[#f8f8f9] xl:flex xl:flex-col">
+        <div class="flex flex-col items-center border-b border-slate-200 px-6 py-8">
+          <img
+            src="https://i.pravatar.cc/120?img=12"
+            alt="Profile"
+            class="h-20 w-20 rounded-full object-cover"
+          />
+          <h2 class="mt-4 text-[30px] font-extrabold leading-none text-slate-800">Mitchell Johnson</h2>
+          <p class="mt-1 text-lg text-slate-500">flyonui@mitchell</p>
+
+          <div class="mt-5 flex items-center gap-4 text-slate-500">
+            <a href="#" class="transition hover:text-violet-600">f</a>
+            <a href="#" class="transition hover:text-violet-600">ig</a>
+            <a href="#" class="transition hover:text-violet-600">tw</a>
+            <a href="#" class="transition hover:text-violet-600">gh</a>
+          </div>
+        </div>
+
+        <div class="flex-1 overflow-y-auto px-3 py-4">
+          <div class="mb-4">
+            <button class="flex w-full items-center justify-between rounded-xl bg-slate-100 px-4 py-3 text-left font-semibold text-slate-700">
+              <span>Dashboard</span>
+              <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.51a.75.75 0 01-1.08 0l-4.25-4.51a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
+              </svg>
+            </button>
+
+            <div class="mt-2 space-y-1 pl-3">
+              <a href="#" class="block rounded-lg bg-violet-100 px-3 py-2 text-sm font-medium text-violet-700">Default</a>
+              <a href="#" class="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-slate-100">
+                <span>Analytics</span>
+                <span class="rounded-md bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-600">Pro</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-lg px-3 py-2 text-sm text-slate-600 hover:bg-slate-100">
+                <span>eCommerce</span>
+                <span class="rounded-md bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-600">Pro</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="mt-6">
+            <p class="px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Pages</p>
+            <nav class="mt-3 space-y-1">
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Account Setting</span>
+                <span>›</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Misc</span>
+                <span>›</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Authentications</span>
+                <span>›</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>FAQ</span>
+                <span class="rounded-md bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-600">Pro</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Pricing</span>
+                <span class="rounded-md bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-600">Pro</span>
+              </a>
+            </nav>
+          </div>
+
+          <div class="mt-6">
+            <p class="px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Forms & Tables</p>
+            <nav class="mt-3 space-y-1">
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Form Validation</span>
+                <span class="rounded-md bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-600">Pro</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>DataTables</span>
+                <span>›</span>
+              </a>
+            </nav>
+          </div>
+
+          <div class="mt-6">
+            <p class="px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Applications</p>
+            <nav class="mt-3 space-y-1">
+              <a href="#" class="flex items-center justify-between rounded-xl bg-slate-900 px-3 py-2.5 text-sm font-medium text-white">
+                <span>User</span>
+                <span class="rounded-md bg-violet-400/20 px-2 py-0.5 text-[11px] font-semibold text-violet-200">Pro</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Roles & Permissions</span>
+                <span class="rounded-md bg-violet-100 px-2 py-0.5 text-[11px] font-semibold text-violet-600">Pro</span>
+              </a>
+            </nav>
+          </div>
+
+          <div class="mt-6">
+            <p class="px-3 text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">eCommerce</p>
+            <nav class="mt-3 space-y-1">
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Order</span>
+                <span>›</span>
+              </a>
+              <a href="#" class="flex items-center justify-between rounded-xl px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-100">
+                <span>Vendor</span>
+                <span>›</span>
+              </a>
+            </nav>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-200 p-4">
+          <div class="flex items-center gap-3 rounded-2xl bg-slate-100 px-4 py-3">
+            <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-600 text-white font-bold">
+              ▲
+            </div>
+            <div>
+              <p class="font-semibold text-slate-800">FlyonUI</p>
+              <p class="text-sm text-slate-500">Workspace</p>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="flex-1">
+        <!-- Topbar -->
+        <header class="border-b border-slate-200 bg-white/80 backdrop-blur">
+          <div class="flex items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+            <div class="flex flex-1 items-center gap-3">
+              <button class="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-600 xl:hidden">
+                ☰
+              </button>
+
+              <div class="relative w-full max-w-xl">
+                <span class="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-slate-400">
+                  🔍
+                </span>
+                <input
+                  type="text"
+                  placeholder="Type to Search..."
+                  class="h-12 w-full rounded-2xl border border-slate-200 bg-slate-50 pl-11 pr-4 text-sm outline-none transition focus:border-violet-400 focus:bg-white"
+                />
+              </div>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <button class="inline-flex items-center gap-2 rounded-xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-slate-50">
+                ☆ Star
+                <span class="rounded-md bg-slate-100 px-2 py-1 text-xs">2,389</span>
+              </button>
+
+              <img
+                src="https://i.pravatar.cc/100?img=12"
+                alt="Profile"
+                class="h-11 w-11 rounded-xl object-cover"
+              />
+            </div>
+          </div>
+        </header>
+
+        <div class="p-4 sm:p-6 lg:p-8">
+          <!-- Stats -->
+          <section class="grid gap-4 lg:grid-cols-4">
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-sm font-semibold text-slate-500">Pageviews</p>
+              <h3 class="mt-3 text-4xl font-extrabold tracking-tight text-slate-800">17,356</h3>
+              <div class="mt-3 flex items-center gap-2 text-sm">
+                <span class="font-semibold text-emerald-500">↑ 25.6%</span>
+                <span class="text-slate-400">EPC: 308.20</span>
+              </div>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-sm font-semibold text-slate-500">Click</p>
+              <h3 class="mt-3 text-4xl font-extrabold tracking-tight text-slate-800">2,784</h3>
+              <div class="mt-3 flex items-center gap-2 text-sm">
+                <span class="font-semibold text-rose-500">↓ 25.6%</span>
+                <span class="text-slate-400">Related Value: 77,359</span>
+              </div>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-sm font-semibold text-slate-500">Commission</p>
+              <h3 class="mt-3 text-4xl font-extrabold tracking-tight text-slate-800">$1,658</h3>
+              <div class="mt-3 flex items-center gap-2 text-sm">
+                <span class="font-semibold text-emerald-500">↑ 25.6%</span>
+                <span class="text-slate-400">Related Value: 77,359</span>
+              </div>
+            </div>
+
+            <div class="rounded-3xl border border-slate-200 bg-white p-5 shadow-sm">
+              <p class="text-sm font-semibold text-slate-500">Sales</p>
+              <h3 class="mt-3 text-4xl font-extrabold tracking-tight text-slate-800">$8,759</h3>
+              <div class="mt-3 flex items-center gap-2 text-sm">
+                <span class="font-semibold text-emerald-500">↑ 25.6%</span>
+                <span class="text-slate-400">Related Value: 13.85</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Middle Grid -->
+          <section class="mt-6 grid gap-6 xl:grid-cols-12">
+            
+            <!-- Meeting Schedules -->
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-4">
+              <div class="mb-5 flex items-start justify-between">
+                <div>
+                  <h2 class="text-2xl font-bold text-slate-800">Meeting Schedules</h2>
+                </div>
+                <button class="text-slate-400 hover:text-slate-600">⋯</button>
+              </div>
+
+              <div class="space-y-5">
+                <div class="flex items-center gap-4">
+                  <img src="https://i.pravatar.cc/100?img=15" class="h-12 w-12 rounded-xl object-cover" alt="" />
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-lg font-semibold text-slate-800">Call with woods</p>
+                    <p class="text-sm text-slate-400">11 Jul | 08:20-10:20</p>
+                  </div>
+                  <span class="rounded-full bg-violet-100 px-3 py-1 text-xs font-semibold text-violet-700">Business</span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <img src="https://i.pravatar.cc/100?img=12" class="h-12 w-12 rounded-xl object-cover" alt="" />
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-lg font-semibold text-slate-800">Conference call</p>
+                    <p class="text-sm text-slate-400">22 Jul | 02:00-3:30</p>
+                  </div>
+                  <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">Dinner</span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <img src="https://i.pravatar.cc/100?img=32" class="h-12 w-12 rounded-xl object-cover" alt="" />
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-lg font-semibold text-slate-800">Meeting with John</p>
+                    <p class="text-sm text-slate-400">22 Jul | 11:15-12:15</p>
+                  </div>
+                  <span class="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-700">Meetup</span>
+                </div>
+
+                <div class="flex items-center gap-4">
+                  <img src="https://i.pravatar.cc/100?img=68" class="h-12 w-12 rounded-xl object-cover" alt="" />
+                  <div class="min-w-0 flex-1">
+                    <p class="truncate text-lg font-semibold text-slate-800">Meeting with Sara</p>
+                    <p class="text-sm text-slate-400">23 Jul | 07:30-08:30</p>
+                  </div>
+                  <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">Dinner</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sales Metrics -->
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-5">
+              <div class="mb-5">
+                <h2 class="text-2xl font-bold text-slate-800">Sales Metrics</h2>
+              </div>
+
+              <div class="flex items-center gap-4 rounded-2xl border border-slate-200 p-4">
+                <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-violet-600 text-xl font-bold text-white">
+                  ▲
+                </div>
+                <div>
+                  <p class="text-3xl font-bold text-slate-800">Flyonui Company</p>
+                  <p class="text-base text-slate-500">flyonui@company.com</p>
+                </div>
+              </div>
+
+              <div class="mt-5 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <p class="text-sm font-medium text-slate-400">Sales trend</p>
+                  <p class="mt-2 text-3xl font-bold text-slate-800">$ 11,548</p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <p class="text-sm font-medium text-slate-400">Total Profit</p>
+                  <p class="mt-2 text-3xl font-bold text-slate-800">$1735</p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <p class="text-sm font-medium text-slate-400">Discounts</p>
+                  <p class="mt-2 text-3xl font-bold text-slate-800">$14,987</p>
+                </div>
+
+                <div class="rounded-2xl border border-slate-200 p-4">
+                  <p class="text-sm font-medium text-slate-400">Refunds</p>
+                  <p class="mt-2 text-3xl font-bold text-slate-800">$3248</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Revenue Goal -->
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-3">
+              <div class="mb-6">
+                <h2 class="text-2xl font-bold text-slate-800">Revenue Goal</h2>
+              </div>
+
+              <div class="mx-auto flex h-52 w-52 items-center justify-center rounded-full bg-[conic-gradient(#7c3aed_0_56%,#22c55e_56%_60%,#f59e0b_60%_100%)] p-4">
+                <div class="flex h-full w-full flex-col items-center justify-center rounded-full bg-white text-center">
+                  <p class="text-4xl font-extrabold text-slate-800">$1735</p>
+                  <p class="text-sm text-slate-500">Total Profit</p>
+                </div>
+              </div>
+
+              <div class="mt-6 flex items-end justify-between">
+                <div>
+                  <p class="text-3xl font-semibold text-slate-600">Plan Completed</p>
+                </div>
+                <div class="text-5xl font-extrabold text-slate-800">56%</div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Lower grid -->
+          <section class="mt-6 grid gap-6 xl:grid-cols-12">
+            
+            <!-- Student by Countries -->
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-4">
+              <div class="mb-5 flex items-start justify-between">
+                <div>
+                  <h2 class="text-2xl font-bold text-slate-800">Student by Countries</h2>
+                  <p class="mt-1 text-sm text-slate-400">Monthly Sales Overview</p>
+                </div>
+                <button class="text-slate-400 hover:text-slate-600">⋯</button>
+              </div>
+
+              <div class="space-y-5">
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-xl">🇺🇸</div>
+                    <div>
+                      <p class="text-xl font-bold text-slate-800">164k <span class="ml-2 text-sm text-rose-500">▼ 7.0%</span></p>
+                      <p class="text-sm text-slate-400">USA</p>
+                    </div>
+                  </div>
+                  <p class="text-xl font-bold text-slate-700">452k <span class="text-sm font-medium text-slate-400">/new</span></p>
+                </div>
+
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-xl">🇨🇦</div>
+                    <div>
+                      <p class="text-xl font-bold text-slate-800">112k <span class="ml-2 text-sm text-emerald-500">▲ 6.3%</span></p>
+                      <p class="text-sm text-slate-400">Canada</p>
+                    </div>
+                  </div>
+                  <p class="text-xl font-bold text-slate-700">227k <span class="text-sm font-medium text-slate-400">/new</span></p>
+                </div>
+
+                <div class="flex items-center justify-between gap-4">
+                  <div class="flex items-center gap-4">
+                    <div class="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-xl">🇦🇺</div>
+                    <div>
+                      <p class="text-xl font-bold text-slate-800">88k <span class="ml-2 text-sm text-emerald-500">▲ 5.0%</span></p>
+                      <p class="text-sm text-slate-400">Australia</p>
+                    </div>
+                  </div>
+                  <p class="text-xl font-bold text-slate-700">186k <span class="text-sm font-medium text-slate-400">/new</span></p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sales Plan -->
+            <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm xl:col-span-8">
+              <div class="grid gap-6 lg:grid-cols-[220px_minmax(0,1fr)]">
+                <div>
+                  <h2 class="text-2xl font-bold text-slate-800">Sales Plan</h2>
+                  <div class="mt-5 text-7xl font-extrabold tracking-tight text-slate-800">54%</div>
+                  <p class="mt-3 max-w-[180px] text-lg leading-relaxed text-slate-400">
+                    Percentage profit from total sales
+                  </p>
+                </div>
+
+                <div>
+                  <h3 class="text-2xl font-bold text-slate-800">Cohart analysis indicators</h3>
+                  <p class="mt-4 max-w-3xl text-base leading-7 text-slate-400">
+                    Cohort analysis thoroughly analyzes the behaviour and engagement patterns of a group of users who joined a product or service at the same time, tracking their actions and retention over a certain period for deeper insights.
+                  </p>
+
+                  <div class="mt-6 flex flex-wrap items-center gap-6 text-slate-700">
+                    <span class="text-lg font-semibold">◔ Open Statistics</span>
+                    <span class="text-lg font-semibold">% Percentage Change</span>
+                  </div>
+
+                  <div class="mt-8 h-5 w-full overflow-hidden rounded-full bg-violet-100">
+                    <div class="flex h-full">
+                      <div class="h-full w-[42%] bg-violet-600"></div>
+                      <div class="h-full w-[22%] bg-violet-400"></div>
+                      <div class="h-full w-[18%] bg-violet-300"></div>
+                      <div class="h-full w-[18%] bg-violet-200"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Table -->
+          <section class="mt-6 overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-sm">
+            <div class="overflow-x-auto">
+              <table class="min-w-full text-left">
+                <thead class="border-b border-slate-200 bg-slate-50">
+                  <tr class="text-sm uppercase tracking-wide text-slate-500">
+                    <th class="px-6 py-4 font-semibold">Name</th>
+                    <th class="px-6 py-4 font-semibold">Email</th>
+                    <th class="px-6 py-4 font-semibold">Status</th>
+                    <th class="px-6 py-4 font-semibold">Date</th>
+                    <th class="px-6 py-4 font-semibold text-right">Actions</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-200">
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-800">John Doe</td>
+                    <td class="px-6 py-4 text-slate-500">johndoe@example.com</td>
+                    <td class="px-6 py-4"><span class="rounded-lg bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Professional</span></td>
+                    <td class="px-6 py-4 text-slate-500">March 1, 2024</td>
+                    <td class="px-6 py-4">
+                      <div class="flex justify-end gap-3 text-slate-500">
+                        <button>✎</button>
+                        <button>🗑</button>
+                        <button>⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-800">Jane Smith</td>
+                    <td class="px-6 py-4 text-slate-500">janesmith@example.com</td>
+                    <td class="px-6 py-4"><span class="rounded-lg bg-rose-100 px-3 py-1 text-xs font-semibold text-rose-700">Rejected</span></td>
+                    <td class="px-6 py-4 text-slate-500">March 2, 2024</td>
+                    <td class="px-6 py-4">
+                      <div class="flex justify-end gap-3 text-slate-500">
+                        <button>✎</button>
+                        <button>🗑</button>
+                        <button>⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-800">Alice Johnson</td>
+                    <td class="px-6 py-4 text-slate-500">alicejohnson@example.com</td>
+                    <td class="px-6 py-4"><span class="rounded-lg bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">Applied</span></td>
+                    <td class="px-6 py-4 text-slate-500">March 3, 2024</td>
+                    <td class="px-6 py-4">
+                      <div class="flex justify-end gap-3 text-slate-500">
+                        <button>✎</button>
+                        <button>🗑</button>
+                        <button>⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-800">Bob Brown</td>
+                    <td class="px-6 py-4 text-slate-500">bobbrown@example.com</td>
+                    <td class="px-6 py-4"><span class="rounded-lg bg-amber-100 px-3 py-1 text-xs font-semibold text-amber-700">Current</span></td>
+                    <td class="px-6 py-4 text-slate-500">March 4, 2024</td>
+                    <td class="px-6 py-4">
+                      <div class="flex justify-end gap-3 text-slate-500">
+                        <button>✎</button>
+                        <button>🗑</button>
+                        <button>⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-800">Alice Carter</td>
+                    <td class="px-6 py-4 text-slate-500">alicecarter@example.com</td>
+                    <td class="px-6 py-4"><span class="rounded-lg bg-emerald-100 px-3 py-1 text-xs font-semibold text-emerald-700">Professional</span></td>
+                    <td class="px-6 py-4 text-slate-500">March 28, 2024</td>
+                    <td class="px-6 py-4">
+                      <div class="flex justify-end gap-3 text-slate-500">
+                        <button>✎</button>
+                        <button>🗑</button>
+                        <button>⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+
+                  <tr class="hover:bg-slate-50">
+                    <td class="px-6 py-4 font-medium text-slate-800">Tony Spark</td>
+                    <td class="px-6 py-4 text-slate-500">tonyspark@example.com</td>
+                    <td class="px-6 py-4"><span class="rounded-lg bg-sky-100 px-3 py-1 text-xs font-semibold text-sky-700">Applied</span></td>
+                    <td class="px-6 py-4 text-slate-500">July 28, 2024</td>
+                    <td class="px-6 py-4">
+                      <div class="flex justify-end gap-3 text-slate-500">
+                        <button>✎</button>
+                        <button>🗑</button>
+                        <button>⋮</button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </section>
+
+          <!-- Footer -->
+          <footer class="mt-6 flex flex-col gap-3 border-t border-transparent pt-2 text-sm text-slate-500 md:flex-row md:items-center md:justify-between">
+            <p>©2025 <span class="font-semibold text-violet-600">FlyonUI</span>. Made with ❤️ for a better web.</p>
+            <div class="flex flex-wrap items-center gap-4">
+              <a href="#" class="hover:text-violet-600">More Templates</a>
+              <a href="#" class="hover:text-violet-600">Documentation</a>
+              <a href="#" class="hover:text-violet-600">Support</a>
+              <a href="#" class="hover:text-violet-600">Changelog</a>
+              <a href="#" class="hover:text-violet-600">License</a>
+            </div>
+          </footer>
+        </div>
+      </main>
+    </div>
+  </div>
+</body>
+</html>

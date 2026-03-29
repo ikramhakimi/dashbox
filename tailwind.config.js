@@ -1,0 +1,36 @@
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    './views/**/*.php',
+    './layout.php',
+    './index.php',
+  ],
+  safelist: [
+    'card',
+    'card--data',
+    'card--module',
+    'card--soft',
+    'card--widget',
+    'badge',
+    'badge--positive',
+    'badge--negative',
+    'badge--neutral',
+    'badge--warning',
+    'badge--info',
+    'badge--accent',
+    'icon',
+    'icon--16',
+    'icon--24',
+    'icon--32',
+    'icon--64',
+    'sidebar',
+  ],
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['Outfit', 'ui-sans-serif', 'system-ui', 'sans-serif'],
+      },
+    },
+  },
+  plugins: [],
+};
