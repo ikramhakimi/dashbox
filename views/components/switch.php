@@ -7,6 +7,7 @@ $value      = isset($value) ? (string) $value : '1';
 $checked    = !empty($checked);
 $disabled   = !empty($disabled);
 $help_text  = isset($help_text) ? (string) $help_text : '';
+$error_text = isset($error_text) ? (string) $error_text : '';
 $attributes = isset($attributes) && is_array($attributes) ? $attributes : [];
 
 $render_attributes = static function (array $attrs): string {
@@ -38,21 +39,25 @@ $input_attributes            = $attributes;
 $input_attributes['id']      = $id;
 $input_attributes['name']    = $name;
 $input_attributes['type']    = 'checkbox';
-$input_attributes['class']   = 'switch__control';
+$input_attributes['class']   = 'switch__native';
 $input_attributes['role']    = 'switch';
 $input_attributes['value']   = $value;
 $input_attributes['checked'] = $checked;
-$input_attributes['disabled']= $disabled;
+$input_attributes['disabled'] = $disabled;
+$input_attributes['aria-invalid'] = $error_text !== '' ? 'true' : null;
 ?>
 <div class="<?= e($component_class) ?>">
   <label class="switch__label" for="<?= e($id) ?>">
-    <span class="switch__track">
-      <input<?= $render_attributes($input_attributes) ?>>
-      <span class="switch__thumb" aria-hidden="true"></span>
+    <input<?= $render_attributes($input_attributes) ?>>
+    <span class="switch__track" aria-hidden="true">
+      <span class="switch__thumb"></span>
     </span>
     <span class="switch__text"><?= e($label) ?></span>
   </label>
   <?php if ($help_text !== ''): ?>
     <p class="switch__help"><?= e($help_text) ?></p>
+  <?php endif; ?>
+  <?php if ($error_text !== ''): ?>
+    <p class="switch__error"><?= e($error_text) ?></p>
   <?php endif; ?>
 </div>

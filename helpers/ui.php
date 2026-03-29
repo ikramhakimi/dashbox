@@ -28,3 +28,47 @@ function asset(string $path): string
 
   return BASE_PATH . $clean_path;
 }
+
+function ui_elements_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'alerts'      => 'Alerts',
+    'badges'      => 'Badges',
+    'buttons'     => 'Buttons',
+    'breadcrumbs' => 'Breadcrumbs',
+    'cards'       => 'Cards',
+    'inputs'      => 'Inputs',
+    'modals'      => 'Modals',
+    'tabs'        => 'Tabs',
+    'toasts'      => 'Toasts',
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $label) {
+    $children[] = [
+      'label'  => $label,
+      'href'   => asset('/' . $slug),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function ui_patterns_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'forms' => 'Form',
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $label) {
+    $children[] = [
+      'label'  => $label,
+      'href'   => asset('/' . $slug),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}

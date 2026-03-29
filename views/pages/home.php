@@ -19,28 +19,7 @@ $menu_items = [
   ],
   [
     'label'    => 'UI Elements',
-    'children' => [
-      [
-        'label'  => 'Buttons',
-        'href'   => asset('/buttons'),
-        'active' => false,
-      ],
-      [
-        'label'  => 'Cards',
-        'href'   => asset('/cards'),
-        'active' => false,
-      ],
-      [
-        'label'  => 'Badges',
-        'href'   => asset('/badges'),
-        'active' => false,
-      ],
-      [
-        'label'  => 'Inputs',
-        'href'   => asset('/inputs'),
-        'active' => false,
-      ],
-    ],
+    'children' => ui_elements_sidebar_children(),
   ],
   [
     'label'    => 'Management',
@@ -61,6 +40,10 @@ $menu_items = [
         'active' => false,
       ],
     ],
+  ],
+  [
+    'label'    => 'UI Patterns',
+    'children' => ui_patterns_sidebar_children(),
   ],
   [
     'label' => 'Settings',
@@ -476,78 +459,85 @@ layout('layout-start', [
 
   <main class="flex-1">
     <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
-      <header class="mb-8 flex flex-col gap-3 border-b border-gray-200 pb-6 md:flex-row md:items-end md:justify-between">
+      <header class="mb-8 flex flex-col gap-4 border-b border-gray-200 pb-6 md:flex-row md:items-end md:justify-between">
         <div>
+          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Overview</p>
           <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Performance Dashboard</h1>
-          <p class="mt-1 text-sm text-gray-500">Structured overview with focused KPIs and operational insights.</p>
+          <p class="mt-2 max-w-3xl text-sm text-gray-500">
+            Structured overview with focused KPIs and operational insights.
+          </p>
         </div>
         <button class="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
           Export Snapshot
         </button>
       </header>
 
-      <section class="mb-4 grid gap-4 xl:grid-cols-5" aria-label="Dashboard overview">
-        <div class="xl:col-span-3">
-          <div class="grid gap-4 sm:grid-cols-2">
-            <?php foreach ($widgets_overview as $widget): ?>
+      <div class="space-y-5">
+        <section class="grid gap-4 xl:grid-cols-5" aria-label="Dashboard overview">
+          <div class="xl:col-span-3">
+            <div class="grid gap-4 sm:grid-cols-2">
+              <?php foreach ($widgets_overview as $widget): ?>
+                <?php component('card-widget', $widget); ?>
+              <?php endforeach; ?>
+            </div>
+          </div>
+          <div class="xl:col-span-2">
+            <?php component('card-module'); ?>
+          </div>
+        </section>
+
+        <section aria-label="Plain widget cards">
+          <div class="grid gap-4 md:grid-cols-4">
+            <?php foreach ($widgets_plain as $widget): ?>
               <?php component('card-widget', $widget); ?>
             <?php endforeach; ?>
           </div>
-        </div>
-        <div class="xl:col-span-2">
-          <?php component('card-module'); ?>
-        </div>
-      </section>
+        </section>
 
-      <section class="mb-4" aria-label="Plain widget cards">
-        <div class="grid gap-4 md:grid-cols-4">
-          <?php foreach ($widgets_plain as $widget): ?>
-            <?php component('card-widget', $widget); ?>
-          <?php endforeach; ?>
-        </div>
-      </section>
+        <section aria-label="Target summary with inline widgets">
+          <?php
+          component('card-module', [
+            'title'       => 'Acquisition Snapshot',
+            'subtitle'    => 'Quick summary for this quarter',
+            'show_graph'  => false,
+            'show_footer' => false,
+            'widgets'     => $widgets_target_inline,
+          ]);
+          ?>
+        </section>
 
-      <section class="mb-4" aria-label="Target summary with inline widgets">
-        <?php
-        component('card-module', [
-          'title'       => 'Acquisition Snapshot',
-          'subtitle'    => 'Quick summary for this quarter',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'widgets'     => $widgets_target_inline,
-        ]);
-        ?>
-      </section>
+        <section aria-label="Soft acquisition snapshot with inline widgets">
+          <?php
+          component('card-module', [
+            'title'       => 'Revenue Pulse',
+            'subtitle'    => 'Soft theme variation for balanced emphasis',
+            'show_graph'  => false,
+            'show_footer' => false,
+            'widgets'     => $widgets_target_inline_soft,
+            'states'      => [
+              'soft' => true,
+            ],
+          ]);
+          ?>
+        </section>
 
-      <section class="mb-4" aria-label="Soft acquisition snapshot with inline widgets">
-        <?php
-        component('card-module', [
-          'title'       => 'Revenue Pulse',
-          'subtitle'    => 'Soft theme variation for balanced emphasis',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'widgets'     => $widgets_target_inline_soft,
-          'states'      => [
-            'soft' => true,
-          ],
-        ]);
-        ?>
-      </section>
+        <section aria-label="Button foundation showcase">
+          <?php
+          component('card-module', [
+            'title'       => 'Button Foundation',
+            'subtitle'    => 'All available button variants, sizes, and states in one module.',
+            'show_graph'  => false,
+            'show_footer' => false,
+            'show_menu'   => false,
+            'content'     => $button_showcase_content,
+          ]);
+          ?>
+        </section>
 
-      <section class="mb-4" aria-label="Button foundation showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Button Foundation',
-          'subtitle'    => 'All available button variants, sizes, and states in one module.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $button_showcase_content,
-        ]);
-        ?>
-      </section>
-
-      <?php component('card-data', ['orders' => $orders]); ?>
+        <section aria-label="Orders data table">
+          <?php component('card-data', ['orders' => $orders]); ?>
+        </section>
+      </div>
     </section>
   </main>
 </div>

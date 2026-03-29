@@ -1,29 +1,47 @@
 @layer components {
   .badge {
     @apply inline-flex items-center rounded-md border px-2.5 py-1 text-xs font-semibold;
+    --badge-bg: theme('colors.emerald.50');
+    --badge-text: theme('colors.emerald.700');
+    --badge-border: theme('colors.emerald.200');
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    border-color: var(--badge-border);
   }
 
   .badge--positive {
-    @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+    --badge-bg: theme('colors.emerald.50');
+    --badge-text: theme('colors.emerald.700');
+    --badge-border: theme('colors.emerald.200');
   }
 
   .badge--negative {
-    @apply border-rose-200 bg-rose-50 text-rose-700;
+    --badge-bg: theme('colors.rose.50');
+    --badge-text: theme('colors.rose.700');
+    --badge-border: theme('colors.rose.200');
   }
 
   .badge--neutral {
-    @apply border-gray-200 bg-gray-100 text-gray-700;
+    --badge-bg: theme('colors.gray.100');
+    --badge-text: theme('colors.gray.700');
+    --badge-border: theme('colors.gray.200');
   }
 
   .badge--warning {
-    @apply border-amber-200 bg-amber-50 text-amber-700;
+    --badge-bg: theme('colors.amber.50');
+    --badge-text: theme('colors.amber.700');
+    --badge-border: theme('colors.amber.200');
   }
 
   .badge--info {
-    @apply border-sky-200 bg-sky-50 text-sky-700;
+    --badge-bg: theme('colors.sky.50');
+    --badge-text: theme('colors.sky.700');
+    --badge-border: theme('colors.sky.200');
   }
 
   .badge--accent {
-    @apply border-violet-200 bg-violet-50 text-violet-700;
+    --badge-bg: theme('colors.violet.50');
+    --badge-text: theme('colors.violet.700');
+    --badge-border: theme('colors.violet.200');
   }
 }

@@ -1,0 +1,41 @@
+@layer components {
+  .tabs {
+    @apply w-full;
+  }
+
+  .tabs__list {
+    @apply inline-flex h-[46px] items-center gap-0.5 rounded-md bg-gray-100 p-0.5;
+  }
+
+  .tabs__item {
+    @apply shrink-0;
+  }
+
+  .tabs__tab {
+    @apply inline-flex h-[42px] items-center justify-center gap-2 rounded-[4px] px-4 text-sm font-semibold leading-4 text-gray-600 transition;
+  }
+
+  .tabs__tab:hover {
+    @apply bg-white text-gray-900;
+  }
+
+  .tabs__tab--active {
+    @apply bg-white text-gray-900;
+  }
+
+  .tabs__tab--disabled {
+    @apply pointer-events-none opacity-50;
+  }
+
+  .tabs__icon .icon {
+    @apply h-4 w-4;
+  }
+
+  .tabs--compact .tabs__list {
+    @apply h-[34px] gap-0.5 p-0.5;
+  }
+
+  .tabs--compact .tabs__tab {
+    @apply h-[30px] rounded-[4px] px-2.5 text-xs leading-4;
+  }
+}

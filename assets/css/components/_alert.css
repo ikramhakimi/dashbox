@@ -1,0 +1,93 @@
+@layer components {
+  .alert {
+    @apply grid grid-cols-[auto_1fr] gap-3 rounded-md p-4 text-sm;
+    --alert-bg: theme('colors.sky.50');
+    --alert-text: theme('colors.sky.900');
+    --alert-icon-bg: theme('colors.sky.100');
+    --alert-icon-text: theme('colors.sky.700');
+    background-color: var(--alert-bg);
+    color: var(--alert-text);
+  }
+
+  .alert--dismissible {
+    @apply grid-cols-[auto_1fr_auto];
+  }
+
+  .alert--no-icon {
+    @apply grid-cols-[1fr];
+  }
+
+  .alert--no-icon.alert--dismissible {
+    @apply grid-cols-[1fr_auto];
+  }
+
+  .alert--inline .alert__content {
+    @apply flex flex-wrap items-baseline gap-1 space-y-0;
+  }
+
+  .alert__icon {
+    @apply mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full;
+    background-color: var(--alert-icon-bg);
+    color: var(--alert-icon-text);
+  }
+
+  .alert__icon svg {
+    @apply h-3.5 w-3.5;
+  }
+
+  .alert__content {
+    @apply min-w-0 space-y-1;
+  }
+
+  .alert__title {
+    @apply text-sm font-semibold leading-5;
+  }
+
+  .alert__description {
+    @apply text-sm leading-5;
+  }
+
+  .alert__link {
+    @apply mt-1 inline-flex text-sm font-medium underline underline-offset-2 transition-opacity hover:opacity-80;
+  }
+
+  .alert--inline .alert__link {
+    @apply ml-1 mt-0;
+  }
+
+  .alert__dismiss {
+    @apply inline-flex h-6 w-6 items-center justify-center rounded-md text-current opacity-70 transition hover:bg-black/5 hover:opacity-100;
+  }
+
+  .alert__dismiss svg {
+    @apply h-3.5 w-3.5;
+  }
+
+  .alert--info {
+    --alert-bg: theme('colors.sky.50');
+    --alert-text: theme('colors.sky.900');
+    --alert-icon-bg: theme('colors.sky.100');
+    --alert-icon-text: theme('colors.sky.700');
+  }
+
+  .alert--success {
+    --alert-bg: theme('colors.emerald.50');
+    --alert-text: theme('colors.emerald.900');
+    --alert-icon-bg: theme('colors.emerald.100');
+    --alert-icon-text: theme('colors.emerald.700');
+  }
+
+  .alert--warning {
+    --alert-bg: theme('colors.amber.50');
+    --alert-text: theme('colors.amber.900');
+    --alert-icon-bg: theme('colors.amber.100');
+    --alert-icon-text: theme('colors.amber.700');
+  }
+
+  .alert--danger {
+    --alert-bg: theme('colors.rose.50');
+    --alert-text: theme('colors.rose.900');
+    --alert-icon-bg: theme('colors.rose.100');
+    --alert-icon-text: theme('colors.rose.700');
+  }
+}

@@ -12,6 +12,8 @@ When making any change, prioritize maintainability, readability, accessibility, 
 - Prefer small, focused diffs.
 - Follow existing architecture unless explicitly asked to improve or refactor it.
 - Run in hardening mode by default: complete each change with explicit verification before considering it done.
+- STRICT: When adding a new UI component feature or a new variant/state, always update the corresponding demo page in the same change.
+- STRICT: Do not leave component variants undocumented in UI demos. Every supported variant/state must be visible in at least one demo page.
 
 ## Code quality standard
 - Write code suitable for a senior-level production codebase.
@@ -165,6 +167,7 @@ Output Root Class
   - layout('layout-end'); 
 - Keep layout files under views/layout and components under views/components. 
 - Keep navigation as real links (href) for SEO and accessibility.
+- When adding a new demo page, update sidebar/menu links so the page is reachable from existing UI demo pages.
 
 ### Blocks
 - Always indent inside:

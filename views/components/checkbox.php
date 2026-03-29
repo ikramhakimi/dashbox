@@ -48,7 +48,7 @@ $input_attributes                     = $attributes;
 $input_attributes['id']               = $id;
 $input_attributes['name']             = $name;
 $input_attributes['type']             = 'checkbox';
-$input_attributes['class']            = 'checkbox__control';
+$input_attributes['class']            = 'checkbox__native';
 $input_attributes['value']            = $value;
 $input_attributes['checked']          = $checked;
 $input_attributes['disabled']         = $disabled;
@@ -59,6 +59,11 @@ $input_attributes['aria-describedby'] = $described_by !== [] ? implode(' ', $des
 <div class="<?= e($component_class) ?>">
   <label class="checkbox__label" for="<?= e($id) ?>">
     <input<?= $render_attributes($input_attributes) ?>>
+    <span class="checkbox__box" aria-hidden="true">
+      <svg class="checkbox__icon" viewBox="0 0 16 16" fill="none">
+        <path d="M3.5 8.5L6.5 11.5L12.5 4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </span>
     <span class="checkbox__text"><?= e($label) ?></span>
   </label>
 

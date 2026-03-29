@@ -4,7 +4,7 @@
   }
 
   .search__icon {
-    @apply pointer-events-none absolute left-3 top-[38px] z-10 text-gray-400;
+    @apply pointer-events-none absolute left-3 top-[39px] z-10 text-gray-400;
   }
 
   .search__icon .icon {
@@ -12,6 +12,6 @@
   }
 
   .search .input__control {
-    @apply pl-10;
+    @apply rounded-md pl-10;
   }
 }

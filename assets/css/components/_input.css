@@ -1,10 +1,10 @@
 @layer components {
   .input {
-    @apply flex flex-col gap-1.5;
+    @apply flex flex-col gap-2;
   }
 
   .input__label {
-    @apply text-sm font-medium text-gray-700;
+    @apply text-sm font-semibold text-gray-700;
   }
 
   .input__required {
@@ -12,15 +12,15 @@
   }
 
   .input__control {
-    @apply w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition;
+    @apply w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition-all duration-200;
   }
 
   .input__control::placeholder {
-    @apply text-gray-400;
+    @apply text-gray-400/90;
   }
 
   .input__control:focus {
-    @apply border-gray-400 ring-2 ring-gray-200;
+    @apply border-gray-500 ring-2 ring-gray-200;
   }
 
   .input__control:disabled {
@@ -32,7 +32,7 @@
   }
 
   .input__control--invalid {
-    @apply border-rose-300 ring-rose-100;
+    @apply border-rose-300 bg-rose-50/40 ring-rose-100;
   }
 
   .input__help {

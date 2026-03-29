@@ -1,30 +1,54 @@
 @layer components {
   .button {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-3.5 text-sm font-medium transition;
+    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-3.5 text-sm font-semibold text-gray-700 transition-all duration-200;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2;
+    --button-bg: theme('colors.white');
+    --button-bg-hover: theme('colors.gray.50');
+    --button-text: theme('colors.gray.700');
+    --button-border: theme('colors.gray.200');
+    background-color: var(--button-bg);
+    color: var(--button-text);
+    border-color: var(--button-border);
+  }
+
+  .button:hover {
+    background-color: var(--button-bg-hover);
   }
 
   .button--sm {
-    @apply px-3 py-2;
+    @apply px-3 py-2 text-xs;
   }
 
   .button--lg {
-    @apply text-base px-5 py-4;
+    @apply px-5 py-4 text-base;
   }
 
   .button--primary {
-    @apply border-gray-900 bg-gray-900 text-white hover:bg-black;
+    --button-bg: theme('colors.gray.900');
+    --button-bg-hover: theme('colors.black');
+    --button-text: theme('colors.white');
+    --button-border: theme('colors.gray.900');
   }
 
   .button--neutral {
-    @apply border-gray-200 bg-white text-gray-700 hover:bg-gray-100;
+    --button-bg: theme('colors.white');
+    --button-bg-hover: theme('colors.gray.50');
+    --button-text: theme('colors.gray.700');
+    --button-border: theme('colors.gray.200');
   }
 
   .button--ghost {
-    @apply border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100;
+    --button-bg: theme('colors.gray.100');
+    --button-bg-hover: theme('colors.gray.200');
+    --button-text: theme('colors.gray.700');
+    --button-border: theme('colors.gray.200');
   }
 
   .button--danger {
-    @apply border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100;
+    --button-bg: theme('colors.rose.50');
+    --button-bg-hover: theme('colors.rose.100');
+    --button-text: theme('colors.rose.700');
+    --button-border: theme('colors.rose.300');
   }
 
   .button--icon-only {
@@ -48,7 +72,7 @@
   }
 
   .button__label {
-    line-height: 16px;
+    @apply whitespace-nowrap leading-4;
   }
 
   .button:disabled,

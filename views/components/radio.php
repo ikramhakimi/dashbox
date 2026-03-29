@@ -48,7 +48,7 @@ $input_attributes                     = $attributes;
 $input_attributes['id']               = $id;
 $input_attributes['name']             = $name;
 $input_attributes['type']             = 'radio';
-$input_attributes['class']            = 'radio__control';
+$input_attributes['class']            = 'radio__native';
 $input_attributes['value']            = $value;
 $input_attributes['checked']          = $checked;
 $input_attributes['disabled']         = $disabled;
@@ -59,6 +59,9 @@ $input_attributes['aria-describedby'] = $described_by !== [] ? implode(' ', $des
 <div class="<?= e($component_class) ?>">
   <label class="radio__label" for="<?= e($id) ?>">
     <input<?= $render_attributes($input_attributes) ?>>
+    <span class="radio__circle" aria-hidden="true">
+      <span class="radio__dot"></span>
+    </span>
     <span class="radio__text"><?= e($label) ?></span>
   </label>
 

@@ -1,0 +1,81 @@
+@layer components {
+  .toast {
+    @apply grid grid-cols-[auto_1fr] gap-3 rounded-md p-4 text-sm;
+    --toast-bg: theme('colors.sky.50');
+    --toast-text: theme('colors.sky.900');
+    --toast-icon-bg: theme('colors.sky.100');
+    --toast-icon-text: theme('colors.sky.700');
+    background-color: var(--toast-bg);
+    color: var(--toast-text);
+  }
+
+  .toast--dismissible {
+    @apply grid-cols-[auto_1fr_auto];
+  }
+
+  .toast--no-icon {
+    @apply grid-cols-[1fr];
+  }
+
+  .toast--no-icon.toast--dismissible {
+    @apply grid-cols-[1fr_auto];
+  }
+
+  .toast__icon {
+    @apply mt-0.5 inline-flex h-5 w-5 items-center justify-center rounded-full;
+    background-color: var(--toast-icon-bg);
+    color: var(--toast-icon-text);
+  }
+
+  .toast__icon svg {
+    @apply h-3.5 w-3.5;
+  }
+
+  .toast__content {
+    @apply min-w-0 space-y-1;
+  }
+
+  .toast__title {
+    @apply text-sm font-semibold leading-5;
+  }
+
+  .toast__description {
+    @apply text-sm leading-5 opacity-90;
+  }
+
+  .toast__dismiss {
+    @apply inline-flex h-6 w-6 items-center justify-center rounded-md text-current opacity-70 transition hover:bg-black/5 hover:opacity-100;
+  }
+
+  .toast__dismiss svg {
+    @apply h-3.5 w-3.5;
+  }
+
+  .toast--info {
+    --toast-bg: theme('colors.sky.50');
+    --toast-text: theme('colors.sky.900');
+    --toast-icon-bg: theme('colors.sky.100');
+    --toast-icon-text: theme('colors.sky.700');
+  }
+
+  .toast--success {
+    --toast-bg: theme('colors.emerald.50');
+    --toast-text: theme('colors.emerald.900');
+    --toast-icon-bg: theme('colors.emerald.100');
+    --toast-icon-text: theme('colors.emerald.700');
+  }
+
+  .toast--warning {
+    --toast-bg: theme('colors.amber.50');
+    --toast-text: theme('colors.amber.900');
+    --toast-icon-bg: theme('colors.amber.100');
+    --toast-icon-text: theme('colors.amber.700');
+  }
+
+  .toast--danger {
+    --toast-bg: theme('colors.rose.50');
+    --toast-text: theme('colors.rose.900');
+    --toast-icon-bg: theme('colors.rose.100');
+    --toast-icon-text: theme('colors.rose.700');
+  }
+}

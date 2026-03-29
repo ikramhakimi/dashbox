@@ -1,0 +1,367 @@
+<?php
+
+$page_title   = 'Modals';
+$page_current = 'modals';
+
+$menu_items = [
+  [
+    'label' => 'Overview',
+    'href'  => asset('/'),
+  ],
+  [
+    'label'    => 'UI Elements',
+    'children' => ui_elements_sidebar_children('modals'),
+  ],
+  [
+    'label'    => 'UI Patterns',
+    'children' => ui_patterns_sidebar_children(),
+  ],
+  [
+    'label' => 'Settings',
+    'href'  => '#',
+  ],
+];
+
+$capture = static function (string $name, array $props): string {
+  ob_start();
+  component($name, $props);
+  return (string) ob_get_clean();
+};
+
+$button_cancel = $capture('button', [
+  'label'      => 'Cancel',
+  'variant'    => 'ghost',
+  'attributes' => ['data-modal-close' => true],
+]);
+
+$button_close = $capture('button', [
+  'label'      => 'Close',
+  'variant'    => 'neutral',
+  'attributes' => ['data-modal-close' => true],
+]);
+
+$button_save = $capture('button', [
+  'label'   => 'Save',
+  'variant' => 'primary',
+]);
+
+$button_apply = $capture('button', [
+  'label'   => 'Apply Filters',
+  'variant' => 'primary',
+]);
+
+$button_delete = $capture('button', [
+  'label'   => 'Delete',
+  'variant' => 'danger',
+]);
+
+$button_next = $capture('button', [
+  'label'   => 'Next',
+  'variant' => 'primary',
+]);
+
+$button_back = $capture('button', [
+  'label'   => 'Back',
+  'variant' => 'neutral',
+]);
+
+$form_modal_content = '
+  <form class="space-y-4">
+    ' . $capture('input', [
+      'id'          => 'modal-form-name',
+      'label'       => 'Team Name',
+      'placeholder' => 'e.g. Growth Operations',
+    ]) . '
+    ' . $capture('input', [
+      'id'          => 'modal-form-email',
+      'label'       => 'Owner Email',
+      'placeholder' => 'owner@company.com',
+    ]) . '
+    ' . $capture('select', [
+      'id'      => 'modal-form-role',
+      'label'   => 'Default Role',
+      'value'   => 'manager',
+      'options' => [
+        ['label' => 'Manager', 'value' => 'manager'],
+        ['label' => 'Editor', 'value' => 'editor'],
+        ['label' => 'Viewer', 'value' => 'viewer'],
+      ],
+    ]) . '
+    ' . $capture('switch', [
+      'id'      => 'modal-form-active',
+      'label'   => 'Active by default',
+      'checked' => true,
+    ]) . '
+  </form>
+';
+
+$form_modal_footer = '
+  <div class="flex items-center gap-2">
+    ' . $button_cancel . '
+    ' . $button_save . '
+  </div>
+';
+
+$delete_modal_content = '
+  <div class="space-y-3">
+    <p class="text-sm text-gray-700">
+      This will permanently delete <span class="font-semibold text-gray-900">Project Mercury</span>.
+    </p>
+    <p class="text-sm text-gray-500">You cannot undo this action.</p>
+  </div>
+';
+
+$delete_modal_footer = '
+  <div class="flex items-center gap-2">
+    ' . $button_cancel . '
+    ' . $button_delete . '
+  </div>
+';
+
+$filter_modal_content = '
+  <form class="space-y-4">
+    <div class="grid gap-4 md:grid-cols-2">
+      ' . $capture('select', [
+        'id'      => 'modal-filter-status',
+        'label'   => 'Status',
+        'value'   => 'open',
+        'options' => [
+          ['label' => 'Open', 'value' => 'open'],
+          ['label' => 'In Progress', 'value' => 'in_progress'],
+          ['label' => 'Closed', 'value' => 'closed'],
+        ],
+      ]) . '
+      ' . $capture('select', [
+        'id'      => 'modal-filter-priority',
+        'label'   => 'Priority',
+        'value'   => 'high',
+        'options' => [
+          ['label' => 'High', 'value' => 'high'],
+          ['label' => 'Medium', 'value' => 'medium'],
+          ['label' => 'Low', 'value' => 'low'],
+        ],
+      ]) . '
+      ' . $capture('datetime-input', [
+        'id'    => 'modal-filter-date-start',
+        'label' => 'Start Date',
+        'mode'  => 'date',
+      ]) . '
+      ' . $capture('datetime-input', [
+        'id'    => 'modal-filter-date-end',
+        'label' => 'End Date',
+        'mode'  => 'date',
+      ]) . '
+    </div>
+    <div class="space-y-2">
+      ' . $capture('checkbox', [
+        'id'      => 'modal-filter-billing',
+        'label'   => 'Include billing-related tickets',
+        'checked' => true,
+      ]) . '
+      ' . $capture('checkbox', [
+        'id'      => 'modal-filter-urgent',
+        'label'   => 'Only urgent items',
+        'checked' => false,
+      ]) . '
+    </div>
+  </form>
+';
+
+$filter_modal_footer = '
+  <div class="flex items-center gap-2">
+    ' . $button_cancel . '
+    ' . $capture('button', ['label' => 'Reset', 'variant' => 'neutral']) . '
+    ' . $button_apply . '
+  </div>
+';
+
+$detail_modal_content = '
+  <div class="grid gap-4 md:grid-cols-2">
+    <div class="space-y-2 rounded-lg border border-gray-100 p-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Customer</p>
+      <p class="text-sm text-gray-900">Nadia Syahirah</p>
+      <p class="text-sm text-gray-500">nadia@example.com</p>
+      <p class="text-sm text-gray-500">+60 12-345 6789</p>
+    </div>
+    <div class="space-y-2 rounded-lg border border-gray-100 p-4">
+      <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Order</p>
+      <p class="text-sm text-gray-900">ORD-2026-00991</p>
+      <p class="text-sm text-gray-500">Created: 29 Mar 2026</p>
+      <p class="text-sm text-gray-500">Status: Processing</p>
+    </div>
+  </div>
+';
+
+$detail_modal_footer = '
+  <div class="flex items-center gap-2">
+    ' . $button_close . '
+    ' . $capture('button', ['label' => 'Open Full Details', 'variant' => 'primary']) . '
+  </div>
+';
+
+$step_modal_content = '
+  <div class="space-y-4">
+    <div class="space-y-1">
+      <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Step 2 of 3</p>
+      <h4 class="text-sm font-semibold text-gray-900">Choose Notification Channel</h4>
+    </div>
+    <div class="space-y-2">
+      ' . $capture('radio', [
+        'id'      => 'modal-step-email',
+        'name'    => 'modal_step_channel',
+        'label'   => 'Email notifications',
+        'value'   => 'email',
+        'checked' => true,
+      ]) . '
+      ' . $capture('radio', [
+        'id'      => 'modal-step-sms',
+        'name'    => 'modal_step_channel',
+        'label'   => 'SMS notifications',
+        'value'   => 'sms',
+      ]) . '
+      ' . $capture('radio', [
+        'id'      => 'modal-step-inapp',
+        'name'    => 'modal_step_channel',
+        'label'   => 'In-app notifications',
+        'value'   => 'in_app',
+      ]) . '
+    </div>
+  </div>
+';
+
+$step_modal_footer = '
+  <div class="flex items-center gap-2">
+    ' . $button_back . '
+    ' . $button_next . '
+  </div>
+';
+
+ob_start();
+?>
+<div class="space-y-4">
+  <div class="border border-gray-100 rounded-lg p-5">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Modal Use Cases</p>
+    <div class="flex flex-wrap gap-2">
+      <?= $capture('button', [
+        'label'      => '1. Form Modal',
+        'variant'    => 'neutral',
+        'attributes' => ['data-modal-open' => 'demo-modal-form'],
+      ]) ?>
+      <?= $capture('button', [
+        'label'      => '2. Delete Confirmation',
+        'variant'    => 'danger',
+        'attributes' => ['data-modal-open' => 'demo-modal-delete'],
+      ]) ?>
+      <?= $capture('button', [
+        'label'      => '3. Filter Modal',
+        'variant'    => 'neutral',
+        'attributes' => ['data-modal-open' => 'demo-modal-filter'],
+      ]) ?>
+      <?= $capture('button', [
+        'label'      => '4. Read-only Details',
+        'variant'    => 'neutral',
+        'attributes' => ['data-modal-open' => 'demo-modal-detail'],
+      ]) ?>
+      <?= $capture('button', [
+        'label'      => '5. Multi-step Light',
+        'variant'    => 'neutral',
+        'attributes' => ['data-modal-open' => 'demo-modal-step'],
+      ]) ?>
+    </div>
+  </div>
+
+  <div class="border border-gray-100 rounded-lg p-5">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">When To Use</p>
+    <ul class="space-y-2 text-sm text-gray-600">
+      <li>1. Form modal for quick create/edit without page transition.</li>
+      <li>2. Delete confirmation for destructive actions requiring explicit intent.</li>
+      <li>3. Filter modal for dense filtering controls and date ranges.</li>
+      <li>4. Read-only details for quick context inspection.</li>
+      <li>5. Multi-step light for short guided setup.</li>
+    </ul>
+  </div>
+</div>
+<?php
+$modal_demo_content = (string) ob_get_clean();
+
+layout('layout-start', [
+  'page_title'   => $page_title,
+  'page_current' => $page_current,
+]);
+?>
+<div class="flex min-h-screen">
+  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
+
+  <main class="flex-1">
+    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+      <header class="mb-8 border-b border-gray-200 pb-6">
+        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
+        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Modal UI Library</h1>
+        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+          Practical modal contexts for production workflows, from form entry to confirmation and step flows.
+        </p>
+      </header>
+
+      <section class="space-y-7" aria-label="Modal component showcase">
+        <?php
+        component('card-module', [
+          'title'       => 'Modal Context Demos',
+          'subtitle'    => 'Five production-ready modal examples covering common dashboard use cases.',
+          'show_graph'  => false,
+          'show_footer' => false,
+          'show_menu'   => false,
+          'content'     => $modal_demo_content,
+        ]);
+        ?>
+      </section>
+    </section>
+  </main>
+</div>
+
+<?php
+component('modal', [
+  'id'          => 'demo-modal-form',
+  'size'        => 'md',
+  'title'       => 'Create Team',
+  'description' => 'Set up team details and default permissions.',
+  'content'     => $form_modal_content,
+  'footer'      => $form_modal_footer,
+]);
+
+component('modal', [
+  'id'          => 'demo-modal-delete',
+  'size'        => 'sm',
+  'title'       => 'Delete Project?',
+  'description' => 'This action is permanent.',
+  'content'     => $delete_modal_content,
+  'footer'      => $delete_modal_footer,
+]);
+
+component('modal', [
+  'id'          => 'demo-modal-filter',
+  'size'        => 'lg',
+  'title'       => 'Advanced Filters',
+  'description' => 'Refine results using status, dates, and flags.',
+  'content'     => $filter_modal_content,
+  'footer'      => $filter_modal_footer,
+]);
+
+component('modal', [
+  'id'          => 'demo-modal-detail',
+  'size'        => 'lg',
+  'title'       => 'Order Snapshot',
+  'description' => 'Read-only detail modal for quick review.',
+  'content'     => $detail_modal_content,
+  'footer'      => $detail_modal_footer,
+]);
+
+component('modal', [
+  'id'          => 'demo-modal-step',
+  'size'        => 'md',
+  'title'       => 'Setup Wizard',
+  'description' => 'Short multi-step configuration flow.',
+  'content'     => $step_modal_content,
+  'footer'      => $step_modal_footer,
+]);
+?>
+<?php layout('layout-end'); ?>

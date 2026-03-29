@@ -10,28 +10,11 @@ $menu_items = [
   ],
   [
     'label'    => 'UI Elements',
-    'children' => [
-      [
-        'label'  => 'Buttons',
-        'href'   => asset('/buttons'),
-        'active' => false,
-      ],
-      [
-        'label'  => 'Cards',
-        'href'   => asset('/cards'),
-        'active' => true,
-      ],
-      [
-        'label'  => 'Badges',
-        'href'   => asset('/badges'),
-        'active' => false,
-      ],
-      [
-        'label'  => 'Inputs',
-        'href'   => asset('/inputs'),
-        'active' => false,
-      ],
-    ],
+    'children' => ui_elements_sidebar_children('cards'),
+  ],
+  [
+    'label'    => 'UI Patterns',
+    'children' => ui_patterns_sidebar_children(),
   ],
   [
     'label' => 'Settings',
@@ -117,39 +100,45 @@ layout('layout-start', [
   <main class="flex-1">
     <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
       <header class="mb-8 border-b border-gray-200 pb-6">
+        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Card UI Library</h1>
-        <p class="mt-1 text-sm text-gray-500">
+        <p class="mt-2 max-w-3xl text-sm text-gray-500">
           Showcase for Card Widget, Card Module, and Card Data components.
         </p>
       </header>
 
-      <section class="mb-6">
-        <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Widget</h2>
-        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          <?php foreach ($widget_samples as $widget): ?>
-            <?php component('card-widget', $widget); ?>
-          <?php endforeach; ?>
-        </div>
-      </section>
+      <div class="space-y-6">
+        <section aria-label="Card widget showcase">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Widget</h2>
+          <p class="mb-4 text-sm text-gray-500">Compact metric cards used for quick KPI scanning.</p>
+          <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <?php foreach ($widget_samples as $widget): ?>
+              <?php component('card-widget', $widget); ?>
+            <?php endforeach; ?>
+          </div>
+        </section>
 
-      <section class="mb-6">
-        <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Module</h2>
-        <?php
-        component('card-module', [
-          'title'       => 'Card Module Demo',
-          'subtitle'    => 'Module card with inline widgets and footer.',
-          'show_graph'  => false,
-          'show_footer' => true,
-          'show_menu'   => false,
-          'widgets'     => $widget_samples,
-        ]);
-        ?>
-      </section>
+        <section aria-label="Card module showcase">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Module</h2>
+          <p class="mb-4 text-sm text-gray-500">Structured module card that combines summary and grouped content.</p>
+          <?php
+          component('card-module', [
+            'title'       => 'Card Module Demo',
+            'subtitle'    => 'Module card with inline widgets and footer.',
+            'show_graph'  => false,
+            'show_footer' => true,
+            'show_menu'   => false,
+            'widgets'     => $widget_samples,
+          ]);
+          ?>
+        </section>
 
-      <section>
-        <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Data</h2>
-        <?php component('card-data', ['orders' => $orders]); ?>
-      </section>
+        <section aria-label="Card data showcase">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Data</h2>
+          <p class="mb-4 text-sm text-gray-500">Data-heavy card pattern for operational table views.</p>
+          <?php component('card-data', ['orders' => $orders]); ?>
+        </section>
+      </div>
     </section>
   </main>
 </div>

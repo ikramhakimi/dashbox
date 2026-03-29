@@ -10,28 +10,11 @@ $menu_items = [
   ],
   [
     'label'    => 'UI Elements',
-    'children' => [
-      [
-        'label'  => 'Buttons',
-        'href'   => asset('/buttons'),
-        'active' => false,
-      ],
-      [
-        'label'  => 'Cards',
-        'href'   => asset('/cards'),
-        'active' => false,
-      ],
-      [
-        'label'  => 'Badges',
-        'href'   => asset('/badges'),
-        'active' => true,
-      ],
-      [
-        'label'  => 'Inputs',
-        'href'   => asset('/inputs'),
-        'active' => false,
-      ],
-    ],
+    'children' => ui_elements_sidebar_children('badges'),
+  ],
+  [
+    'label'    => 'UI Patterns',
+    'children' => ui_patterns_sidebar_children(),
   ],
   [
     'label' => 'Settings',
