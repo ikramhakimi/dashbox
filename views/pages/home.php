@@ -448,6 +448,7 @@ $orders = [
     'manage_url'     => '/app/order/view-order/46',
   ],
 ];
+$home_booking_table = build_booking_table_dataset($orders);
 
 layout('layout-start', [
   'page_title'   => $page_title,
@@ -535,7 +536,16 @@ layout('layout-start', [
         </section>
 
         <section aria-label="Orders data table">
-          <?php component('card-data', ['orders' => $orders]); ?>
+          <?php
+          component('card-table', [
+            'title'         => 'Orders',
+            'subtitle'      => 'Booking orders by studio, session, payment, and status.',
+            'record_label'  => 'records',
+            'table_headers' => $home_booking_table['headers'],
+            'table_rows'    => $home_booking_table['rows'],
+            'total_records' => $home_booking_table['total'],
+          ]);
+          ?>
         </section>
       </div>
     </section>

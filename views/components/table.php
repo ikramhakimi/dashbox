@@ -1,91 +1,127 @@
 <?php
 
-$headers = is_array($headers ?? null) ? $headers : [];
-$rows    = is_array($rows ?? null) ? $rows : [];
+$headers       = is_array($headers ?? null) ? $headers : [];
+$rows          = is_array($rows ?? null) ? $rows : [];
+$caption       = isset($caption) ? (string) $caption : '';
+$empty_message = isset($empty_message) && $empty_message !== '' ? (string) $empty_message : 'No records found.';
+$empty_title   = isset($empty_title) && $empty_title !== '' ? (string) $empty_title : 'Nothing here yet';
+$empty_deco    = isset($empty_deco) && $empty_deco !== '' ? (string) $empty_deco : '(o_o)';
+$zebra         = !empty($zebra);
+
+$table_classes = [$component_class];
+if ($zebra) {
+  $table_classes[] = 'table--zebra';
+}
+
+$build_align_class = static function (string $align): string {
+  if ($align === 'right') {
+    return 'table__cell--right';
+  }
+  if ($align === 'center') {
+    return 'table__cell--center';
+  }
+  return '';
+};
+
+$capture_badge = static function (string $label, string $mode): string {
+  ob_start();
+  component('badge', [
+    'label' => $label,
+    'mode'  => $mode,
+  ]);
+  return (string) ob_get_clean();
+};
 ?>
-<div class="overflow-x-auto">
-  <table class="<?= e($component_class) ?>">
-    <thead>
-      <tr>
+<div class="table__container">
+  <table class="<?= e(implode(' ', $table_classes)) ?>">
+    <?php if ($caption !== ''): ?>
+      <caption class="table__caption"><?= e($caption) ?></caption>
+    <?php endif; ?>
+    <thead class="table__head">
+      <tr class="table__row table__row--head">
         <?php foreach ($headers as $header): ?>
           <?php
           $header_label = is_array($header) ? (string) ($header['label'] ?? '') : (string) $header;
-          $header_align = is_array($header) ? (string) ($header['align'] ?? '') : '';
-          $header_attr  = $header_align === 'right' ? ' align="right"' : '';
+          $header_align = is_array($header) ? (string) ($header['align'] ?? 'left') : 'left';
+          $header_class = $build_align_class($header_align);
           ?>
-          <th<?= $header_attr ?>><?= e($header_label) ?></th>
+          <th scope="col" class="table__cell table__cell--head <?= e($header_class) ?>">
+            <?= e($header_label) ?>
+          </th>
         <?php endforeach; ?>
       </tr>
     </thead>
-    <tbody>
+    <tbody class="table__body">
+      <?php if ($rows === []): ?>
+        <tr class="table__row">
+          <td class="table__cell table__cell--empty" colspan="<?= e((string) max(1, count($headers))) ?>">
+            <div class="table__empty">
+              <p class="table__empty-deco" aria-hidden="true"><?= e($empty_deco) ?></p>
+              <p class="table__empty-title"><?= e($empty_title) ?></p>
+              <p class="table__empty-hint"><?= e($empty_message) ?></p>
+            </div>
+          </td>
+        </tr>
+      <?php endif; ?>
+
       <?php foreach ($rows as $row): ?>
         <?php
-        $cells   = is_array($row['cells'] ?? null) ? $row['cells'] : [];
-        $actions = is_array($row['actions'] ?? null) ? $row['actions'] : [];
+        $cells = is_array($row['cells'] ?? null) ? $row['cells'] : [];
+        $menu_items = is_array($row['menu_items'] ?? null) ? $row['menu_items'] : [];
         ?>
-        <tr>
+        <tr class="table__row">
           <?php foreach ($cells as $cell): ?>
             <?php
-            $cell_align = is_array($cell) ? (string) ($cell['align'] ?? '') : '';
-            $cell_attr  = $cell_align === 'right' ? ' align="right"' : '';
+            $cell_align = is_array($cell) ? (string) ($cell['align'] ?? 'left') : 'left';
+            $cell_class = $build_align_class($cell_align);
             ?>
-            <td<?= $cell_attr ?>>
-              <?php if (is_array($cell) && (array_key_exists('primary', $cell) || array_key_exists('secondary', $cell))): ?>
-                <?php
-                $primary   = isset($cell['primary']) ? (string) $cell['primary'] : '';
-                $secondary = isset($cell['secondary']) ? (string) $cell['secondary'] : '';
-                $tertiary  = isset($cell['tertiary']) ? (string) $cell['tertiary'] : '';
-                $has_media = !empty($cell['media_placeholder']);
-                ?>
-                <div class="<?= e($has_media ? 'flex items-center gap-3' : '') ?>">
-                  <?php if ($has_media): ?>
-                    <div class="h-16 aspect-[4/3] rounded-lg bg-gray-100 shrink-0"></div>
-                  <?php endif; ?>
-                  <div class="leading-tight">
-                    <div><?= e($primary) ?></div>
-                    <?php if ($secondary !== ''): ?>
-                      <div class="mt-1 text-sm text-gray-500"><?= e($secondary) ?></div>
-                    <?php endif; ?>
-                    <?php if ($tertiary !== ''): ?>
-                      <div class="mt-1 text-sm text-gray-500"><?= e($tertiary) ?></div>
-                    <?php endif; ?>
-                  </div>
-                </div>
+            <td class="table__cell <?= e($cell_class) ?>">
+              <?php if (is_array($cell) && isset($cell['html'])): ?>
+                <?= (string) $cell['html'] ?>
               <?php elseif (is_array($cell) && isset($cell['badge']) && is_array($cell['badge'])): ?>
                 <?php
                 $badge_label = isset($cell['badge']['label']) ? (string) $cell['badge']['label'] : '-';
                 $badge_mode  = isset($cell['badge']['mode']) ? (string) $cell['badge']['mode'] : 'neutral';
-
                 $allowed_modes = ['positive', 'negative', 'neutral', 'warning', 'info', 'accent'];
                 if (!in_array($badge_mode, $allowed_modes, true)) {
                   $badge_mode = 'neutral';
                 }
                 ?>
-                <span class="badge badge--<?= e($badge_mode) ?>"><?= e($badge_label) ?></span>
-              <?php else: ?>
+                <?= $capture_badge($badge_label, $badge_mode) ?>
+              <?php elseif (is_array($cell) && (isset($cell['primary']) || isset($cell['secondary']) || isset($cell['tertiary']))): ?>
                 <?php
-                $cell_value = is_array($cell) ? (string) ($cell['value'] ?? '') : (string) $cell;
+                $primary   = isset($cell['primary']) ? (string) $cell['primary'] : '';
+                $secondary = isset($cell['secondary']) ? (string) $cell['secondary'] : '';
+                $tertiary  = isset($cell['tertiary']) ? (string) $cell['tertiary'] : '';
                 ?>
+                <div class="table__stack">
+                  <?php if ($primary !== ''): ?>
+                    <p class="table__primary"><?= e($primary) ?></p>
+                  <?php endif; ?>
+                  <?php if ($secondary !== ''): ?>
+                    <p class="table__secondary"><?= e($secondary) ?></p>
+                  <?php endif; ?>
+                  <?php if ($tertiary !== ''): ?>
+                    <p class="table__tertiary"><?= e($tertiary) ?></p>
+                  <?php endif; ?>
+                </div>
+              <?php else: ?>
+                <?php $cell_value = is_array($cell) ? (string) ($cell['value'] ?? '') : (string) $cell; ?>
                 <?= e($cell_value) ?>
               <?php endif; ?>
             </td>
           <?php endforeach; ?>
-          <?php if ($actions !== []): ?>
-            <td>
-              <div class="flex items-center gap-2">
-                <?php foreach ($actions as $action): ?>
-                  <?php
-                  $action_label = isset($action['label']) ? (string) $action['label'] : 'Action';
-                  $action_href  = isset($action['href']) ? (string) $action['href'] : '#';
-                  $action_kind  = isset($action['kind']) ? (string) $action['kind'] : 'default';
 
-                  $action_classes = $action_kind === 'danger'
-                    ? 'rounded-md border border-rose-200 px-3 py-1.5 font-medium text-rose-700 hover:bg-rose-50'
-                    : 'rounded-md border border-gray-200 px-3 py-1.5 font-medium text-gray-700 hover:bg-gray-100';
-                  ?>
-                  <a href="<?= e($action_href) ?>" class="<?= e($action_classes) ?>"><?= e($action_label) ?></a>
-                <?php endforeach; ?>
-              </div>
+          <?php if ($menu_items !== []): ?>
+            <td class="table__cell table__cell--right">
+              <?php
+              component('dropdown', [
+                'trigger_label'   => 'More',
+                'trigger_variant' => 'ghost',
+                'align'           => 'right',
+                'items'           => $menu_items,
+              ]);
+              ?>
             </td>
           <?php endif; ?>
         </tr>

@@ -1,6 +1,6 @@
 @layer components {
   .card--module {
-    @apply overflow-hidden bg-zinc-200 p-0;
+    @apply bg-zinc-200 p-0;
   }
 
   .card--module > .card__main {

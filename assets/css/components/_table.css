@@ -1,47 +1,117 @@
 @layer components {
+  .table__container {
+    @apply w-full;
+  }
+
   .table {
     @apply w-full table-auto border-collapse text-left;
   }
 
-  .table thead {
+  .table__caption {
+    @apply sr-only;
+  }
+
+  .table__head {
     @apply bg-gray-50;
   }
 
-  .table th {
-    @apply py-3 font-semibold text-gray-700;
-  }
-
-  .table td {
-    @apply py-4 text-gray-600;
-  }
-
-  .table td:first-child {
-    @apply text-gray-900;
-  }
-
-  .table tbody tr {
+  .table__row {
     @apply border-t border-gray-100;
   }
 
-  .table th:first-child,
-  .table td:first-child {
+  .table__row--head {
+    @apply border-t-0;
+  }
+
+  .table__cell {
+    @apply p-4 align-top text-sm text-gray-700;
+  }
+
+  .table__cell--head {
+    @apply py-3 text-xs font-semibold uppercase tracking-wide text-gray-500;
+  }
+
+  .table__cell--empty {
+    @apply py-10 text-center;
+  }
+
+  .table__empty {
+    @apply mx-auto flex max-w-md flex-col items-center gap-1;
+  }
+
+  .table__empty-deco {
+    @apply text-sm font-medium tracking-tight text-gray-400;
+  }
+
+  .table__empty-title {
+    @apply text-sm font-semibold text-gray-900;
+  }
+
+  .table__empty-hint {
+    @apply text-sm text-gray-500;
+  }
+
+  .table__cell:first-child {
     @apply pl-6;
   }
 
-  .table th:last-child,
-  .table td:last-child {
+  .table__cell:last-child {
     @apply pr-6;
   }
 
-  .table th:last-child {
+  .table__cell--right {
     @apply text-right;
   }
 
-  .table td:last-child {
-    @apply text-right;
+  .table__cell--center {
+    @apply text-center;
   }
 
-  .table td:last-child > div {
-    @apply justify-end;
+  .table__stack {
+    @apply leading-tight;
+  }
+
+  .table__primary {
+    @apply font-medium text-gray-900;
+  }
+
+  .table__secondary {
+    @apply mt-1 text-xs text-gray-500;
+  }
+
+  .table__tertiary {
+    @apply mt-1 text-xs text-gray-400;
+  }
+
+  .table--zebra .table__body .table__row:nth-child(even) {
+    @apply bg-gray-50/40;
+  }
+
+  .table__media-cell {
+    @apply flex items-center gap-3;
+  }
+
+  .table__image {
+    @apply h-11 w-16 shrink-0 rounded-md border border-gray-200 bg-gray-100 object-cover;
+  }
+
+  .table__avatar {
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-100 text-xs font-semibold text-gray-700;
+  }
+
+  .table__badge-pair {
+    @apply flex flex-wrap items-center justify-end gap-1.5;
+  }
+
+  .table__badge-cell {
+    @apply flex justify-end;
+  }
+
+  .table__badge-cell .badge {
+    @apply px-2 py-0.5 text-[11px];
+  }
+
+  .table__actions {
+    @apply flex items-center justify-end gap-2;
   }
 }

@@ -44,6 +44,29 @@ ob_start();
       </div>
 
       <div class="border border-gray-100 rounded-lg p-5">
+        <div class="space-y-3">
+          <?= $capture('input', [
+            'id'          => 'demo-input-text-sm',
+            'label'       => 'Text Input (-sm)',
+            'size'        => 'sm',
+            'placeholder' => 'Small input',
+          ]) ?>
+          <?= $capture('search-input', [
+            'id'          => 'demo-input-search-sm',
+            'label'       => 'Search Input (-sm)',
+            'size'        => 'sm',
+            'placeholder' => 'Search...',
+          ]) ?>
+          <?= $capture('password-input', [
+            'id'          => 'demo-input-password-sm',
+            'label'       => 'Password Input (-sm)',
+            'size'        => 'sm',
+            'placeholder' => '••••••••',
+          ]) ?>
+        </div>
+      </div>
+
+      <div class="border border-gray-100 rounded-lg p-5">
         <?= $capture('search-input', [
           'id'          => 'demo-input-search',
           'label'       => 'Search Input',
@@ -94,6 +117,30 @@ ob_start();
           'id'      => 'demo-select',
           'label'   => 'Select',
           'value'   => 'operations',
+          'options' => [
+            ['label' => 'Product', 'value' => 'product'],
+            ['label' => 'Operations', 'value' => 'operations'],
+            ['label' => 'Customer Success', 'value' => 'cs'],
+          ],
+        ]) ?>
+      </div>
+
+      <div class="border border-gray-100 rounded-lg p-5">
+        <?= $capture('textarea', [
+          'id'          => 'demo-textarea-sm',
+          'label'       => 'Textarea (-sm)',
+          'size'        => 'sm',
+          'rows'        => 3,
+          'placeholder' => 'Small multiline field',
+        ]) ?>
+      </div>
+
+      <div class="border border-gray-100 rounded-lg p-5">
+        <?= $capture('select', [
+          'id'      => 'demo-select-sm',
+          'label'   => 'Select (-sm)',
+          'size'    => 'sm',
+          'value'   => 'product',
           'options' => [
             ['label' => 'Product', 'value' => 'product'],
             ['label' => 'Operations', 'value' => 'operations'],

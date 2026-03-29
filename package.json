@@ -3,10 +3,13 @@
   "private": true,
   "scripts": {
     "dev": "BROWSERSLIST_IGNORE_OLD_DATA=1 tailwindcss -i ./assets/css/app.css -o ./assets/build/app.css --watch --postcss",
-    "build": "BROWSERSLIST_IGNORE_OLD_DATA=1 tailwindcss -i ./assets/css/app.css -o ./assets/build/app.css --minify --postcss"
+    "build:css": "BROWSERSLIST_IGNORE_OLD_DATA=1 tailwindcss -i ./assets/css/app.css -o ./assets/build/app.css --minify --postcss",
+    "build:js": "esbuild ./assets/js/app.js --bundle --minify --outfile=./assets/build/app.js",
+    "build": "npm run build:css && npm run build:js"
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "esbuild": "^0.27.4",
     "lucide-static": "^1.7.0",
     "postcss": "^8.4.49",
     "postcss-import": "^16.1.1",

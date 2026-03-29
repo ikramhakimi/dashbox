@@ -89,6 +89,8 @@ $orders = [
   ],
 ];
 
+$cards_booking_table = build_booking_table_dataset($orders);
+
 layout('layout-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
@@ -103,7 +105,7 @@ layout('layout-start', [
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Card UI Library</h1>
         <p class="mt-2 max-w-3xl text-sm text-gray-500">
-          Showcase for Card Widget, Card Module, and Card Data components.
+          Showcase for Card Widget, Card Module, and Card Table components.
         </p>
       </header>
 
@@ -133,10 +135,19 @@ layout('layout-start', [
           ?>
         </section>
 
-        <section aria-label="Card data showcase">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Data</h2>
+        <section aria-label="Card table showcase">
+          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Table</h2>
           <p class="mb-4 text-sm text-gray-500">Data-heavy card pattern for operational table views.</p>
-          <?php component('card-data', ['orders' => $orders]); ?>
+          <?php
+          component('card-table', [
+            'title'         => 'Bookings',
+            'subtitle'      => 'Data-heavy card pattern for operational table views.',
+            'record_label'  => 'bookings',
+            'table_headers' => $cards_booking_table['headers'],
+            'table_rows'    => $cards_booking_table['rows'],
+            'total_records' => $cards_booking_table['total'],
+          ]);
+          ?>
         </section>
       </div>
     </section>

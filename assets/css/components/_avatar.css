@@ -1,0 +1,61 @@
+@layer components {
+  .avatar {
+    @apply relative inline-flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-full text-xs font-semibold;
+  }
+
+  .avatar--sm {
+    @apply h-8 w-8 text-[11px];
+  }
+
+  .avatar--lg {
+    @apply h-12 w-12 text-sm;
+  }
+
+  .avatar__image {
+    @apply h-full w-full rounded-full object-cover;
+  }
+
+  .avatar__initials {
+    @apply inline-flex h-full w-full items-center justify-center leading-none;
+  }
+
+  .avatar__initials--tone-sky {
+    @apply bg-sky-100 text-sky-700;
+  }
+
+  .avatar__initials--tone-emerald {
+    @apply bg-emerald-100 text-emerald-700;
+  }
+
+  .avatar__initials--tone-amber {
+    @apply bg-amber-100 text-amber-700;
+  }
+
+  .avatar__initials--tone-rose {
+    @apply bg-rose-100 text-rose-700;
+  }
+
+  .avatar__initials--tone-violet {
+    @apply bg-violet-100 text-violet-700;
+  }
+
+  .avatar__initials--tone-cyan {
+    @apply bg-cyan-100 text-cyan-700;
+  }
+
+  .avatar__initials--tone-orange {
+    @apply bg-orange-100 text-orange-700;
+  }
+
+  .avatar__initials--tone-lime {
+    @apply bg-lime-100 text-lime-700;
+  }
+
+  .avatar-group {
+    @apply flex items-center;
+  }
+
+  .avatar-group .avatar + .avatar {
+    @apply -ml-2;
+  }
+}

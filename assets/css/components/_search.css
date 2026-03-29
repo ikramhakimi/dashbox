@@ -14,4 +14,8 @@
   .search .input__control {
     @apply rounded-md pl-10;
   }
+
+  .search--sm .search__icon {
+    @apply top-[35px];
+  }
 }

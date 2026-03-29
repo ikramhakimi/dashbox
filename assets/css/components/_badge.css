@@ -1,6 +1,6 @@
 @layer components {
   .badge {
-    @apply inline-flex items-center rounded-md border px-2.5 py-1 text-xs font-semibold;
+    @apply inline-flex items-center whitespace-nowrap rounded-md border px-2.5 py-1 text-xs font-medium leading-4;
     --badge-bg: theme('colors.emerald.50');
     --badge-text: theme('colors.emerald.700');
     --badge-border: theme('colors.emerald.200');

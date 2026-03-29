@@ -14,6 +14,8 @@ When making any change, prioritize maintainability, readability, accessibility, 
 - Run in hardening mode by default: complete each change with explicit verification before considering it done.
 - STRICT: When adding a new UI component feature or a new variant/state, always update the corresponding demo page in the same change.
 - STRICT: Do not leave component variants undocumented in UI demos. Every supported variant/state must be visible in at least one demo page.
+- STRICT: "Upgrade all call sites" is mandatory. Any component API/style change must include related pages, demo blocks, wrappers, and component consumers in the same change.
+- STRICT: Do not close a task after updating component code only. The matching demo pages and navigation entry points must be updated too.
 
 ## Code quality standard
 - Write code suitable for a senior-level production codebase.
@@ -29,6 +31,8 @@ When making any change, prioritize maintainability, readability, accessibility, 
 - Follow the existing project structure and naming conventions.
 - Reuse shared helpers, components, constants, and types before creating new ones.
 - Keep business logic out of UI templates/components where possible.
+- STRICT: If a card section contains a table, use `card-table` as the card wrapper. Do not place tables inside `card-module`.
+- If current `card-table` does not support the required table scenario, extend/refactor `card-table` first, then consume it.
 - Separate concerns clearly:
   - UI/presentation
   - state/data handling
@@ -63,8 +67,21 @@ BEM is mandatory for all reusable UI components and must remain consistent acros
 ## Verification And Validation
 - For UI/template/CSS changes, always run syntax/lint checks for touched PHP files.
 - Rebuild CSS after style/config updates and verify build output is generated successfully.
+- Rebuild JS after JS/module changes and verify build output is generated successfully.
 - For class/filename refactors, verify references are fully updated (no stale names remain).
+- For component updates, verify all related call sites are updated and no old API usage remains.
+- Keep Tailwind config aligned with component additions/changes (`content`, `safelist`, dynamic classes).
 - Before finalizing, report exactly what was verified (not only what was changed).
+
+## Component Change Checklist (Mandatory)
+When touching reusable UI components, follow this sequence in a single task:
+1. Update component implementation.
+2. Sweep and update all related call sites (pages/components/layout wrappers).
+3. Update demo coverage for all supported variants/states.
+4. Update navigation/menu links for new demo pages.
+5. Update Tailwind config if dynamic classes or new component roots are introduced.
+6. Run verification (PHP lint for touched files, CSS build, JS build when relevant).
+7. Report changed files and exact verification commands run.
 
 ---
 

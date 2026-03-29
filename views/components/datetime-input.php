@@ -3,6 +3,7 @@
 $id            = isset($id) && $id !== '' ? (string) $id : 'datetime-' . uniqid();
 $name          = isset($name) && $name !== '' ? (string) $name : $id;
 $label         = isset($label) ? (string) $label : 'Date & Time';
+$size          = isset($size) && $size !== '' ? (string) $size : 'md';
 $mode          = isset($mode) ? (string) $mode : 'datetime-local';
 $value         = isset($value) ? (string) $value : '';
 $help_text     = isset($help_text) ? (string) $help_text : '';
@@ -22,12 +23,12 @@ if (!in_array($mode, $allowed_modes, true)) {
     'name'      => $name,
     'label'     => $label,
     'type'      => $mode,
+    'size'      => $size,
     'value'     => $value,
     'help_text' => $help_text,
     'error_text'=> $error_text,
     'required'  => $required,
     'disabled'  => $disabled,
-    'class'     => 'datetime__input',
   ]);
   ?>
 </div>

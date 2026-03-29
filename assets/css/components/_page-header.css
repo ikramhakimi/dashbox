@@ -1,0 +1,30 @@
+@layer components {
+  .page--header {
+    @apply flex flex-nowrap items-end gap-4 border-b border-gray-200 pb-5;
+  }
+
+  .page__header-main {
+    @apply min-w-0 flex-1;
+  }
+
+  .page__header-breadcrumb {
+    @apply mb-2;
+  }
+
+  .page__header-title {
+    @apply text-2xl font-semibold tracking-tight text-gray-900;
+  }
+
+  .page__header-description {
+    @apply mt-1 text-sm text-gray-500;
+  }
+
+  .page__header-actions {
+    @apply ml-auto flex shrink-0 items-end justify-end gap-2 self-end;
+  }
+
+  .page__header-actions .button,
+  .page__header-actions .dropdown {
+    @apply w-auto;
+  }
+}

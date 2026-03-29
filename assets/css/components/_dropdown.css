@@ -1,0 +1,81 @@
+@layer components {
+  .dropdown {
+    @apply relative inline-block text-left;
+  }
+
+  .dropdown__trigger {
+    @apply no-underline;
+  }
+
+  .dropdown__trigger:focus {
+    @apply outline-none;
+  }
+
+  .dropdown__trigger:not(.dropdown__trigger--link):focus-visible {
+    @apply border-gray-500 ring-2 ring-gray-200;
+  }
+
+  .dropdown__trigger--link {
+    @apply inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 transition hover:text-gray-900;
+  }
+
+  .dropdown__trigger--link:focus-visible {
+    @apply rounded-sm ring-2 ring-gray-200;
+  }
+
+  .dropdown__trigger-icon .icon {
+    @apply h-4 w-4;
+  }
+
+  .dropdown__trigger-label {
+    @apply leading-4;
+  }
+
+  .dropdown__caret {
+    @apply h-4 w-4 text-gray-400 transition;
+  }
+
+  .dropdown__item-icon .icon {
+    @apply h-4 w-4;
+  }
+
+  .dropdown--open .dropdown__caret {
+    @apply rotate-180;
+  }
+
+  .dropdown--open .dropdown__trigger--link {
+    @apply text-gray-900;
+  }
+
+  .dropdown__panel {
+    @apply absolute z-20 mt-2 min-w-52 rounded-md border border-gray-200 bg-white p-1;
+  }
+
+  .dropdown--right .dropdown__panel {
+    @apply right-0;
+  }
+
+  .dropdown--left .dropdown__panel {
+    @apply left-0;
+  }
+
+  .dropdown__item {
+    @apply flex items-center gap-2 rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100;
+  }
+
+  .dropdown__item--danger {
+    @apply text-rose-700 hover:bg-rose-50;
+  }
+
+  .dropdown__item--disabled {
+    @apply pointer-events-none opacity-50;
+  }
+
+  .dropdown__divider {
+    @apply my-1 border-t border-gray-100;
+  }
+
+  .dropdown__label {
+    @apply px-3 py-1.5 text-xs font-semibold uppercase tracking-wide text-gray-400;
+  }
+}
