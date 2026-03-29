@@ -1,0 +1,5 @@
+@layer components {
+  .datetime {
+    @apply w-full;
+  }
+}

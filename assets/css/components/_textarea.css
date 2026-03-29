@@ -1,0 +1,45 @@
+@layer components {
+  .textarea {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .textarea__label {
+    @apply text-sm font-medium text-gray-700;
+  }
+
+  .textarea__required {
+    @apply ml-1 text-rose-600;
+  }
+
+  .textarea__control {
+    @apply w-full rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition;
+  }
+
+  .textarea__control::placeholder {
+    @apply text-gray-400;
+  }
+
+  .textarea__control:focus {
+    @apply border-gray-400 ring-2 ring-gray-200;
+  }
+
+  .textarea__control:disabled {
+    @apply cursor-not-allowed bg-gray-100 text-gray-500;
+  }
+
+  .textarea__control[readonly] {
+    @apply bg-gray-50 text-gray-700;
+  }
+
+  .textarea__control--invalid {
+    @apply border-rose-300 ring-rose-100;
+  }
+
+  .textarea__help {
+    @apply text-xs text-gray-500;
+  }
+
+  .textarea__error {
+    @apply text-xs text-rose-600;
+  }
+}

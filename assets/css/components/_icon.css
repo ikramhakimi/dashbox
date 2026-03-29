@@ -1,0 +1,21 @@
+@layer components {
+  .icon {
+    @apply inline-block shrink-0;
+  }
+
+  .icon--16 {
+    @apply h-4 w-4;
+  }
+
+  .icon--24 {
+    @apply h-6 w-6;
+  }
+
+  .icon--32 {
+    @apply h-8 w-8;
+  }
+
+  .icon--64 {
+    @apply h-16 w-16;
+  }
+}

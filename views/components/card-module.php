@@ -5,6 +5,7 @@ $show_graph = !isset($show_graph) || $show_graph;
 $show_footer = !isset($show_footer) || $show_footer;
 $show_menu = !isset($show_menu) || $show_menu;
 $widgets = isset($widgets) && is_array($widgets) ? $widgets : [];
+$content = isset($content) ? (string) $content : '';
 ?>
 <section class="<?= e($component_class) ?>">
   <div class="card__main">
@@ -43,6 +44,10 @@ $widgets = isset($widgets) && is_array($widgets) ? $widgets : [];
             <?php component('card-widget', $widget); ?>
           <?php endforeach; ?>
         </div>
+      <?php endif; ?>
+
+      <?php if ($content !== ''): ?>
+        <?= $content ?>
       <?php endif; ?>
     </div>
   </div>

@@ -1,0 +1,54 @@
+@layer components {
+  .checkbox,
+  .radio,
+  .switch {
+    @apply flex flex-col gap-1;
+  }
+
+  .checkbox__label,
+  .radio__label,
+  .switch__label {
+    @apply inline-flex items-center gap-2 text-sm text-gray-700;
+  }
+
+  .checkbox__control,
+  .radio__control {
+    @apply h-4 w-4 border-gray-300 text-gray-900 focus:ring-gray-300;
+  }
+
+  .switch__track {
+    @apply relative inline-flex h-6 w-11 items-center;
+  }
+
+  .switch__control {
+    @apply absolute h-0 w-0 opacity-0;
+  }
+
+  .switch__thumb {
+    @apply block h-6 w-11 rounded-full bg-gray-300 transition;
+  }
+
+  .switch__thumb::after {
+    content: '';
+    @apply absolute left-0.5 top-0.5 h-5 w-5 rounded-full bg-white transition;
+  }
+
+  .switch__control:checked + .switch__thumb {
+    @apply bg-gray-900;
+  }
+
+  .switch__control:checked + .switch__thumb::after {
+    @apply translate-x-5;
+  }
+
+  .checkbox__help,
+  .radio__help,
+  .switch__help {
+    @apply text-xs text-gray-500;
+  }
+
+  .checkbox__error,
+  .radio__error {
+    @apply text-xs text-rose-600;
+  }
+}

@@ -1,0 +1,29 @@
+@layer components {
+  .otp {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .otp__label {
+    @apply text-sm font-medium text-gray-700;
+  }
+
+  .otp__group {
+    @apply flex flex-wrap gap-2;
+  }
+
+  .otp__control {
+    @apply h-11 w-11 rounded-lg border border-gray-200 text-center text-lg font-medium text-gray-900 outline-none transition;
+  }
+
+  .otp__control:focus {
+    @apply border-gray-400 ring-2 ring-gray-200;
+  }
+
+  .otp__control:disabled {
+    @apply cursor-not-allowed bg-gray-100 text-gray-500;
+  }
+
+  .otp__help {
+    @apply text-xs text-gray-500;
+  }
+}

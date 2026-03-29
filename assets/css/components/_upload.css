@@ -1,0 +1,21 @@
+@layer components {
+  .upload {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .upload__label {
+    @apply text-sm font-medium text-gray-700;
+  }
+
+  .upload__control {
+    @apply block w-full cursor-pointer rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-700 file:mr-3 file:rounded-md file:border-0 file:bg-gray-900 file:px-3 file:py-1.5 file:text-xs file:font-semibold file:text-white;
+  }
+
+  .upload__control:disabled {
+    @apply cursor-not-allowed bg-gray-100 text-gray-500 file:bg-gray-400;
+  }
+
+  .upload__help {
+    @apply text-xs text-gray-500;
+  }
+}

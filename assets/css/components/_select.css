@@ -1,0 +1,53 @@
+@layer components {
+  .select {
+    @apply flex flex-col gap-1.5;
+  }
+
+  .select__label {
+    @apply text-sm font-medium text-gray-700;
+  }
+
+  .select__required {
+    @apply ml-1 text-rose-600;
+  }
+
+  .select__wrapper {
+    @apply relative;
+  }
+
+  .select__control {
+    @apply w-full appearance-none rounded-lg border border-gray-200 bg-white px-4 py-3 pr-10 text-sm text-gray-900 outline-none transition;
+  }
+
+  .select__control[multiple] {
+    @apply min-h-28 pr-4;
+  }
+
+  .select__control:focus {
+    @apply border-gray-400 ring-2 ring-gray-200;
+  }
+
+  .select__control:disabled {
+    @apply cursor-not-allowed bg-gray-100 text-gray-500;
+  }
+
+  .select__control--invalid {
+    @apply border-rose-300 ring-rose-100;
+  }
+
+  .select__icon {
+    @apply pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-gray-400;
+  }
+
+  .select__icon svg {
+    @apply h-4 w-4;
+  }
+
+  .select__help {
+    @apply text-xs text-gray-500;
+  }
+
+  .select__error {
+    @apply text-xs text-rose-600;
+  }
+}

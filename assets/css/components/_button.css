@@ -1,0 +1,58 @@
+@layer components {
+  .button {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg border px-4 py-3.5 text-sm font-medium transition;
+  }
+
+  .button--sm {
+    @apply px-3 py-2;
+  }
+
+  .button--lg {
+    @apply text-base px-5 py-4;
+  }
+
+  .button--primary {
+    @apply border-gray-900 bg-gray-900 text-white hover:bg-black;
+  }
+
+  .button--neutral {
+    @apply border-gray-200 bg-white text-gray-700 hover:bg-gray-100;
+  }
+
+  .button--ghost {
+    @apply border-gray-200 bg-gray-50 text-gray-700 hover:bg-gray-100;
+  }
+
+  .button--danger {
+    @apply border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100;
+  }
+
+  .button--icon-only {
+    @apply h-10 w-10 px-0;
+  }
+
+  .button--icon-only.button--sm {
+    @apply h-8 w-8;
+  }
+
+  .button--icon-only.button--lg {
+    @apply h-12 w-12;
+  }
+
+  .button__icon {
+    @apply inline-flex items-center justify-center;
+  }
+
+  .button__icon .icon {
+    @apply h-4 w-4;
+  }
+
+  .button__label {
+    line-height: 16px;
+  }
+
+  .button:disabled,
+  .button[aria-disabled='true'] {
+    @apply cursor-not-allowed opacity-60;
+  }
+}

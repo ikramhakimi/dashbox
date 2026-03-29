@@ -1,0 +1,47 @@
+@layer components {
+  .table {
+    @apply w-full table-auto border-collapse text-left;
+  }
+
+  .table thead {
+    @apply bg-gray-50;
+  }
+
+  .table th {
+    @apply py-3 font-semibold text-gray-700;
+  }
+
+  .table td {
+    @apply py-4 text-gray-600;
+  }
+
+  .table td:first-child {
+    @apply text-gray-900;
+  }
+
+  .table tbody tr {
+    @apply border-t border-gray-100;
+  }
+
+  .table th:first-child,
+  .table td:first-child {
+    @apply pl-6;
+  }
+
+  .table th:last-child,
+  .table td:last-child {
+    @apply pr-6;
+  }
+
+  .table th:last-child {
+    @apply text-right;
+  }
+
+  .table td:last-child {
+    @apply text-right;
+  }
+
+  .table td:last-child > div {
+    @apply justify-end;
+  }
+}

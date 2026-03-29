@@ -1,0 +1,57 @@
+@layer components {
+  .card--module {
+    @apply overflow-hidden bg-zinc-200 p-0;
+  }
+
+  .card--module > .card__main {
+    @apply rounded-xl bg-white;
+  }
+
+  .card--module > .card__main > .card__header {
+    @apply flex items-start justify-between gap-3 px-6 pb-0 pt-6;
+  }
+
+  .card--module > .card__main > .card__content {
+    @apply p-6;
+  }
+
+  .card--module:not(.card--soft) .card--widget {
+    @apply bg-zinc-100;
+  }
+
+  .card--module > .card__main > .card__content > .card__chart {
+    @apply relative mb-3;
+  }
+
+  .card--module > .card__main > .card__content > .card__chart > .card__chart-placeholder {
+    @apply flex h-full items-center justify-center text-sm font-medium text-gray-400;
+  }
+
+  .card--module > .card__main > .card__content > .card__chart > .card__chart-badge {
+    @apply absolute bottom-4 left-1/2 -translate-x-1/2;
+  }
+
+  .card--module > .card__footer {
+    @apply grid grid-cols-3 divide-x divide-gray-200 p-6;
+  }
+
+  .card--module > .card__footer > .card__stat {
+    @apply px-4 text-center first:pl-0 last:pr-0;
+  }
+
+  .card--module > .card__footer > .card__stat > .card__stat-label {
+    @apply mb-1 text-xs text-gray-500 sm:text-sm;
+  }
+
+  .card--module > .card__footer > .card__stat > .card__stat-value {
+    @apply text-base font-semibold text-gray-900 sm:text-lg;
+  }
+
+  .card--module.card--soft > .card__main {
+    @apply bg-transparent;
+  }
+
+  .card--module.card--soft {
+    @apply bg-zinc-200;
+  }
+}

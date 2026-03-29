@@ -1,0 +1,29 @@
+@layer components {
+  .badge {
+    @apply inline-flex items-center rounded-md border px-2.5 py-1 text-xs font-semibold;
+  }
+
+  .badge--positive {
+    @apply border-emerald-200 bg-emerald-50 text-emerald-700;
+  }
+
+  .badge--negative {
+    @apply border-rose-200 bg-rose-50 text-rose-700;
+  }
+
+  .badge--neutral {
+    @apply border-gray-200 bg-gray-100 text-gray-700;
+  }
+
+  .badge--warning {
+    @apply border-amber-200 bg-amber-50 text-amber-700;
+  }
+
+  .badge--info {
+    @apply border-sky-200 bg-sky-50 text-sky-700;
+  }
+
+  .badge--accent {
+    @apply border-violet-200 bg-violet-50 text-violet-700;
+  }
+}

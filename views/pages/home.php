@@ -18,6 +18,31 @@ $menu_items = [
     'href'  => '#',
   ],
   [
+    'label'    => 'UI Elements',
+    'children' => [
+      [
+        'label'  => 'Buttons',
+        'href'   => asset('/buttons'),
+        'active' => false,
+      ],
+      [
+        'label'  => 'Cards',
+        'href'   => asset('/cards'),
+        'active' => false,
+      ],
+      [
+        'label'  => 'Badges',
+        'href'   => asset('/badges'),
+        'active' => false,
+      ],
+      [
+        'label'  => 'Inputs',
+        'href'   => asset('/inputs'),
+        'active' => false,
+      ],
+    ],
+  ],
+  [
     'label'    => 'Management',
     'children' => [
       [
@@ -166,6 +191,57 @@ $widgets_target_inline_soft = [
     'show_icon' => false,
   ],
 ];
+
+ob_start();
+?>
+<div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+  <div class="rounded-lg border border-gray-100 bg-white p-4">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Primary</p>
+    <div class="flex flex-wrap items-center gap-2">
+      <?php component('button', ['label' => 'Primary / SM', 'variant' => 'primary', 'size' => 'sm']); ?>
+      <?php component('button', ['label' => 'Primary / MD', 'variant' => 'primary', 'size' => 'md']); ?>
+      <?php component('button', ['label' => 'Primary / LG', 'variant' => 'primary', 'size' => 'lg']); ?>
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-100 bg-white p-4">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Neutral</p>
+    <div class="flex flex-wrap items-center gap-2">
+      <?php component('button', ['label' => 'Neutral / SM', 'variant' => 'neutral', 'size' => 'sm']); ?>
+      <?php component('button', ['label' => 'Neutral / MD', 'variant' => 'neutral', 'size' => 'md']); ?>
+      <?php component('button', ['label' => 'Neutral / LG', 'variant' => 'neutral', 'size' => 'lg']); ?>
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-100 bg-white p-4">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Ghost</p>
+    <div class="flex flex-wrap items-center gap-2">
+      <?php component('button', ['label' => 'Ghost / SM', 'variant' => 'ghost', 'size' => 'sm']); ?>
+      <?php component('button', ['label' => 'Ghost / MD', 'variant' => 'ghost', 'size' => 'md']); ?>
+      <?php component('button', ['label' => 'Ghost / LG', 'variant' => 'ghost', 'size' => 'lg']); ?>
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-100 bg-white p-4">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Danger</p>
+    <div class="flex flex-wrap items-center gap-2">
+      <?php component('button', ['label' => 'Danger / SM', 'variant' => 'danger', 'size' => 'sm']); ?>
+      <?php component('button', ['label' => 'Danger / MD', 'variant' => 'danger', 'size' => 'md']); ?>
+      <?php component('button', ['label' => 'Danger / LG', 'variant' => 'danger', 'size' => 'lg']); ?>
+    </div>
+  </div>
+
+  <div class="rounded-lg border border-gray-100 bg-white p-4 sm:col-span-2 lg:col-span-2">
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">States & Link</p>
+    <div class="flex flex-wrap items-center gap-2">
+      <?php component('button', ['label' => 'Disabled', 'variant' => 'neutral', 'disabled' => true]); ?>
+      <?php component('button', ['label' => 'As Link', 'variant' => 'primary', 'href' => '#']); ?>
+      <?php component('button', ['label' => 'Danger Link', 'variant' => 'danger', 'href' => '#']); ?>
+    </div>
+  </div>
+</div>
+<?php
+$button_showcase_content = (string) ob_get_clean();
 
 $orders = [
   [
@@ -454,6 +530,19 @@ layout('layout-start', [
           'states'      => [
             'soft' => true,
           ],
+        ]);
+        ?>
+      </section>
+
+      <section class="mb-4" aria-label="Button foundation showcase">
+        <?php
+        component('card-module', [
+          'title'       => 'Button Foundation',
+          'subtitle'    => 'All available button variants, sizes, and states in one module.',
+          'show_graph'  => false,
+          'show_footer' => false,
+          'show_menu'   => false,
+          'content'     => $button_showcase_content,
         ]);
         ?>
       </section>

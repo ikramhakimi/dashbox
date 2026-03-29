@@ -1,0 +1,17 @@
+@layer components {
+  .search {
+    @apply relative;
+  }
+
+  .search__icon {
+    @apply pointer-events-none absolute left-3 top-[38px] z-10 text-gray-400;
+  }
+
+  .search__icon .icon {
+    @apply h-4 w-4;
+  }
+
+  .search .input__control {
+    @apply pl-10;
+  }
+}
