@@ -16,9 +16,9 @@ $readonly      = !empty($readonly);
 $attributes    = isset($attributes) && is_array($attributes) ? $attributes : [];
 
 $size_classes = [
-  'sm'      => 'textarea--sm',
   'default' => '',
   'md'      => '',
+  'lg'      => 'textarea--lg',
 ];
 
 $size_class = isset($size_classes[$size]) ? $size_classes[$size] : $size_classes['md'];

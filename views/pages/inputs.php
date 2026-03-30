@@ -34,7 +34,7 @@ ob_start();
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Standard Inputs</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('input', [
           'id'          => 'demo-input-text',
           'label'       => 'Text Input',
@@ -43,30 +43,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
-        <div class="space-y-3">
-          <?= $capture('input', [
-            'id'          => 'demo-input-text-sm',
-            'label'       => 'Text Input (-sm)',
-            'size'        => 'sm',
-            'placeholder' => 'Small input',
-          ]) ?>
-          <?= $capture('search-input', [
-            'id'          => 'demo-input-search-sm',
-            'label'       => 'Search Input (-sm)',
-            'size'        => 'sm',
-            'placeholder' => 'Search...',
-          ]) ?>
-          <?= $capture('password-input', [
-            'id'          => 'demo-input-password-sm',
-            'label'       => 'Password Input (-sm)',
-            'size'        => 'sm',
-            'placeholder' => '••••••••',
-          ]) ?>
-        </div>
-      </div>
-
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('search-input', [
           'id'          => 'demo-input-search',
           'label'       => 'Search Input',
@@ -74,7 +51,17 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
+        <?= $capture('input-group', [
+          'id'          => 'demo-input-icon-right',
+          'label'       => 'Icon + Input (Right)',
+          'placeholder' => 'Enter amount',
+          'icon_name'   => 'currency-dollar',
+          'icon_side'   => 'right',
+        ]) ?>
+      </div>
+
+      <div class="py-4">
         <?= $capture('password-input', [
           'id'          => 'demo-input-password',
           'label'       => 'Password Input',
@@ -83,7 +70,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('input', [
           'id'         => 'demo-input-error',
           'label'      => 'Input Error State',
@@ -103,7 +90,7 @@ ob_start();
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Long Form Fields</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('textarea', [
           'id'          => 'demo-textarea',
           'label'       => 'Textarea',
@@ -112,7 +99,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('select', [
           'id'      => 'demo-select',
           'label'   => 'Select',
@@ -125,29 +112,6 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
-        <?= $capture('textarea', [
-          'id'          => 'demo-textarea-sm',
-          'label'       => 'Textarea (-sm)',
-          'size'        => 'sm',
-          'rows'        => 3,
-          'placeholder' => 'Small multiline field',
-        ]) ?>
-      </div>
-
-      <div class="border border-gray-100 rounded-lg p-5">
-        <?= $capture('select', [
-          'id'      => 'demo-select-sm',
-          'label'   => 'Select (-sm)',
-          'size'    => 'sm',
-          'value'   => 'product',
-          'options' => [
-            ['label' => 'Product', 'value' => 'product'],
-            ['label' => 'Operations', 'value' => 'operations'],
-            ['label' => 'Customer Success', 'value' => 'cs'],
-          ],
-        ]) ?>
-      </div>
     </div>
   </div>
 </div>
@@ -160,7 +124,7 @@ ob_start();
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Boolean & Single Choice</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('checkbox', [
           'id'        => 'demo-checkbox',
           'label'     => 'Email notifications',
@@ -176,7 +140,7 @@ ob_start();
         </div>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('radio', [
           'id'      => 'demo-radio-a',
           'name'    => 'billing_cycle',
@@ -205,7 +169,7 @@ ob_start();
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Switch Patterns</p>
     <div class="mt-3">
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('switch', [
           'id'        => 'demo-switch',
           'label'     => 'Enable dark mode',
@@ -241,7 +205,7 @@ ob_start();
 
         <div class="mt-4 border-t border-gray-100 pt-4">
           <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Switch In Divided List</p>
-          <div class="divide-y divide-gray-100 rounded-lg border border-gray-100">
+          <div class="divide-y divide-gray-100">
             <div class="p-3">
               <?= $capture('switch', [
                 'id'      => 'demo-switch-list-1',
@@ -278,7 +242,7 @@ ob_start();
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Specialized Inputs</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('upload', [
           'id'        => 'demo-upload',
           'label'     => 'File Input / Upload',
@@ -287,7 +251,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('otp-input', [
           'label'     => 'OTP / PIN Input',
           'name'      => 'otp_code',
@@ -301,7 +265,7 @@ ob_start();
   <div>
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Date & Time</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('datetime-input', [
           'id'    => 'demo-date',
           'label' => 'Date Input',
@@ -309,7 +273,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5">
+      <div class="py-4">
         <?= $capture('datetime-input', [
           'id'    => 'demo-time',
           'label' => 'Time Input',
@@ -317,7 +281,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="border border-gray-100 rounded-lg p-5 md:col-span-2">
+      <div class="py-4 md:col-span-2">
         <?= $capture('datetime-input', [
           'id'    => 'demo-datetime',
           'label' => 'Datetime-Local Input',
@@ -338,8 +302,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Input UI Library</h1>
@@ -348,53 +312,56 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Input component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Text & Search Inputs',
-          'subtitle'    => 'Base input, search input, and password input variants.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $text_search_content,
-        ]);
+      <section class="divide-y divide-gray-100" aria-label="Input component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Text & Search Inputs</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Base input, search input, and password input variants.
+            </p>
+          </header>
+          <?= $text_search_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Textarea & Select',
-          'subtitle'    => 'Multiline text area and dropdown selection controls.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $textarea_select_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Textarea & Select</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Multiline text area and dropdown selection controls.
+            </p>
+          </header>
+          <?= $textarea_select_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Checkbox & Radio',
-          'subtitle'    => 'Binary controls and mutually exclusive option controls.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $choice_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Checkbox & Radio</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Binary controls and mutually exclusive option controls.
+            </p>
+          </header>
+          <?= $choice_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Switch',
-          'subtitle'    => 'Comprehensive switch layouts: inline, reverse, and divided-list patterns.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $switch_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Switch</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Comprehensive switch layouts: inline, reverse, and divided-list patterns.
+            </p>
+          </header>
+          <?= $switch_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Upload, OTP & DateTime',
-          'subtitle'    => 'Specialized form controls for files, codes, and date/time.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $special_content,
-        ]);
-        ?>
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Upload, OTP & DateTime</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Specialized form controls for files, codes, and date/time.
+            </p>
+          </header>
+          <?= $special_content ?>
+        </article>
       </section>
     </section>
   </main>

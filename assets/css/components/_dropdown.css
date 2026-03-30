@@ -16,7 +16,16 @@
   }
 
   .dropdown__trigger--link {
-    @apply inline-flex items-center gap-1.5 text-sm font-medium text-gray-700 transition hover:text-gray-900;
+    @apply inline-flex h-9 items-center gap-1.5 font-medium text-gray-700 transition hover:text-gray-900;
+    font-size: inherit;
+  }
+
+  .dropdown__trigger--link-sm {
+    @apply gap-1 text-xs;
+  }
+
+  .dropdown__trigger--link-lg {
+    @apply gap-2 text-base;
   }
 
   .dropdown__trigger--link:focus-visible {
@@ -60,7 +69,12 @@
   }
 
   .dropdown__item {
-    @apply flex items-center gap-2 rounded-md px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100;
+    @apply flex items-center gap-2 rounded-md px-3 py-2 text-gray-700 transition hover:bg-gray-100;
+    font-size: inherit;
+  }
+
+  .dropdown__item:focus-visible {
+    @apply outline-none ring-2 ring-gray-300;
   }
 
   .dropdown__item--danger {

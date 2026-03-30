@@ -80,8 +80,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Pagination</h1>
@@ -90,35 +90,36 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Pagination component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Default (Prev + Next Clamp)',
-          'subtitle'    => 'Connected previous and next controls as primary pagination navigation.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $pagination_default_content,
-        ]);
+      <section class="divide-y divide-gray-100" aria-label="Pagination component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Default (Prev + Next Clamp)</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Connected previous and next controls as primary pagination navigation.
+            </p>
+          </header>
+          <?= $pagination_default_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Pagination with Info',
-          'subtitle'    => 'Include showing range and total items for better context.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $pagination_info_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Pagination with Info</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Include showing range and total items for better context.
+            </p>
+          </header>
+          <?= $pagination_info_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Single Page / Empty State',
-          'subtitle'    => 'Disabled controls when only one page is available.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $pagination_single_content,
-        ]);
-        ?>
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Single Page / Empty State</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Disabled controls when only one page is available.
+            </p>
+          </header>
+          <?= $pagination_single_content ?>
+        </article>
       </section>
     </section>
   </main>

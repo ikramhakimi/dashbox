@@ -117,7 +117,6 @@ $capture_badge = static function (string $label, string $mode): string {
               <?php
               component('dropdown', [
                 'trigger_label'   => 'More',
-                'trigger_variant' => 'ghost',
                 'align'           => 'right',
                 'items'           => $menu_items,
               ]);

@@ -1,30 +1,55 @@
 <?php
 
-$icon_name = isset($icon_name) ? (string) $icon_name : 'plus';
-$icon_size = isset($icon_size) ? (int) $icon_size : 24;
+$icon_name  = isset($icon_name) ? strtolower(trim((string) $icon_name)) : 'plus';
+$icon_size  = isset($icon_size) ? (int) $icon_size : 24;
+$icon_style = isset($icon_style) ? strtolower(trim((string) $icon_style)) : 'outline';
 
-$icon_map = [
-  'plus'    => 'plus',
-  'users'   => 'users',
-  'pulse'   => 'activity',
-  'activity'=> 'activity',
+$icon_aliases = [
+  'activity' => 'signal',
+  'pulse'    => 'signal',
   'tickets' => 'ticket',
-  'ticket'  => 'ticket',
-  'star'    => 'star',
 ];
 
 $supported_sizes = [16, 24, 32, 64];
 $size            = in_array($icon_size, $supported_sizes, true) ? $icon_size : 24;
-$icon_file       = isset($icon_map[$icon_name]) ? $icon_map[$icon_name] : 'plus';
 
-$icon_path = __DIR__ . '/../../assets/icons/lucide/' . $icon_file . '.svg';
+$supported_styles = ['outline', 'solid'];
+if (!in_array($icon_style, $supported_styles, true)) {
+  $icon_style = 'outline';
+}
+
+$resolved_icon = isset($icon_aliases[$icon_name]) ? $icon_aliases[$icon_name] : $icon_name;
+$icons_directory = __DIR__ . '/../../node_modules/heroicons/24/' . $icon_style;
+$icon_files      = glob($icons_directory . '/*.svg');
+$icon_catalog    = [];
+
+if (is_array($icon_files)) {
+  foreach ($icon_files as $icon_file_path) {
+    $icon_basename = pathinfo($icon_file_path, PATHINFO_FILENAME);
+    if (is_string($icon_basename) && $icon_basename !== '') {
+      $icon_catalog[$icon_basename] = $icon_basename;
+    }
+  }
+}
+
+if (!isset($icon_catalog[$resolved_icon])) {
+  $resolved_icon = isset($icon_catalog['plus']) ? 'plus' : (array_key_first($icon_catalog) ?? 'plus');
+}
+
+$icon_path = $icons_directory . '/' . $resolved_icon . '.svg';
 $svg_inner = '';
 
 if (is_file($icon_path)) {
   $svg_markup = (string) file_get_contents($icon_path);
-  $svg_markup = preg_replace('/^\s*<svg[^>]*>\s*/', '', $svg_markup);
-  $svg_markup = preg_replace('/\s*<\/svg>\s*$/', '', (string) $svg_markup);
-  $svg_inner  = (string) $svg_markup;
+
+  // Remove comments/license blocks first so <svg> extraction is reliable.
+  $svg_markup = preg_replace('/<!--.*?-->/s', '', $svg_markup);
+  $svg_markup = is_string($svg_markup) ? $svg_markup : '';
+
+  // Extract only the inner markup of the first <svg>...</svg> block.
+  if (preg_match('/<svg\b[^>]*>(.*?)<\/svg>/is', $svg_markup, $matches) === 1) {
+    $svg_inner = (string) ($matches[1] ?? '');
+  }
 }
 ?>
 <svg

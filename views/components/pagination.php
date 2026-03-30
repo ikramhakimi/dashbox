@@ -80,6 +80,25 @@ $render_attributes = static function (array $attrs): string {
 $root_attributes = $attributes;
 $root_attributes['class'] = trim($component_class . ' ' . (($attributes['class'] ?? '')));
 $root_attributes['aria-label'] = isset($attributes['aria-label']) ? (string) $attributes['aria-label'] : 'Pagination';
+
+$render_control_button = static function (
+  string $label,
+  string $href,
+  bool $disabled,
+  string $aria_label
+): string {
+  ob_start();
+  component('button', [
+    'label'      => $label,
+    'href'       => $href,
+    'disabled'   => $disabled,
+    'class'      => 'pagination__control-button',
+    'attributes' => [
+      'aria-label' => $aria_label,
+    ],
+  ]);
+  return (string) ob_get_clean();
+};
 ?>
 <nav<?= $render_attributes($root_attributes) ?>>
   <?php if ($show_info): ?>
@@ -94,14 +113,12 @@ $root_attributes['aria-label'] = isset($attributes['aria-label']) ? (string) $at
     <?php if ($show_pages): ?>
       <ul class="pagination__list">
         <li>
-          <a
-            href="<?= e($is_first ? '#' : $build_page_url($current_page - 1)) ?>"
-            class="pagination__item pagination__item--control<?= $is_first ? ' pagination__item--disabled' : '' ?>"
-            aria-label="Previous page"
-            <?= $is_first ? 'aria-disabled="true" tabindex="-1"' : '' ?>
-          >
-            Prev
-          </a>
+          <?= $render_control_button(
+            'Prev',
+            $is_first ? '#' : $build_page_url($current_page - 1),
+            $is_first,
+            'Previous page',
+          ) ?>
         </li>
 
         <?php foreach ($pages as $page): ?>
@@ -122,35 +139,29 @@ $root_attributes['aria-label'] = isset($attributes['aria-label']) ? (string) $at
         <?php endforeach; ?>
 
         <li>
-          <a
-            href="<?= e($is_last ? '#' : $build_page_url($current_page + 1)) ?>"
-            class="pagination__item pagination__item--control<?= $is_last ? ' pagination__item--disabled' : '' ?>"
-            aria-label="Next page"
-            <?= $is_last ? 'aria-disabled="true" tabindex="-1"' : '' ?>
-          >
-            Next
-          </a>
+          <?= $render_control_button(
+            'Next',
+            $is_last ? '#' : $build_page_url($current_page + 1),
+            $is_last,
+            'Next page',
+          ) ?>
         </li>
       </ul>
     <?php else: ?>
       <div class="pagination__clamp">
-        <a
-          href="<?= e($is_first ? '#' : $build_page_url($current_page - 1)) ?>"
-          class="pagination__item pagination__item--control<?= $is_first ? ' pagination__item--disabled' : '' ?>"
-          aria-label="Previous page"
-          <?= $is_first ? 'aria-disabled="true" tabindex="-1"' : '' ?>
-        >
-          Prev
-        </a>
+        <?= $render_control_button(
+          'Prev',
+          $is_first ? '#' : $build_page_url($current_page - 1),
+          $is_first,
+          'Previous page',
+        ) ?>
 
-        <a
-          href="<?= e($is_last ? '#' : $build_page_url($current_page + 1)) ?>"
-          class="pagination__item pagination__item--control<?= $is_last ? ' pagination__item--disabled' : '' ?>"
-          aria-label="Next page"
-          <?= $is_last ? 'aria-disabled="true" tabindex="-1"' : '' ?>
-        >
-          Next
-        </a>
+        <?= $render_control_button(
+          'Next',
+          $is_last ? '#' : $build_page_url($current_page + 1),
+          $is_last,
+          'Next page',
+        ) ?>
       </div>
     <?php endif; ?>
   </div>

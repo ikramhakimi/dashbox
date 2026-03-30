@@ -1,0 +1,69 @@
+@layer components {
+  .dropzone {
+    @apply flex flex-col gap-2;
+  }
+
+  .dropzone__label {
+    @apply font-semibold text-gray-700;
+  }
+
+  .dropzone__input {
+    @apply sr-only;
+  }
+
+  .dropzone__surface {
+    @apply flex cursor-pointer flex-col items-center justify-center gap-1 rounded-md border border-dashed border-gray-300 bg-gray-50 px-4 py-8 text-center transition-colors duration-150;
+  }
+
+  .dropzone__surface:hover {
+    @apply border-gray-400 bg-gray-100;
+  }
+
+  .dropzone__icon {
+    @apply text-gray-500;
+  }
+
+  .dropzone__title {
+    @apply font-medium text-gray-800;
+  }
+
+  .dropzone__hint {
+    @apply text-gray-500;
+  }
+
+  .dropzone__preview-wrap {
+    @apply aspect-[4/3] w-full overflow-hidden rounded-md border border-gray-200 bg-gray-50;
+  }
+
+  .dropzone__preview-image {
+    @apply h-full w-full object-cover;
+  }
+
+  .dropzone__meta {
+    @apply flex items-center justify-between gap-3;
+  }
+
+  .dropzone__file-name {
+    @apply truncate text-gray-500;
+  }
+
+  .dropzone__clear {
+    @apply rounded-md border border-gray-200 px-2.5 py-1 font-medium text-gray-700 transition hover:bg-gray-100;
+  }
+
+  .dropzone__help {
+    @apply text-gray-500;
+  }
+
+  .dropzone--dragging .dropzone__surface {
+    @apply border-gray-500 bg-gray-100;
+  }
+
+  .dropzone--disabled .dropzone__surface {
+    @apply cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400;
+  }
+
+  .dropzone--disabled .dropzone__clear {
+    @apply cursor-not-allowed opacity-50;
+  }
+}

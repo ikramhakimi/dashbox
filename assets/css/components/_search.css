@@ -1,21 +1,5 @@
 @layer components {
   .search {
-    @apply relative;
-  }
-
-  .search__icon {
-    @apply pointer-events-none absolute left-3 top-[39px] z-10 text-gray-400;
-  }
-
-  .search__icon .icon {
-    @apply h-4 w-4;
-  }
-
-  .search .input__control {
-    @apply rounded-md pl-10;
-  }
-
-  .search--sm .search__icon {
-    @apply top-[35px];
+    @apply w-full;
   }
 }

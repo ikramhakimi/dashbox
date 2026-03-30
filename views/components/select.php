@@ -15,9 +15,9 @@ $multiple      = !empty($multiple);
 $attributes    = isset($attributes) && is_array($attributes) ? $attributes : [];
 
 $size_classes = [
-  'sm'      => 'select--sm',
   'default' => '',
   'md'      => '',
+  'lg'      => 'select--lg',
 ];
 
 $size_class = isset($size_classes[$size]) ? $size_classes[$size] : $size_classes['md'];

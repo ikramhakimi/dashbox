@@ -2,52 +2,40 @@
   .breadcrumb {
     @apply w-full;
   }
-
   .breadcrumb__list {
-    @apply flex flex-wrap items-center gap-2 text-sm text-gray-500;
+    @apply flex flex-wrap items-center gap-2 text-gray-500;
   }
-
   .breadcrumb__item {
     @apply inline-flex min-w-0 items-center;
   }
-
   .breadcrumb__link,
   .breadcrumb__current {
     @apply inline-flex items-center gap-1.5;
   }
-
   .breadcrumb__link {
     @apply text-gray-500 transition-colors hover:text-gray-700;
   }
-
   .breadcrumb__current {
     @apply font-medium text-gray-900;
   }
-
   .breadcrumb__separator {
     @apply inline-flex items-center text-gray-300;
   }
-
   .breadcrumb__separator svg {
     @apply h-3.5 w-3.5;
   }
-
   .breadcrumb__icon {
     @apply inline-flex items-center text-gray-400;
   }
-
   .breadcrumb__icon .icon {
     @apply h-4 w-4;
   }
-
   .breadcrumb--compact .breadcrumb__list {
     @apply gap-1.5 text-xs;
   }
-
   .breadcrumb--compact .breadcrumb__separator svg {
     @apply h-3 w-3;
   }
-
   .breadcrumb--compact .breadcrumb__icon .icon {
     @apply h-3.5 w-3.5;
   }

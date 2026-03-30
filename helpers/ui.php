@@ -40,6 +40,7 @@ function ui_elements_sidebar_children(string $active_page = ''): array
     'cards'       => 'Cards',
     'dropdowns'   => 'Dropdowns',
     'empty-states'=> 'Empty States',
+    'icons'       => 'Icons',
     'inputs'      => 'Inputs',
     'modals'      => 'Modals',
     'page-headers'=> 'Page Headers',
@@ -47,8 +48,8 @@ function ui_elements_sidebar_children(string $active_page = ''): array
     'tables'      => 'Tables',
     'tabs'        => 'Tabs',
     'toasts'      => 'Toasts',
-    'tooltips'    => 'Tooltips',
     'typography'  => 'Typography',
+    'uploads'     => 'Uploads',
   ];
 
   $children = [];
@@ -75,6 +76,67 @@ function ui_patterns_sidebar_children(string $active_page = ''): array
     $children[] = [
       'label'  => $label,
       'href'   => asset('/' . $slug),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function users_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'users'        => 'Browse All Users',
+    'users-create' => 'Create New User',
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $label) {
+    $path = $slug === 'users-create' ? '/users/create' : '/users';
+
+    $children[] = [
+      'label'  => $label,
+      'href'   => asset($path),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function people_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'people'                    => ['label' => 'People Overview', 'path' => '/people'],
+    'people-team-members'       => ['label' => 'Team Members', 'path' => '/people/team-members'],
+    'people-roles-permissions'  => ['label' => 'Roles & Permissions', 'path' => '/people/roles-permissions'],
+    'people-invite'             => ['label' => 'Invite Member', 'path' => '/people/invite'],
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $item) {
+    $children[] = [
+      'label'  => $item['label'],
+      'href'   => asset($item['path']),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function products_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'products'    => ['label' => 'All Products', 'path' => '/products'],
+    'product-add' => ['label' => 'Add Product', 'path' => '/product-add'],
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $item) {
+    $children[] = [
+      'label'  => $item['label'],
+      'href'   => asset($item['path']),
       'active' => $slug === $active_page,
     ];
   }

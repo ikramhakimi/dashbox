@@ -190,18 +190,18 @@ ob_start();
   <div class="rounded-lg border border-gray-100 bg-white p-4">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Neutral</p>
     <div class="flex flex-wrap items-center gap-2">
-      <?php component('button', ['label' => 'Neutral / SM', 'variant' => 'neutral', 'size' => 'sm']); ?>
-      <?php component('button', ['label' => 'Neutral / MD', 'variant' => 'neutral', 'size' => 'md']); ?>
-      <?php component('button', ['label' => 'Neutral / LG', 'variant' => 'neutral', 'size' => 'lg']); ?>
+      <?php component('button', ['label' => 'Neutral / SM', 'size' => 'sm']); ?>
+      <?php component('button', ['label' => 'Neutral / MD', 'size' => 'md']); ?>
+      <?php component('button', ['label' => 'Neutral / LG', 'size' => 'lg']); ?>
     </div>
   </div>
 
   <div class="rounded-lg border border-gray-100 bg-white p-4">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Ghost</p>
+    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Default (Alt)</p>
     <div class="flex flex-wrap items-center gap-2">
-      <?php component('button', ['label' => 'Ghost / SM', 'variant' => 'ghost', 'size' => 'sm']); ?>
-      <?php component('button', ['label' => 'Ghost / MD', 'variant' => 'ghost', 'size' => 'md']); ?>
-      <?php component('button', ['label' => 'Ghost / LG', 'variant' => 'ghost', 'size' => 'lg']); ?>
+      <?php component('button', ['label' => 'Default / SM', 'size' => 'sm']); ?>
+      <?php component('button', ['label' => 'Default / MD', 'size' => 'md']); ?>
+      <?php component('button', ['label' => 'Default / LG', 'size' => 'lg']); ?>
     </div>
   </div>
 
@@ -217,7 +217,7 @@ ob_start();
   <div class="rounded-lg border border-gray-100 bg-white p-4 sm:col-span-2 lg:col-span-2">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">States & Link</p>
     <div class="flex flex-wrap items-center gap-2">
-      <?php component('button', ['label' => 'Disabled', 'variant' => 'neutral', 'disabled' => true]); ?>
+      <?php component('button', ['label' => 'Disabled', 'disabled' => true]); ?>
       <?php component('button', ['label' => 'As Link', 'variant' => 'primary', 'href' => '#']); ?>
       <?php component('button', ['label' => 'Danger Link', 'variant' => 'danger', 'href' => '#']); ?>
     </div>
@@ -458,8 +458,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 flex flex-col gap-4 border-b border-gray-200 pb-6 md:flex-row md:items-end md:justify-between">
         <div>
           <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Overview</p>
@@ -483,7 +483,7 @@ layout('layout-start', [
             </div>
           </div>
           <div class="xl:col-span-2">
-            <?php component('card-module'); ?>
+            <?php component('card'); ?>
           </div>
         </section>
 
@@ -497,7 +497,7 @@ layout('layout-start', [
 
         <section aria-label="Target summary with inline widgets">
           <?php
-          component('card-module', [
+          component('card', [
             'title'       => 'Acquisition Snapshot',
             'subtitle'    => 'Quick summary for this quarter',
             'show_graph'  => false,
@@ -509,7 +509,7 @@ layout('layout-start', [
 
         <section aria-label="Soft acquisition snapshot with inline widgets">
           <?php
-          component('card-module', [
+          component('card', [
             'title'       => 'Revenue Pulse',
             'subtitle'    => 'Soft theme variation for balanced emphasis',
             'show_graph'  => false,
@@ -522,30 +522,29 @@ layout('layout-start', [
           ?>
         </section>
 
-        <section aria-label="Button foundation showcase">
-          <?php
-          component('card-module', [
-            'title'       => 'Button Foundation',
-            'subtitle'    => 'All available button variants, sizes, and states in one module.',
-            'show_graph'  => false,
-            'show_footer' => false,
-            'show_menu'   => false,
-            'content'     => $button_showcase_content,
-          ]);
-          ?>
-        </section>
-
         <section aria-label="Orders data table">
-          <?php
-          component('card-table', [
-            'title'         => 'Orders',
-            'subtitle'      => 'Booking orders by studio, session, payment, and status.',
-            'record_label'  => 'records',
-            'table_headers' => $home_booking_table['headers'],
-            'table_rows'    => $home_booking_table['rows'],
-            'total_records' => $home_booking_table['total'],
-          ]);
-          ?>
+          <article class="space-y-4">
+            <header>
+              <h2 class="text-xl font-semibold text-gray-900">Orders</h2>
+              <p class="text-sm text-gray-500">Booking orders by studio, session, payment, and status.</p>
+            </header>
+
+            <?php
+            component('table', [
+              'headers' => $home_booking_table['headers'],
+              'rows'    => $home_booking_table['rows'],
+            ]);
+
+            component('pagination', [
+              'current_page' => 1,
+              'total_pages'  => 1,
+              'show_info'    => true,
+              'total_items'  => $home_booking_table['total'],
+              'per_page'     => 10,
+              'base_url'     => asset('/?page=%d'),
+            ]);
+            ?>
+          </article>
         </section>
       </div>
     </section>

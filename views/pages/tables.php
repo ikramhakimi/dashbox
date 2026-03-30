@@ -109,7 +109,6 @@ ob_start();
 ?>
 <?= $capture('button', [
   'label'   => 'Export',
-  'variant' => 'neutral',
   'size'    => 'sm',
 ]) ?>
 <?= $capture('button', [
@@ -128,8 +127,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Table</h1>
@@ -138,38 +137,74 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Table component showcase">
+      <section class="divide-y divide-gray-100" aria-label="Table component showcase">
         <?= $capture('alert', [
           'variant'     => 'info',
           'show_icon'   => true,
           'description' => 'Guideline: keep table to 3-5 columns max. Combine related info in stacked cells instead of adding new columns.',
         ]) ?>
 
-        <?php
-        component('card-table', [
-          'title'       => 'Mixed Elements Table (Recommended)',
-          'subtitle'    => 'Avatar, image placeholder, badges, button, and row actions in one structure.',
-          'actions_left_html'  => $booking_actions_left,
-          'actions_right_html' => $booking_actions_right,
-          'record_label'       => 'bookings',
-          'table_headers'      => $booking_table['headers'],
-          'table_rows'         => $booking_table['rows'],
-          'total_records'      => $booking_table['total'],
-          'per_page'           => 1,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Mixed Elements Table (Recommended)</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Avatar, image placeholder, badges, button, and row actions in one structure.
+            </p>
+          </header>
 
-        component('card-table', [
-          'title'        => 'Empty State Table',
-          'subtitle'     => 'Default empty behavior when no records are available.',
-          'record_label' => 'bookings',
-          'table_headers'=> $empty_table['headers'],
-          'table_rows'   => $empty_table['rows'],
-          'total_records'=> $empty_table['total'],
-          'empty_title'  => 'No booking records yet',
-          'empty_message'=> 'Try creating a new booking or adjust your active filters.',
-          'empty_deco'   => '(o_o)/',
-        ]);
-        ?>
+          <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+            <div class="flex flex-wrap items-end gap-2">
+              <?= $booking_actions_left ?>
+            </div>
+            <div class="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
+              <?= $booking_actions_right ?>
+            </div>
+          </div>
+
+          <?php
+          component('table', [
+            'headers' => $booking_table['headers'],
+            'rows'    => $booking_table['rows'],
+          ]);
+          ?>
+
+          <?= $capture('pagination', [
+            'current_page' => 1,
+            'total_pages'  => 3,
+            'show_info'    => true,
+            'total_items'  => $booking_table['total'],
+            'per_page'     => 1,
+            'base_url'     => asset('/tables?page=%d'),
+          ]) ?>
+        </article>
+
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Empty State Table</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Default empty behavior when no records are available.
+            </p>
+          </header>
+
+          <?php
+          component('table', [
+            'headers'       => $empty_table['headers'],
+            'rows'          => $empty_table['rows'],
+            'empty_title'   => 'No booking records yet',
+            'empty_message' => 'Try creating a new booking or adjust your active filters.',
+            'empty_deco'    => '(o_o)/',
+          ]);
+          ?>
+
+          <?= $capture('pagination', [
+            'current_page' => 1,
+            'total_pages'  => 1,
+            'show_info'    => true,
+            'total_items'  => 0,
+            'per_page'     => 10,
+            'base_url'     => asset('/tables?page=%d'),
+          ]) ?>
+        </article>
       </section>
     </section>
   </main>

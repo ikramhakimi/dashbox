@@ -30,13 +30,11 @@ $capture = static function (string $name, array $props): string {
 
 $button_cancel = $capture('button', [
   'label'      => 'Cancel',
-  'variant'    => 'ghost',
   'attributes' => ['data-modal-close' => true],
 ]);
 
 $button_close = $capture('button', [
   'label'      => 'Close',
-  'variant'    => 'neutral',
   'attributes' => ['data-modal-close' => true],
 ]);
 
@@ -62,7 +60,6 @@ $button_next = $capture('button', [
 
 $button_back = $capture('button', [
   'label'   => 'Back',
-  'variant' => 'neutral',
 ]);
 
 $form_modal_content = '
@@ -170,20 +167,20 @@ $filter_modal_content = '
 $filter_modal_footer = '
   <div class="flex items-center gap-2">
     ' . $button_cancel . '
-    ' . $capture('button', ['label' => 'Reset', 'variant' => 'neutral']) . '
+    ' . $capture('button', ['label' => 'Reset']) . '
     ' . $button_apply . '
   </div>
 ';
 
 $detail_modal_content = '
   <div class="grid gap-4 md:grid-cols-2">
-    <div class="space-y-2 rounded-lg border border-gray-100 p-4">
+    <div class="space-y-2 py-2">
       <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Customer</p>
       <p class="text-sm text-gray-900">Nadia Syahirah</p>
       <p class="text-sm text-gray-500">nadia@example.com</p>
       <p class="text-sm text-gray-500">+60 12-345 6789</p>
     </div>
-    <div class="space-y-2 rounded-lg border border-gray-100 p-4">
+    <div class="space-y-2 py-2">
       <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Order</p>
       <p class="text-sm text-gray-900">ORD-2026-00991</p>
       <p class="text-sm text-gray-500">Created: 29 Mar 2026</p>
@@ -239,12 +236,11 @@ $step_modal_footer = '
 ob_start();
 ?>
 <div class="space-y-4">
-  <div class="border border-gray-100 rounded-lg p-5">
+  <div class="py-4">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Modal Use Cases</p>
     <div class="flex flex-wrap gap-2">
       <?= $capture('button', [
         'label'      => '1. Form Modal',
-        'variant'    => 'neutral',
         'attributes' => ['data-modal-open' => 'demo-modal-form'],
       ]) ?>
       <?= $capture('button', [
@@ -254,23 +250,20 @@ ob_start();
       ]) ?>
       <?= $capture('button', [
         'label'      => '3. Filter Modal',
-        'variant'    => 'neutral',
         'attributes' => ['data-modal-open' => 'demo-modal-filter'],
       ]) ?>
       <?= $capture('button', [
         'label'      => '4. Read-only Details',
-        'variant'    => 'neutral',
         'attributes' => ['data-modal-open' => 'demo-modal-detail'],
       ]) ?>
       <?= $capture('button', [
         'label'      => '5. Multi-step Light',
-        'variant'    => 'neutral',
         'attributes' => ['data-modal-open' => 'demo-modal-step'],
       ]) ?>
     </div>
   </div>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <div class="py-4">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">When To Use</p>
     <ul class="space-y-2 text-sm text-gray-600">
       <li>1. Form modal for quick create/edit without page transition.</li>
@@ -292,8 +285,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Modal UI Library</h1>
@@ -302,17 +295,16 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Modal component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Modal Context Demos',
-          'subtitle'    => 'Five production-ready modal examples covering common dashboard use cases.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $modal_demo_content,
-        ]);
-        ?>
+      <section class="divide-y divide-gray-100" aria-label="Modal component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Modal Context Demos</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Five production-ready modal examples covering common dashboard use cases.
+            </p>
+          </header>
+          <?= $modal_demo_content ?>
+        </article>
       </section>
     </section>
   </main>

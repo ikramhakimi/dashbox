@@ -36,8 +36,8 @@ $capture_button = static function (array $props): string {
 
 ob_start();
 ?>
-<div class="space-y-4">
-  <div class="border border-gray-100 rounded-lg p-5">
+<div class="divide-y divide-gray-100">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Default</p>
     <?= $capture([
       'items' => [
@@ -46,9 +46,9 @@ ob_start();
         ['label' => 'History', 'href' => '#'],
       ],
     ]) ?>
-  </div>
+  </section>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">With Icons</p>
     <?= $capture([
       'items' => [
@@ -57,22 +57,9 @@ ob_start();
         ['label' => 'Priority', 'href' => '#', 'icon_name' => 'star'],
       ],
     ]) ?>
-  </div>
+  </section>
 
-  <div class="border border-gray-100 rounded-lg p-5">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Compact</p>
-    <?= $capture([
-      'compact' => true,
-      'items'   => [
-        ['label' => 'All', 'href' => '#', 'active' => true],
-        ['label' => 'Open', 'href' => '#'],
-        ['label' => 'Closed', 'href' => '#'],
-        ['label' => 'Archived', 'href' => '#', 'disabled' => true],
-      ],
-    ]) ?>
-  </div>
-
-  <div class="border border-gray-100 rounded-lg p-5">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Tabs + Button Side By Side</p>
     <div class="max-w-full overflow-x-auto">
       <div class="inline-flex items-center gap-3 whitespace-nowrap">
@@ -85,32 +72,10 @@ ob_start();
         ]) ?>
         <?= $capture_button([
           'label'   => 'Create New',
-          'variant' => 'neutral',
         ]) ?>
       </div>
     </div>
-  </div>
-
-  <div class="border border-gray-100 rounded-lg p-5">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Compact Tabs + Button--sm Side By Side</p>
-    <div class="max-w-full overflow-x-auto">
-      <div class="inline-flex items-center gap-3 whitespace-nowrap">
-        <?= $capture([
-          'compact' => true,
-          'items'   => [
-            ['label' => 'All', 'href' => '#', 'active' => true],
-            ['label' => 'Open', 'href' => '#'],
-            ['label' => 'Closed', 'href' => '#'],
-          ],
-        ]) ?>
-        <?= $capture_button([
-          'label'   => 'Create',
-          'variant' => 'neutral',
-          'size'    => 'sm',
-        ]) ?>
-      </div>
-    </div>
-  </div>
+  </section>
 </div>
 <?php
 $tabs_content = (string) ob_get_clean();
@@ -123,27 +88,26 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Tabs UI Library</h1>
         <p class="mt-2 max-w-3xl text-sm text-gray-500">
-          Foundation tabs with icon support, active states, and compact variant.
+          Foundation tabs with icon support and active states.
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Tabs component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Tabs Variations',
-          'subtitle'    => 'Default, icon, and compact tab patterns for dashboard sections.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $tabs_content,
-        ]);
-        ?>
+      <section class="divide-y divide-gray-100" aria-label="Tabs component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Tabs Variations</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Default and icon tab patterns for dashboard sections.
+            </p>
+          </header>
+          <?= $tabs_content ?>
+        </article>
       </section>
     </section>
   </main>

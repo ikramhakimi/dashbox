@@ -96,6 +96,150 @@ $lead_rows = [
     'owner'       => 'QN',
     'last_contact'=> '3 days ago',
   ],
+  [
+    'lead_name'   => 'Siti Nadia',
+    'company'     => 'Urban Mart',
+    'email'       => 'siti@urbanmart.co',
+    'stage'       => 'Qualified',
+    'priority'    => 'Medium',
+    'owner'       => 'RZ',
+    'last_contact'=> 'Today, 09:05 AM',
+  ],
+  [
+    'lead_name'   => 'Hafiz Rahman',
+    'company'     => 'Green Pixel Labs',
+    'email'       => 'hafiz@greenpixel.io',
+    'stage'       => 'Proposal',
+    'priority'    => 'High',
+    'owner'       => 'LK',
+    'last_contact'=> 'Yesterday, 02:10 PM',
+  ],
+  [
+    'lead_name'   => 'Mei Ling',
+    'company'     => 'Sunrise Tech',
+    'email'       => 'meiling@sunrisetech.com',
+    'stage'       => 'New',
+    'priority'    => 'Low',
+    'owner'       => 'YM',
+    'last_contact'=> 'Yesterday, 11:44 AM',
+  ],
+  [
+    'lead_name'   => 'Azri Faiz',
+    'company'     => 'Peak Studio',
+    'email'       => 'azri@peakstudio.my',
+    'stage'       => 'Negotiation',
+    'priority'    => 'High',
+    'owner'       => 'QN',
+    'last_contact'=> 'Today, 08:35 AM',
+  ],
+  [
+    'lead_name'   => 'Nurin Izzati',
+    'company'     => 'Cloudline Sdn Bhd',
+    'email'       => 'nurin@cloudline.com',
+    'stage'       => 'Qualified',
+    'priority'    => 'Medium',
+    'owner'       => 'RZ',
+    'last_contact'=> '2 days ago',
+  ],
+  [
+    'lead_name'   => 'Benjamin Tan',
+    'company'     => 'Hexa Commerce',
+    'email'       => 'ben@hexacommerce.io',
+    'stage'       => 'Proposal',
+    'priority'    => 'Medium',
+    'owner'       => 'LK',
+    'last_contact'=> '3 days ago',
+  ],
+  [
+    'lead_name'   => 'Ivy Chan',
+    'company'     => 'Nova Foods',
+    'email'       => 'ivy@novafoods.my',
+    'stage'       => 'New',
+    'priority'    => 'Low',
+    'owner'       => 'YM',
+    'last_contact'=> '4 days ago',
+  ],
+  [
+    'lead_name'   => 'Kamil Ariff',
+    'company'     => 'Signal Hub',
+    'email'       => 'kamil@signalhub.co',
+    'stage'       => 'Negotiation',
+    'priority'    => 'High',
+    'owner'       => 'QN',
+    'last_contact'=> 'Today, 12:12 PM',
+  ],
+  [
+    'lead_name'   => 'Rina Abdullah',
+    'company'     => 'Orbit Wellness',
+    'email'       => 'rina@orbitwellness.com',
+    'stage'       => 'Qualified',
+    'priority'    => 'Medium',
+    'owner'       => 'RZ',
+    'last_contact'=> '1 day ago',
+  ],
+  [
+    'lead_name'   => 'Jason Lee',
+    'company'     => 'Blue Lake Agency',
+    'email'       => 'jason@bluelake.agency',
+    'stage'       => 'Proposal',
+    'priority'    => 'Low',
+    'owner'       => 'LK',
+    'last_contact'=> '2 days ago',
+  ],
+  [
+    'lead_name'   => 'Amirah Zulkifli',
+    'company'     => 'Sprint Labs',
+    'email'       => 'amirah@sprintlabs.io',
+    'stage'       => 'New',
+    'priority'    => 'Medium',
+    'owner'       => 'YM',
+    'last_contact'=> '5 days ago',
+  ],
+  [
+    'lead_name'   => 'Darren Wong',
+    'company'     => 'Motive Works',
+    'email'       => 'darren@motiveworks.co',
+    'stage'       => 'Negotiation',
+    'priority'    => 'High',
+    'owner'       => 'QN',
+    'last_contact'=> 'Today, 01:47 PM',
+  ],
+  [
+    'lead_name'   => 'Fatin Zahra',
+    'company'     => 'Crate Supply',
+    'email'       => 'fatin@cratesupply.com',
+    'stage'       => 'Qualified',
+    'priority'    => 'Low',
+    'owner'       => 'RZ',
+    'last_contact'=> 'Yesterday, 05:02 PM',
+  ],
+  [
+    'lead_name'   => 'Omar Idris',
+    'company'     => 'Frontier Auto',
+    'email'       => 'omar@frontierauto.my',
+    'stage'       => 'Proposal',
+    'priority'    => 'Medium',
+    'owner'       => 'LK',
+    'last_contact'=> '3 days ago',
+  ],
+  [
+    'lead_name'   => 'Jia Wen',
+    'company'     => 'Lotus Interiors',
+    'email'       => 'jiawen@lotusinteriors.com',
+    'stage'       => 'New',
+    'priority'    => 'Low',
+    'owner'       => 'YM',
+    'last_contact'=> '6 days ago',
+  ],
+  [
+    'lead_name'   => 'Syafiq Ismail',
+    'company'     => 'Trackline',
+    'email'       => 'syafiq@trackline.app',
+    'stage'       => 'Negotiation',
+    'priority'    => 'High',
+    'owner'       => 'QN',
+    'last_contact'=> 'Today, 03:20 PM',
+  ],
 ];
 
 $table_headers = [
@@ -104,16 +248,36 @@ $table_headers = [
   ['label' => 'Stage',        'align' => 'left'],
   ['label' => 'Priority',     'align' => 'left'],
   ['label' => 'Last Contact', 'align' => 'left'],
-  ['label' => 'Actions',      'align' => 'right'],
+  ['label' => '',             'align' => 'right'],
+];
+
+$avatar_sources = [
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
+  '',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+  '',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80',
+  '',
+  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80',
+  '',
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80',
+  '',
 ];
 
 $table_rows = [];
-foreach ($lead_rows as $lead_row) {
-  ob_start();
-  component('avatar', [
+foreach ($lead_rows as $lead_index => $lead_row) {
+  $avatar_src = $avatar_sources[$lead_index % count($avatar_sources)];
+
+  $avatar_props = [
     'name' => (string) $lead_row['lead_name'],
-    'size' => 'sm',
-  ]);
+    'size' => 'lg',
+  ];
+  if ($avatar_src !== '') {
+    $avatar_props['src'] = $avatar_src;
+  }
+
+  ob_start();
+  component('avatar', $avatar_props);
   $lead_avatar = (string) ob_get_clean();
 
   $stage_mode = 'neutral';
@@ -148,17 +312,17 @@ foreach ($lead_rows as $lead_row) {
 
   ob_start();
   component('button', [
-    'label'   => 'View',
-    'size'    => 'sm',
-    'variant' => 'neutral',
-    'href'    => '#',
+    'label'      => 'View lead',
+    'aria_label' => 'View lead',
+    'icon_name'  => 'eye',
+    'icon_only'  => true,
+    'href'       => '#',
   ]);
   $view_button = (string) ob_get_clean();
 
   ob_start();
   component('dropdown', [
     'trigger_label'   => 'More',
-    'trigger_variant' => 'ghost',
     'trigger_size'    => 'sm',
     'items'           => [
       ['label' => 'Schedule follow-up', 'href' => '#'],
@@ -174,7 +338,7 @@ foreach ($lead_rows as $lead_row) {
       ' . $lead_avatar . '
       <div>
         <p class="font-medium text-gray-900">' . e((string) $lead_row['lead_name']) . '</p>
-        <p class="text-xs text-gray-500">' . e((string) $lead_row['email']) . '</p>
+        <p class="text-gray-500">' . e((string) $lead_row['email']) . '</p>
       </div>
     </div>
   ';
@@ -182,7 +346,7 @@ foreach ($lead_rows as $lead_row) {
   $company_cell = '
     <div>
       <p class="font-medium text-gray-900">' . e((string) $lead_row['company']) . '</p>
-      <p class="text-xs text-gray-500">Owner: ' . e((string) $lead_row['owner']) . '</p>
+      <p class="text-gray-500">Owner: ' . e((string) $lead_row['owner']) . '</p>
     </div>
   ';
 
@@ -216,17 +380,11 @@ ob_start();
     ['label' => 'Pipeline'],
   ],
   'actions' => [
-    ['label' => 'Export CSV', 'variant' => 'neutral'],
-    [
-      'label'      => 'Add Lead',
-      'variant'    => 'primary',
-      'icon_name'  => 'plus',
-      'attributes' => ['data-modal-open' => 'crm-add-lead-modal'],
-    ],
+    ['label' => 'Export CSV'],
   ],
   'actions_html' => $capture('dropdown', [
     'trigger_label'     => 'More',
-    'trigger_variant'   => 'ghost',
+    'trigger_variant'   => 'primary',
     'trigger_size'      => 'sm',
     'items'             => [
       ['label' => 'Import leads', 'href' => '#'],
@@ -243,15 +401,6 @@ $crm_header = (string) ob_get_clean();
 ob_start();
 ?>
 <div class="space-y-4">
-  <?= $capture('alert', [
-    'variant'     => 'warning',
-    'show_icon'   => true,
-    'dismissible' => true,
-    'description' => '9 leads have no activity in the last 7 days. Review and schedule follow-up.',
-    'link_href'   => '#',
-    'link_label'  => 'Open stale leads',
-  ]) ?>
-
   <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
     <?php foreach ($pipeline_widgets as $pipeline_widget): ?>
       <?php component('card-widget', $pipeline_widget); ?>
@@ -263,74 +412,14 @@ $crm_summary = (string) ob_get_clean();
 
 ob_start();
 ?>
-<?= $capture('tabs', [
-  'items' => [
-    ['label' => 'All Leads', 'href' => '#', 'active' => true],
-    ['label' => 'Qualified', 'href' => '#'],
-    ['label' => 'Proposal', 'href' => '#'],
-    ['label' => 'Negotiation', 'href' => '#'],
-  ],
-]) ?>
-<?php
-$crm_table_content = (string) ob_get_clean();
-
-ob_start();
-?>
 <div class="flex flex-wrap items-end gap-3">
   <div class="w-full md:w-64">
     <?= $capture('search-input', [
       'id'          => 'crm-search',
       'name'        => 'search',
-      'label'       => 'Finder',
+      'label'       => '',
       'size'        => 'sm',
       'placeholder' => 'Name, company, or email',
-    ]) ?>
-  </div>
-  <div class="w-full sm:w-48">
-    <?= $capture('select', [
-      'id'      => 'crm-owner',
-      'name'    => 'owner',
-      'label'   => 'Owner',
-      'size'    => 'sm',
-      'value'   => 'all',
-      'options' => [
-        ['label' => 'All owners', 'value' => 'all'],
-        ['label' => 'RZ', 'value' => 'rz'],
-        ['label' => 'LK', 'value' => 'lk'],
-        ['label' => 'YM', 'value' => 'ym'],
-      ],
-    ]) ?>
-  </div>
-  <div class="w-full sm:w-48">
-    <?= $capture('select', [
-      'id'      => 'crm-priority',
-      'name'    => 'priority',
-      'label'   => 'Priority',
-      'size'    => 'sm',
-      'value'   => 'all',
-      'options' => [
-        ['label' => 'All priorities', 'value' => 'all'],
-        ['label' => 'High', 'value' => 'high'],
-        ['label' => 'Medium', 'value' => 'medium'],
-        ['label' => 'Low', 'value' => 'low'],
-      ],
-    ]) ?>
-  </div>
-  <div class="flex items-center gap-2 pt-6">
-    <div>
-      <?= $capture('checkbox', [
-        'id'      => 'crm-show-stale',
-        'name'    => 'show_stale_only',
-        'label'   => 'Stale only',
-        'checked' => false,
-      ]) ?>
-    </div>
-    <?= $capture('tooltip', [
-      'trigger_html' => $capture('badge', [
-        'label' => 'SLA',
-        'mode'  => 'info',
-      ]),
-      'content'      => 'Leads should be followed up within 24 hours.',
     ]) ?>
   </div>
 </div>
@@ -341,7 +430,6 @@ ob_start();
 ?>
 <?= $capture('button', [
   'label'   => 'Reset',
-  'variant' => 'neutral',
   'size'    => 'sm',
 ]) ?>
 <?= $capture('button', [
@@ -354,20 +442,37 @@ $crm_actions_right = (string) ob_get_clean();
 
 ob_start();
 ?>
-<?php component('card-table', [
-  'title'              => 'Pipeline Workspace',
-  'subtitle'           => 'Review stage, priority, and assigned owner before taking action.',
-  'actions_left_html'  => $crm_actions_left,
-  'actions_right_html' => $crm_actions_right,
-  'content_html'       => $crm_table_content,
-  'table_headers'      => $table_headers,
-  'table_rows'         => $table_rows,
-  'record_label'       => 'leads',
-  'total_records'      => 38,
-  'current_page'       => 1,
-  'per_page'           => 10,
-  'base_url'           => '#page=%d',
-]); ?>
+<article class="card space-y-6" aria-label="Pipeline workspace table">
+  <header class="space-y-1">
+    <h2 class="text-xl font-semibold text-gray-900">Pipeline Workspace</h2>
+    <p class="text-sm text-gray-500">Review stage, priority, and assigned owner before taking action.</p>
+  </header>
+
+  <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+    <div class="flex flex-wrap items-end gap-3">
+      <?= $crm_actions_left ?>
+    </div>
+    <div class="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
+      <?= $crm_actions_right ?>
+    </div>
+  </div>
+
+  <?php
+  component('table', [
+    'headers' => $table_headers,
+    'rows'    => $table_rows,
+  ]);
+
+  component('pagination', [
+    'current_page' => 1,
+    'total_pages'  => 4,
+    'show_info'    => true,
+    'total_items'  => 38,
+    'per_page'     => 10,
+    'base_url'     => '#page=%d',
+  ]);
+  ?>
+</article>
 <?php
 $crm_table_card = (string) ob_get_clean();
 
@@ -411,7 +516,7 @@ $modal_body = '
 
 $modal_footer = '
   <div class="flex flex-wrap justify-end gap-2">
-    ' . $capture('button', ['label' => 'Cancel', 'variant' => 'ghost', 'attributes' => ['data-modal-close' => true]]) . '
+    ' . $capture('button', ['label' => 'Cancel', 'attributes' => ['data-modal-close' => true]]) . '
     ' . $capture('button', ['label' => 'Save Lead', 'variant' => 'primary']) . '
   </div>
 ';
@@ -424,8 +529,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl space-y-6 px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl space-y-6">
       <?= $crm_header ?>
       <?= $crm_summary ?>
 

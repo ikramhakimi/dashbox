@@ -2,47 +2,37 @@
   .textarea {
     @apply flex flex-col gap-2;
   }
-
   .textarea__label {
-    @apply text-sm font-semibold text-gray-700;
+    @apply font-semibold text-gray-700;
   }
-
   .textarea__required {
     @apply ml-1 text-rose-600;
   }
-
   .textarea__control {
-    @apply w-full rounded-md border border-gray-200 bg-white px-4 py-3 text-sm text-gray-900 outline-none transition-all duration-200;
+    @apply w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm outline-none transition-all duration-200;
+    font-size: inherit;
   }
-
-  .textarea--sm .textarea__control {
-    @apply px-3 py-2 text-xs;
+  .textarea--lg .textarea__control {
+    @apply px-5 py-4 text-base;
   }
-
   .textarea__control::placeholder {
     @apply text-gray-400;
   }
-
   .textarea__control:focus {
     @apply border-gray-500 ring-2 ring-gray-200;
   }
-
   .textarea__control:disabled {
     @apply cursor-not-allowed bg-gray-100 text-gray-500;
   }
-
   .textarea__control[readonly] {
     @apply bg-gray-50 text-gray-700;
   }
-
   .textarea__control--invalid {
     @apply border-rose-300 bg-rose-50/40 ring-rose-100;
   }
-
   .textarea__help {
     @apply text-xs text-gray-500;
   }
-
   .textarea__error {
     @apply text-xs text-rose-600;
   }

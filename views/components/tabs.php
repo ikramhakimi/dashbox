@@ -1,7 +1,7 @@
 <?php
 
 $items      = isset($items) && is_array($items) ? $items : [];
-$compact    = !empty($compact);
+$size       = isset($size) && $size !== '' ? (string) $size : 'md';
 $attributes = isset($attributes) && is_array($attributes) ? $attributes : [];
 
 if ($items === []) {
@@ -19,8 +19,8 @@ if ($items === []) {
 }
 
 $root_classes = [$component_class];
-if ($compact) {
-  $root_classes[] = 'tabs--compact';
+if ($size === 'lg') {
+  $root_classes[] = 'tabs--lg';
 }
 
 $render_attributes = static function (array $attrs): string {

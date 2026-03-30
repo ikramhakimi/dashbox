@@ -62,7 +62,6 @@ ob_start();
 <div class="flex flex-wrap items-center gap-3">
   <?= $capture('dropdown', [
     'trigger_label'     => 'Quick actions',
-    'trigger_variant'   => 'ghost',
     'trigger_icon_name' => 'plus',
     'items'             => [
       ['label' => 'Create user', 'href' => '#', 'icon_name' => 'users'],
@@ -73,7 +72,6 @@ ob_start();
 
   <?= $capture('dropdown', [
     'trigger_label'     => 'More options',
-    'trigger_variant'   => 'ghost',
     'icon_only'         => true,
     'trigger_icon_name' => 'plus',
     'items'             => [
@@ -149,7 +147,6 @@ ob_start();
     'trigger_tag'     => 'a',
     'trigger_label'   => 'More actions',
     'trigger_href'    => '#actions',
-    'trigger_variant' => 'ghost',
     'items'           => [
       ['label' => 'Duplicate', 'href' => '#'],
       ['label' => 'Export', 'href' => '#'],
@@ -206,17 +203,17 @@ $dropdown_navigation_content = (string) ob_get_clean();
 ob_start();
 ?>
 <div class="grid gap-3 md:grid-cols-3">
-  <div class="rounded-md border border-gray-200 bg-white p-4">
+  <div class="py-3">
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Source Module</p>
     <p class="mt-2 text-sm font-medium text-gray-900"><code>assets/js/dropdown.js</code></p>
     <p class="mt-1 text-xs text-gray-500">Dropdown behavior and outside-click dismiss logic.</p>
   </div>
-  <div class="rounded-md border border-gray-200 bg-white p-4">
+  <div class="py-3">
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Bundle Entry</p>
     <p class="mt-2 text-sm font-medium text-gray-900"><code>assets/js/app.js</code></p>
     <p class="mt-1 text-xs text-gray-500">Single entry that initializes submenu, dropdown, and modal.</p>
   </div>
-  <div class="rounded-md border border-gray-200 bg-white p-4">
+  <div class="py-3">
     <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Compiled Output</p>
     <p class="mt-2 text-sm font-medium text-gray-900"><code>assets/build/app.js</code></p>
     <p class="mt-1 text-xs text-gray-500">Minified production script loaded globally in layout.</p>
@@ -233,8 +230,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Dropdown (Interactive JS Component)</h1>
@@ -243,62 +240,64 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Dropdown component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'JS Documentation',
-          'subtitle'    => 'Implementation paths for dropdown interactive behavior.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $dropdown_js_doc_content,
-        ]);
+      <section class="divide-y divide-gray-100" aria-label="Dropdown component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">JS Documentation</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Implementation paths for dropdown interactive behavior.
+            </p>
+          </header>
+          <?= $dropdown_js_doc_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Default Dropdown',
-          'subtitle'    => 'Button trigger with dividers, labels, disabled and danger actions.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $dropdown_default_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Default Dropdown</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Button trigger with dividers, labels, disabled and danger actions.
+            </p>
+          </header>
+          <?= $dropdown_default_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Trigger Variations',
-          'subtitle'    => 'Ghost style, icon+text trigger, and icon-only trigger.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $dropdown_trigger_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Trigger Variations</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Neutral style, icon+text trigger, and icon-only trigger.
+            </p>
+          </header>
+          <?= $dropdown_trigger_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Button Size Variations',
-          'subtitle'    => 'Dropdown trigger reuses button tokens: sm, default, lg, including icon-only.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $dropdown_size_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Button Size Variations</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Dropdown trigger reuses button tokens: sm, default, lg, including icon-only.
+            </p>
+          </header>
+          <?= $dropdown_size_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Link Trigger Dropdown',
-          'subtitle'    => 'Use anchor trigger while keeping JS toggle and outside-click dismiss.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $dropdown_link_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Link Trigger Dropdown</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Use anchor trigger while keeping JS toggle and outside-click dismiss.
+            </p>
+          </header>
+          <?= $dropdown_link_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Navigation Dropdown',
-          'subtitle'    => 'Simple link-style trigger for navigation groups.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $dropdown_navigation_content,
-        ]);
-        ?>
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Navigation Dropdown</h2>
+            <p class="mt-1 text-sm text-gray-500">Simple link-style trigger for navigation groups.</p>
+          </header>
+          <?= $dropdown_navigation_content ?>
+        </article>
       </section>
     </section>
   </main>

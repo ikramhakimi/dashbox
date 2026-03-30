@@ -31,7 +31,7 @@ $capture = static function (array $props): string {
 ob_start();
 ?>
 <div class="space-y-4">
-  <div class="border border-gray-100 rounded-lg p-5">
+  <div class="py-4">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Variants</p>
     <div class="space-y-3">
       <?= $capture([
@@ -57,7 +57,7 @@ ob_start();
     </div>
   </div>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <div class="py-4">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Dismissible & No Icon</p>
     <div class="space-y-3">
       <?= $capture([
@@ -76,16 +76,16 @@ ob_start();
     </div>
   </div>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <div class="py-4">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Floating Toast Demo</p>
     <p class="mb-3 text-sm text-gray-500">
       Trigger floating toasts from top-right stack (auto dismiss in 4 seconds).
     </p>
     <div class="flex flex-wrap gap-2">
-      <button type="button" class="button button--neutral button--sm" data-toast-demo-trigger="info">Show Info</button>
-      <button type="button" class="button button--neutral button--sm" data-toast-demo-trigger="success">Show Success</button>
-      <button type="button" class="button button--neutral button--sm" data-toast-demo-trigger="warning">Show Warning</button>
-      <button type="button" class="button button--neutral button--sm" data-toast-demo-trigger="danger">Show Danger</button>
+      <button type="button" class="button" data-toast-demo-trigger="info">Show Info</button>
+      <button type="button" class="button" data-toast-demo-trigger="success">Show Success</button>
+      <button type="button" class="button" data-toast-demo-trigger="warning">Show Warning</button>
+      <button type="button" class="button" data-toast-demo-trigger="danger">Show Danger</button>
     </div>
   </div>
 </div>
@@ -132,8 +132,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Toast UI Library</h1>
@@ -142,17 +142,16 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Toast component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Toast Variations',
-          'subtitle'    => 'Variant tones with optional icon and dismiss action.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $toast_content,
-        ]);
-        ?>
+      <section class="divide-y divide-gray-100" aria-label="Toast component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Toast Variations</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Variant tones with optional icon and dismiss action.
+            </p>
+          </header>
+          <?= $toast_content ?>
+        </article>
       </section>
     </section>
   </main>

@@ -20,19 +20,18 @@ $attributes = isset($attributes) && is_array($attributes) ? $attributes : [];
 
 $variant_classes = [
   'primary' => 'button--primary',
-  'neutral' => 'button--neutral',
-  'ghost'   => 'button--ghost',
+  'neutral' => '',
   'danger'  => 'button--danger',
 ];
 
 $size_classes = [
-  'sm'      => 'button--sm',
   'default' => '',
   'md'      => '',
+  'sm'      => 'button--sm',
   'lg'      => 'button--lg',
 ];
 
-$variant_class = isset($variant_classes[$variant]) ? $variant_classes[$variant] : $variant_classes['neutral'];
+$variant_class = isset($variant_classes[$variant]) ? $variant_classes[$variant] : '';
 $size_class    = isset($size_classes[$size]) ? $size_classes[$size] : $size_classes['md'];
 $icon_only_class = $icon_only ? 'button--icon-only' : '';
 $class_name    = trim($component_class . ' ' . $variant_class . ' ' . $size_class . ' ' . $icon_only_class . ' ' . $class);

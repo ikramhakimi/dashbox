@@ -1,0 +1,61 @@
+@layer components {
+  .form-section {
+    @apply space-y-5 border-b border-gray-200 py-6;
+  }
+
+  .form-section--last {
+    @apply border-b-0 pb-0;
+  }
+
+  .form-section:first-child {
+    @apply pt-0;
+  }
+
+  .form-section__grid {
+    @apply grid w-full gap-5 md:grid-cols-2;
+    max-width: 880px;
+  }
+
+  .form-section__full {
+    @apply md:col-span-2;
+  }
+
+  .form-section--disabled {
+    @apply bg-gray-50;
+  }
+
+  .form-section--disabled .form-section__fieldset {
+    @apply opacity-70;
+  }
+
+  .form-section__fieldset {
+    @apply grid gap-5 md:grid-cols-2;
+  }
+
+  .form-section__fieldset:disabled {
+    @apply cursor-not-allowed;
+  }
+
+  .card .form-section {
+    margin-left: calc(var(--card-padding-x, 1.5rem) * -1);
+    margin-right: calc(var(--card-padding-x, 1.5rem) * -1);
+    padding-left: var(--card-padding-x, 1.5rem);
+    padding-right: var(--card-padding-x, 1.5rem);
+  }
+
+  .form-actions {
+    @apply mt-6 flex flex-wrap items-center gap-2;
+  }
+
+  .form-actions--between {
+    @apply justify-between;
+  }
+
+  .form-actions--divider {
+    @apply border-t border-gray-200 pt-6;
+  }
+
+  .form-actions__group {
+    @apply flex flex-wrap items-center gap-2;
+  }
+}

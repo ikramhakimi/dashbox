@@ -2,56 +2,43 @@
   .modal {
     @apply fixed inset-0 z-50 hidden items-end justify-center p-4 sm:items-center;
   }
-
   .modal__backdrop {
-    @apply absolute inset-0 bg-gray-900/45;
+    @apply absolute inset-0 bg-gray-900/80;
   }
-
   .modal__panel {
-    @apply relative z-10 w-full rounded-md border border-gray-200 bg-white;
+    @apply relative z-10 w-full rounded-md bg-white;
   }
-
   .modal--sm .modal__panel {
     @apply max-w-md;
   }
-
   .modal--md .modal__panel {
     @apply max-w-xl;
   }
-
   .modal--lg .modal__panel {
     @apply max-w-3xl;
   }
-
   .modal__header {
-    @apply flex items-start justify-between gap-3 border-b border-gray-100 px-5 py-4;
+    @apply flex items-start justify-between gap-3 p-6;
   }
-
   .modal__title-group {
     @apply space-y-1;
   }
-
   .modal__title {
     @apply text-base font-semibold text-gray-900;
   }
-
   .modal__description {
-    @apply text-sm text-gray-500;
+    @apply text-gray-500;
   }
-
   .modal__close {
     @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-gray-500 transition hover:bg-gray-100 hover:text-gray-700;
   }
-
   .modal__close svg {
     @apply h-4 w-4;
   }
-
   .modal__body {
-    @apply px-5 py-4 text-sm text-gray-700;
+    @apply px-6 py-0 text-gray-700;
   }
-
   .modal__footer {
-    @apply flex flex-wrap items-center justify-end gap-2 border-t border-gray-100 px-5 py-4;
+    @apply flex flex-wrap items-center justify-end gap-2 p-6;
   }
 }

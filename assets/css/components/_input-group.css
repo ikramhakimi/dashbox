@@ -1,0 +1,45 @@
+@layer components {
+  .input-group {
+    @apply flex flex-col gap-2;
+  }
+
+  .input-group__label {
+    @apply font-semibold text-gray-700;
+  }
+
+  .input-group__required {
+    @apply ml-1 text-rose-600;
+  }
+
+  .input-group__field {
+    @apply relative;
+  }
+
+  .input-group__icon {
+    @apply pointer-events-none absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center text-gray-400;
+  }
+
+  .input-group--icon-right .input-group__icon {
+    @apply left-auto right-0;
+  }
+
+  .input-group__icon .icon {
+    @apply h-4 w-4;
+  }
+
+  .input-group--icon-left .input__control {
+    @apply pl-10;
+  }
+
+  .input-group--icon-right .input__control {
+    @apply pr-10;
+  }
+
+  .input-group__help {
+    @apply text-xs text-gray-500;
+  }
+
+  .input-group__error {
+    @apply text-xs text-rose-600;
+  }
+}

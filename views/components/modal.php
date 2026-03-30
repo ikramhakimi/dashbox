@@ -58,7 +58,7 @@ $root_attributes['aria-describedby']= $desc_id !== '' ? $desc_id : null;
 ?>
 <div<?= $render_attributes($root_attributes) ?>>
   <button type="button" class="modal__backdrop" data-modal-close aria-label="Close modal"></button>
-  <div class="modal__panel" role="dialog" aria-modal="true">
+  <div class="modal__panel" role="dialog" aria-modal="true" tabindex="-1">
     <div class="modal__header">
       <div class="modal__title-group">
         <h3 id="<?= e($title_id) ?>" class="modal__title"><?= e($title) ?></h3>

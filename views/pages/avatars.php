@@ -100,8 +100,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Avatar</h1>
@@ -110,35 +110,34 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Avatar component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Size Variations',
-          'subtitle'    => 'Small, default, and large avatar scales.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $avatar_sizes_content,
-        ]);
+      <section class="divide-y divide-gray-100" aria-label="Avatar component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Size Variations</h2>
+            <p class="mt-1 text-sm text-gray-500">Small, default, and large avatar scales.</p>
+          </header>
+          <?= $avatar_sizes_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Initials Tones',
-          'subtitle'    => 'Automatic background and text color combinations for fallback initials.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $avatar_fallback_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Initials Tones</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Automatic background and text color combinations for fallback initials.
+            </p>
+          </header>
+          <?= $avatar_fallback_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Avatar Group',
-          'subtitle'    => 'Overlapping stack pattern for team and assignee lists.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $avatar_group_content,
-        ]);
-        ?>
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Avatar Group</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Overlapping stack pattern for team and assignee lists.
+            </p>
+          </header>
+          <?= $avatar_group_content ?>
+        </article>
       </section>
     </section>
   </main>

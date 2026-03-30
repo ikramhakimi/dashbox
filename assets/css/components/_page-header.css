@@ -1,22 +1,24 @@
 @layer components {
   .page--header {
-    @apply flex flex-nowrap items-end gap-4 border-b border-gray-200 pb-5;
+    @apply flex flex-nowrap items-end gap-4;
   }
 
   .page__header-main {
-    @apply min-w-0 flex-1;
+    @apply min-w-0 flex-1 space-y-5;
   }
 
   .page__header-breadcrumb {
-    @apply mb-2;
+    margin: 0;
   }
 
   .page__header-title {
-    @apply text-2xl font-semibold tracking-tight text-gray-900;
+    @apply text-3xl font-semibold tracking-tight text-gray-900;
+    margin: 0;
   }
 
   .page__header-description {
-    @apply mt-1 text-sm text-gray-500;
+    @apply text-gray-500;
+    margin: 0;
   }
 
   .page__header-actions {

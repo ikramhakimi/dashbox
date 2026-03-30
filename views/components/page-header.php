@@ -47,7 +47,7 @@ $root_attributes['aria-label']= isset($attributes['aria-label']) ? (string) $att
 
     <h1 class="page__header-title"><?= e($title) ?></h1>
 
-    <?php if ($description !== ''): ?>
+  <?php if ($description !== ''): ?>
       <p class="page__header-description"><?= e($description) ?></p>
     <?php endif; ?>
   </div>

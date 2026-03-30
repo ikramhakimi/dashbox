@@ -93,8 +93,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Breadcrumb UI Library</h1>
@@ -103,17 +103,16 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Breadcrumb component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Breadcrumb Variations',
-          'subtitle'    => 'Foundation breadcrumb styles for app navigation context.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $breadcrumb_content,
-        ]);
-        ?>
+      <section class="divide-y divide-gray-100" aria-label="Breadcrumb component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Breadcrumb Variations</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Foundation breadcrumb styles for app navigation context.
+            </p>
+          </header>
+          <?= $breadcrumb_content ?>
+        </article>
       </section>
     </section>
   </main>

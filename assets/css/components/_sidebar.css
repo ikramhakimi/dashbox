@@ -1,5 +1,9 @@
 @layer components {
   .sidebar {
-    @apply bg-transparent;
+    @apply border-r border-gray-200 bg-gray-100;
+  }
+
+  .content {
+    @apply lg:ml-72;
   }
 }

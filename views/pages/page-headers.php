@@ -39,13 +39,12 @@ ob_start();
     ['label' => 'Page Header'],
   ],
   'actions' => [
-    ['label' => 'Cancel', 'variant' => 'neutral', 'size' => 'sm'],
+    ['label' => 'Cancel', 'size' => 'sm'],
     ['label' => 'Save Changes', 'variant' => 'primary', 'size' => 'sm'],
   ],
   'actions_html' => $capture('dropdown', [
     'trigger_label'     => 'More',
     'trigger_size'      => 'sm',
-    'trigger_variant'   => 'ghost',
     'items'             => [
       ['label' => 'Duplicate', 'href' => '#'],
       ['label' => 'Archive', 'href' => '#'],
@@ -66,8 +65,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Page Header</h1>
@@ -76,17 +75,16 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Page header component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Main + Actions Layout',
-          'subtitle'    => 'Explicit demo: actions stay bottom-right while main section grows.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $page_header_layout_content,
-        ]);
-        ?>
+      <section class="divide-y divide-gray-100" aria-label="Page header component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Main + Actions Layout</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Explicit demo: actions stay bottom-right while main section grows.
+            </p>
+          </header>
+          <?= $page_header_layout_content ?>
+        </article>
       </section>
     </section>
   </main>

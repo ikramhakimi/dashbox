@@ -1,66 +1,70 @@
 @layer components {
   .button {
-    @apply inline-flex items-center justify-center gap-2 rounded-md border border-gray-200 bg-white px-4 py-3.5 text-sm font-semibold text-gray-700 transition-all duration-200;
+    @apply inline-flex h-9 items-center justify-center gap-2 rounded-md border border-gray-400/70 px-4 py-0 font-medium text-gray-700 shadow-sm transition-all duration-200;
     @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2;
-    --button-bg: theme('colors.white');
-    --button-bg-hover: theme('colors.gray.50');
-    --button-text: theme('colors.gray.700');
-    --button-border: theme('colors.gray.200');
-    background-color: var(--button-bg);
+    --button-bg-top: theme("colors.white");
+    --button-bg-bottom: theme("colors.gray.100");
+    --button-bg-top-hover: theme("colors.white");
+    --button-bg-bottom-hover: theme("colors.gray.200");
+    --button-text: theme("colors.gray.700");
+    --button-border: rgb(156 163 175 / 0.6);
+    font-size: inherit;
+    background-image: linear-gradient(
+      to bottom,
+      var(--button-bg-top),
+      var(--button-bg-bottom)
+    );
+    background-color: var(--button-bg-bottom);
     color: var(--button-text);
     border-color: var(--button-border);
   }
 
   .button:hover {
-    background-color: var(--button-bg-hover);
-  }
-
-  .button--sm {
-    @apply px-3 py-2 text-xs;
+    background-image: linear-gradient(
+      to bottom,
+      var(--button-bg-top-hover),
+      var(--button-bg-bottom-hover)
+    );
+    background-color: var(--button-bg-bottom-hover);
   }
 
   .button--lg {
-    @apply px-5 py-4 text-base;
+    @apply h-12 px-5 text-base;
+  }
+
+  .button--sm {
+    @apply h-7 rounded px-3;
+    font-size: 12px;
   }
 
   .button--primary {
-    --button-bg: theme('colors.gray.900');
-    --button-bg-hover: theme('colors.black');
-    --button-text: theme('colors.white');
-    --button-border: theme('colors.gray.900');
-  }
-
-  .button--neutral {
-    --button-bg: theme('colors.white');
-    --button-bg-hover: theme('colors.gray.50');
-    --button-text: theme('colors.gray.700');
-    --button-border: theme('colors.gray.200');
-  }
-
-  .button--ghost {
-    --button-bg: theme('colors.gray.100');
-    --button-bg-hover: theme('colors.gray.200');
-    --button-text: theme('colors.gray.700');
-    --button-border: theme('colors.gray.200');
+    --button-bg-top: theme("colors.gray.700");
+    --button-bg-bottom: theme("colors.gray.800");
+    --button-bg-top-hover: theme("colors.gray.800");
+    --button-bg-bottom-hover: theme("colors.gray.900");
+    --button-text: theme("colors.white");
+    --button-border: theme("colors.gray.900");
   }
 
   .button--danger {
-    --button-bg: theme('colors.rose.50');
-    --button-bg-hover: theme('colors.rose.100');
-    --button-text: theme('colors.rose.700');
-    --button-border: theme('colors.rose.300');
+    --button-bg-top: theme("colors.rose.50");
+    --button-bg-bottom: theme("colors.rose.100");
+    --button-bg-top-hover: theme("colors.rose.100");
+    --button-bg-bottom-hover: theme("colors.rose.200");
+    --button-text: theme("colors.rose.700");
+    --button-border: theme("colors.rose.300");
   }
 
   .button--icon-only {
-    @apply h-10 w-10 px-0;
-  }
-
-  .button--icon-only.button--sm {
-    @apply h-8 w-8;
+    @apply h-9 w-9 px-0;
   }
 
   .button--icon-only.button--lg {
     @apply h-12 w-12;
+  }
+
+  .button--icon-only.button--sm {
+    @apply h-7 w-7 px-0;
   }
 
   .button__icon {
@@ -76,7 +80,7 @@
   }
 
   .button:disabled,
-  .button[aria-disabled='true'] {
+  .button[aria-disabled="true"] {
     @apply cursor-not-allowed opacity-60;
   }
 }

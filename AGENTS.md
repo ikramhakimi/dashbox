@@ -16,6 +16,14 @@ When making any change, prioritize maintainability, readability, accessibility, 
 - STRICT: Do not leave component variants undocumented in UI demos. Every supported variant/state must be visible in at least one demo page.
 - STRICT: "Upgrade all call sites" is mandatory. Any component API/style change must include related pages, demo blocks, wrappers, and component consumers in the same change.
 - STRICT: Do not close a task after updating component code only. The matching demo pages and navigation entry points must be updated too.
+- STRICT: For page/template generation requests, do not modify reusable core components unless the user explicitly asks to change that component.
+- STRICT: Never change shared component APIs to satisfy a single page use-case. Solve at page composition level first.
+- STRICT: If a core component change seems necessary, pause and get explicit approval before editing the component file.
+- STRICT: If a form inside `.card` uses `.form-section`, do not use `space-y-*` wrappers on the card/form stack; rely on `.form-section` padding/dividers for vertical rhythm.
+- STRICT: Inside `.form-section--disabled`, form fields must be wrapped with `.form-section__grid` (do not use ad-hoc spacing wrappers).
+- STRICT: In form action groups, primary CTA ordering must indicate dominance:
+  - If actions are left-aligned, place primary button as the left-most action.
+  - If actions are right-aligned, place primary button as the right-most action.
 
 ## Code quality standard
 - Write code suitable for a senior-level production codebase.
@@ -32,7 +40,8 @@ When making any change, prioritize maintainability, readability, accessibility, 
 - Reuse shared helpers, components, constants, and types before creating new ones.
 - Keep business logic out of UI templates/components where possible.
 - STRICT: If a card section contains a table, use `card-table` as the card wrapper. Do not place tables inside `card-module`.
-- If current `card-table` does not support the required table scenario, extend/refactor `card-table` first, then consume it.
+- If current `card-table` does not support the required table scenario, implement the page using composition around `card-table` first.
+- Only extend/refactor `card-table` when explicitly requested by the user.
 - Separate concerns clearly:
   - UI/presentation
   - state/data handling
@@ -46,6 +55,7 @@ When making any change, prioritize maintainability, readability, accessibility, 
 - Do not use tabs.
 - Never mix tabs and spaces.
 - Indentation must be consistent across the entire file.
+- Align `=` for related assignment blocks in both PHP and JS when declarations are grouped together.
 
 ## CSS Naming Convention (BEM)
 
@@ -57,6 +67,10 @@ BEM is mandatory for all reusable UI components and must remain consistent acros
 - Do not add unnecessary CSS rules. Prefer utility classes and existing component styles first.
 - Remove obsolete CSS immediately when the related markup/layout changes.
 - Avoid broad selectors that affect unrelated elements; scope styles to the component block only.
+- CSS source files must be human-readable: multi-line blocks, one selector block per section, and 2-space indentation.
+- Do not author compressed one-line CSS in source files under `assets/css/**`; minification is only for `assets/build/app.css`.
+- Keep declarations grouped by purpose (base, state, modifier, responsive) and ordered consistently within each component file.
+- When formatting CSS, prefer project-wide consistent formatting (Prettier) before finalizing.
 - For reusable status/pill UI, use a generic `badge.php` component and express variants via modifiers (e.g. `badge--positive`, `badge--negative`, `badge--neutral`).
 - Tailwind styles must be authored in `assets/css/app.css` using `@tailwind base;`, `@tailwind components;`, and `@tailwind utilities;`.
 - Place reusable utility abstractions inside `@layer components` and keep them minimal.

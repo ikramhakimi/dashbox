@@ -48,7 +48,7 @@ ob_start();
   'title'       => 'No results for "enterprise plan"',
   'description' => 'Try another keyword, remove filters, or search all statuses.',
   'actions'     => [
-    ['label' => 'Clear Filters', 'variant' => 'neutral'],
+    ['label' => 'Clear Filters'],
     ['label' => 'Search Again', 'variant' => 'primary'],
   ],
 ]) ?>
@@ -63,7 +63,7 @@ ob_start();
   'description'  => 'The request timed out. Retry now or review API configuration before trying again.',
   'actions'      => [
     ['label' => 'Retry', 'variant' => 'primary'],
-    ['label' => 'Open Settings', 'variant' => 'ghost'],
+    ['label' => 'Open Settings'],
   ],
   'attributes'   => [
     'class' => 'bg-gray-50',
@@ -80,8 +80,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Empty State</h1>
@@ -90,35 +90,30 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Empty state component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Default Empty State',
-          'subtitle'    => 'Primary CTA for first-time setup or onboarding flow.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $empty_state_default_content,
-        ]);
+      <section class="divide-y divide-gray-100" aria-label="Empty state component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Default Empty State</h2>
+            <p class="mt-1 text-sm text-gray-500">Primary CTA for first-time setup or onboarding flow.</p>
+          </header>
+          <?= $empty_state_default_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Search Empty State',
-          'subtitle'    => 'Use descriptive copy with recovery actions.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $empty_state_search_content,
-        ]);
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Search Empty State</h2>
+            <p class="mt-1 text-sm text-gray-500">Use descriptive copy with recovery actions.</p>
+          </header>
+          <?= $empty_state_search_content ?>
+        </article>
 
-        component('card-module', [
-          'title'       => 'Error Recovery Empty State',
-          'subtitle'    => 'Guides users when loading fails and offers next steps.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $empty_state_error_content,
-        ]);
-        ?>
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Error Recovery Empty State</h2>
+            <p class="mt-1 text-sm text-gray-500">Guides users when loading fails and offers next steps.</p>
+          </header>
+          <?= $empty_state_error_content ?>
+        </article>
       </section>
     </section>
   </main>

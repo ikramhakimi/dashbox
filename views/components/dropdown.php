@@ -12,6 +12,7 @@ $align             = isset($align) ? (string) $align : 'right';
 $items             = isset($items) && is_array($items) ? $items : [];
 $open              = !empty($open);
 $dropdown_id       = isset($dropdown_id) && $dropdown_id !== '' ? (string) $dropdown_id : 'dropdown-' . uniqid();
+$trigger_id        = $dropdown_id . '-trigger';
 $panel_id          = $dropdown_id . '-panel';
 $attributes        = isset($attributes) && is_array($attributes) ? $attributes : [];
 
@@ -42,7 +43,7 @@ if ($open) {
   $root_classes[] = 'dropdown--open';
 }
 
-$allowed_trigger_variants = ['primary', 'neutral', 'ghost', 'danger'];
+$allowed_trigger_variants = ['primary', 'neutral', 'danger'];
 if (!in_array($trigger_variant, $allowed_trigger_variants, true)) {
   $trigger_variant = 'neutral';
 }
@@ -108,13 +109,16 @@ $trigger_classes = [
 
 if ($is_link_trigger) {
   $trigger_classes[] = 'dropdown__trigger--link';
+  if ($trigger_size === 'sm') {
+    $trigger_classes[] = 'dropdown__trigger--link-sm';
+  } elseif ($trigger_size === 'lg') {
+    $trigger_classes[] = 'dropdown__trigger--link-lg';
+  }
 } else {
   $trigger_classes[] = 'button';
   $trigger_classes[] = 'button--' . $trigger_variant;
 
-  if ($trigger_size === 'sm') {
-    $trigger_classes[] = 'button--sm';
-  } elseif ($trigger_size === 'lg') {
+  if ($trigger_size === 'lg') {
     $trigger_classes[] = 'button--lg';
   }
 
@@ -124,6 +128,7 @@ if ($is_link_trigger) {
 }
 
 $trigger_attributes = [
+  'id'             => $trigger_id,
   'class'          => implode(' ', $trigger_classes),
   'data-dropdown-trigger' => true,
   'aria-haspopup'  => 'menu',
@@ -153,7 +158,13 @@ if ($trigger_tag === 'button') {
     <?php endif; ?>
   </<?= e($trigger_tag) ?>>
 
-  <div id="<?= e($panel_id) ?>" class="dropdown__panel<?= !$open ? ' hidden' : '' ?>" role="menu" data-dropdown-panel>
+  <div
+    id="<?= e($panel_id) ?>"
+    class="dropdown__panel<?= !$open ? ' hidden' : '' ?>"
+    role="menu"
+    aria-labelledby="<?= e($trigger_id) ?>"
+    data-dropdown-panel
+  >
     <?php foreach ($items as $item): ?>
       <?php
       $item_type = isset($item['type']) ? (string) $item['type'] : 'item';
@@ -185,6 +196,7 @@ if ($trigger_tag === 'button') {
         href="<?= e($disabled ? '#' : $item_href) ?>"
         class="<?= e(implode(' ', $item_classes)) ?>"
         role="menuitem"
+        data-dropdown-item
         <?= $disabled ? 'aria-disabled="true" tabindex="-1"' : '' ?>
       >
         <?php if ($item_icon !== ''): ?>

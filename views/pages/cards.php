@@ -99,8 +99,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Card UI Library</h1>
@@ -109,10 +109,10 @@ layout('layout-start', [
         </p>
       </header>
 
-      <div class="space-y-6">
-        <section aria-label="Card widget showcase">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Widget</h2>
-          <p class="mb-4 text-sm text-gray-500">Compact metric cards used for quick KPI scanning.</p>
+      <section class="divide-y divide-gray-100" aria-label="Card component showcase">
+        <section class="py-7 first:pt-0 last:pb-0" aria-label="Card widget showcase">
+          <h2 class="text-lg font-semibold text-gray-900">Card Widget</h2>
+          <p class="mt-1 mb-4 text-sm text-gray-500">Compact metric cards used for quick KPI scanning.</p>
           <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <?php foreach ($widget_samples as $widget): ?>
               <?php component('card-widget', $widget); ?>
@@ -120,11 +120,11 @@ layout('layout-start', [
           </div>
         </section>
 
-        <section aria-label="Card module showcase">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Module</h2>
-          <p class="mb-4 text-sm text-gray-500">Structured module card that combines summary and grouped content.</p>
+        <section class="py-7 first:pt-0 last:pb-0" aria-label="Card module showcase">
+          <h2 class="text-lg font-semibold text-gray-900">Card Module</h2>
+          <p class="mt-1 mb-4 text-sm text-gray-500">Structured module card that combines summary and grouped content.</p>
           <?php
-          component('card-module', [
+          component('card', [
             'title'       => 'Card Module Demo',
             'subtitle'    => 'Module card with inline widgets and footer.',
             'show_graph'  => false,
@@ -135,21 +135,26 @@ layout('layout-start', [
           ?>
         </section>
 
-        <section aria-label="Card table showcase">
-          <h2 class="mb-3 text-lg font-semibold text-gray-900">Card Table</h2>
-          <p class="mb-4 text-sm text-gray-500">Data-heavy card pattern for operational table views.</p>
+        <section class="py-7 first:pt-0 last:pb-0" aria-label="Card table showcase">
+          <h2 class="text-lg font-semibold text-gray-900">Card Table</h2>
+          <p class="mt-1 mb-4 text-sm text-gray-500">Data-heavy card pattern for operational table views.</p>
           <?php
-          component('card-table', [
-            'title'         => 'Bookings',
-            'subtitle'      => 'Data-heavy card pattern for operational table views.',
-            'record_label'  => 'bookings',
-            'table_headers' => $cards_booking_table['headers'],
-            'table_rows'    => $cards_booking_table['rows'],
-            'total_records' => $cards_booking_table['total'],
+          component('table', [
+            'headers' => $cards_booking_table['headers'],
+            'rows'    => $cards_booking_table['rows'],
+          ]);
+
+          component('pagination', [
+            'current_page' => 1,
+            'total_pages'  => 1,
+            'show_info'    => true,
+            'total_items'  => $cards_booking_table['total'],
+            'per_page'     => 10,
+            'base_url'     => asset('/cards?page=%d'),
           ]);
           ?>
         </section>
-      </div>
+      </section>
     </section>
   </main>
 </div>

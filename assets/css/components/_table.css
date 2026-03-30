@@ -3,6 +3,24 @@
     @apply w-full;
   }
 
+  .card .table__container {
+    @apply -mx-6;
+    width: calc(100% + 3rem);
+    @apply border-b border-gray-100;
+  }
+
+  .card .table__container:first-child {
+    @apply -mt-6 overflow-hidden rounded-t-md;
+  }
+
+  .card .table__container .table__cell:first-child {
+    @apply pl-6;
+  }
+
+  .card .table__container .table__cell:last-child {
+    @apply pr-6;
+  }
+
   .table {
     @apply w-full table-auto border-collapse text-left;
   }
@@ -19,16 +37,32 @@
     @apply border-t border-gray-100;
   }
 
+  .table__body .table__row {
+    @apply transition-colors duration-150;
+  }
+
+  .table__body .table__row:hover {
+    @apply bg-gray-50;
+  }
+
   .table__row--head {
     @apply border-t-0;
   }
 
   .table__cell {
-    @apply p-4 align-top text-sm text-gray-700;
+    @apply p-5 align-middle text-gray-700;
   }
 
   .table__cell--head {
-    @apply py-3 text-xs font-semibold uppercase tracking-wide text-gray-500;
+    @apply py-3 text-xs font-medium tracking-wide text-gray-500;
+  }
+
+  .table__head .table__cell--head:first-child {
+    @apply rounded-tl;
+  }
+
+  .table__head .table__cell--head:last-child {
+    @apply rounded-tr;
   }
 
   .table__cell--empty {
@@ -40,23 +74,23 @@
   }
 
   .table__empty-deco {
-    @apply text-sm font-medium tracking-tight text-gray-400;
+    @apply font-medium tracking-tight text-gray-400;
   }
 
   .table__empty-title {
-    @apply text-sm font-semibold text-gray-900;
+    @apply font-semibold text-gray-900;
   }
 
   .table__empty-hint {
-    @apply text-sm text-gray-500;
+    @apply text-gray-500;
   }
 
   .table__cell:first-child {
-    @apply pl-6;
+    @apply pl-4;
   }
 
   .table__cell:last-child {
-    @apply pr-6;
+    @apply pr-4;
   }
 
   .table__cell--right {
@@ -76,11 +110,11 @@
   }
 
   .table__secondary {
-    @apply mt-1 text-xs text-gray-500;
+    @apply mt-1 text-gray-500;
   }
 
   .table__tertiary {
-    @apply mt-1 text-xs text-gray-400;
+    @apply mt-1 text-gray-400;
   }
 
   .table--zebra .table__body .table__row:nth-child(even) {
@@ -96,19 +130,11 @@
   }
 
   .table__avatar {
-    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-100 text-xs font-semibold text-gray-700;
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-100 font-semibold text-gray-700;
   }
 
   .table__badge-pair {
     @apply flex flex-wrap items-center justify-end gap-1.5;
-  }
-
-  .table__badge-cell {
-    @apply flex justify-end;
-  }
-
-  .table__badge-cell .badge {
-    @apply px-2 py-0.5 text-[11px];
   }
 
   .table__actions {

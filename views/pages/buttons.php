@@ -36,8 +36,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Button UI Library</h1>
@@ -46,137 +46,126 @@ layout('layout-start', [
         </p>
       </header>
 
-      <div class="space-y-6" aria-label="Button component showcase">
+      <section class="divide-y divide-gray-100" aria-label="Button component showcase">
         <section>
-          <?php
-          component('card-module', [
-            'title'       => 'Variants',
-            'subtitle'    => 'Primary, neutral, ghost, and danger buttons.',
-            'show_graph'  => false,
-            'show_footer' => false,
-            'show_menu'   => false,
-            'content'     => '
-              <div class="grid gap-4 md:grid-cols-2">
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Primary</p>
-                  <div class="flex flex-wrap gap-2">
-                    ' . $capture_button(['label' => 'Primary', 'variant' => 'primary']) . '
-                    ' . $capture_button(['label' => 'Primary Link', 'variant' => 'primary', 'href' => '#']) . '
-                  </div>
+          <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+            <header>
+              <h2 class="text-lg font-semibold text-gray-900">Variants</h2>
+              <p class="mt-1 text-sm text-gray-500">Primary, default, and danger buttons.</p>
+            </header>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Primary</p>
+                <div class="flex flex-wrap gap-2">
+                  <?= $capture_button(['label' => 'Primary', 'variant' => 'primary']) ?>
+                  <?= $capture_button(['label' => 'Primary Link', 'variant' => 'primary', 'href' => '#']) ?>
                 </div>
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Neutral</p>
-                  <div class="flex flex-wrap gap-2">
-                    ' . $capture_button(['label' => 'Neutral', 'variant' => 'neutral']) . '
-                    ' . $capture_button(['label' => 'Neutral Link', 'variant' => 'neutral', 'href' => '#']) . '
-                  </div>
+              </div>
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Default</p>
+                <div class="flex flex-wrap gap-2">
+                  <?= $capture_button(['label' => 'Default']) ?>
+                  <?= $capture_button(['label' => 'Default Link', 'href' => '#']) ?>
                 </div>
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Ghost</p>
-                  <div class="flex flex-wrap gap-2">
-                    ' . $capture_button(['label' => 'Ghost', 'variant' => 'ghost']) . '
-                    ' . $capture_button(['label' => 'Ghost Link', 'variant' => 'ghost', 'href' => '#']) . '
-                  </div>
+              </div>
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Default (Alt)</p>
+                <div class="flex flex-wrap gap-2">
+                  <?= $capture_button(['label' => 'Default Alt']) ?>
+                  <?= $capture_button(['label' => 'Default Alt Link', 'href' => '#']) ?>
                 </div>
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Danger</p>
-                  <div class="flex flex-wrap gap-2">
-                    ' . $capture_button(['label' => 'Danger', 'variant' => 'danger']) . '
-                    ' . $capture_button(['label' => 'Danger Link', 'variant' => 'danger', 'href' => '#']) . '
-                  </div>
+              </div>
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Danger</p>
+                <div class="flex flex-wrap gap-2">
+                  <?= $capture_button(['label' => 'Danger', 'variant' => 'danger']) ?>
+                  <?= $capture_button(['label' => 'Danger Link', 'variant' => 'danger', 'href' => '#']) ?>
                 </div>
-              </div>',
-          ]);
-          ?>
+              </div>
+            </div>
+          </article>
         </section>
 
         <section>
-          <?php
-          component('card-module', [
-            'title'       => 'Sizes & States',
-            'subtitle'    => 'Scale and behavior examples for different interaction contexts.',
-            'show_graph'  => false,
-            'show_footer' => false,
-            'show_menu'   => false,
-            'content'     => '
-              <div class="grid gap-4 md:grid-cols-2">
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Sizes</p>
-                  <div class="flex flex-wrap items-center gap-2">
-                    ' . $capture_button(['label' => 'Small', 'variant' => 'primary', 'size' => 'sm']) . '
-                    ' . $capture_button(['label' => 'Default', 'variant' => 'primary']) . '
-                    ' . $capture_button(['label' => 'Large', 'variant' => 'primary', 'size' => 'lg']) . '
-                  </div>
+          <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+            <header>
+              <h2 class="text-lg font-semibold text-gray-900">Sizes & States</h2>
+              <p class="mt-1 text-sm text-gray-500">
+                Scale and behavior examples for different interaction contexts.
+              </p>
+            </header>
+            <div class="grid gap-4 md:grid-cols-2">
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Sizes</p>
+                <div class="flex flex-wrap items-center gap-2">
+                  <?= $capture_button(['label' => 'Default', 'variant' => 'primary']) ?>
+                  <?= $capture_button(['label' => 'Large', 'variant' => 'primary', 'size' => 'lg']) ?>
                 </div>
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">States</p>
-                  <div class="flex flex-wrap items-center gap-2">
-                    ' . $capture_button(['label' => 'Enabled', 'variant' => 'neutral']) . '
-                    ' . $capture_button(['label' => 'Disabled', 'variant' => 'neutral', 'disabled' => true]) . '
-                    ' . $capture_button(['label' => 'Disabled Link', 'variant' => 'ghost', 'href' => '#', 'disabled' => true]) . '
-                  </div>
+              </div>
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">States</p>
+                <div class="flex flex-wrap items-center gap-2">
+                  <?= $capture_button(['label' => 'Enabled']) ?>
+                  <?= $capture_button(['label' => 'Disabled', 'disabled' => true]) ?>
+                  <?= $capture_button(['label' => 'Disabled Link', 'href' => '#', 'disabled' => true]) ?>
                 </div>
-              </div>',
-          ]);
-          ?>
+              </div>
+            </div>
+          </article>
         </section>
 
         <section>
-          <?php
-          component('card-module', [
-            'title'       => 'Icon Variations',
-            'subtitle'    => 'Icon + text, text + icon, and icon-only button patterns.',
-            'show_graph'  => false,
-            'show_footer' => false,
-            'show_menu'   => false,
-            'content'     => '
-              <div class="grid gap-4 md:grid-cols-3">
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Icon + Text</p>
-                  <div class="flex flex-wrap items-center gap-2">
-                    ' . $capture_button([
-                      'label'         => 'Add New',
-                      'variant'       => 'primary',
-                      'icon_name'     => 'plus',
-                      'icon_position' => 'left',
-                    ]) . '
-                  </div>
+          <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+            <header>
+              <h2 class="text-lg font-semibold text-gray-900">Icon Variations</h2>
+              <p class="mt-1 text-sm text-gray-500">
+                Icon + text, text + icon, and icon-only button patterns.
+              </p>
+            </header>
+            <div class="grid gap-4 md:grid-cols-3">
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Icon + Text</p>
+                <div class="flex flex-wrap items-center gap-2">
+                  <?= $capture_button([
+                    'label'         => 'Add New',
+                    'variant'       => 'primary',
+                    'icon_name'     => 'plus',
+                    'icon_position' => 'left',
+                  ]) ?>
                 </div>
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Text + Icon</p>
-                  <div class="flex flex-wrap items-center gap-2">
-                    ' . $capture_button([
-                      'label'         => 'View Team',
-                      'variant'       => 'neutral',
-                      'icon_name'     => 'users',
-                      'icon_position' => 'right',
-                    ]) . '
-                  </div>
+              </div>
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Text + Icon</p>
+                <div class="flex flex-wrap items-center gap-2">
+                  <?= $capture_button([
+                    'label'         => 'View Team',
+                    'icon_name'     => 'users',
+                    'icon_position' => 'right',
+                  ]) ?>
                 </div>
-                <div class="border border-gray-100 rounded-lg p-5">
-                  <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Icon Only</p>
-                  <div class="flex flex-wrap items-center gap-2">
-                    ' . $capture_button([
-                      'label'      => 'Open Tickets',
-                      'aria_label' => 'Open Tickets',
-                      'variant'    => 'ghost',
-                      'icon_name'  => 'ticket',
-                      'icon_only'  => true,
-                    ]) . '
-                    ' . $capture_button([
-                      'label'      => 'View Metrics',
-                      'aria_label' => 'View Metrics',
-                      'variant'    => 'primary',
-                      'icon_name'  => 'activity',
-                      'icon_only'  => true,
-                    ]) . '
-                  </div>
+              </div>
+              <div class="py-4">
+                <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Icon Only</p>
+                <div class="flex flex-wrap items-center gap-2">
+                  <?= $capture_button([
+                    'label'      => 'Open Tickets',
+                    'aria_label' => 'Open Tickets',
+                    'icon_name'  => 'ticket',
+                    'icon_only'  => true,
+                  ]) ?>
+                  <?= $capture_button([
+                    'label'      => 'View Metrics',
+                    'aria_label' => 'View Metrics',
+                    'variant'    => 'primary',
+                    'icon_name'  => 'activity',
+                    'icon_only'  => true,
+                  ]) ?>
                 </div>
-              </div>',
-          ]);
-          ?>
+              </div>
+            </div>
+          </article>
         </section>
-      </div>
+      </section>
     </section>
   </main>
 </div>

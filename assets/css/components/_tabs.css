@@ -2,40 +2,35 @@
   .tabs {
     @apply w-full;
   }
-
   .tabs__list {
-    @apply inline-flex h-[46px] items-center gap-0.5 rounded-md bg-gray-100 p-0.5;
+    @apply inline-flex h-9 items-center gap-0.5 rounded-md bg-gray-100;
+    box-shadow: inset 0 0 0 1px rgb(209 213 219 / 1);
   }
-
   .tabs__item {
     @apply shrink-0;
   }
-
   .tabs__tab {
-    @apply inline-flex h-[42px] items-center justify-center gap-2 rounded-[4px] px-4 text-sm font-semibold leading-4 text-gray-600 transition;
+    @apply inline-flex h-9 items-center justify-center gap-2 rounded-md border border-transparent px-4 font-medium leading-4 text-gray-600 transition;
   }
-
   .tabs__tab:hover {
-    @apply bg-white text-gray-900;
+    @apply text-gray-900;
   }
-
+  .tabs__tab:focus-visible {
+    @apply outline-none ring-2 ring-gray-300 ring-offset-1;
+  }
   .tabs__tab--active {
-    @apply bg-white text-gray-900;
+    @apply border border-gray-400/70 bg-gradient-to-b from-white to-gray-100 text-gray-700 shadow-sm;
   }
-
   .tabs__tab--disabled {
     @apply pointer-events-none opacity-50;
   }
-
   .tabs__icon .icon {
     @apply h-4 w-4;
   }
-
-  .tabs--compact .tabs__list {
-    @apply h-[34px] gap-0.5 p-0.5;
+  .tabs--lg .tabs__list {
+    @apply h-12;
   }
-
-  .tabs--compact .tabs__tab {
-    @apply h-[30px] rounded-[4px] px-2.5 text-xs leading-4;
+  .tabs--lg .tabs__tab {
+    @apply h-12 rounded-md px-5 text-base;
   }
 }

@@ -30,8 +30,8 @@ $capture = static function (array $props): string {
 
 ob_start();
 ?>
-<div class="space-y-4">
-  <div class="border border-gray-100 rounded-lg p-5">
+<div class="divide-y divide-gray-100">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Soft Variants</p>
     <div class="space-y-3">
       <?= $capture([
@@ -55,9 +55,9 @@ ob_start();
         'description' => 'Two-factor authentication is disabled. Enable it to secure your account.',
       ]) ?>
     </div>
-  </div>
+  </section>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">With / Without Icon</p>
     <div class="space-y-3">
       <?= $capture([
@@ -73,9 +73,9 @@ ob_start();
         'show_icon'   => false,
       ]) ?>
     </div>
-  </div>
+  </section>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Dismissible</p>
     <div class="space-y-3">
       <?= $capture([
@@ -92,9 +92,9 @@ ob_start();
         'show_icon'   => false,
       ]) ?>
     </div>
-  </div>
+  </section>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Inline Alert</p>
     <div class="space-y-3">
       <?= $capture([
@@ -111,9 +111,9 @@ ob_start();
         'dismissible' => true,
       ]) ?>
     </div>
-  </div>
+  </section>
 
-  <div class="border border-gray-100 rounded-lg p-5">
+  <section class="py-5 first:pt-0 last:pb-0">
     <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Alert With Link</p>
     <div class="space-y-3">
       <?= $capture([
@@ -132,7 +132,7 @@ ob_start();
         'inline'      => true,
       ]) ?>
     </div>
-  </div>
+  </section>
 </div>
 <?php
 $alert_content = (string) ob_get_clean();
@@ -147,8 +147,8 @@ layout('layout-start', [
 <div class="flex min-h-screen">
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
-  <main class="flex-1">
-    <section class="mx-auto max-w-7xl px-6 py-8 lg:px-10">
+  <main class="content flex-1 p-4 lg:p-10">
+    <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
         <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
         <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Alert UI Library</h1>
@@ -157,17 +157,16 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="space-y-7" aria-label="Alert component showcase">
-        <?php
-        component('card-module', [
-          'title'       => 'Alert Variations',
-          'subtitle'    => 'Info, success, warning, and danger in soft treatment only.',
-          'show_graph'  => false,
-          'show_footer' => false,
-          'show_menu'   => false,
-          'content'     => $alert_content,
-        ]);
-        ?>
+      <section class="divide-y divide-gray-100" aria-label="Alert component showcase">
+        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+          <header>
+            <h2 class="text-lg font-semibold text-gray-900">Alert Variations</h2>
+            <p class="mt-1 text-sm text-gray-500">
+              Info, success, warning, and danger in soft treatment only.
+            </p>
+          </header>
+          <?= $alert_content ?>
+        </article>
       </section>
     </section>
   </main>
