@@ -37,18 +37,18 @@ if (defined('BASE_PATH') && BASE_PATH !== '' && strpos($normalized_path, BASE_PA
 }
 
 $has_users_menu    = false;
-$has_people_menu   = false;
 $has_products_menu = false;
+$has_orders_menu   = false;
 foreach ($menu_items as $menu_item) {
   $label = isset($menu_item['label']) ? strtolower((string) $menu_item['label']) : '';
   if ($label === 'users') {
     $has_users_menu = true;
   }
-  if ($label === 'people') {
-    $has_people_menu = true;
-  }
   if ($label === 'products') {
     $has_products_menu = true;
+  }
+  if ($label === 'orders') {
+    $has_orders_menu = true;
   }
 }
 
@@ -61,35 +61,35 @@ if (!$has_users_menu) {
   ];
 }
 
-if (!$has_people_menu) {
-  $people_active = '';
-  if ($normalized_path === '/people') {
-    $people_active = 'people';
-  } elseif ($normalized_path === '/people/team-members') {
-    $people_active = 'people-team-members';
-  } elseif ($normalized_path === '/people/roles-permissions') {
-    $people_active = 'people-roles-permissions';
-  } elseif ($normalized_path === '/people/invite') {
-    $people_active = 'people-invite';
-  }
-
-  $menu_items[] = [
-    'label'    => 'People',
-    'children' => people_sidebar_children($people_active),
-  ];
-}
-
 if (!$has_products_menu) {
   $products_active = '';
   if ($normalized_path === '/products') {
     $products_active = 'products';
-  } elseif ($normalized_path === '/product-add') {
-    $products_active = 'product-add';
+  } elseif ($normalized_path === '/products/add') {
+    $products_active = 'products-add';
   }
 
   $menu_items[] = [
     'label'    => 'Products',
     'children' => products_sidebar_children($products_active),
+  ];
+}
+
+if (!$has_orders_menu) {
+  $orders_active = '';
+  if ($normalized_path === '/orders') {
+    $orders_active = 'orders';
+  } elseif ($normalized_path === '/orders/unpaid') {
+    $orders_active = 'orders-unpaid';
+  } elseif ($normalized_path === '/orders/sessions-today') {
+    $orders_active = 'orders-session-today';
+  } elseif ($normalized_path === '/orders/session-calendar') {
+    $orders_active = 'orders-session-calendar';
+  }
+
+  $menu_items[] = [
+    'label'    => 'Orders',
+    'children' => orders_sidebar_children($orders_active),
   ];
 }
 

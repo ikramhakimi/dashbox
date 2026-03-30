@@ -1,0 +1,149 @@
+@layer components {
+  .calendar {
+    @apply space-y-6;
+  }
+
+  .calendar__header {
+    @apply flex flex-wrap items-center justify-between gap-3;
+  }
+
+  .calendar__month {
+    @apply text-xl font-semibold text-gray-900;
+  }
+
+  .calendar__legend {
+    @apply inline-flex items-center gap-2 text-sm text-gray-500;
+  }
+
+  .calendar__legend-text {
+    @apply text-sm text-gray-500;
+  }
+
+  .calendar__legend-dot {
+    @apply inline-flex h-2 w-2 rounded-full;
+  }
+
+  .calendar__legend-dot--empty {
+    @apply bg-gray-300;
+  }
+
+  .calendar__legend-dot--filled {
+    @apply ml-2 bg-gray-900;
+  }
+
+  .calendar__weekdays {
+    @apply grid grid-cols-7 divide-x divide-gray-200 overflow-hidden rounded-lg border border-gray-300;
+  }
+
+  .calendar__weekday {
+    @apply bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700;
+  }
+
+  .calendar__grid {
+    @apply grid grid-cols-7 gap-px rounded-lg border border-gray-300 bg-gray-200;
+  }
+
+  .calendar__day {
+    @apply flex min-h-[9.5rem] flex-col justify-start bg-white p-3;
+  }
+
+  .calendar__day--outside {
+    @apply bg-gray-50;
+  }
+
+  .calendar__day--today {
+    @apply relative rounded-[4px] ring-[3px] ring-gray-500;
+  }
+
+  .calendar__day--has-session {
+    @apply relative bg-sky-50 ring-1 ring-sky-200;
+  }
+
+  .calendar__day--interactive {
+    @apply flex w-full flex-col justify-start cursor-pointer appearance-none border-0 text-left no-underline transition-colors duration-150;
+  }
+
+  .calendar__day--interactive:hover {
+    @apply bg-sky-100;
+  }
+
+  .calendar__day--interactive:focus-visible {
+    @apply outline-none ring-[3px] ring-sky-400;
+  }
+
+  .calendar__day--has-session .calendar__day-number {
+    @apply text-sky-900;
+  }
+
+  .calendar__day--today.calendar__day--has-session {
+    @apply z-10 bg-amber-50 ring-[3px] ring-amber-400;
+  }
+
+  .calendar__day--today.calendar__day--has-session.calendar__day--interactive:hover {
+    @apply bg-amber-100;
+  }
+
+  .calendar__day--today.calendar__day--has-session.calendar__day--interactive:focus-visible {
+    @apply ring-amber-500;
+  }
+
+  .calendar__day--today .calendar__today {
+    @apply bg-amber-600 text-amber-50;
+  }
+
+  .calendar__day:nth-child(1) {
+    @apply rounded-tl-lg;
+  }
+
+  .calendar__day:nth-child(7) {
+    @apply rounded-tr-lg;
+  }
+
+  .calendar__day:nth-child(29) {
+    @apply rounded-bl-lg;
+  }
+
+  .calendar__day:nth-child(35) {
+    @apply rounded-br-lg;
+  }
+
+  .calendar__day-header {
+    @apply mb-2 flex items-center justify-between;
+  }
+
+  .calendar__day-number {
+    @apply text-sm font-medium text-gray-900;
+  }
+
+  .calendar__day-number--outside {
+    @apply text-gray-400;
+  }
+
+  .calendar__today {
+    @apply rounded-md bg-gray-900 px-2 py-0.5 text-xs font-medium text-white;
+  }
+
+  .calendar__empty {
+    @apply text-sm text-gray-400;
+  }
+
+  .calendar__sessions {
+    @apply space-y-2;
+  }
+
+  .calendar__session {
+    @apply rounded-md border border-sky-200 bg-white px-2 py-1.5;
+  }
+
+  .calendar__session-time {
+    @apply text-xs font-medium text-sky-900;
+  }
+
+  .calendar__session-title {
+    @apply mt-1 text-xs text-gray-500;
+  }
+
+  .calendar__more {
+    @apply text-xs font-medium text-gray-500;
+  }
+}

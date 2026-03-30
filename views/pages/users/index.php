@@ -1,6 +1,6 @@
 <?php
 
-$page_title   = 'Browse Users';
+$page_title   = 'All Users';
 $page_current = 'users';
 
 $menu_items = [
@@ -63,8 +63,18 @@ if ($current_page > $total_pages) {
 $offset         = ($current_page - 1) * $per_page;
 $users_on_page  = array_slice($users, $offset, $per_page);
 $user_table_rows = [];
+$avatar_sources = [
+  'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
+  'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
+  'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=120&q=80',
+  'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&w=120&q=80',
+  'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=120&q=80',
+  'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=120&q=80',
+  'https://images.unsplash.com/photo-1488426862026-3ee34a7d66df?auto=format&fit=crop&w=120&q=80',
+  'https://images.unsplash.com/photo-1568602471122-7832951cc4c5?auto=format&fit=crop&w=120&q=80',
+];
 
-foreach ($users_on_page as $user) {
+foreach ($users_on_page as $user_index => $user) {
   $role_mode = 'neutral';
   if ($user['role'] === 'Admin') {
     $role_mode = 'accent';
@@ -81,9 +91,12 @@ foreach ($users_on_page as $user) {
     $status_mode = 'negative';
   }
 
+  $avatar_src = $avatar_sources[$user_index % count($avatar_sources)];
+
   $avatar = $capture('avatar', [
     'name' => $user['name'],
-    'size' => 'sm',
+    'size' => 'lg',
+    'src'  => $avatar_src,
   ]);
 
   $role_badge = $capture('badge', [
@@ -96,10 +109,23 @@ foreach ($users_on_page as $user) {
     'mode'  => $status_mode,
   ]);
 
-  $action_button = $capture('button', [
-    'label'   => 'View',
-    'size'    => 'sm',
-    'href'    => '#',
+  $view_button = $capture('button', [
+    'label'      => 'View user',
+    'aria_label' => 'View ' . $user['name'],
+    'icon_name'  => 'eye',
+    'icon_only'  => true,
+    'href'       => '#',
+  ]);
+
+  $more_dropdown = $capture('dropdown', [
+    'trigger_label' => 'More',
+    'trigger_size'  => 'sm',
+    'items'         => [
+      ['label' => 'Edit Profile', 'href' => '#'],
+      ['label' => 'Reset Password', 'href' => '#'],
+      ['type' => 'divider'],
+      ['label' => 'Suspend User', 'href' => '#', 'kind' => 'danger'],
+    ],
   ]);
 
   $user_table_rows[] = [
@@ -125,7 +151,7 @@ foreach ($users_on_page as $user) {
         'value' => $user['last_active'],
       ],
       [
-        'html'  => '<div class="table__actions">' . $action_button . '</div>',
+        'html'  => '<div class="table__actions">' . $view_button . $more_dropdown . '</div>',
         'align' => 'right',
       ],
     ],
@@ -135,9 +161,23 @@ foreach ($users_on_page as $user) {
 $users_actions_left = $capture('search-input', [
   'id'          => 'users-search',
   'name'        => 'users_search',
-  'label'       => 'Search Users',
-  'size'        => 'sm',
+  'label'       => '',
   'placeholder' => 'Find by name or email',
+]);
+
+$users_filter = $capture('select', [
+  'id'      => 'users-role-filter',
+  'name'    => 'users_role_filter',
+  'label'   => '',
+  'value'   => '',
+  'options' => [
+    ['label' => 'Filter By', 'value' => '', 'disabled' => true],
+    ['label' => 'Admin', 'value' => 'admin'],
+    ['label' => 'Editor', 'value' => 'editor'],
+    ['label' => 'Viewer', 'value' => 'viewer'],
+    ['label' => 'Invited', 'value' => 'invited'],
+    ['label' => 'Inactive', 'value' => 'inactive'],
+  ],
 ]);
 
 layout('layout-start', [
@@ -150,34 +190,40 @@ layout('layout-start', [
 
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl space-y-6">
-      <header class="border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Users</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Browse All Users</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
-          Live-style user listing with search, status badges, and compact navigation.
-        </p>
-      </header>
+      <?php
+      component('page-header', [
+        'title'       => 'All Users',
+        'description' => 'Live-style user listing with search, status badges, and compact navigation.',
+      ]);
+      ?>
 
-      <section class="space-y-4" aria-label="Users table">
-        <div class="max-w-sm">
-          <?= $users_actions_left ?>
+      <section class="space-y-6" aria-label="Users table">
+        <div class="inline-flex flex-wrap items-end gap-3">
+          <div class="w-72">
+            <?= $users_actions_left ?>
+          </div>
+          <div class="w-56">
+            <?= $users_filter ?>
+          </div>
         </div>
 
-        <?php
-        component('table', [
-          'headers' => ['User', 'Role', 'Status', 'Last Active', ['label' => 'Action', 'align' => 'right']],
-          'rows'    => $user_table_rows,
-        ]);
+        <article class="card space-y-6" aria-label="Users list">
+          <?php
+          component('table', [
+            'headers' => ['User', 'Role', 'Status', 'Last Active', ['label' => '', 'align' => 'right']],
+            'rows'    => $user_table_rows,
+          ]);
 
-        component('pagination', [
-          'current_page' => $current_page,
-          'total_pages'  => max(1, (int) ceil($total_users / $per_page)),
-          'show_info'    => true,
-          'total_items'  => $total_users,
-          'per_page'     => $per_page,
-          'base_url'     => asset('/users?page=%d'),
-        ]);
-        ?>
+          component('pagination', [
+            'current_page' => $current_page,
+            'total_pages'  => max(1, (int) ceil($total_users / $per_page)),
+            'show_info'    => true,
+            'total_items'  => $total_users,
+            'per_page'     => $per_page,
+            'base_url'     => asset('/users?page=%d'),
+          ]);
+          ?>
+        </article>
       </section>
     </section>
   </main>

@@ -4,6 +4,7 @@ import { initModal } from './modal.js';
 import { initTabs } from './tabs.js';
 import { initDropzone } from './dropzone.js';
 import { initFormState } from './form-state.js';
+import { initDrawer } from './drawer.js';
 
 const initApp = () => {
   initSubmenu();
@@ -12,6 +13,7 @@ const initApp = () => {
   initTabs();
   initDropzone();
   initFormState();
+  initDrawer();
 };
 
 if (document.readyState === 'loading') {

@@ -1,7 +1,7 @@
 <?php
 
 $page_title   = 'Add Product';
-$page_current = 'product-add';
+$page_current = 'products-add';
 
 $menu_items = [
   [
@@ -37,7 +37,7 @@ layout('layout-start', [
   <?php component('sidebar', ['menu_items' => $menu_items]); ?>
 
   <main class="content flex-1 p-4 lg:p-10">
-    <section class="space-y-6">
+    <section class="mx-auto max-w-7xl space-y-6">
       <?php
       component('page-header', [
         'title'       => 'Add Product',
@@ -45,8 +45,8 @@ layout('layout-start', [
       ]);
       ?>
 
-      <article class="max-w-4xl" aria-label="Add Product form">
-        <form action="#" method="post" class="space-y-6">
+      <article class="card" aria-label="Add Product form">
+        <form action="#" method="post">
           <section class="form-section">
             <div class="form-section__grid">
               <div class="form-section__full">
@@ -99,6 +99,17 @@ layout('layout-start', [
                 'placeholder' => '50',
                 'required'    => true,
               ]);
+
+              ?>
+              <div class="form-section__full">
+                <?php
+                component('switch', [
+                  'id'      => 'product-active-package',
+                  'name'    => 'active_package',
+                  'label'   => 'Set as Active Package',
+                  'value'   => '1',
+                  'checked' => true,
+                ]);
               ?>
             </div>
           </section>
@@ -111,7 +122,7 @@ layout('layout-start', [
                   'id'          => 'product-description',
                   'name'        => 'description',
                   'label'       => 'Description',
-                  'rows'        => 4,
+                  'rows'        => 5,
                   'placeholder' => 'Summarize product value, usage context, and target users.',
                 ]);
                 ?>
@@ -139,11 +150,11 @@ layout('layout-start', [
                     'id'          => 'product-time-slots',
                     'name'        => 'time_slots',
                     'label'       => 'Time Slots',
-                    'rows'        => 3,
+                    'rows'        => 5,
                     'placeholder' => 'e.g. 09:00-11:00, 14:00-16:00',
                   ]);
                   ?>
-                  <div class="absolute bottom-2 left-2 flex flex-wrap items-center gap-1">
+                  <div class="absolute bottom-2 right-2 flex flex-wrap items-center gap-1">
                     <?php
                     component('button', [
                       'label'   => 'Copy',
@@ -216,11 +227,11 @@ layout('layout-start', [
                     'id'          => 'product-date-excludes',
                     'name'        => 'date_excludes',
                     'label'       => 'Date Excludes',
-                    'rows'        => 3,
+                    'rows'        => 5,
                     'placeholder' => 'List blocked dates or periods.',
                   ]);
                   ?>
-                  <div class="absolute bottom-2 left-2 flex flex-wrap items-center gap-1">
+                  <div class="absolute bottom-2 right-2 flex flex-wrap items-center gap-1">
                     <?php
                     component('button', [
                       'label'   => 'Copy',
@@ -245,43 +256,31 @@ layout('layout-start', [
                     'id'          => 'product-pax-price-setup',
                     'name'        => 'pax_price_setup',
                     'label'       => 'Pax Price Setup',
-                    'rows'        => 3,
+                    'rows'        => 5,
                     'placeholder' => 'Set pricing rules by pax count.',
                   ]);
                   ?>
-                <div class="absolute bottom-2 left-2 flex flex-wrap items-center gap-1">
+                <div class="absolute bottom-2 right-2 flex flex-wrap items-center gap-1">
                   <?php
-                  component('button', [
-                    'label'   => 'Copy',
-                    'size'    => 'sm',
-                    'type'    => 'button',
-                  ]);
+                    component('button', [
+                      'label'   => 'Copy',
+                      'size'    => 'sm',
+                      'type'    => 'button',
+                    ]);
 
-                  component('button', [
-                    'label'   => 'Edit',
-                    'size'    => 'sm',
-                    'type'    => 'button',
-                  ]);
-                  ?>
+                    component('button', [
+                      'label'   => 'Edit',
+                      'size'    => 'sm',
+                      'type'    => 'button',
+                    ]);
+                    ?>
                 </div>
               </div>
               </div>
             </div>
           </section>
 
-          <div class="form-actions form-actions--between form-actions--divider">
-            <div>
-              <?php
-              component('switch', [
-                'id'      => 'product-active-package',
-                'name'    => 'active_package',
-                'label'   => 'Set as Active Package',
-                'value'   => '1',
-                'checked' => true,
-              ]);
-              ?>
-            </div>
-
+          <div class="form-actions">
             <div class="form-actions__group">
               <?php
               component('button', [

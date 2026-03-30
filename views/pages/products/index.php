@@ -93,7 +93,7 @@ foreach ($products_on_page as $product) {
 
   $view_button = $capture('button', [
     'label'   => 'Edit',
-    'href'    => asset('/product-add'),
+    'href'    => asset('/products/add'),
   ]);
 
   $table_rows[] = [
@@ -154,11 +154,11 @@ layout('layout-start', [
       ]);
       ?>
 
-      <article class="card space-y-6" aria-label="Products list">
-        <div class="max-w-sm">
-          <?= $search_filter ?>
-        </div>
+      <div class="max-w-sm">
+        <?= $search_filter ?>
+      </div>
 
+      <article class="card space-y-6" aria-label="Products list">
         <?php
         component('table', [
           'headers' => [

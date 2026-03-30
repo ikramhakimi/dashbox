@@ -1,0 +1,81 @@
+@layer components {
+  .drawer {
+    @apply fixed inset-0 z-50 hidden items-stretch;
+  }
+
+  .drawer--left {
+    @apply justify-start;
+  }
+
+  .drawer--right {
+    @apply justify-end;
+  }
+
+  .drawer__backdrop {
+    @apply absolute inset-0 bg-gray-900/70 opacity-0 transition-opacity duration-300 ease-out;
+  }
+
+  .drawer__panel {
+    @apply relative z-10 flex h-full w-full flex-col bg-white transition-transform duration-300 ease-out;
+  }
+
+  .drawer--right .drawer__panel {
+    @apply ml-auto translate-x-full;
+  }
+
+  .drawer--left .drawer__panel {
+    @apply mr-auto -translate-x-full;
+  }
+
+  .drawer--open .drawer__panel {
+    @apply translate-x-0;
+  }
+
+  .drawer--open .drawer__backdrop {
+    @apply opacity-100;
+  }
+
+  .drawer--sm .drawer__panel {
+    @apply max-w-sm;
+  }
+
+  .drawer--md .drawer__panel {
+    @apply max-w-md;
+  }
+
+  .drawer--lg .drawer__panel {
+    @apply max-w-xl;
+  }
+
+  .drawer__header {
+    @apply flex items-start justify-between gap-3 border-b border-gray-200 p-6;
+  }
+
+  .drawer__title-group {
+    @apply space-y-1;
+  }
+
+  .drawer__title {
+    @apply text-base font-semibold text-gray-900;
+  }
+
+  .drawer__description {
+    @apply text-gray-500;
+  }
+
+  .drawer__close {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-gray-500 transition hover:bg-gray-100 hover:text-gray-700;
+  }
+
+  .drawer__close svg {
+    @apply h-4 w-4;
+  }
+
+  .drawer__body {
+    @apply flex-1 overflow-y-auto p-6 text-gray-700;
+  }
+
+  .drawer__footer {
+    @apply flex flex-wrap items-center justify-end gap-2 border-t border-gray-200 p-6;
+  }
+}

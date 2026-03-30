@@ -150,7 +150,7 @@ layout('layout-start', [
             'show_info'    => true,
             'total_items'  => $cards_booking_table['total'],
             'per_page'     => 10,
-            'base_url'     => asset('/cards?page=%d'),
+            'base_url'     => asset('/docs/elements/cards?page=%d'),
           ]);
           ?>
         </section>

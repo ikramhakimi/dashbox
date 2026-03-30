@@ -38,6 +38,7 @@ function ui_elements_sidebar_children(string $active_page = ''): array
     'breadcrumbs' => 'Breadcrumbs',
     'buttons'     => 'Buttons',
     'cards'       => 'Cards',
+    'drawers'     => 'Drawers',
     'dropdowns'   => 'Dropdowns',
     'empty-states'=> 'Empty States',
     'icons'       => 'Icons',
@@ -56,7 +57,7 @@ function ui_elements_sidebar_children(string $active_page = ''): array
   foreach ($items as $slug => $label) {
     $children[] = [
       'label'  => $label,
-      'href'   => asset('/' . $slug),
+      'href'   => asset('/docs/elements/' . $slug),
       'active' => $slug === $active_page,
     ];
   }
@@ -75,7 +76,7 @@ function ui_patterns_sidebar_children(string $active_page = ''): array
   foreach ($items as $slug => $label) {
     $children[] = [
       'label'  => $label,
-      'href'   => asset('/' . $slug),
+      'href'   => asset('/docs/patterns/' . $slug),
       'active' => $slug === $active_page,
     ];
   }
@@ -86,8 +87,8 @@ function ui_patterns_sidebar_children(string $active_page = ''): array
 function users_sidebar_children(string $active_page = ''): array
 {
   $items = [
-    'users'        => 'Browse All Users',
-    'users-create' => 'Create New User',
+    'users'        => 'All Users',
+    'users-create' => 'Create User',
   ];
 
   $children = [];
@@ -104,13 +105,11 @@ function users_sidebar_children(string $active_page = ''): array
   return $children;
 }
 
-function people_sidebar_children(string $active_page = ''): array
+function products_sidebar_children(string $active_page = ''): array
 {
   $items = [
-    'people'                    => ['label' => 'People Overview', 'path' => '/people'],
-    'people-team-members'       => ['label' => 'Team Members', 'path' => '/people/team-members'],
-    'people-roles-permissions'  => ['label' => 'Roles & Permissions', 'path' => '/people/roles-permissions'],
-    'people-invite'             => ['label' => 'Invite Member', 'path' => '/people/invite'],
+    'products'     => ['label' => 'All Products', 'path' => '/products'],
+    'products-add' => ['label' => 'Add Product', 'path' => '/products/add'],
   ];
 
   $children = [];
@@ -125,11 +124,13 @@ function people_sidebar_children(string $active_page = ''): array
   return $children;
 }
 
-function products_sidebar_children(string $active_page = ''): array
+function orders_sidebar_children(string $active_page = ''): array
 {
   $items = [
-    'products'    => ['label' => 'All Products', 'path' => '/products'],
-    'product-add' => ['label' => 'Add Product', 'path' => '/product-add'],
+    'orders'                 => ['label' => 'All Orders', 'path' => '/orders'],
+    'orders-unpaid'          => ['label' => 'Unpaid Orders', 'path' => '/orders/unpaid'],
+    'orders-session-today'   => ['label' => 'Session Today', 'path' => '/orders/sessions-today'],
+    'orders-session-calendar'=> ['label' => 'Session Calendar', 'path' => '/orders/session-calendar'],
   ];
 
   $children = [];

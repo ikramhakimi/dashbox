@@ -29,11 +29,17 @@ $pages_root = realpath(__DIR__ . '/views/pages');
 $is_valid_route = preg_match('/^[a-z0-9\/-]+$/i', $uri) === 1 && strpos($uri, '..') === false;
 
 if ($is_valid_route && $pages_root !== false) {
-  $candidate             = realpath($pages_root . '/' . $uri . '.php');
-  $is_in_pages_directory = is_string($candidate) && strpos($candidate, $pages_root . DIRECTORY_SEPARATOR) === 0;
+  $page_candidates = [
+    realpath($pages_root . '/' . $uri . '.php'),
+    realpath($pages_root . '/' . $uri . '/index.php'),
+  ];
 
-  if ($is_in_pages_directory && is_file($candidate)) {
-    $page = $candidate;
+  foreach ($page_candidates as $candidate) {
+    $is_in_pages_directory = is_string($candidate) && strpos($candidate, $pages_root . DIRECTORY_SEPARATOR) === 0;
+    if ($is_in_pages_directory && is_file($candidate)) {
+      $page = $candidate;
+      break;
+    }
   }
 }
 

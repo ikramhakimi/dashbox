@@ -35,7 +35,7 @@ ob_start();
     'current_page' => 3,
     'total_pages'  => 10,
     'show_pages'   => true,
-    'base_url'     => asset('/paginations?page=%d'),
+    'base_url'     => asset('/docs/elements/paginations?page=%d'),
   ]) ?>
 </div>
 <?php
@@ -51,7 +51,7 @@ ob_start();
     'show_pages'   => true,
     'total_items'  => 240,
     'per_page'     => 10,
-    'base_url'     => asset('/paginations?page=%d'),
+    'base_url'     => asset('/docs/elements/paginations?page=%d'),
   ]) ?>
 </div>
 <?php
@@ -66,7 +66,7 @@ ob_start();
     'show_info'    => true,
     'total_items'  => 0,
     'per_page'     => 10,
-    'base_url'     => asset('/paginations?page=%d'),
+    'base_url'     => asset('/docs/elements/paginations?page=%d'),
   ]) ?>
 </div>
 <?php

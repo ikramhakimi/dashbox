@@ -19,6 +19,16 @@ When making any change, prioritize maintainability, readability, accessibility, 
 - STRICT: For page/template generation requests, do not modify reusable core components unless the user explicitly asks to change that component.
 - STRICT: Never change shared component APIs to satisfy a single page use-case. Solve at page composition level first.
 - STRICT: If a core component change seems necessary, pause and get explicit approval before editing the component file.
+- STRICT: No assumption expansion. Only implement what the user requested.
+- STRICT: Before coding, lock scope explicitly:
+  - `Will change:` exact requested items only.
+  - `Will not change:` any non-requested patterns/variants/classes/behaviors.
+- STRICT: Do not introduce new UI patterns/classes/modifiers/sections unless explicitly requested.
+- STRICT: If a style/pattern is not already present in the target page or explicitly requested, do not add it.
+- STRICT: Use minimal patch mode for page updates:
+  - edit existing structure first,
+  - avoid adding new abstractions,
+  - avoid cross-page standardization unless requested.
 - STRICT: If a form inside `.card` uses `.form-section`, do not use `space-y-*` wrappers on the card/form stack; rely on `.form-section` padding/dividers for vertical rhythm.
 - STRICT: Inside `.form-section--disabled`, form fields must be wrapped with `.form-section__grid` (do not use ad-hoc spacing wrappers).
 - STRICT: In form action groups, primary CTA ordering must indicate dominance:

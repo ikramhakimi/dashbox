@@ -174,7 +174,7 @@ layout('layout-start', [
             'show_info'    => true,
             'total_items'  => $booking_table['total'],
             'per_page'     => 1,
-            'base_url'     => asset('/tables?page=%d'),
+            'base_url'     => asset('/docs/elements/tables?page=%d'),
           ]) ?>
         </article>
 
@@ -202,7 +202,7 @@ layout('layout-start', [
             'show_info'    => true,
             'total_items'  => 0,
             'per_page'     => 10,
-            'base_url'     => asset('/tables?page=%d'),
+            'base_url'     => asset('/docs/elements/tables?page=%d'),
           ]) ?>
         </article>
       </section>

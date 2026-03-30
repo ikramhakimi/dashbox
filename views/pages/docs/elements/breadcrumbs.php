@@ -37,8 +37,8 @@ ob_start();
       'separator' => 'slash',
       'items'     => [
         ['label' => 'Home', 'href' => asset('/')],
-        ['label' => 'Components', 'href' => asset('/buttons')],
-        ['label' => 'Forms', 'href' => asset('/inputs')],
+        ['label' => 'Components', 'href' => asset('/docs/elements/buttons')],
+        ['label' => 'Forms', 'href' => asset('/docs/elements/inputs')],
         ['label' => 'Breadcrumbs', 'current' => true],
       ],
     ]) ?>
