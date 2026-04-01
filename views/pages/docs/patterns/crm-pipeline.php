@@ -337,16 +337,16 @@ foreach ($lead_rows as $lead_index => $lead_row) {
     <div class="flex items-center gap-3">
       ' . $lead_avatar . '
       <div>
-        <p class="font-medium text-gray-900">' . e((string) $lead_row['lead_name']) . '</p>
-        <p class="text-gray-500">' . e((string) $lead_row['email']) . '</p>
+        <p class="type-medium text-dark">' . e((string) $lead_row['lead_name']) . '</p>
+        <p class="text-muted">' . e((string) $lead_row['email']) . '</p>
       </div>
     </div>
   ';
 
   $company_cell = '
     <div>
-      <p class="font-medium text-gray-900">' . e((string) $lead_row['company']) . '</p>
-      <p class="text-gray-500">Owner: ' . e((string) $lead_row['owner']) . '</p>
+      <p class="type-medium text-dark">' . e((string) $lead_row['company']) . '</p>
+      <p class="text-muted">Owner: ' . e((string) $lead_row['owner']) . '</p>
     </div>
   ';
 
@@ -444,8 +444,8 @@ ob_start();
 ?>
 <article class="card space-y-6" aria-label="Pipeline workspace table">
   <header class="space-y-1">
-    <h2 class="text-xl font-semibold text-gray-900">Pipeline Workspace</h2>
-    <p class="text-sm text-gray-500">Review stage, priority, and assigned owner before taking action.</p>
+    <h2 class="type-h2">Pipeline Workspace</h2>
+    <p class="type-body-muted">Review stage, priority, and assigned owner before taking action.</p>
   </header>
 
   <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">

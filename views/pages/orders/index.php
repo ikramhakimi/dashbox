@@ -63,8 +63,12 @@ if ($current_page > $total_pages) {
 $offset         = ($current_page - 1) * $per_page;
 $orders_on_page = array_slice($orders, $offset, $per_page);
 $table_rows     = [];
+$order_drawers  = [];
 
-foreach ($orders_on_page as $order) {
+foreach ($orders_on_page as $order_index => $order) {
+  $order_row_number = $offset + $order_index + 1;
+  $drawer_id        = 'orders-quick-edit-' . (string) $order_row_number;
+
   $payment_mode = 'neutral';
   if ($order['payment'] === 'Paid Full') {
     $payment_mode = 'positive';
@@ -98,7 +102,9 @@ foreach ($orders_on_page as $order) {
     'aria_label' => 'View ' . $order['order_no'],
     'icon_name'  => 'eye',
     'icon_only'  => true,
-    'href'       => '#',
+    'attributes' => [
+      'data-drawer-open' => $drawer_id,
+    ],
   ]);
 
   $more_dropdown = $capture('dropdown', [
@@ -141,6 +147,102 @@ foreach ($orders_on_page as $order) {
         'align' => 'right',
       ],
     ],
+  ];
+
+  ob_start();
+  ?>
+  <form action="#" method="post" class="space-y-5">
+    <div class="grid gap-5 sm:grid-cols-2">
+      <?php
+      component('input', [
+        'id'       => 'quick-order-no-' . (string) $order_row_number,
+        'name'     => 'order_no',
+        'label'    => 'Order No',
+        'value'    => $order['order_no'],
+        'disabled' => true,
+      ]);
+
+      component('input', [
+        'id'       => 'quick-order-session-' . (string) $order_row_number,
+        'name'     => 'session_time',
+        'label'    => 'Session',
+        'value'    => $order['session'],
+        'disabled' => true,
+      ]);
+      ?>
+    </div>
+
+    <?php
+    component('input', [
+      'id'       => 'quick-order-customer-' . (string) $order_row_number,
+      'name'     => 'customer_name',
+      'label'    => 'Customer',
+      'value'    => $order['customer'] . ' (' . $order['email'] . ')',
+      'disabled' => true,
+    ]);
+    ?>
+
+    <div class="grid gap-5 sm:grid-cols-2">
+      <?php
+      component('select', [
+        'id'      => 'quick-order-payment-' . (string) $order_row_number,
+        'name'    => 'payment_status',
+        'label'   => 'Payment',
+        'value'   => strtolower(str_replace(' ', '_', $order['payment'])),
+        'options' => [
+          ['label' => 'Paid Full', 'value' => 'paid_full'],
+          ['label' => 'Deposit', 'value' => 'deposit'],
+          ['label' => 'Unpaid', 'value' => 'unpaid'],
+        ],
+      ]);
+
+      component('select', [
+        'id'      => 'quick-order-status-' . (string) $order_row_number,
+        'name'    => 'order_status',
+        'label'   => 'Status',
+        'value'   => strtolower($order['status']),
+        'options' => [
+          ['label' => 'Pending', 'value' => 'pending'],
+          ['label' => 'Confirmed', 'value' => 'confirmed'],
+          ['label' => 'Completed', 'value' => 'completed'],
+        ],
+      ]);
+      ?>
+    </div>
+
+    <?php
+    component('textarea', [
+      'id'          => 'quick-order-note-' . (string) $order_row_number,
+      'name'        => 'order_note',
+      'label'       => 'Internal Note',
+      'rows'        => 4,
+      'placeholder' => 'Add update for operation team...',
+    ]);
+    ?>
+  </form>
+  <?php
+  $drawer_content = (string) ob_get_clean();
+
+  $drawer_footer = '
+    <div class="flex items-center gap-2">
+      ' . $capture('button', [
+        'label'      => 'Close',
+        'attributes' => ['data-drawer-close' => true],
+      ]) . '
+      ' . $capture('button', [
+        'label'   => 'Save Order',
+        'variant' => 'primary',
+        'type'    => 'submit',
+      ]) . '
+    </div>
+  ';
+
+  $order_drawers[] = [
+    'id'          => $drawer_id,
+    'title'       => 'Quick Edit • ' . $order['order_no'],
+    'description' => 'Update payment and status without leaving order list.',
+    'content'     => $drawer_content,
+    'footer'      => $drawer_footer,
   ];
 }
 
@@ -218,4 +320,17 @@ layout('layout-start', [
     </section>
   </main>
 </div>
+<?php foreach ($order_drawers as $order_drawer): ?>
+  <?php
+  component('drawer', [
+    'id'          => $order_drawer['id'],
+    'title'       => $order_drawer['title'],
+    'description' => $order_drawer['description'],
+    'content'     => $order_drawer['content'],
+    'footer'      => $order_drawer['footer'],
+    'placement'   => 'right',
+    'size'        => 'lg',
+  ]);
+  ?>
+<?php endforeach; ?>
 <?php layout('layout-end'); ?>

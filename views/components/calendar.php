@@ -68,6 +68,9 @@ $root_attributes['aria-label'] = isset($attributes['aria-label'])
       $day_drawer_id   = isset($day['drawer_id']) ? trim((string) $day['drawer_id']) : '';
       $visible_items   = isset($day['visible_items']) && is_array($day['visible_items']) ? $day['visible_items'] : [];
       $extra_sessions  = isset($day['extra_sessions']) ? (int) $day['extra_sessions'] : 0;
+      $sales_total     = isset($day['sales_total']) ? (string) $day['sales_total'] : '';
+      $total_orders    = isset($day['total_orders']) ? (int) $day['total_orders'] : 0;
+      $target_status   = isset($day['target_status']) ? (string) $day['target_status'] : 'neutral';
       $has_sessions    = $visible_items !== [] || $extra_sessions > 0;
       $is_clickable    = $has_sessions && ($day_drawer_id !== '' || $day_href !== '');
       $day_cell_class  = 'calendar__day';
@@ -112,9 +115,17 @@ $root_attributes['aria-label'] = isset($attributes['aria-label'])
           <?php endif; ?>
         </div>
 
-        <?php if ($visible_items === []): ?>
-          <p class="calendar__empty">No session</p>
-        <?php else: ?>
+        <?php if ($is_in_month && $has_sessions): ?>
+          <div class="calendar__summary">
+            <p class="calendar__sales-total"><?= e($sales_total !== '' ? $sales_total : 'RM 0') ?></p>
+            <p class="calendar__sales-meta"><?= e((string) $total_orders) ?> orders</p>
+            <span class="calendar__target calendar__target--<?= e($target_status) ?>">
+              <?= e($target_status === 'hit' ? 'Target Hit' : ($target_status === 'risk' ? 'Below Target' : 'No Target')) ?>
+            </span>
+          </div>
+        <?php endif; ?>
+
+        <?php if ($visible_items !== []): ?>
           <div class="calendar__sessions">
             <?php foreach ($visible_items as $item): ?>
               <div class="calendar__session">

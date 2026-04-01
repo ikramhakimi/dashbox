@@ -7,7 +7,7 @@
   .checkbox__label,
   .radio__label,
   .switch__label {
-    @apply relative inline-flex w-full items-start gap-2.5 text-gray-700;
+    @apply relative inline-flex w-full items-start gap-2.5 text-body;
   }
   .switch__label {
     @apply items-center;
@@ -78,7 +78,7 @@
   .checkbox__native:disabled ~ .checkbox__text,
   .radio__native:disabled ~ .radio__text,
   .switch__native:disabled ~ .switch__text {
-    @apply text-gray-400;
+    @apply text-disabled;
   }
   .switch__track {
     @apply relative inline-flex h-7 w-12 shrink-0 items-center rounded-full border border-gray-300 bg-gray-200 px-1 transition-all duration-200;
@@ -95,11 +95,11 @@
   .checkbox__help,
   .radio__help,
   .switch__help {
-    @apply text-xs text-gray-500;
+    @apply text-xs text-muted;
   }
   .checkbox__error,
   .radio__error,
   .switch__error {
-    @apply text-xs text-rose-600;
+    @apply text-xs text-danger;
   }
 }

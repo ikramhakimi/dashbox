@@ -131,18 +131,18 @@ $drawer_filter_footer = '
 $drawer_detail_content = '
   <div class="space-y-4">
     <div class="space-y-1">
-      <p class="text-sm text-gray-500">Order ID</p>
-      <p class="font-medium text-gray-900">ORD-2026-1042</p>
+      <p class="type-body-muted">Order ID</p>
+      <p class="type-medium text-dark">ORD-2026-1042</p>
     </div>
     <div class="space-y-1">
-      <p class="text-sm text-gray-500">Customer</p>
-      <p class="font-medium text-gray-900">Aina Syafiqa</p>
-      <p class="text-sm text-gray-500">+60 12-333 9191</p>
+      <p class="type-body-muted">Customer</p>
+      <p class="type-medium text-dark">Aina Syafiqa</p>
+      <p class="type-body-muted">+60 12-333 9191</p>
     </div>
     <div class="space-y-1">
-      <p class="text-sm text-gray-500">Session</p>
-      <p class="font-medium text-gray-900">Portrait Session</p>
-      <p class="text-sm text-gray-500">2 Apr 2026, 10:30 AM</p>
+      <p class="type-body-muted">Session</p>
+      <p class="type-medium text-dark">Portrait Session</p>
+      <p class="type-body-muted">2 Apr 2026, 10:30 AM</p>
     </div>
   </div>
 ';
@@ -177,19 +177,19 @@ ob_start();
 ?>
 <div class="grid gap-3 md:grid-cols-3">
   <div class="py-3">
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Source Module</p>
-    <p class="mt-2 font-medium text-gray-900"><code>assets/js/drawer.js</code></p>
-    <p class="mt-1 text-xs text-gray-500">Open/close, outside-click dismiss, Escape, and focus trap.</p>
+    <p class="type-caption type-semibold">Source Module</p>
+    <p class="mt-2 type-medium text-dark"><code>assets/js/drawer.js</code></p>
+    <p class="mt-1 type-small text-muted">Open/close, outside-click dismiss, Escape, and focus trap.</p>
   </div>
   <div class="py-3">
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Bundle Entry</p>
-    <p class="mt-2 font-medium text-gray-900"><code>assets/js/app.js</code></p>
-    <p class="mt-1 text-xs text-gray-500">Registers initDrawer together with other JS components.</p>
+    <p class="type-caption type-semibold">Bundle Entry</p>
+    <p class="mt-2 type-medium text-dark"><code>assets/js/app.js</code></p>
+    <p class="mt-1 type-small text-muted">Registers initDrawer together with other JS components.</p>
   </div>
   <div class="py-3">
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Compiled Output</p>
-    <p class="mt-2 font-medium text-gray-900"><code>assets/build/app.js</code></p>
-    <p class="mt-1 text-xs text-gray-500">Single minified JS file loaded globally in layout.</p>
+    <p class="type-caption type-semibold">Compiled Output</p>
+    <p class="mt-2 type-medium text-dark"><code>assets/build/app.js</code></p>
+    <p class="mt-1 type-small text-muted">Single minified JS file loaded globally in layout.</p>
   </div>
 </div>
 <?php
@@ -206,11 +206,11 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">
           Drawers (Interactive JS Component)
         </h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="mt-2 max-w-3xl type-body-muted">
           Slide-in side panel for profile editing, filter tools, and order detail preview.
         </p>
       </header>
@@ -218,16 +218,16 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Drawer component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">JS Documentation</h2>
-            <p class="mt-1 text-sm text-gray-500">Implementation paths for drawer interactive behavior.</p>
+            <h2 class="type-h2">JS Documentation</h2>
+            <p class="mt-1 type-body-muted">Implementation paths for drawer interactive behavior.</p>
           </header>
           <?= $drawer_js_doc_content ?>
         </article>
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Drawer Trigger Variations</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Drawer Trigger Variations</h2>
+            <p class="mt-1 type-body-muted">
               Right, left, and large detail drawer for different workflows.
             </p>
           </header>

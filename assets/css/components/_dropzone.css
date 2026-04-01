@@ -1,10 +1,14 @@
 @layer components {
   .dropzone {
-    @apply flex flex-col gap-2;
+    @apply flex flex-col;
+  }
+
+  .dropzone > * + * {
+    @apply mt-2;
   }
 
   .dropzone__label {
-    @apply font-semibold text-gray-700;
+    @apply font-semibold text-body;
   }
 
   .dropzone__input {
@@ -12,23 +16,43 @@
   }
 
   .dropzone__surface {
-    @apply flex cursor-pointer flex-col items-center justify-center gap-1 rounded-md border border-dashed border-gray-300 bg-gray-50 px-4 py-8 text-center transition-colors duration-150;
+    @apply flex cursor-pointer flex-col items-center justify-center gap-1 rounded-md border border-dashed border-gray-300 px-4 py-8 text-center transition-all duration-150;
   }
 
   .dropzone__surface:hover {
-    @apply border-gray-400 bg-gray-100;
+    @apply border-gray-400 bg-gray-50;
   }
 
   .dropzone__icon {
-    @apply text-gray-500;
+    @apply text-muted;
+  }
+
+  .dropzone__icon svg {
+    @apply h-6 w-6;
   }
 
   .dropzone__title {
-    @apply font-medium text-gray-800;
+    @apply font-medium text-dark;
   }
 
   .dropzone__hint {
-    @apply text-gray-500;
+    @apply text-muted;
+  }
+
+  .dropzone__surface:hover .dropzone__hint {
+    @apply text-link;
+  }
+
+  .dropzone--square {
+    @apply max-w-sm;
+  }
+
+  .dropzone--square .dropzone__surface {
+    @apply aspect-square w-full px-5 py-5;
+  }
+
+  .dropzone--square .dropzone__preview-wrap {
+    @apply aspect-square;
   }
 
   .dropzone__preview-wrap {
@@ -39,20 +63,152 @@
     @apply h-full w-full object-cover;
   }
 
+  .dropzone__multi-wrap {
+    @apply w-full rounded-md bg-gray-50 p-3;
+  }
+
+  .dropzone__multi-grid {
+    @apply grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5;
+  }
+
+  .dropzone__add-tile {
+    @apply text-secondary;
+  }
+
+  .dropzone__add-surface {
+    @apply flex aspect-square w-full flex-col items-center justify-center gap-2 rounded-md border border-dashed border-gray-300 bg-transparent transition-colors;
+  }
+
+  .dropzone__add-tile:hover .dropzone__add-surface {
+    @apply border-gray-400 bg-gray-50 text-dark;
+  }
+
+  .dropzone__add-title {
+    @apply text-sm font-medium;
+  }
+
+  .dropzone__item {
+    @apply flex min-w-0 flex-col gap-2 rounded-lg p-2 transition;
+  }
+
+  .dropzone__item:hover {
+    @apply cursor-grab bg-gray-200;
+  }
+
+  .dropzone__item:active {
+    @apply cursor-grabbing;
+  }
+
+  .dropzone__item-header {
+    @apply absolute inset-x-2 top-2 z-10 flex items-center justify-between;
+  }
+
+  .dropzone__control {
+    @apply rounded border border-gray-400/70 text-body shadow-sm transition-all duration-200;
+    --dropzone-control-bg-top: theme("colors.white");
+    --dropzone-control-bg-bottom: theme("colors.gray.100");
+    --dropzone-control-bg-top-hover: theme("colors.white");
+    --dropzone-control-bg-bottom-hover: theme("colors.gray.200");
+    background-image: linear-gradient(
+      to bottom,
+      var(--dropzone-control-bg-top),
+      var(--dropzone-control-bg-bottom)
+    );
+    background-color: var(--dropzone-control-bg-bottom);
+  }
+
+  .dropzone__control:hover {
+    background-image: linear-gradient(
+      to bottom,
+      var(--dropzone-control-bg-top-hover),
+      var(--dropzone-control-bg-bottom-hover)
+    );
+    background-color: var(--dropzone-control-bg-bottom-hover);
+  }
+
+  .dropzone__item-handle {
+    @apply dropzone__control flex h-7 min-h-7 w-7 min-w-7 shrink-0 cursor-grab items-center justify-center;
+    @apply lg:hidden;
+  }
+
+  .dropzone__item-handle svg {
+    @apply h-4 w-4;
+  }
+
+  .dropzone__item-thumb {
+    @apply relative aspect-square overflow-hidden rounded-md bg-gray-50 ring-1 ring-gray-900/10;
+  }
+
+  .dropzone__item-image {
+    @apply h-full w-full object-cover;
+    -webkit-user-drag: none;
+    user-select: none;
+  }
+
+  .dropzone__item-fallback {
+    @apply flex h-full w-full flex-col items-center justify-center gap-1 font-semibold tracking-wide text-muted;
+  }
+
+  .dropzone__item-fallback svg {
+    @apply h-5 w-5 text-disabled;
+  }
+
+  .dropzone__item-name {
+    @apply hidden;
+  }
+
+  .dropzone__item-remove {
+    @apply dropzone__control flex h-7 min-h-7 w-7 min-w-7 shrink-0 items-center justify-center;
+    @apply lg:pointer-events-none lg:opacity-0;
+  }
+
+  .dropzone__item-remove svg {
+    @apply h-4 w-4;
+  }
+
+  .dropzone__item--dragging {
+    @apply cursor-grabbing opacity-60 shadow-lg;
+  }
+
+  .dropzone__item--dragging .dropzone__item-handle {
+    @apply cursor-grabbing;
+  }
+
+  .dropzone__item--drag-over {
+    @apply rounded-md ring-2 ring-indigo-500;
+  }
+
+  .dropzone__item .dropzone__item-header {
+    @apply opacity-100;
+  }
+
+  .dropzone__item:hover .dropzone__item-remove,
+  .dropzone__item:focus-within .dropzone__item-remove {
+    @apply lg:pointer-events-auto lg:opacity-100;
+  }
+
   .dropzone__meta {
-    @apply flex items-center justify-between gap-3;
+    @apply hidden items-center justify-between gap-3 rounded-md bg-gray-50 px-3 py-2;
   }
 
   .dropzone__file-name {
-    @apply truncate text-gray-500;
+    @apply truncate text-muted;
   }
 
   .dropzone__clear {
-    @apply rounded-md border border-gray-200 px-2.5 py-1 font-medium text-gray-700 transition hover:bg-gray-100;
+    @apply dropzone__control inline-flex h-7 items-center justify-center px-3 text-[12px] font-medium;
+  }
+
+  .dropzone__clear--overlay {
+    @apply absolute right-2 top-2 z-20 w-7 min-w-7 px-0;
+  }
+
+  .dropzone__clear--overlay .icon {
+    @apply h-4 w-4;
   }
 
   .dropzone__help {
-    @apply text-gray-500;
+    @apply text-muted;
   }
 
   .dropzone--dragging .dropzone__surface {
@@ -60,10 +216,84 @@
   }
 
   .dropzone--disabled .dropzone__surface {
-    @apply cursor-not-allowed border-gray-200 bg-gray-100 text-gray-400;
+    @apply cursor-not-allowed border-gray-200 bg-gray-100 text-disabled;
   }
 
   .dropzone--disabled .dropzone__clear {
     @apply cursor-not-allowed opacity-50;
+  }
+
+  .dropzone--disabled .dropzone__item-remove {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .dropzone--has-files .dropzone__surface {
+    @apply flex-row items-center justify-between gap-3 py-3 text-left;
+  }
+
+  .dropzone--has-files .dropzone__meta {
+    @apply flex;
+  }
+
+  .dropzone[data-dropzone-mode="multi"].dropzone--has-files .dropzone__meta {
+    @apply rounded-b-none;
+  }
+
+  .dropzone[data-dropzone-mode="multi"] .dropzone__multi-wrap {
+    @apply mt-0 rounded-t-none pt-0;
+  }
+
+  .dropzone[data-dropzone-mode="multi"].dropzone--has-files > .dropzone__surface {
+    @apply hidden;
+  }
+
+  .dropzone--has-files .dropzone__hint {
+    @apply ml-auto;
+  }
+
+  .dropzone--square {
+    @apply max-w-sm;
+  }
+
+  .dropzone--square .dropzone__meta {
+    @apply hidden !important;
+  }
+
+  .dropzone--square .dropzone__stage {
+    @apply relative w-full;
+    max-width: 280px;
+  }
+
+  .dropzone--square .dropzone__surface {
+    @apply aspect-square w-full px-5 py-5;
+  }
+
+  .dropzone--square .dropzone__preview-wrap {
+    @apply aspect-square;
+  }
+
+  .dropzone--square.dropzone--has-files .dropzone__surface {
+    @apply absolute inset-0 z-10 flex-col items-center justify-center gap-1 border-solid border-indigo-500/80 bg-indigo-800/75 text-white opacity-0 backdrop-blur-sm;
+  }
+
+  .dropzone--square.dropzone--has-files .dropzone__surface:hover {
+    @apply bg-indigo-800/45;
+  }
+
+  .dropzone--square.dropzone--has-files .dropzone__stage:hover .dropzone__surface,
+  .dropzone--square.dropzone--has-files .dropzone__stage:focus-within .dropzone__surface {
+    @apply opacity-100;
+  }
+
+  .dropzone--square.dropzone--has-files .dropzone__surface .dropzone__hint {
+    @apply ml-0 text-white/90;
+  }
+
+  .dropzone--square.dropzone--has-files .dropzone__surface .dropzone__title {
+    @apply text-white;
+  }
+
+  .dropzone--square.dropzone--has-files .dropzone__surface .dropzone__icon {
+    @apply text-white;
   }
 }

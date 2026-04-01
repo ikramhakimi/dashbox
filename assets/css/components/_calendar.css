@@ -8,15 +8,15 @@
   }
 
   .calendar__month {
-    @apply text-xl font-semibold text-gray-900;
+    @apply text-xl font-semibold text-dark;
   }
 
   .calendar__legend {
-    @apply inline-flex items-center gap-2 text-sm text-gray-500;
+    @apply inline-flex items-center gap-2 text-sm text-muted;
   }
 
   .calendar__legend-text {
-    @apply text-sm text-gray-500;
+    @apply text-sm text-muted;
   }
 
   .calendar__legend-dot {
@@ -36,7 +36,7 @@
   }
 
   .calendar__weekday {
-    @apply bg-gray-50 px-3 py-2 text-sm font-medium text-gray-700;
+    @apply bg-gray-50 px-3 py-2 text-sm font-medium text-body;
   }
 
   .calendar__grid {
@@ -72,7 +72,7 @@
   }
 
   .calendar__day--has-session .calendar__day-number {
-    @apply text-sky-900;
+    @apply text-info-strong;
   }
 
   .calendar__day--today.calendar__day--has-session {
@@ -88,7 +88,7 @@
   }
 
   .calendar__day--today .calendar__today {
-    @apply bg-amber-600 text-amber-50;
+    @apply bg-amber-600 text-on-warning;
   }
 
   .calendar__day:nth-child(1) {
@@ -112,11 +112,11 @@
   }
 
   .calendar__day-number {
-    @apply text-sm font-medium text-gray-900;
+    @apply text-sm font-medium text-dark;
   }
 
   .calendar__day-number--outside {
-    @apply text-gray-400;
+    @apply text-disabled;
   }
 
   .calendar__today {
@@ -124,7 +124,35 @@
   }
 
   .calendar__empty {
-    @apply text-sm text-gray-400;
+    @apply text-sm text-disabled;
+  }
+
+  .calendar__summary {
+    @apply mb-2 space-y-1;
+  }
+
+  .calendar__sales-total {
+    @apply text-sm font-semibold text-dark;
+  }
+
+  .calendar__sales-meta {
+    @apply text-xs text-muted;
+  }
+
+  .calendar__target {
+    @apply inline-flex rounded px-1.5 py-0.5 text-xs font-medium;
+  }
+
+  .calendar__target--hit {
+    @apply bg-emerald-50 text-success;
+  }
+
+  .calendar__target--risk {
+    @apply bg-amber-50 text-warning;
+  }
+
+  .calendar__target--neutral {
+    @apply bg-gray-100 text-muted;
   }
 
   .calendar__sessions {
@@ -136,14 +164,14 @@
   }
 
   .calendar__session-time {
-    @apply text-xs font-medium text-sky-900;
+    @apply text-xs font-medium text-info-strong;
   }
 
   .calendar__session-title {
-    @apply mt-1 text-xs text-gray-500;
+    @apply mt-1 text-xs text-muted;
   }
 
   .calendar__more {
-    @apply text-xs font-medium text-gray-500;
+    @apply text-xs font-medium text-muted;
   }
 }

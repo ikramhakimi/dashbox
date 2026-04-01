@@ -5,6 +5,10 @@ import { initTabs } from './tabs.js';
 import { initDropzone } from './dropzone.js';
 import { initFormState } from './form-state.js';
 import { initDrawer } from './drawer.js';
+import { initChart } from './chart.js';
+import { initFeatureEditor } from './feature-editor.js';
+import { initIconFinder } from './icon-finder.js';
+import { initTypographyPlayground } from './typography-playground.js';
 
 const initApp = () => {
   initSubmenu();
@@ -14,6 +18,10 @@ const initApp = () => {
   initDropzone();
   initFormState();
   initDrawer();
+  initChart();
+  initFeatureEditor();
+  initIconFinder();
+  initTypographyPlayground();
 };
 
 if (document.readyState === 'loading') {

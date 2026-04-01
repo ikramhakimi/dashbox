@@ -3,37 +3,37 @@
     @apply flex flex-col gap-2;
   }
   .textarea__label {
-    @apply font-semibold text-gray-700;
+    @apply font-semibold text-body;
   }
   .textarea__required {
-    @apply ml-1 text-rose-600;
+    @apply ml-1 text-danger;
   }
   .textarea__control {
-    @apply w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-gray-900 shadow-sm outline-none transition-all duration-200;
+    @apply w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-dark outline-none transition-all duration-200;
     font-size: inherit;
   }
   .textarea--lg .textarea__control {
     @apply px-5 py-4 text-base;
   }
   .textarea__control::placeholder {
-    @apply text-gray-400;
+    @apply text-disabled;
   }
   .textarea__control:focus {
     @apply border-gray-500 ring-2 ring-gray-200;
   }
   .textarea__control:disabled {
-    @apply cursor-not-allowed bg-gray-100 text-gray-500;
+    @apply cursor-not-allowed bg-gray-100 text-muted;
   }
   .textarea__control[readonly] {
-    @apply bg-gray-50 text-gray-700;
+    @apply bg-gray-50 text-body;
   }
   .textarea__control--invalid {
     @apply border-rose-300 bg-rose-50/40 ring-rose-100;
   }
   .textarea__help {
-    @apply text-xs text-gray-500;
+    @apply text-xs text-muted;
   }
   .textarea__error {
-    @apply text-xs text-rose-600;
+    @apply text-xs text-danger;
   }
 }

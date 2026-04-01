@@ -32,7 +32,7 @@ ob_start();
 ?>
 <div class="space-y-5">
   <div>
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Standard Inputs</p>
+    <p class="type-caption type-semibold">Standard Inputs</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
       <div class="py-4">
         <?= $capture('input', [
@@ -88,7 +88,7 @@ ob_start();
 ?>
 <div class="space-y-5">
   <div>
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Long Form Fields</p>
+    <p class="type-caption type-semibold">Long Form Fields</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
       <div class="py-4">
         <?= $capture('textarea', [
@@ -122,7 +122,7 @@ ob_start();
 ?>
 <div class="space-y-5">
   <div>
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Boolean & Single Choice</p>
+    <p class="type-caption type-semibold">Boolean & Single Choice</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
       <div class="py-4">
         <?= $capture('checkbox', [
@@ -167,7 +167,7 @@ ob_start();
 ?>
 <div class="space-y-5">
   <div>
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Switch Patterns</p>
+    <p class="type-caption type-semibold">Switch Patterns</p>
     <div class="mt-3">
       <div class="py-4">
         <?= $capture('switch', [
@@ -177,7 +177,7 @@ ob_start();
           'help_text' => 'Switch this on to preview dark interface.',
         ]) ?>
         <div class="mt-4 border-t border-gray-100 pt-4">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Switch + Desc</p>
+          <p class="mb-2 type-caption type-semibold">Switch + Desc</p>
           <?= $capture('switch', [
             'id'        => 'demo-switch-desc',
             'label'     => 'Enable weekly digest email',
@@ -187,11 +187,11 @@ ob_start();
         </div>
 
         <div class="mt-4 border-t border-gray-100 pt-4">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Desc + Switch</p>
+          <p class="mb-2 type-caption type-semibold">Desc + Switch</p>
           <div class="flex items-start justify-between gap-4">
             <div class="space-y-1">
-              <p class="text-sm text-gray-700">Auto-archive completed tasks</p>
-              <p class="text-xs text-gray-500">Move completed tasks to archive after 30 days.</p>
+              <p class="type-body">Auto-archive completed tasks</p>
+              <p class="type-small text-muted">Move completed tasks to archive after 30 days.</p>
             </div>
             <div class="shrink-0">
               <?= $capture('switch', [
@@ -204,7 +204,7 @@ ob_start();
         </div>
 
         <div class="mt-4 border-t border-gray-100 pt-4">
-          <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Switch In Divided List</p>
+          <p class="mb-2 type-caption type-semibold">Switch In Divided List</p>
           <div class="divide-y divide-gray-100">
             <div class="p-3">
               <?= $capture('switch', [
@@ -240,7 +240,7 @@ ob_start();
 ?>
 <div class="space-y-5">
   <div>
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Specialized Inputs</p>
+    <p class="type-caption type-semibold">Specialized Inputs</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
       <div class="py-4">
         <?= $capture('upload', [
@@ -263,7 +263,7 @@ ob_start();
   </div>
 
   <div>
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Date & Time</p>
+    <p class="type-caption type-semibold">Date & Time</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
       <div class="py-4">
         <?= $capture('datetime-input', [
@@ -305,9 +305,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Input UI Library</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Input UI Library</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Hierarchical reference for text, choice, and specialized form controls in the dashboard system.
         </p>
       </header>
@@ -315,8 +315,8 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Input component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Text & Search Inputs</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Text & Search Inputs</h2>
+            <p class="mt-1 type-body-muted">
               Base input, search input, and password input variants.
             </p>
           </header>
@@ -325,8 +325,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Textarea & Select</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Textarea & Select</h2>
+            <p class="mt-1 type-body-muted">
               Multiline text area and dropdown selection controls.
             </p>
           </header>
@@ -335,8 +335,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Checkbox & Radio</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Checkbox & Radio</h2>
+            <p class="mt-1 type-body-muted">
               Binary controls and mutually exclusive option controls.
             </p>
           </header>
@@ -345,8 +345,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Switch</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Switch</h2>
+            <p class="mt-1 type-body-muted">
               Comprehensive switch layouts: inline, reverse, and divided-list patterns.
             </p>
           </header>
@@ -355,8 +355,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Upload, OTP & DateTime</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Upload, OTP & DateTime</h2>
+            <p class="mt-1 type-body-muted">
               Specialized form controls for files, codes, and date/time.
             </p>
           </header>

@@ -15,16 +15,16 @@
     @apply inline-flex h-full w-full items-center justify-center leading-none;
   }
   .avatar__initials--tone-sky {
-    @apply bg-sky-100 text-sky-700;
+    @apply bg-sky-100 text-info;
   }
   .avatar__initials--tone-emerald {
-    @apply bg-emerald-100 text-emerald-700;
+    @apply bg-emerald-100 text-success;
   }
   .avatar__initials--tone-amber {
-    @apply bg-amber-100 text-amber-700;
+    @apply bg-amber-100 text-warning;
   }
   .avatar__initials--tone-rose {
-    @apply bg-rose-100 text-rose-700;
+    @apply bg-rose-100 text-danger;
   }
   .avatar__initials--tone-violet {
     @apply bg-violet-100 text-violet-700;

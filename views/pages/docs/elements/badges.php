@@ -42,8 +42,8 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Badge UI Library</h1>
-        <p class="mt-1 text-sm text-gray-500">
+        <h1 class="type-h1">Badge UI Library</h1>
+        <p class="mt-1 type-body-muted">
           Reference page for all badge modes and practical examples.
         </p>
       </header>
@@ -51,34 +51,34 @@ layout('layout-start', [
       <section class="mb-6">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Badge Modes</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Badge Modes</h2>
+            <p class="mt-1 type-body-muted">
               Default visual variants supported by the badge component.
             </p>
           </header>
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             <div class="rounded-lg border border-gray-100 bg-white p-4">
-              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Positive</p>
+              <p class="mb-2 type-caption type-semibold">Positive</p>
               <span class="badge badge--positive">+12.4%</span>
             </div>
             <div class="rounded-lg border border-gray-100 bg-white p-4">
-              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Negative</p>
+              <p class="mb-2 type-caption type-semibold">Negative</p>
               <span class="badge badge--negative">-4.1%</span>
             </div>
             <div class="rounded-lg border border-gray-100 bg-white p-4">
-              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Neutral</p>
+              <p class="mb-2 type-caption type-semibold">Neutral</p>
               <span class="badge badge--neutral">Pending</span>
             </div>
             <div class="rounded-lg border border-gray-100 bg-white p-4">
-              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Warning</p>
+              <p class="mb-2 type-caption type-semibold">Warning</p>
               <span class="badge badge--warning">Awaiting Review</span>
             </div>
             <div class="rounded-lg border border-gray-100 bg-white p-4">
-              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Info</p>
+              <p class="mb-2 type-caption type-semibold">Info</p>
               <span class="badge badge--info">In Progress</span>
             </div>
             <div class="rounded-lg border border-gray-100 bg-white p-4">
-              <p class="mb-2 text-xs font-semibold uppercase tracking-wide text-gray-500">Accent</p>
+              <p class="mb-2 type-caption type-semibold">Accent</p>
               <span class="badge badge--accent">Priority</span>
             </div>
           </div>
@@ -88,8 +88,8 @@ layout('layout-start', [
       <section>
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Badge Component Examples</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Badge Component Examples</h2>
+            <p class="mt-1 type-body-muted">
               Output rendered through reusable badge component.
             </p>
           </header>

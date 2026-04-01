@@ -3,6 +3,7 @@
 $id           = isset($id) && $id !== '' ? (string) $id : 'drawer-' . uniqid();
 $title        = isset($title) ? (string) $title : 'Drawer Title';
 $description  = isset($description) ? (string) $description : '';
+$meta         = isset($meta) ? (string) $meta : '';
 $content      = isset($content) ? (string) $content : '';
 $footer       = isset($footer) ? (string) $footer : '';
 $placement    = isset($placement) ? (string) $placement : 'right';
@@ -71,6 +72,9 @@ $root_attributes['aria-describedby']= $desc_id !== '' ? $desc_id : null;
         <h3 id="<?= e($title_id) ?>" class="drawer__title"><?= e($title) ?></h3>
         <?php if ($description !== ''): ?>
           <p id="<?= e($desc_id) ?>" class="drawer__description"><?= e($description) ?></p>
+        <?php endif; ?>
+        <?php if ($meta !== ''): ?>
+          <p class="drawer__meta"><?= e($meta) ?></p>
         <?php endif; ?>
       </div>
 

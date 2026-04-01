@@ -4,11 +4,11 @@
   }
 
   .input-group__label {
-    @apply font-semibold text-gray-700;
+    @apply font-semibold text-body;
   }
 
   .input-group__required {
-    @apply ml-1 text-rose-600;
+    @apply ml-1 text-danger;
   }
 
   .input-group__field {
@@ -16,7 +16,7 @@
   }
 
   .input-group__icon {
-    @apply pointer-events-none absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center text-gray-400;
+    @apply pointer-events-none absolute left-0 top-0 z-10 flex h-9 w-9 items-center justify-center text-disabled;
   }
 
   .input-group--icon-right .input-group__icon {
@@ -36,10 +36,10 @@
   }
 
   .input-group__help {
-    @apply text-xs text-gray-500;
+    @apply text-xs text-muted;
   }
 
   .input-group__error {
-    @apply text-xs text-rose-600;
+    @apply text-xs text-danger;
   }
 }

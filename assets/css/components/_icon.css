@@ -7,6 +7,10 @@
     @apply h-4 w-4;
   }
 
+  .icon--20 {
+    @apply h-5 w-5;
+  }
+
   .icon--24 {
     @apply h-6 w-6;
   }

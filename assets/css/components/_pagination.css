@@ -3,7 +3,7 @@
     @apply flex flex-wrap items-center justify-between gap-3;
   }
   .pagination__info {
-    @apply text-gray-500;
+    @apply text-muted;
   }
   .pagination__controls {
     @apply flex flex-wrap items-center gap-2;
@@ -12,7 +12,7 @@
     @apply inline-flex items-center gap-1;
   }
   .pagination__item {
-    @apply inline-flex h-10 min-w-10 items-center justify-center rounded-md border border-gray-200 bg-white px-3 font-medium text-gray-700 transition hover:bg-gray-100;
+    @apply inline-flex h-10 min-w-10 items-center justify-center rounded-md border border-gray-200 bg-white px-3 font-medium text-body transition hover:bg-gray-100;
   }
   .pagination__item--active {
     @apply border-gray-900 bg-gray-900 text-white hover:bg-gray-900;
@@ -21,7 +21,7 @@
     @apply pointer-events-none opacity-50;
   }
   .pagination__ellipsis {
-    @apply inline-flex h-10 min-w-10 items-center justify-center text-gray-400;
+    @apply inline-flex h-10 min-w-10 items-center justify-center text-disabled;
   }
   .pagination__clamp {
     @apply inline-flex items-center gap-2;

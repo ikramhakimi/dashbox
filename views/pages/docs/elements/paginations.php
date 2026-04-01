@@ -83,9 +83,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Pagination</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Pagination</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Foundation pagination with active state, disabled edges, and optional result info.
         </p>
       </header>
@@ -93,8 +93,8 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Pagination component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Default (Prev + Next Clamp)</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Default (Prev + Next Clamp)</h2>
+            <p class="mt-1 type-body-muted">
               Connected previous and next controls as primary pagination navigation.
             </p>
           </header>
@@ -103,8 +103,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Pagination with Info</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Pagination with Info</h2>
+            <p class="mt-1 type-body-muted">
               Include showing range and total items for better context.
             </p>
           </header>
@@ -113,8 +113,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Single Page / Empty State</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Single Page / Empty State</h2>
+            <p class="mt-1 type-body-muted">
               Disabled controls when only one page is available.
             </p>
           </header>

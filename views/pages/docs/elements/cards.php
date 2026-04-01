@@ -102,17 +102,17 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Card UI Library</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="type-h1">Card UI Library</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Showcase for Card Widget, Card Module, and Card Table components.
         </p>
       </header>
 
       <section class="divide-y divide-gray-100" aria-label="Card component showcase">
         <section class="py-7 first:pt-0 last:pb-0" aria-label="Card widget showcase">
-          <h2 class="text-lg font-semibold text-gray-900">Card Widget</h2>
-          <p class="mt-1 mb-4 text-sm text-gray-500">Compact metric cards used for quick KPI scanning.</p>
+          <h2 class="type-h2">Card Widget</h2>
+          <p class="mt-1 mb-4 type-body-muted">Compact metric cards used for quick KPI scanning.</p>
           <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
             <?php foreach ($widget_samples as $widget): ?>
               <?php component('card-widget', $widget); ?>
@@ -121,8 +121,8 @@ layout('layout-start', [
         </section>
 
         <section class="py-7 first:pt-0 last:pb-0" aria-label="Card module showcase">
-          <h2 class="text-lg font-semibold text-gray-900">Card Module</h2>
-          <p class="mt-1 mb-4 text-sm text-gray-500">Structured module card that combines summary and grouped content.</p>
+          <h2 class="type-h2">Card Module</h2>
+          <p class="mt-1 mb-4 type-body-muted">Structured module card that combines summary and grouped content.</p>
           <?php
           component('card', [
             'title'       => 'Card Module Demo',
@@ -136,8 +136,8 @@ layout('layout-start', [
         </section>
 
         <section class="py-7 first:pt-0 last:pb-0" aria-label="Card table showcase">
-          <h2 class="text-lg font-semibold text-gray-900">Card Table</h2>
-          <p class="mt-1 mb-4 text-sm text-gray-500">Data-heavy card pattern for operational table views.</p>
+          <h2 class="type-h2">Card Table</h2>
+          <p class="mt-1 mb-4 type-body-muted">Data-heavy card pattern for operational table views.</p>
           <?php
           component('table', [
             'headers' => $cards_booking_table['headers'],

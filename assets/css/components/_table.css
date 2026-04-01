@@ -50,11 +50,11 @@
   }
 
   .table__cell {
-    @apply p-5 align-middle text-gray-700;
+    @apply p-5 align-middle text-body;
   }
 
   .table__cell--head {
-    @apply py-3 text-xs font-medium tracking-wide text-gray-500;
+    @apply py-3 text-xs font-medium tracking-wide text-muted;
   }
 
   .table__head .table__cell--head:first-child {
@@ -74,15 +74,15 @@
   }
 
   .table__empty-deco {
-    @apply font-medium tracking-tight text-gray-400;
+    @apply font-medium tracking-tight text-disabled;
   }
 
   .table__empty-title {
-    @apply font-semibold text-gray-900;
+    @apply font-semibold text-dark;
   }
 
   .table__empty-hint {
-    @apply text-gray-500;
+    @apply text-muted;
   }
 
   .table__cell:first-child {
@@ -106,15 +106,15 @@
   }
 
   .table__primary {
-    @apply font-medium text-gray-900;
+    @apply font-medium text-dark;
   }
 
   .table__secondary {
-    @apply mt-1 text-gray-500;
+    @apply mt-1 text-muted;
   }
 
   .table__tertiary {
-    @apply mt-1 text-gray-400;
+    @apply mt-1 text-disabled;
   }
 
   .table--zebra .table__body .table__row:nth-child(even) {
@@ -130,7 +130,7 @@
   }
 
   .table__avatar {
-    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-100 font-semibold text-gray-700;
+    @apply flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-gray-200 bg-gray-100 font-semibold text-body;
   }
 
   .table__badge-pair {

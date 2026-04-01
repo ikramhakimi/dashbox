@@ -1,5 +1,85 @@
 @layer components {
+  .text-dark {
+    @apply text-gray-900;
+  }
+
+  .text-body {
+    @apply text-gray-700;
+  }
+
+  .text-primary {
+    @apply text-gray-900;
+  }
+
+  .text-secondary {
+    @apply text-gray-600;
+  }
+
   .text-muted {
     @apply text-gray-500;
+  }
+
+  .text-disabled {
+    @apply text-gray-400;
+  }
+
+  .text-link {
+    @apply text-indigo-600;
+  }
+
+  .text-link-hover {
+    @apply text-indigo-700;
+  }
+
+  .hover-text-dark:hover {
+    @apply text-dark;
+  }
+
+  .hover-text-body:hover {
+    @apply text-body;
+  }
+
+  .hover-text-link:hover {
+    @apply text-link;
+  }
+
+  .hover-text-link-hover:hover {
+    @apply text-link-hover;
+  }
+
+  .text-success {
+    @apply text-emerald-700;
+  }
+
+  .text-info {
+    @apply text-sky-700;
+  }
+
+  .text-info-strong {
+    @apply text-sky-900;
+  }
+
+  .text-warning {
+    @apply text-amber-700;
+  }
+
+  .text-on-warning {
+    @apply text-amber-50;
+  }
+
+  .text-danger {
+    @apply text-rose-700;
+  }
+
+  .icon-default {
+    @apply text-gray-600;
+  }
+
+  .icon-dark {
+    @apply text-gray-900;
+  }
+
+  .icon-muted {
+    @apply text-gray-400;
   }
 }

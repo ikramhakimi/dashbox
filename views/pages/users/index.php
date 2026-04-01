@@ -63,6 +63,7 @@ if ($current_page > $total_pages) {
 $offset         = ($current_page - 1) * $per_page;
 $users_on_page  = array_slice($users, $offset, $per_page);
 $user_table_rows = [];
+$user_drawers   = [];
 $avatar_sources = [
   'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=120&q=80',
   'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=120&q=80',
@@ -75,6 +76,9 @@ $avatar_sources = [
 ];
 
 foreach ($users_on_page as $user_index => $user) {
+  $user_row_number = $offset + $user_index + 1;
+  $drawer_id       = 'users-quick-view-' . (string) $user_row_number;
+
   $role_mode = 'neutral';
   if ($user['role'] === 'Admin') {
     $role_mode = 'accent';
@@ -114,7 +118,9 @@ foreach ($users_on_page as $user_index => $user) {
     'aria_label' => 'View ' . $user['name'],
     'icon_name'  => 'eye',
     'icon_only'  => true,
-    'href'       => '#',
+    'attributes' => [
+      'data-drawer-open' => $drawer_id,
+    ],
   ]);
 
   $more_dropdown = $capture('dropdown', [
@@ -155,6 +161,63 @@ foreach ($users_on_page as $user_index => $user) {
         'align' => 'right',
       ],
     ],
+  ];
+
+  ob_start();
+  ?>
+  <div class="space-y-6">
+    <div class="space-y-2">
+      <p class="type-body type-semibold text-dark">User Profile</p>
+      <div class="flex items-center gap-3 rounded-lg border border-gray-200 p-3">
+        <?= $avatar ?>
+        <div class="space-y-1">
+          <p class="type-medium text-dark"><?= e($user['name']) ?></p>
+          <p class="type-body-muted"><?= e($user['email']) ?></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid gap-4 sm:grid-cols-2">
+      <div class="space-y-1 rounded-lg border border-gray-200 p-3">
+        <p class="type-body-muted">Role</p>
+        <div><?= $role_badge ?></div>
+      </div>
+      <div class="space-y-1 rounded-lg border border-gray-200 p-3">
+        <p class="type-body-muted">Account Status</p>
+        <div><?= $status_badge ?></div>
+      </div>
+      <div class="space-y-1 rounded-lg border border-gray-200 p-3">
+        <p class="type-body-muted">Last Active</p>
+        <p class="type-medium text-dark"><?= e($user['last_active']) ?></p>
+      </div>
+      <div class="space-y-1 rounded-lg border border-gray-200 p-3">
+        <p class="type-body-muted">Security</p>
+        <p class="type-medium text-dark">2FA Enabled</p>
+      </div>
+    </div>
+  </div>
+  <?php
+  $drawer_content = (string) ob_get_clean();
+
+  $drawer_footer = '
+    <div class="flex items-center gap-2">
+      ' . $capture('button', [
+        'label'      => 'Close',
+        'attributes' => ['data-drawer-close' => true],
+      ]) . '
+      ' . $capture('button', [
+        'label'   => 'Edit Profile',
+        'variant' => 'primary',
+      ]) . '
+    </div>
+  ';
+
+  $user_drawers[] = [
+    'id'          => $drawer_id,
+    'title'       => $user['name'],
+    'description' => 'Quick profile summary and account actions.',
+    'content'     => $drawer_content,
+    'footer'      => $drawer_footer,
   ];
 }
 
@@ -228,4 +291,17 @@ layout('layout-start', [
     </section>
   </main>
 </div>
+<?php foreach ($user_drawers as $user_drawer): ?>
+  <?php
+  component('drawer', [
+    'id'          => $user_drawer['id'],
+    'title'       => $user_drawer['title'],
+    'description' => $user_drawer['description'],
+    'content'     => $user_drawer['content'],
+    'footer'      => $user_drawer['footer'],
+    'placement'   => 'right',
+    'size'        => 'lg',
+  ]);
+  ?>
+<?php endforeach; ?>
 <?php layout('layout-end'); ?>

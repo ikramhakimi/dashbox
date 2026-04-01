@@ -204,19 +204,19 @@ ob_start();
 ?>
 <div class="grid gap-3 md:grid-cols-3">
   <div class="py-3">
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Source Module</p>
-    <p class="mt-2 text-sm font-medium text-gray-900"><code>assets/js/dropdown.js</code></p>
-    <p class="mt-1 text-xs text-gray-500">Dropdown behavior and outside-click dismiss logic.</p>
+    <p class="type-caption type-semibold">Source Module</p>
+    <p class="mt-2 type-body type-medium text-dark"><code>assets/js/dropdown.js</code></p>
+    <p class="mt-1 type-small text-muted">Dropdown behavior and outside-click dismiss logic.</p>
   </div>
   <div class="py-3">
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Bundle Entry</p>
-    <p class="mt-2 text-sm font-medium text-gray-900"><code>assets/js/app.js</code></p>
-    <p class="mt-1 text-xs text-gray-500">Single entry that initializes submenu, dropdown, and modal.</p>
+    <p class="type-caption type-semibold">Bundle Entry</p>
+    <p class="mt-2 type-body type-medium text-dark"><code>assets/js/app.js</code></p>
+    <p class="mt-1 type-small text-muted">Single entry that initializes submenu, dropdown, and modal.</p>
   </div>
   <div class="py-3">
-    <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Compiled Output</p>
-    <p class="mt-2 text-sm font-medium text-gray-900"><code>assets/build/app.js</code></p>
-    <p class="mt-1 text-xs text-gray-500">Minified production script loaded globally in layout.</p>
+    <p class="type-caption type-semibold">Compiled Output</p>
+    <p class="mt-2 type-body type-medium text-dark"><code>assets/build/app.js</code></p>
+    <p class="mt-1 type-small text-muted">Minified production script loaded globally in layout.</p>
   </div>
 </div>
 <?php
@@ -233,9 +233,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Dropdown (Interactive JS Component)</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Dropdown (Interactive JS Component)</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Reusable dropdown menu for action lists, row menus, and account navigation.
         </p>
       </header>
@@ -243,8 +243,8 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Dropdown component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">JS Documentation</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">JS Documentation</h2>
+            <p class="mt-1 type-body-muted">
               Implementation paths for dropdown interactive behavior.
             </p>
           </header>
@@ -253,8 +253,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Default Dropdown</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Default Dropdown</h2>
+            <p class="mt-1 type-body-muted">
               Button trigger with dividers, labels, disabled and danger actions.
             </p>
           </header>
@@ -263,8 +263,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Trigger Variations</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Trigger Variations</h2>
+            <p class="mt-1 type-body-muted">
               Neutral style, icon+text trigger, and icon-only trigger.
             </p>
           </header>
@@ -273,8 +273,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Button Size Variations</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Button Size Variations</h2>
+            <p class="mt-1 type-body-muted">
               Dropdown trigger reuses button tokens: sm, default, lg, including icon-only.
             </p>
           </header>
@@ -283,8 +283,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Link Trigger Dropdown</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Link Trigger Dropdown</h2>
+            <p class="mt-1 type-body-muted">
               Use anchor trigger while keeping JS toggle and outside-click dismiss.
             </p>
           </header>
@@ -293,8 +293,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Navigation Dropdown</h2>
-            <p class="mt-1 text-sm text-gray-500">Simple link-style trigger for navigation groups.</p>
+            <h2 class="type-h2">Navigation Dropdown</h2>
+            <p class="mt-1 type-body-muted">Simple link-style trigger for navigation groups.</p>
           </header>
           <?= $dropdown_navigation_content ?>
         </article>

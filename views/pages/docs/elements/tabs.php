@@ -38,7 +38,7 @@ ob_start();
 ?>
 <div class="divide-y divide-gray-100">
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Default</p>
+    <p class="mb-3 type-caption type-semibold">Default</p>
     <?= $capture([
       'items' => [
         ['label' => 'Overview', 'href' => '#', 'active' => true],
@@ -49,7 +49,7 @@ ob_start();
   </section>
 
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">With Icons</p>
+    <p class="mb-3 type-caption type-semibold">With Icons</p>
     <?= $capture([
       'items' => [
         ['label' => 'Overview', 'href' => '#', 'icon_name' => 'activity', 'active' => true],
@@ -60,7 +60,7 @@ ob_start();
   </section>
 
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Tabs + Button Side By Side</p>
+    <p class="mb-3 type-caption type-semibold">Tabs + Button Side By Side</p>
     <div class="max-w-full overflow-x-auto">
       <div class="inline-flex items-center gap-3 whitespace-nowrap">
         <?= $capture([
@@ -91,9 +91,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Tabs UI Library</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Tabs UI Library</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Foundation tabs with icon support and active states.
         </p>
       </header>
@@ -101,8 +101,8 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Tabs component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Tabs Variations</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Tabs Variations</h2>
+            <p class="mt-1 type-body-muted">
               Default and icon tab patterns for dashboard sections.
             </p>
           </header>

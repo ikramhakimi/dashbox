@@ -101,10 +101,10 @@ $form_modal_footer = '
 
 $delete_modal_content = '
   <div class="space-y-3">
-    <p class="text-sm text-gray-700">
-      This will permanently delete <span class="font-semibold text-gray-900">Project Mercury</span>.
+    <p class="type-body">
+      This will permanently delete <span class="type-semibold text-dark">Project Mercury</span>.
     </p>
-    <p class="text-sm text-gray-500">You cannot undo this action.</p>
+    <p class="type-body-muted">You cannot undo this action.</p>
   </div>
 ';
 
@@ -175,16 +175,16 @@ $filter_modal_footer = '
 $detail_modal_content = '
   <div class="grid gap-4 md:grid-cols-2">
     <div class="space-y-2 py-2">
-      <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Customer</p>
-      <p class="text-sm text-gray-900">Nadia Syahirah</p>
-      <p class="text-sm text-gray-500">nadia@example.com</p>
-      <p class="text-sm text-gray-500">+60 12-345 6789</p>
+      <p class="type-caption type-semibold">Customer</p>
+      <p class="type-body text-dark">Nadia Syahirah</p>
+      <p class="type-body-muted">nadia@example.com</p>
+      <p class="type-body-muted">+60 12-345 6789</p>
     </div>
     <div class="space-y-2 py-2">
-      <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Order</p>
-      <p class="text-sm text-gray-900">ORD-2026-00991</p>
-      <p class="text-sm text-gray-500">Created: 29 Mar 2026</p>
-      <p class="text-sm text-gray-500">Status: Processing</p>
+      <p class="type-caption type-semibold">Order</p>
+      <p class="type-body text-dark">ORD-2026-00991</p>
+      <p class="type-body-muted">Created: 29 Mar 2026</p>
+      <p class="type-body-muted">Status: Processing</p>
     </div>
   </div>
 ';
@@ -199,8 +199,8 @@ $detail_modal_footer = '
 $step_modal_content = '
   <div class="space-y-4">
     <div class="space-y-1">
-      <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Step 2 of 3</p>
-      <h4 class="text-sm font-semibold text-gray-900">Choose Notification Channel</h4>
+      <p class="type-caption type-semibold">Step 2 of 3</p>
+      <h4 class="type-body type-semibold text-dark">Choose Notification Channel</h4>
     </div>
     <div class="space-y-2">
       ' . $capture('radio', [
@@ -237,7 +237,7 @@ ob_start();
 ?>
 <div class="space-y-4">
   <div class="py-4">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Modal Use Cases</p>
+    <p class="mb-3 type-caption type-semibold">Modal Use Cases</p>
     <div class="flex flex-wrap gap-2">
       <?= $capture('button', [
         'label'      => '1. Form Modal',
@@ -264,8 +264,8 @@ ob_start();
   </div>
 
   <div class="py-4">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">When To Use</p>
-    <ul class="space-y-2 text-sm text-gray-600">
+    <p class="mb-3 type-caption type-semibold">When To Use</p>
+    <ul class="space-y-2 type-body type-secondary">
       <li>1. Form modal for quick create/edit without page transition.</li>
       <li>2. Delete confirmation for destructive actions requiring explicit intent.</li>
       <li>3. Filter modal for dense filtering controls and date ranges.</li>
@@ -288,9 +288,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Modal UI Library</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Modal UI Library</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Practical modal contexts for production workflows, from form entry to confirmation and step flows.
         </p>
       </header>
@@ -298,8 +298,8 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Modal component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Modal Context Demos</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Modal Context Demos</h2>
+            <p class="mt-1 type-body-muted">
               Five production-ready modal examples covering common dashboard use cases.
             </p>
           </header>

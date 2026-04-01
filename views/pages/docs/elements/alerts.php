@@ -32,7 +32,7 @@ ob_start();
 ?>
 <div class="divide-y divide-gray-100">
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Soft Variants</p>
+    <p class="mb-3 type-caption type-semibold">Soft Variants</p>
     <div class="space-y-3">
       <?= $capture([
         'variant'     => 'info',
@@ -58,7 +58,7 @@ ob_start();
   </section>
 
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">With / Without Icon</p>
+    <p class="mb-3 type-caption type-semibold">With / Without Icon</p>
     <div class="space-y-3">
       <?= $capture([
         'variant'     => 'info',
@@ -76,7 +76,7 @@ ob_start();
   </section>
 
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Dismissible</p>
+    <p class="mb-3 type-caption type-semibold">Dismissible</p>
     <div class="space-y-3">
       <?= $capture([
         'variant'     => 'success',
@@ -95,7 +95,7 @@ ob_start();
   </section>
 
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Inline Alert</p>
+    <p class="mb-3 type-caption type-semibold">Inline Alert</p>
     <div class="space-y-3">
       <?= $capture([
         'variant'     => 'warning',
@@ -114,7 +114,7 @@ ob_start();
   </section>
 
   <section class="py-5 first:pt-0 last:pb-0">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Alert With Link</p>
+    <p class="mb-3 type-caption type-semibold">Alert With Link</p>
     <div class="space-y-3">
       <?= $capture([
         'variant'     => 'warning',
@@ -150,9 +150,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Alert UI Library</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Alert UI Library</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Soft alert variants with title and description, icon toggle, and dismiss behavior.
         </p>
       </header>
@@ -160,8 +160,8 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Alert component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Alert Variations</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Alert Variations</h2>
+            <p class="mt-1 type-body-muted">
               Info, success, warning, and danger in soft treatment only.
             </p>
           </header>

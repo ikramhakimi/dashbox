@@ -3,7 +3,7 @@
     @apply w-full;
   }
   .breadcrumb__list {
-    @apply flex flex-wrap items-center gap-2 text-gray-500;
+    @apply flex flex-wrap items-center gap-2 text-muted;
   }
   .breadcrumb__item {
     @apply inline-flex min-w-0 items-center;
@@ -13,19 +13,19 @@
     @apply inline-flex items-center gap-1.5;
   }
   .breadcrumb__link {
-    @apply text-gray-500 transition-colors hover:text-gray-700;
+    @apply text-muted transition-colors hover:text-body;
   }
   .breadcrumb__current {
-    @apply font-medium text-gray-900;
+    @apply font-medium text-dark;
   }
   .breadcrumb__separator {
-    @apply inline-flex items-center text-gray-300;
+    @apply inline-flex items-center text-disabled;
   }
   .breadcrumb__separator svg {
     @apply h-3.5 w-3.5;
   }
   .breadcrumb__icon {
-    @apply inline-flex items-center text-gray-400;
+    @apply inline-flex items-center text-disabled;
   }
   .breadcrumb__icon .icon {
     @apply h-4 w-4;

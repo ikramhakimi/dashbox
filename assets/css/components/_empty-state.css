@@ -3,16 +3,16 @@
     @apply flex flex-col items-center justify-center rounded-lg border border-gray-200 bg-white px-6 py-10 text-center;
   }
   .empty__icon {
-    @apply mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-gray-500;
+    @apply mb-3 inline-flex h-12 w-12 items-center justify-center rounded-full bg-gray-100 text-muted;
   }
   .empty__deco {
-    @apply mb-3 font-medium text-gray-400;
+    @apply mb-3 font-medium text-disabled;
   }
   .empty__title {
-    @apply text-base font-semibold text-gray-900;
+    @apply text-base font-semibold text-dark;
   }
   .empty__description {
-    @apply mt-1 max-w-md leading-6 text-gray-500;
+    @apply mt-1 max-w-md leading-6 text-muted;
   }
   .empty__actions {
     @apply mt-5 flex flex-wrap items-center justify-center gap-2;

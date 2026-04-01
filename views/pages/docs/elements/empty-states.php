@@ -83,9 +83,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Empty State</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Empty State</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Reusable empty state blocks for no data, no search result, and temporary error states.
         </p>
       </header>
@@ -93,24 +93,24 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Empty state component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Default Empty State</h2>
-            <p class="mt-1 text-sm text-gray-500">Primary CTA for first-time setup or onboarding flow.</p>
+            <h2 class="type-h2">Default Empty State</h2>
+            <p class="mt-1 type-body-muted">Primary CTA for first-time setup or onboarding flow.</p>
           </header>
           <?= $empty_state_default_content ?>
         </article>
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Search Empty State</h2>
-            <p class="mt-1 text-sm text-gray-500">Use descriptive copy with recovery actions.</p>
+            <h2 class="type-h2">Search Empty State</h2>
+            <p class="mt-1 type-body-muted">Use descriptive copy with recovery actions.</p>
           </header>
           <?= $empty_state_search_content ?>
         </article>
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Error Recovery Empty State</h2>
-            <p class="mt-1 text-sm text-gray-500">Guides users when loading fails and offers next steps.</p>
+            <h2 class="type-h2">Error Recovery Empty State</h2>
+            <p class="mt-1 type-body-muted">Guides users when loading fails and offers next steps.</p>
           </header>
           <?= $empty_state_error_content ?>
         </article>

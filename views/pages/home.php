@@ -6,40 +6,12 @@ $page_current = 'dashboard';
 $menu_items = [
   [
     'label'  => 'Overview',
-    'href'   => '#',
+    'href'   => asset('/'),
     'active' => true,
-  ],
-  [
-    'label' => 'Analytics',
-    'href'  => '#',
-  ],
-  [
-    'label' => 'Projects',
-    'href'  => '#',
   ],
   [
     'label'    => 'UI Elements',
     'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'Management',
-    'children' => [
-      [
-        'label'  => 'Team Members',
-        'href'   => '#',
-        'active' => false,
-      ],
-      [
-        'label'  => 'User Roles',
-        'href'   => '#',
-        'active' => true,
-      ],
-      [
-        'label'  => 'Permissions',
-        'href'   => '#',
-        'active' => false,
-      ],
-    ],
   ],
   [
     'label'    => 'UI Patterns',
@@ -179,7 +151,7 @@ ob_start();
 ?>
 <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
   <div class="rounded-lg border border-gray-100 bg-white p-4">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Primary</p>
+    <p class="mb-3 type-caption type-semibold">Primary</p>
     <div class="flex flex-wrap items-center gap-2">
       <?php component('button', ['label' => 'Primary / SM', 'variant' => 'primary', 'size' => 'sm']); ?>
       <?php component('button', ['label' => 'Primary / MD', 'variant' => 'primary', 'size' => 'md']); ?>
@@ -188,7 +160,7 @@ ob_start();
   </div>
 
   <div class="rounded-lg border border-gray-100 bg-white p-4">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Neutral</p>
+    <p class="mb-3 type-caption type-semibold">Neutral</p>
     <div class="flex flex-wrap items-center gap-2">
       <?php component('button', ['label' => 'Neutral / SM', 'size' => 'sm']); ?>
       <?php component('button', ['label' => 'Neutral / MD', 'size' => 'md']); ?>
@@ -197,7 +169,7 @@ ob_start();
   </div>
 
   <div class="rounded-lg border border-gray-100 bg-white p-4">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Default (Alt)</p>
+    <p class="mb-3 type-caption type-semibold">Default (Alt)</p>
     <div class="flex flex-wrap items-center gap-2">
       <?php component('button', ['label' => 'Default / SM', 'size' => 'sm']); ?>
       <?php component('button', ['label' => 'Default / MD', 'size' => 'md']); ?>
@@ -206,7 +178,7 @@ ob_start();
   </div>
 
   <div class="rounded-lg border border-gray-100 bg-white p-4">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Danger</p>
+    <p class="mb-3 type-caption type-semibold">Danger</p>
     <div class="flex flex-wrap items-center gap-2">
       <?php component('button', ['label' => 'Danger / SM', 'variant' => 'danger', 'size' => 'sm']); ?>
       <?php component('button', ['label' => 'Danger / MD', 'variant' => 'danger', 'size' => 'md']); ?>
@@ -215,7 +187,7 @@ ob_start();
   </div>
 
   <div class="rounded-lg border border-gray-100 bg-white p-4 sm:col-span-2 lg:col-span-2">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">States & Link</p>
+    <p class="mb-3 type-caption type-semibold">States & Link</p>
     <div class="flex flex-wrap items-center gap-2">
       <?php component('button', ['label' => 'Disabled', 'disabled' => true]); ?>
       <?php component('button', ['label' => 'As Link', 'variant' => 'primary', 'href' => '#']); ?>
@@ -462,13 +434,13 @@ layout('layout-start', [
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 flex flex-col gap-4 border-b border-gray-200 pb-6 md:flex-row md:items-end md:justify-between">
         <div>
-          <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">Overview</p>
-          <h1 class="text-2xl font-semibold tracking-tight text-gray-900">Performance Dashboard</h1>
-          <p class="mt-2 max-w-3xl text-sm text-gray-500">
+          <p class="type-caption type-semibold">Overview</p>
+          <h1 class="type-h1">Performance Dashboard</h1>
+          <p class="mt-2 max-w-3xl type-body-muted">
             Structured overview with focused KPIs and operational insights.
           </p>
         </div>
-        <button class="rounded-lg border border-gray-200 bg-white px-4 py-2 text-sm font-medium text-gray-700 transition hover:bg-gray-100">
+        <button class="rounded-lg border border-gray-200 bg-white px-4 py-2 type-body type-medium text-body transition hover:bg-gray-100">
           Export Snapshot
         </button>
       </header>
@@ -525,8 +497,8 @@ layout('layout-start', [
         <section aria-label="Orders data table">
           <article class="space-y-4">
             <header>
-              <h2 class="text-xl font-semibold text-gray-900">Orders</h2>
-              <p class="text-sm text-gray-500">Booking orders by studio, session, payment, and status.</p>
+              <h2 class="type-h2">Orders</h2>
+              <p class="type-body-muted">Booking orders by studio, session, payment, and status.</p>
             </header>
 
             <?php

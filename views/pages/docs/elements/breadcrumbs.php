@@ -32,7 +32,7 @@ ob_start();
 ?>
 <div class="space-y-4">
   <div class="border border-gray-100 rounded-lg p-5">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Slash Separator</p>
+    <p class="mb-3 type-caption type-semibold">Slash Separator</p>
     <?= $capture([
       'separator' => 'slash',
       'items'     => [
@@ -45,7 +45,7 @@ ob_start();
   </div>
 
   <div class="border border-gray-100 rounded-lg p-5">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Chevron Separator (SVG)</p>
+    <p class="mb-3 type-caption type-semibold">Chevron Separator (SVG)</p>
     <?= $capture([
       'separator' => 'chevron',
       'items'     => [
@@ -57,7 +57,7 @@ ob_start();
   </div>
 
   <div class="border border-gray-100 rounded-lg p-5">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">With Icon</p>
+    <p class="mb-3 type-caption type-semibold">With Icon</p>
     <?= $capture([
       'separator' => 'chevron',
       'items'     => [
@@ -69,7 +69,7 @@ ob_start();
   </div>
 
   <div class="border border-gray-100 rounded-lg p-5">
-    <p class="mb-3 text-xs font-semibold uppercase tracking-wide text-gray-500">Compact</p>
+    <p class="mb-3 type-caption type-semibold">Compact</p>
     <?= $capture([
       'compact'   => true,
       'separator' => 'slash',
@@ -96,9 +96,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Breadcrumb UI Library</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Breadcrumb UI Library</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Slash and chevron separators, icon support, and compact breadcrumb variant.
         </p>
       </header>
@@ -106,8 +106,8 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Breadcrumb component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Breadcrumb Variations</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Breadcrumb Variations</h2>
+            <p class="mt-1 type-body-muted">
               Foundation breadcrumb styles for app navigation context.
             </p>
           </header>

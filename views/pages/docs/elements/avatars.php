@@ -103,9 +103,9 @@ layout('layout-start', [
   <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl">
       <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="text-xs font-semibold uppercase tracking-wide text-gray-500">UI Elements</p>
-        <h1 class="mt-2 text-2xl font-semibold tracking-tight text-gray-900">Avatar</h1>
-        <p class="mt-2 max-w-3xl text-sm text-gray-500">
+        <p class="type-caption type-semibold">UI Elements</p>
+        <h1 class="mt-2 type-h1">Avatar</h1>
+        <p class="mt-2 max-w-3xl type-body-muted">
           Avatar component with image and initials fallback, size variants, and group stacking.
         </p>
       </header>
@@ -113,16 +113,16 @@ layout('layout-start', [
       <section class="divide-y divide-gray-100" aria-label="Avatar component showcase">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Size Variations</h2>
-            <p class="mt-1 text-sm text-gray-500">Small, default, and large avatar scales.</p>
+            <h2 class="type-h2">Size Variations</h2>
+            <p class="mt-1 type-body-muted">Small, default, and large avatar scales.</p>
           </header>
           <?= $avatar_sizes_content ?>
         </article>
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Initials Tones</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Initials Tones</h2>
+            <p class="mt-1 type-body-muted">
               Automatic background and text color combinations for fallback initials.
             </p>
           </header>
@@ -131,8 +131,8 @@ layout('layout-start', [
 
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
-            <h2 class="text-lg font-semibold text-gray-900">Avatar Group</h2>
-            <p class="mt-1 text-sm text-gray-500">
+            <h2 class="type-h2">Avatar Group</h2>
+            <p class="mt-1 type-body-muted">
               Overlapping stack pattern for team and assignee lists.
             </p>
           </header>

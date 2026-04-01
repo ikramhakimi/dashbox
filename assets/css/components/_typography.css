@@ -1,37 +1,75 @@
 @layer components {
   .type-display {
-    @apply text-4xl font-semibold tracking-tight text-gray-900;
+    @apply font-semibold tracking-tight text-dark;
+    font-size: 40px;
+    line-height: 48px;
   }
 
   .type-h1 {
-    @apply text-3xl font-semibold tracking-tight text-gray-900;
+    @apply font-semibold tracking-tight text-dark;
+    font-size: 32px;
+    line-height: 40px;
   }
 
   .type-h2 {
-    @apply text-2xl font-semibold tracking-tight text-gray-900;
+    @apply font-semibold tracking-tight text-dark;
+    font-size: 24px;
+    line-height: 32px;
   }
 
   .type-h3 {
-    @apply text-xl font-semibold tracking-tight text-gray-900;
+    @apply font-semibold tracking-tight text-dark;
+    font-size: 16px;
+    line-height: 24px;
   }
 
   .type-body {
-    @apply text-base leading-6 text-gray-700;
+    @apply text-body;
+    font-size: 14px;
+    line-height: 22px;
   }
 
   .type-body-muted {
-    @apply text-base leading-6 text-gray-500;
+    @apply text-muted;
+    font-size: 14px;
+    line-height: 22px;
   }
 
-  .type-small {
-    @apply text-sm leading-5 text-gray-600;
+  .type-meta {
+    @apply text-secondary;
+    font-size: 13px;
+    line-height: 20px;
   }
 
   .type-caption {
-    @apply text-xs font-medium uppercase tracking-wide text-gray-500;
+    @apply font-medium uppercase tracking-wide text-muted;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .type-small {
+    @apply text-secondary;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   .type-link {
-    @apply font-medium text-gray-900 underline underline-offset-2 transition hover:text-gray-700;
+    @apply font-medium text-dark underline underline-offset-2 transition hover:text-body;
+  }
+
+  .type-normal {
+    @apply font-normal;
+  }
+
+  .type-medium {
+    @apply font-medium;
+  }
+
+  .type-semibold {
+    @apply font-semibold;
+  }
+
+  .type-bold {
+    @apply font-bold;
   }
 }

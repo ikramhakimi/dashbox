@@ -44,6 +44,7 @@ function ui_elements_sidebar_children(string $active_page = ''): array
     'icons'       => 'Icons',
     'inputs'      => 'Inputs',
     'modals'      => 'Modals',
+    'package-features' => 'Package Features',
     'page-headers'=> 'Page Headers',
     'paginations' => 'Paginations',
     'tables'      => 'Tables',
@@ -105,11 +106,31 @@ function users_sidebar_children(string $active_page = ''): array
   return $children;
 }
 
-function products_sidebar_children(string $active_page = ''): array
+function packages_sidebar_children(string $active_page = ''): array
 {
   $items = [
-    'products'     => ['label' => 'All Products', 'path' => '/products'],
-    'products-add' => ['label' => 'Add Product', 'path' => '/products/add'],
+    'packages'        => ['label' => 'All Packages', 'path' => '/packages'],
+    'packages-create' => ['label' => 'Create Package', 'path' => '/packages/create'],
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $item) {
+    $children[] = [
+      'label'  => $item['label'],
+      'href'   => asset($item['path']),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function portfolio_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'portfolio'         => ['label' => 'All Portfolio', 'path' => '/portfolio'],
+    'portfolio-create'  => ['label' => 'Create Portfolio', 'path' => '/portfolio/create'],
+    'portfolio-trashed' => ['label' => 'Trashed', 'path' => '/portfolio/trashed'],
   ];
 
   $children = [];
@@ -130,7 +151,25 @@ function orders_sidebar_children(string $active_page = ''): array
     'orders'                 => ['label' => 'All Orders', 'path' => '/orders'],
     'orders-unpaid'          => ['label' => 'Unpaid Orders', 'path' => '/orders/unpaid'],
     'orders-session-today'   => ['label' => 'Session Today', 'path' => '/orders/sessions-today'],
-    'orders-session-calendar'=> ['label' => 'Session Calendar', 'path' => '/orders/session-calendar'],
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $item) {
+    $children[] = [
+      'label'  => $item['label'],
+      'href'   => asset($item['path']),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function sales_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'sales'          => ['label' => 'Overview', 'path' => '/sales'],
+    'sales-calendar' => ['label' => 'Calendar', 'path' => '/sales/calendar'],
   ];
 
   $children = [];
