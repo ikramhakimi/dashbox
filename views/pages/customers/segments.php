@@ -13,25 +13,25 @@ $capture = static function (string $component_name, array $props): string {
 
 $segment_widgets = [
   [
-    'title'   => 'Campaign Ready',
+    'title'   => 'Campaign-Ready Audience',
     'value'   => '248',
-    'meta'    => 'profiles with complete targeting data',
-    'badge'   => ['label' => '+18', 'mode' => 'positive'],
-    'icon'    => 'sparkles',
+    'meta'    => 'profiles with complete targeting fields',
+    'badge'   => ['label' => '+18 this month', 'mode' => 'positive'],
+    'icon'    => 'users',
   ],
   [
-    'title'   => 'At Risk',
+    'title'   => 'Reactivation Targets',
     'value'   => '63',
-    'meta'    => 'no new booking in the last 90 days',
-    'badge'   => ['label' => '-7', 'mode' => 'positive'],
-    'icon'    => 'alarm-warning-line',
+    'meta'    => 'no completed booking in the last 90 days',
+    'badge'   => ['label' => 'Needs follow-up', 'mode' => 'warning'],
+    'icon'    => 'triangle-alert',
   ],
   [
-    'title'   => 'High Value',
+    'title'   => 'VIP Repeat Clients',
     'value'   => '92',
-    'meta'    => 'customers with 5+ completed orders',
-    'badge'   => ['label' => '+12', 'mode' => 'positive'],
-    'icon'    => 'diamond-line',
+    'meta'    => 'customers with 5+ completed sessions',
+    'badge'   => ['label' => '+12 this quarter', 'mode' => 'positive'],
+    'icon'    => 'gem',
   ],
 ];
 
@@ -106,56 +106,85 @@ foreach ($segment_rows as $segment_row) {
   ];
 }
 
+$segments_search = $capture('search-input', [
+  'id'          => 'segments-search',
+  'name'        => 'segments_search',
+  'label'       => '',
+  'placeholder' => 'Find segment by name or criteria',
+]);
+
+$segments_filter = $capture('select', [
+  'id'      => 'segments-filter',
+  'name'    => 'segments_filter',
+  'label'   => '',
+  'value'   => '',
+  'options' => [
+    ['label' => 'Filter By', 'value' => '', 'disabled' => true],
+    ['label' => 'Active', 'value' => 'active'],
+    ['label' => 'Review', 'value' => 'review'],
+    ['label' => 'Priority', 'value' => 'priority'],
+  ],
+]);
+
 layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php component('page-header', [
-        'title'       => 'Customers Segments',
-        'description' => 'Build and track audience groups for targeted promotions, retargeting, and campaign planning.',
-        'actions'     => [
-          [
-            'label' => 'Open Customer Profile Form',
-            'href'  => asset('/customers/profile'),
-          ],
-          [
-            'label'   => 'Create Segment',
-            'href'    => '#',
-            'variant' => 'primary',
-          ],
-        ],
-      ]); ?>
+<section class="space-y-6">
+  <section aria-label="Customer segments header">
+    <?php component('page-header', [
+      'title'       => 'Customer Segments',
+      'description' => 'Build and track audience groups for targeted promotions, retargeting, and campaign planning.',
+    ]); ?>
+  </section>
 
-      <div class="grid gap-4 md:grid-cols-3">
-        <?php foreach ($segment_widgets as $segment_widget): ?>
-          <?php component('card-metric', [
-            'title'      => $segment_widget['title'],
-            'value'      => $segment_widget['value'],
-            'trend'      => $segment_widget['badge']['label'],
-            'trend_mode' => $segment_widget['badge']['mode'],
-            'note'       => $segment_widget['meta'],
-            'icon_name'  => $segment_widget['icon'],
-            'icon_set'   => 'remix',
-          ]); ?>
-        <?php endforeach; ?>
+  <section aria-label="Customer segments controls">
+    <div class="inline-flex w-full flex-wrap items-end gap-3">
+      <div class="w-72">
+        <?= $segments_search ?>
       </div>
+      <div class="w-56">
+        <?= $segments_filter ?>
+      </div>
+      <div class="w-40">
+        <?= $capture('button', ['label' => 'Apply Filter', 'variant' => 'primary']) ?>
+      </div>
+      <div class="ml-auto">
+        <?= $capture('button', ['label' => 'Create Segment', 'variant' => 'primary']) ?>
+      </div>
+    </div>
+  </section>
 
-      <article class="card" aria-label="Customer segments table">
-        <div class="card__table">
-          <?php component('table', [
-            'class'   => 'table--comfortable',
-            'headers' => [
-              'Segment',
-              ['label' => 'Customers', 'align' => 'right'],
-              ['label' => 'Avg Rating', 'align' => 'right'],
-              ['label' => 'Status', 'align' => 'right'],
-              ['label' => 'Action', 'align' => 'right'],
-            ],
-            'rows' => $rows,
-          ]); ?>
-        </div>
-      </article>
-    </section>
+  <section class="grid gap-4 lg:grid-cols-3" aria-label="Customer segments metric cards">
+    <?php foreach ($segment_widgets as $segment_widget): ?>
+      <?php component('card-metric', [
+        'title'      => $segment_widget['title'],
+        'value'      => $segment_widget['value'],
+        'trend'      => $segment_widget['badge']['label'],
+        'trend_mode' => $segment_widget['badge']['mode'],
+        'note'       => $segment_widget['meta'],
+        'icon_name'  => $segment_widget['icon'],
+      ]); ?>
+    <?php endforeach; ?>
+  </section>
+
+  <section class="grid gap-4 xl:grid-cols-2" aria-label="Customer segments data tables">
+    <article class="card xl:col-span-2" aria-label="Customer segments table">
+      <div class="card__table">
+        <?php component('table', [
+          'class'   => 'table--comfortable',
+          'headers' => [
+            'Segment',
+            ['label' => 'Customers', 'align' => 'right'],
+            ['label' => 'Avg Rating', 'align' => 'right'],
+            ['label' => 'Status', 'align' => 'right'],
+            ['label' => 'Action', 'align' => 'right'],
+          ],
+          'rows' => $rows,
+        ]); ?>
+      </div>
+    </article>
+  </section>
+</section>
 <?php layout('app-end'); ?>

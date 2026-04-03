@@ -20,8 +20,19 @@ $customers = [
   ['name' => 'Nurin Sofea',   'phone' => '014-519 2830', 'gender' => 'Female', 'age' => '33', 'marital_status' => 'Married',  'occupation' => 'Doctor',                     'orders' => '9',  'latest_order' => 'ORD-1041 · 29 Mar 2026', 'avg_rating' => '4.9'],
 ];
 
+$current_page = isset($_GET['page']) ? max(1, (int) $_GET['page']) : 1;
+$per_page     = 8;
+$total_items  = count($customers);
+$total_pages  = max(1, (int) ceil($total_items / $per_page));
+
+if ($current_page > $total_pages) {
+  $current_page = $total_pages;
+}
+
+$offset            = ($current_page - 1) * $per_page;
+$customers_on_page = array_slice($customers, $offset, $per_page);
 $rows = [];
-foreach ($customers as $customer) {
+foreach ($customers_on_page as $customer) {
   $rows[] = [
     'cells' => [
       [
@@ -49,42 +60,80 @@ foreach ($customers as $customer) {
   ];
 }
 
+$customers_search = $capture('search-input', [
+  'id'          => 'customers-search',
+  'name'        => 'customers_search',
+  'label'       => '',
+  'placeholder' => 'Find by customer name or phone',
+]);
+
+$customers_filter = $capture('select', [
+  'id'      => 'customers-filter',
+  'name'    => 'customers_filter',
+  'label'   => '',
+  'value'   => '',
+  'options' => [
+    ['label' => 'Filter By', 'value' => '', 'disabled' => true],
+    ['label' => 'High Value', 'value' => 'high_value'],
+    ['label' => 'At Risk', 'value' => 'at_risk'],
+    ['label' => 'Recent', 'value' => 'recent'],
+  ],
+]);
+
 layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php component('page-header', [
-        'title'       => 'Customers',
-        'description' => 'Customer overview for contact info, purchase behavior, and post-session satisfaction.',
-        'actions'     => [
-          [
-            'label'   => 'Open Customer Profile Form',
-            'href'    => asset('/customers/profile'),
-            'variant' => 'primary',
-          ],
-        ],
-      ]); ?>
+    <section class="card" aria-label="Customers list">
+      <div class="card__head">
+        <?php
+        component('page-header', [
+          'title'       => 'Customers',
+          'description' => 'Customer overview for contact info, purchase behavior, and post-session satisfaction.',
+        ]);
+        ?>
+      </div>
 
-      <article class="card" aria-label="Customer list table">
-        <div class="card__table">
-          <?php component('table', [
-            'class'   => 'table--comfortable',
-            'headers' => [
-              'Customer',
-              'Phone',
-              'Gender',
-              ['label' => 'Age', 'align' => 'right'],
-              'Marital Status',
-              'Occupation',
-              ['label' => 'Orders', 'align' => 'right'],
-              ['label' => 'Avg Rating', 'align' => 'right'],
-              ['label' => 'Action', 'align' => 'right'],
-            ],
-            'rows' => $rows,
-          ]); ?>
+      <div class="card__body inline-flex flex-wrap items-end gap-3">
+        <div class="w-72">
+          <?= $customers_search ?>
         </div>
+        <div class="w-56">
+          <?= $customers_filter ?>
+        </div>
+      </div>
+
+      <article class="card__table">
+        <?php component('table', [
+          'class'   => 'table--comfortable',
+          'headers' => [
+            'Customer',
+            'Phone',
+            'Gender',
+            ['label' => 'Age', 'align' => 'right'],
+            'Marital Status',
+            'Occupation',
+            ['label' => 'Orders', 'align' => 'right'],
+            ['label' => 'Avg Rating', 'align' => 'right'],
+            ['label' => 'Action', 'align' => 'right'],
+          ],
+          'rows' => $rows,
+        ]); ?>
       </article>
+
+      <footer class="card__actions">
+        <?php
+        component('pagination', [
+          'current_page' => $current_page,
+          'total_pages'  => $total_pages,
+          'show_info'    => true,
+          'show_pages'   => true,
+          'total_items'  => $total_items,
+          'per_page'     => $per_page,
+          'base_url'     => asset('/customers?page=%d'),
+        ]);
+        ?>
+      </footer>
     </section>
 <?php layout('app-end'); ?>

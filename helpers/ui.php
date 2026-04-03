@@ -236,7 +236,7 @@ function sales_sidebar_children(string $active_page = ''): array
 function analytics_sidebar_children(string $active_page = ''): array
 {
   $items = [
-    'analytics-overview'           => ['label' => 'Overview', 'path' => '/analytics/enhanced'],
+    'analytics-overview'           => ['label' => 'Overview', 'path' => '/analytics'],
     'analytics-pageviews'          => ['label' => 'Pageviews', 'path' => '/analytics/pageviews'],
     'analytics-sources'            => ['label' => 'Sources', 'path' => '/analytics/sources'],
     'analytics-campaigns'          => ['label' => 'Campaigns', 'path' => '/analytics/campaigns'],

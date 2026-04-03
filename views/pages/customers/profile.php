@@ -149,7 +149,7 @@ $interest_groups = [
 
 ob_start();
 ?>
-<form class="card__body" action="#" method="post" aria-label="Customer profile enrichment form">
+<form class="form" action="#" method="post" aria-label="Customer profile enrichment form">
   <section class="form-section">
     <div class="form-section__grid">
       <?= $capture('input', [
@@ -277,13 +277,15 @@ layout('app-start', [
   'page_current' => $page_current,
 ]);
 ?>
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php component('page-header', [
-        'title'       => 'Customer Profile Form',
-        'description' => 'Collect missing demographic and interest data after each completed session.',
-      ]); ?>
+    <section class="card" aria-label="Customer profile form card">
+      <div class="card__head">
+        <?php component('page-header', [
+          'title'       => 'Customer Profile Form',
+          'description' => 'Collect missing demographic and interest data after each completed session.',
+        ]); ?>
+      </div>
 
-      <article class="card" aria-label="Customer profile form card">
+      <article class="card__body" aria-label="Customer profile form">
         <?= $profile_form_content ?>
       </article>
     </section>

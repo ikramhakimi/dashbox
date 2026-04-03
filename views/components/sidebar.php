@@ -241,7 +241,7 @@ if (!$has_sales_menu) {
 
 if (!$has_analytics_menu) {
   $analytics_active = '';
-  if ($normalized_path === '/analytics' || $normalized_path === '/analytics/enhanced') {
+  if ($normalized_path === '/analytics') {
     $analytics_active = 'analytics-overview';
   } elseif ($normalized_path === '/analytics/pageviews') {
     $analytics_active = 'analytics-pageviews';
