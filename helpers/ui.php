@@ -280,6 +280,10 @@ function build_booking_table_dataset(array $orders, array $options = []): array
   $action_menu_size        = isset($options['action_menu_size']) ? (string) $options['action_menu_size'] : 'sm';
   $action_button_icon_only = !empty($options['action_button_icon_only']);
   $action_button_icon_name = isset($options['action_button_icon_name']) ? (string) $options['action_button_icon_name'] : 'pencil-line';
+  $default_action_href     = isset($options['default_action_href']) ? (string) $options['default_action_href'] : '#';
+  $action_menu_view_href   = isset($options['action_menu_view_href']) ? (string) $options['action_menu_view_href'] : $default_action_href;
+  $action_menu_duplicate_href = isset($options['action_menu_duplicate_href']) ? (string) $options['action_menu_duplicate_href'] : '#';
+  $action_menu_cancel_href = isset($options['action_menu_cancel_href']) ? (string) $options['action_menu_cancel_href'] : '#';
 
   $allowed_action_sizes = ['default', 'md', 'sm', 'lg'];
   if (!in_array($action_button_size, $allowed_action_sizes, true)) {
@@ -420,12 +424,19 @@ function build_booking_table_dataset(array $orders, array $options = []): array
       'label'      => 'Manage',
       'variant'    => 'neutral',
       'size'       => $action_button_size,
-      'href'       => isset($order['manage_url']) ? (string) $order['manage_url'] : '#',
+      'href'       => isset($order['manage_url']) ? (string) $order['manage_url'] : $default_action_href,
       'icon_name'  => $action_button_icon_name,
       'icon_only'  => $action_button_icon_only,
       'aria_label' => 'Manage booking',
     ]);
     $manage_button = (string) ob_get_clean();
+
+    $row_view_href = isset($order['manage_url']) ? (string) $order['manage_url'] : $action_menu_view_href;
+    if ($row_view_href === '') {
+      $row_view_href = $action_menu_view_href;
+    }
+    $row_duplicate_href = isset($order['duplicate_url']) ? (string) $order['duplicate_url'] : $action_menu_duplicate_href;
+    $row_cancel_href    = isset($order['cancel_url']) ? (string) $order['cancel_url'] : $action_menu_cancel_href;
 
     ob_start();
     component('dropdown', [
@@ -436,18 +447,18 @@ function build_booking_table_dataset(array $orders, array $options = []): array
       'items'           => [
         [
           'label' => 'View',
-          'href'  => isset($order['manage_url']) ? (string) $order['manage_url'] : '#',
+          'href'  => $row_view_href,
         ],
         [
           'label' => 'Duplicate',
-          'href'  => '#',
+          'href'  => $row_duplicate_href,
         ],
         [
           'type' => 'divider',
         ],
         [
           'label' => 'Cancel booking',
-          'href'  => '#',
+          'href'  => $row_cancel_href,
           'kind'  => 'danger',
         ],
       ],
