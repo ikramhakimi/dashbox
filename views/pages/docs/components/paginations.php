@@ -3,24 +3,7 @@
 $page_title   = 'Pagination Component';
 $page_current = 'paginations';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('paginations'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -35,7 +18,7 @@ ob_start();
     'current_page' => 3,
     'total_pages'  => 10,
     'show_pages'   => true,
-    'base_url'     => asset('/docs/elements/paginations?page=%d'),
+    'base_url'     => asset('/docs/components/paginations?page=%d'),
   ]) ?>
 </div>
 <?php
@@ -51,7 +34,7 @@ ob_start();
     'show_pages'   => true,
     'total_items'  => 240,
     'per_page'     => 10,
-    'base_url'     => asset('/docs/elements/paginations?page=%d'),
+    'base_url'     => asset('/docs/components/paginations?page=%d'),
   ]) ?>
 </div>
 <?php
@@ -66,31 +49,29 @@ ob_start();
     'show_info'    => true,
     'total_items'  => 0,
     'per_page'     => 10,
-    'base_url'     => asset('/docs/elements/paginations?page=%d'),
+    'base_url'     => asset('/docs/components/paginations?page=%d'),
   ]) ?>
 </div>
 <?php
 $pagination_single_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="mt-2 type-h1">Pagination</h1>
         <p class="mt-2 max-w-3xl type-body-muted">
           Foundation pagination with active state, disabled edges, and optional result info.
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Pagination component showcase">
+      <section class="card__list" aria-label="Pagination component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Default (Prev + Next Clamp)</h2>
@@ -98,9 +79,14 @@ layout('layout-start', [
               Connected previous and next controls as primary pagination navigation.
             </p>
           </header>
-          <?= $pagination_default_content ?>
+          <div class="rounded-lg border border-gray-100 bg-white p-4">
+            <?= $pagination_default_content ?>
+          </div>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Pagination with Info</h2>
@@ -108,9 +94,14 @@ layout('layout-start', [
               Include showing range and total items for better context.
             </p>
           </header>
-          <?= $pagination_info_content ?>
+          <div class="rounded-lg border border-gray-100 bg-white p-4">
+            <?= $pagination_info_content ?>
+          </div>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Single Page / Empty State</h2>
@@ -118,10 +109,13 @@ layout('layout-start', [
               Disabled controls when only one page is available.
             </p>
           </header>
-          <?= $pagination_single_content ?>
+          <div class="rounded-lg border border-gray-100 bg-white p-4">
+            <?= $pagination_single_content ?>
+          </div>
         </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

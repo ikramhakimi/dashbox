@@ -3,24 +3,7 @@
 $page_title   = 'Sales Overview';
 $page_current = 'sales';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -138,24 +121,22 @@ $channel_filter = $capture('select', [
   ],
 ]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
+    <section class="card">
+      <div class="card__head">
       <?php
       component('page-header', [
         'title'       => 'Sales Overview',
         'description' => 'Dashboard for sales metrics and target tracking only.',
       ]);
       ?>
+      </div>
 
-      <div class="inline-flex flex-wrap items-end gap-3" aria-label="Sales overview filters">
+      <div class="card__body inline-flex flex-wrap items-end gap-3" aria-label="Sales overview filters">
         <div class="w-80">
           <?= $sales_search ?>
         </div>
@@ -167,25 +148,33 @@ layout('layout-start', [
         </div>
       </div>
 
-      <section class="grid gap-4 lg:grid-cols-3" aria-label="Sales overview metrics">
+      <section class="card__body grid gap-4 lg:grid-cols-3" aria-label="Sales overview metrics">
         <?php foreach ($sales_overview as $metric): ?>
-          <article class="card space-y-2">
-            <p class="type-body-muted"><?= e((string) $metric['label']) ?></p>
-            <p class="type-h2"><?= e((string) $metric['value']) ?></p>
-            <div>
-              <?php
-              component('badge', [
-                'label' => (string) $metric['meta'],
-                'mode'  => (string) $metric['tone'],
-              ]);
-              ?>
+          <article class="card">
+            <div class="card__body space-y-2">
+              <p class="type-meta text-muted"><?= e((string) $metric['label']) ?></p>
+              <p class="type-h2"><?= e((string) $metric['value']) ?></p>
+              <div>
+                <?php
+                component('badge', [
+                  'label' => (string) $metric['meta'],
+                  'mode'  => (string) $metric['tone'],
+                ]);
+                ?>
+              </div>
             </div>
           </article>
         <?php endforeach; ?>
       </section>
 
-      <section class="grid gap-6 xl:grid-cols-2" aria-label="Sales chart placeholders">
+      <section class="card__body grid gap-6 xl:grid-cols-2" aria-label="Sales chart placeholders">
         <article class="card">
+          <header class="card__head">
+            <h2 class="card__title">Sales Performance</h2>
+            <p class="card__description type-meta text-muted">Monthly trend</p>
+          </header>
+
+          <div class="card__body">
           <?php
           component('chart', [
             'id'          => 'sales-performance-chart',
@@ -195,11 +184,19 @@ layout('layout-start', [
             'labels'      => $sales_chart_labels,
             'datasets'    => $sales_chart_sets,
             'y_prefix'    => 'RM ',
+            'show_header' => false,
           ]);
           ?>
+          </div>
         </article>
 
         <article class="card">
+          <header class="card__head">
+            <h2 class="card__title">Weekly Sales Performance</h2>
+            <p class="card__description type-meta text-muted">Current week vs previous week</p>
+          </header>
+
+          <div class="card__body">
           <?php
           component('chart', [
             'id'          => 'sales-weekly-performance-chart',
@@ -209,28 +206,32 @@ layout('layout-start', [
             'labels'      => $weekly_chart_labels,
             'datasets'    => $weekly_chart_sets,
             'y_prefix'    => 'RM ',
+            'show_header' => false,
           ]);
           ?>
+          </div>
         </article>
       </section>
 
-      <article class="card space-y-4" aria-label="Sales performance metrics">
-        <header class="space-y-1">
-          <h2 class="type-h2">Sales Performance</h2>
-          <p class="type-body-muted">Actual, target, achievement, and remaining target snapshot.</p>
+      <article class="card__body" aria-label="Sales performance metrics">
+        <header class="card__head">
+          <h2 class="card__title">Sales Performance</h2>
+          <p class="card__description type-meta text-muted">
+            Actual, target, achievement, and remaining target snapshot.
+          </p>
         </header>
 
-        <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
+        <div class="card__body">
+          <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-5">
           <?php foreach ($performance_metrics as $metric): ?>
             <section class="rounded-md border border-gray-200 bg-gray-50 p-4">
-              <p class="type-body-muted"><?= e((string) $metric['label']) ?></p>
+              <p class="type-meta text-muted"><?= e((string) $metric['label']) ?></p>
               <p class="mt-1 type-h3"><?= e((string) $metric['value']) ?></p>
-              <p class="mt-1 type-body-muted"><?= e((string) $metric['note']) ?></p>
+              <p class="mt-1 type-meta text-muted"><?= e((string) $metric['note']) ?></p>
             </section>
           <?php endforeach; ?>
+          </div>
         </div>
       </article>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

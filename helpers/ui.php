@@ -29,6 +29,32 @@ function asset(string $path): string
   return BASE_PATH . $clean_path;
 }
 
+function build_main_menu_items(string $active_component = '', string $active_pattern = ''): array
+{
+  return [
+    [
+      'label' => 'Overview',
+      'href'  => asset('/'),
+    ],
+    [
+      'label'    => 'UI Components',
+      'children' => ui_elements_sidebar_children($active_component),
+    ],
+    [
+      'label'    => 'UI Patterns',
+      'children' => ui_patterns_sidebar_children($active_pattern),
+    ],
+    [
+      'label'    => 'Website',
+      'children' => website_sidebar_children(),
+    ],
+    [
+      'label' => 'Payment Gateway',
+      'href'  => asset('/payment-gateway'),
+    ],
+  ];
+}
+
 function ui_elements_sidebar_children(string $active_page = ''): array
 {
   $items = [
@@ -43,10 +69,12 @@ function ui_elements_sidebar_children(string $active_page = ''): array
     'empty-states'=> 'Empty States',
     'icons'       => 'Icons',
     'inputs'      => 'Inputs',
+    'lists'       => 'Lists',
     'modals'      => 'Modals',
     'package-features' => 'Package Features',
     'page-headers'=> 'Page Headers',
     'paginations' => 'Paginations',
+    'ratings'     => 'Ratings',
     'tables'      => 'Tables',
     'tabs'        => 'Tabs',
     'toasts'      => 'Toasts',
@@ -58,7 +86,7 @@ function ui_elements_sidebar_children(string $active_page = ''): array
   foreach ($items as $slug => $label) {
     $children[] = [
       'label'  => $label,
-      'href'   => asset('/docs/elements/' . $slug),
+      'href'   => asset('/docs/components/' . $slug),
       'active' => $slug === $active_page,
     ];
   }
@@ -71,6 +99,7 @@ function ui_patterns_sidebar_children(string $active_page = ''): array
   $items = [
     'crm-pipeline' => 'CRM Pipeline',
     'forms'        => 'Form',
+    'nuggets'      => 'Nuggets',
   ];
 
   $children = [];
@@ -99,6 +128,26 @@ function users_sidebar_children(string $active_page = ''): array
     $children[] = [
       'label'  => $label,
       'href'   => asset($path),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function customers_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'customers'         => ['label' => 'All Customers', 'path' => '/customers'],
+    'customers-segments'=> ['label' => 'Segments', 'path' => '/customers/segments'],
+    'customers-profile' => ['label' => 'Customer Profile Form', 'path' => '/customers/profile'],
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $item) {
+    $children[] = [
+      'label'  => $item['label'],
+      'href'   => asset($item['path']),
       'active' => $slug === $active_page,
     ];
   }
@@ -184,8 +233,38 @@ function sales_sidebar_children(string $active_page = ''): array
   return $children;
 }
 
-function build_booking_table_dataset(array $orders): array
+function website_sidebar_children(string $active_page = ''): array
 {
+  $items = [
+    'website-settings' => ['label' => 'Settings', 'path' => '/website/settings'],
+    'website-content'  => ['label' => 'Content', 'path' => '/website/content'],
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $item) {
+    $children[] = [
+      'label'  => $item['label'],
+      'href'   => asset($item['path']),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
+function build_booking_table_dataset(array $orders, array $options = []): array
+{
+  $action_button_size = isset($options['action_button_size']) ? (string) $options['action_button_size'] : 'sm';
+  $action_menu_size   = isset($options['action_menu_size']) ? (string) $options['action_menu_size'] : 'sm';
+
+  $allowed_action_sizes = ['default', 'md', 'sm', 'lg'];
+  if (!in_array($action_button_size, $allowed_action_sizes, true)) {
+    $action_button_size = 'sm';
+  }
+  if (!in_array($action_menu_size, $allowed_action_sizes, true)) {
+    $action_menu_size = 'sm';
+  }
+
   $headers = [
     'Booking',
     'Customer',
@@ -316,7 +395,7 @@ function build_booking_table_dataset(array $orders): array
     component('button', [
       'label'   => 'Manage',
       'variant' => 'neutral',
-      'size'    => 'sm',
+      'size'    => $action_button_size,
       'href'    => isset($order['manage_url']) ? (string) $order['manage_url'] : '#',
     ]);
     $manage_button = (string) ob_get_clean();
@@ -325,7 +404,7 @@ function build_booking_table_dataset(array $orders): array
     component('dropdown', [
       'trigger_label'   => 'More',
       'trigger_variant' => 'ghost',
-      'trigger_size'    => 'sm',
+      'trigger_size'    => $action_menu_size,
       'align'           => 'right',
       'items'           => [
         [

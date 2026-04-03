@@ -28,27 +28,27 @@ function build_component_class(string $component_name, array $states = []): stri
   return implode(' ', array_unique($classes));
 }
 
-function component(string $name, array $data = []): void
+function component(string $component_name, array $data = []): void
 {
-  $component_path = __DIR__ . '/../views/components/' . $name . '.php';
+  $component_path = __DIR__ . '/../views/components/' . $component_name . '.php';
 
   if (!is_file($component_path)) {
-    throw new RuntimeException('Component not found: ' . $name);
+    throw new RuntimeException('Component not found: ' . $component_name);
   }
 
   $states          = isset($data['states']) && is_array($data['states']) ? $data['states'] : [];
-  $component_class = build_component_class($name, $states);
+  $component_class = build_component_class($component_name, $states);
 
   extract($data, EXTR_SKIP);
   require $component_path;
 }
 
-function layout(string $name, array $data = []): void
+function layout(string $layout_name, array $data = []): void
 {
-  $layout_path = __DIR__ . '/../views/layout/' . $name . '.php';
+  $layout_path = __DIR__ . '/../views/layout/' . $layout_name . '.php';
 
   if (!is_file($layout_path)) {
-    throw new RuntimeException('Layout not found: ' . $name);
+    throw new RuntimeException('Layout not found: ' . $layout_name);
   }
 
   extract($data, EXTR_SKIP);

@@ -3,24 +3,7 @@
 $page_title   = 'Toasts';
 $page_current = 'toasts';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('toasts'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (array $props): string {
   ob_start();
@@ -124,25 +107,23 @@ $toast_template_danger = $capture([
   'attributes'  => ['class' => 'pointer-events-auto w-[320px] shadow-sm'],
 ]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="mt-2 type-h1">Toast UI Library</h1>
         <p class="mt-2 max-w-3xl type-body-muted">
           Lightweight feedback toasts for transient notifications and action confirmation.
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Toast component showcase">
+      <section class="card__list" aria-label="Toast component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Toast Variations</h2>
@@ -152,10 +133,11 @@ layout('layout-start', [
           </header>
           <?= $toast_content ?>
         </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
 <div id="toast-demo-stack" class="pointer-events-none fixed right-6 top-6 z-50 space-y-2"></div>
 
 <template id="toast-template-info"><?= $toast_template_info ?></template>
@@ -199,4 +181,4 @@ layout('layout-start', [
     });
   })();
 </script>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

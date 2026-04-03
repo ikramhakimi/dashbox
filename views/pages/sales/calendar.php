@@ -3,24 +3,7 @@
 $page_title   = 'Sales Calendar';
 $page_current = 'sales-calendar';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -189,15 +172,11 @@ for ($index = 0; $index < 35; $index++) {
   }
 }
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl space-y-6">
       <?php
       component('page-header', [
@@ -215,8 +194,6 @@ layout('layout-start', [
       ]);
       ?>
     </section>
-  </main>
-</div>
 
 <?php foreach ($session_drawers as $session_drawer): ?>
   <?php
@@ -278,4 +255,4 @@ layout('layout-start', [
   ]);
   ?>
 <?php endforeach; ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

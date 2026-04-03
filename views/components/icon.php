@@ -23,6 +23,9 @@ if (!in_array($icon_set, $supported_sets, true)) {
 }
 
 $resolved_icon = isset($icon_aliases[$icon_name]) ? $icon_aliases[$icon_name] : $icon_name;
+$icon_token    = preg_replace('/[^a-z0-9-]+/', '-', $resolved_icon);
+$icon_token    = is_string($icon_token) ? trim($icon_token, '-') : '';
+$icon_token    = $icon_token !== '' ? $icon_token : 'plus';
 $icon_path = '';
 $svg_inner = '';
 $svg_markup = '';
@@ -88,17 +91,17 @@ if (is_file($icon_path)) {
     $svg_attributes = is_string($svg_attributes) ? trim($svg_attributes) : '';
   }
   ?>
-  <svg class="<?= e($component_class) ?> icon--<?= e((string) $size) ?>" aria-hidden="true"<?= $svg_attributes !== '' ? ' ' . $svg_attributes : '' ?>>
+  <svg class="<?= e($component_class) ?> icon--<?= e((string) $size) ?> icon--<?= e($icon_token) ?>" aria-hidden="true"<?= $svg_attributes !== '' ? ' ' . $svg_attributes : '' ?>>
     <?= $svg_inner ?>
   </svg>
 <?php else: ?>
   <svg
-    class="<?= e($component_class) ?> icon--<?= e((string) $size) ?>"
+    class="<?= e($component_class) ?> icon--<?= e((string) $size) ?> icon--<?= e($icon_token) ?>"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     stroke="currentColor"
-    stroke-width="1"
+    stroke-width="2"
     stroke-linecap="round"
     stroke-linejoin="round"
     aria-hidden="true"

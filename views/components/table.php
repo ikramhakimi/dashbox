@@ -6,9 +6,13 @@ $caption       = isset($caption) ? (string) $caption : '';
 $empty_message = isset($empty_message) && $empty_message !== '' ? (string) $empty_message : 'No records found.';
 $empty_title   = isset($empty_title) && $empty_title !== '' ? (string) $empty_title : 'Nothing here yet';
 $empty_deco    = isset($empty_deco) && $empty_deco !== '' ? (string) $empty_deco : '(o_o)';
+$class         = isset($class) ? trim((string) $class) : '';
 $zebra         = !empty($zebra);
 
 $table_classes = [$component_class];
+if ($class !== '') {
+  $table_classes[] = $class;
+}
 if ($zebra) {
   $table_classes[] = 'table--zebra';
 }

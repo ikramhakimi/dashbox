@@ -6,6 +6,7 @@ export const initSubmenu = () => {
     const submenu_panel   = group.querySelector('[data-submenu-panel]');
     const submenu_icon    = group.querySelector('[data-submenu-icon]');
     const default_open    = group.getAttribute('data-submenu-default-open') === 'true';
+    const lock_open       = group.getAttribute('data-submenu-lock-open') === 'true';
 
     if (!submenu_trigger || !submenu_panel || !submenu_icon) {
       return;
@@ -16,6 +17,12 @@ export const initSubmenu = () => {
     submenu_trigger.setAttribute('aria-expanded', default_open ? 'true' : 'false');
 
     submenu_trigger.addEventListener('click', () => {
+      if (lock_open) {
+        submenu_panel.classList.remove('hidden');
+        submenu_trigger.setAttribute('aria-expanded', 'true');
+        return;
+      }
+
       const will_open = submenu_panel.classList.contains('hidden');
 
       submenu_panel.classList.toggle('hidden');

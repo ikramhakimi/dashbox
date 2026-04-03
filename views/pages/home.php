@@ -3,25 +3,7 @@
 $page_title   = 'Dashboard';
 $page_current = 'dashboard';
 
-$menu_items = [
-  [
-    'label'  => 'Overview',
-    'href'   => asset('/'),
-    'active' => true,
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $widgets_overview = [
   [
@@ -420,106 +402,159 @@ $orders = [
     'manage_url'     => '/app/order/view-order/46',
   ],
 ];
-$home_booking_table = build_booking_table_dataset($orders);
+$home_booking_table = build_booking_table_dataset($orders, [
+  'action_button_size' => 'default',
+  'action_menu_size'   => 'default',
+]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 flex flex-col gap-4 border-b border-gray-200 pb-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p class="type-caption type-semibold">Overview</p>
-          <h1 class="type-h1">Performance Dashboard</h1>
-          <p class="mt-2 max-w-3xl type-body-muted">
-            Structured overview with focused KPIs and operational insights.
-          </p>
-        </div>
-        <button class="rounded-lg border border-gray-200 bg-white px-4 py-2 type-body type-medium text-body transition hover:bg-gray-100">
-          Export Snapshot
-        </button>
-      </header>
+    <section class="">
 
       <div class="space-y-5">
         <section class="grid gap-4 xl:grid-cols-5" aria-label="Dashboard overview">
           <div class="xl:col-span-3">
             <div class="grid gap-4 sm:grid-cols-2">
               <?php foreach ($widgets_overview as $widget): ?>
-                <?php component('card-widget', $widget); ?>
+                <?php component('card-metric', $widget); ?>
               <?php endforeach; ?>
             </div>
           </div>
           <div class="xl:col-span-2">
-            <?php component('card'); ?>
+            <article class="card home-monthly-target">
+              <header class="card__head">
+                <div class="flex items-start justify-between gap-3">
+                  <div class="min-w-0">
+                    <h2 class="card__title">Monthly Target</h2>
+                    <p class="card__description">Target you have set for each month</p>
+                  </div>
+                  <button
+                    type="button"
+                    class="rounded-md p-2 icon-muted transition hover:bg-gray-100 hover-text-body"
+                    aria-label="More options"
+                  >
+                    <svg
+                      class="h-5 w-5"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      xmlns="http://www.w3.org/2000/svg"
+                      aria-hidden="true"
+                    >
+                      <circle cx="12" cy="5" r="1.75"></circle>
+                      <circle cx="12" cy="12" r="1.75"></circle>
+                      <circle cx="12" cy="19" r="1.75"></circle>
+                    </svg>
+                  </button>
+                </div>
+              </header>
+
+              <div class="card__body space-y-4">
+                <div class="card__chart relative rounded-lg bg-gray-50" style="height: 190px">
+                  <div class="card__chart-placeholder flex h-full items-center justify-center type-body type-medium text-muted">
+                    Graph Placeholder
+                  </div>
+                  <span class="badge badge--positive absolute bottom-4 left-1/2 -translate-x-1/2">+10%</span>
+                </div>
+                <p class="text-center type-body-muted">
+                  You earned RM 3,287 today, higher than last month.
+                  <br>
+                  Keep up your momentum!
+                </p>
+              </div>
+
+              <div class="card__body">
+                <div class="grid grid-cols-3 divide-x divide-gray-200 border-t border-gray-200 pt-4">
+                  <div class="card__stat px-4 text-center first:pl-0 last:pr-0">
+                    <p class="card__stat-label mb-1 type-small text-muted">Target</p>
+                    <p class="card__stat-value type-h3 type-semibold">RM 20K</p>
+                  </div>
+                  <div class="card__stat px-4 text-center first:pl-0 last:pr-0">
+                    <p class="card__stat-label mb-1 type-small text-muted">Revenue</p>
+                    <p class="card__stat-value type-h3 type-semibold">RM 20K</p>
+                  </div>
+                  <div class="card__stat px-4 text-center first:pl-0 last:pr-0">
+                    <p class="card__stat-label mb-1 type-small text-muted">Today</p>
+                    <p class="card__stat-value type-h3 type-semibold">RM 20K</p>
+                  </div>
+                </div>
+              </div>
+            </article>
           </div>
         </section>
 
         <section aria-label="Plain widget cards">
           <div class="grid gap-4 md:grid-cols-4">
             <?php foreach ($widgets_plain as $widget): ?>
-              <?php component('card-widget', $widget); ?>
+              <?php component('card-metric', $widget); ?>
             <?php endforeach; ?>
           </div>
         </section>
 
         <section aria-label="Target summary with inline widgets">
-          <?php
-          component('card', [
-            'title'       => 'Acquisition Snapshot',
-            'subtitle'    => 'Quick summary for this quarter',
-            'show_graph'  => false,
-            'show_footer' => false,
-            'widgets'     => $widgets_target_inline,
-          ]);
-          ?>
+          <article class="card home-acquisition-snapshot">
+            <header class="card__head">
+              <h2 class="card__title">Acquisition Snapshot</h2>
+              <p class="card__description">Quick summary for this quarter</p>
+            </header>
+            <div class="card__body">
+              <div class="grid gap-4 md:grid-cols-4">
+                <?php foreach ($widgets_target_inline as $widget): ?>
+                  <?php component('card-metric', $widget); ?>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          </article>
         </section>
 
         <section aria-label="Soft acquisition snapshot with inline widgets">
-          <?php
-          component('card', [
-            'title'       => 'Revenue Pulse',
-            'subtitle'    => 'Soft theme variation for balanced emphasis',
-            'show_graph'  => false,
-            'show_footer' => false,
-            'widgets'     => $widgets_target_inline_soft,
-            'states'      => [
-              'soft' => true,
-            ],
-          ]);
-          ?>
+          <article class="card card--soft home-revenue-pulse">
+            <header class="card__head">
+              <h2 class="card__title">Revenue Pulse</h2>
+              <p class="card__description">Soft theme variation for balanced emphasis</p>
+            </header>
+            <div class="card__body">
+              <div class="grid gap-4 md:grid-cols-4">
+                <?php foreach ($widgets_target_inline_soft as $widget): ?>
+                  <?php component('card-metric', $widget); ?>
+                <?php endforeach; ?>
+              </div>
+            </div>
+          </article>
         </section>
 
         <section aria-label="Orders data table">
-          <article class="space-y-4">
-            <header>
-              <h2 class="type-h2">Orders</h2>
-              <p class="type-body-muted">Booking orders by studio, session, payment, and status.</p>
+          <article class="card home-orders">
+            <header class="card__head">
+              <h2 class="card__title">Orders</h2>
+              <p class="card__description">Booking orders by studio, session, payment, and status.</p>
             </header>
 
-            <?php
-            component('table', [
-              'headers' => $home_booking_table['headers'],
-              'rows'    => $home_booking_table['rows'],
-            ]);
+            <div class="card__table">
+              <?php
+              component('table', [
+                'headers' => $home_booking_table['headers'],
+                'rows'    => $home_booking_table['rows'],
+              ]);
+              ?>
+            </div>
 
-            component('pagination', [
-              'current_page' => 1,
-              'total_pages'  => 1,
-              'show_info'    => true,
-              'total_items'  => $home_booking_table['total'],
-              'per_page'     => 10,
-              'base_url'     => asset('/?page=%d'),
-            ]);
-            ?>
+            <footer class="card__actions">
+              <?php
+              component('pagination', [
+                'current_page' => 1,
+                'total_pages'  => 1,
+                'show_info'    => true,
+                'total_items'  => $home_booking_table['total'],
+                'per_page'     => 10,
+                'base_url'     => asset('/?page=%d'),
+              ]);
+              ?>
+            </footer>
           </article>
         </section>
       </div>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

@@ -33,6 +33,8 @@ const buildDataset = (dataset, index) => {
     borderColor: typeof dataset.border_color === 'string' ? dataset.border_color : tone.border,
     backgroundColor: typeof dataset.background_color === 'string' ? dataset.background_color : tone.background,
     borderWidth: typeof dataset.border_width === 'number' ? dataset.border_width : 2,
+    borderRadius: typeof dataset.border_radius === 'number' ? dataset.border_radius : 0,
+    borderSkipped: typeof dataset.border_skipped === 'string' ? dataset.border_skipped : undefined,
     tension: typeof dataset.tension === 'number' ? dataset.tension : 0.35,
     fill: typeof dataset.fill === 'boolean' ? dataset.fill : false,
     pointRadius: typeof dataset.point_radius === 'number' ? dataset.point_radius : 2,
@@ -40,7 +42,7 @@ const buildDataset = (dataset, index) => {
   };
 };
 
-const buildOptions = (prefix) => ({
+const buildOptions = (prefix, yTicksDisplay, legendPosition) => ({
   responsive: true,
   maintainAspectRatio: false,
   interaction: {
@@ -50,13 +52,12 @@ const buildOptions = (prefix) => ({
   plugins: {
     legend: {
       display: true,
-      position: 'top',
+      position: legendPosition,
       labels: {
-        boxWidth: 10,
-        boxHeight: 10,
+        boxWidth: 8,
+        boxHeight: 8,
         color: 'rgb(75 85 99)',
-        usePointStyle: true,
-        pointStyle: 'circle',
+        usePointStyle: false,
         padding: 14,
       },
     },
@@ -89,6 +90,7 @@ const buildOptions = (prefix) => ({
     y: {
       beginAtZero: true,
       ticks: {
+        display: yTicksDisplay,
         color: 'rgb(107 114 128)',
         callback: (value) => `${prefix}${Number(value).toLocaleString()}`,
       },
@@ -129,6 +131,12 @@ export const initChart = () => {
       : [];
 
     const prefix = typeof parsedConfig.y_prefix === 'string' ? parsedConfig.y_prefix : '';
+    const yTicksDisplay = typeof parsedConfig.y_ticks_display === 'boolean'
+      ? parsedConfig.y_ticks_display
+      : true;
+    const legendPosition = ['top', 'bottom', 'left', 'right'].includes(parsedConfig.legend_position)
+      ? parsedConfig.legend_position
+      : 'top';
 
     const chartType = typeof parsedConfig.type === 'string' ? parsedConfig.type : 'line';
 
@@ -138,7 +146,7 @@ export const initChart = () => {
         labels,
         datasets,
       },
-      options: buildOptions(prefix),
+      options: buildOptions(prefix, yTicksDisplay, legendPosition),
     };
 
     // eslint-disable-next-line no-new

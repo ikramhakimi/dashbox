@@ -3,24 +3,7 @@
 $page_title   = 'All Packages';
 $page_current = 'packages';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -233,30 +216,31 @@ $search_filter = $capture('search-input', [
   'icon_name'   => 'magnifying-glass',
 ]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php
-      component('page-header', [
-        'title'       => 'All Packages',
-        'description' => 'Manage package offerings with clear status and order visibility.',
-      ]);
-      ?>
-
-      <div class="max-w-sm">
-        <?= $search_filter ?>
+    <section class="card">
+      <div class="card__head">
+        <?php
+        component('page-header', [
+          'title'       => 'All Packages',
+          'description' => 'Manage package offerings with clear status and order visibility.',
+        ]);
+        ?>
       </div>
 
-      <article class="card space-y-6" aria-label="Packages list">
+      <div class="card__body">
+        <div class="max-w-sm">
+          <?= $search_filter ?>
+        </div>
+      </div>
+
+      <article class="card__table" aria-label="Packages list">
         <?php
         component('table', [
+          'class'   => 'table--comfortable',
           'headers' => [
             ['label' => 'Product',  'align' => 'left'],
             ['label' => 'Price',    'align' => 'left'],
@@ -267,7 +251,11 @@ layout('layout-start', [
           ],
           'rows' => $table_rows,
         ]);
+        ?>
+      </article>
 
+      <footer class="card__actions">
+        <?php
         component('pagination', [
           'current_page' => $current_page,
           'total_pages'  => $total_pages,
@@ -278,7 +266,7 @@ layout('layout-start', [
           'base_url'     => asset('/packages?page=%d'),
         ]);
         ?>
-      </article>
+      </footer>
 
       <?php
       component('modal', [
@@ -303,8 +291,6 @@ layout('layout-start', [
       ]);
       ?>
     </section>
-  </main>
-</div>
 <?php foreach ($product_drawers as $product_drawer): ?>
   <?php
   component('drawer', [
@@ -318,4 +304,4 @@ layout('layout-start', [
   ]);
   ?>
 <?php endforeach; ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

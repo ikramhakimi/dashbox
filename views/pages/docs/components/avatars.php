@@ -3,24 +3,7 @@
 $page_title   = 'Avatar Component';
 $page_current = 'avatars';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('avatars'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -92,54 +75,51 @@ ob_start();
 <?php
 $avatar_group_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
-        <h1 class="mt-2 type-h1">Avatar</h1>
+    <section class="card">
+      <header class="card__head">
+        <h1 class="mt-2 type-h1">Avatar UI Component</h1>
         <p class="mt-2 max-w-3xl type-body-muted">
           Avatar component with image and initials fallback, size variants, and group stacking.
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Avatar component showcase">
-        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
-          <header>
-            <h2 class="type-h2">Size Variations</h2>
-            <p class="mt-1 type-body-muted">Small, default, and large avatar scales.</p>
-          </header>
-          <?= $avatar_sizes_content ?>
-        </article>
+      <section class="card__list" aria-label="Avatar component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
+              <h3 class="type-h3">Size Variations</h3>
+              <p class="mb-4 type-body-muted">
+                Small, default, and large avatar sizes for different density contexts.
+              </p>
+              <?= $avatar_sizes_content ?>
+            </section>
+          </li>
 
-        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
-          <header>
-            <h2 class="type-h2">Initials Tones</h2>
-            <p class="mt-1 type-body-muted">
-              Automatic background and text color combinations for fallback initials.
-            </p>
-          </header>
-          <?= $avatar_fallback_content ?>
-        </article>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
+              <h3 class="type-h3">Initials Tones</h3>
+              <p class="mb-4 type-body-muted">
+                Fallback initials with balanced tone combinations for when images are unavailable.
+              </p>
+              <?= $avatar_fallback_content ?>
+            </section>
+          </li>
 
-        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
-          <header>
-            <h2 class="type-h2">Avatar Group</h2>
-            <p class="mt-1 type-body-muted">
-              Overlapping stack pattern for team and assignee lists.
-            </p>
-          </header>
-          <?= $avatar_group_content ?>
-        </article>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
+              <h3 class="type-h3">Avatar Group</h3>
+              <p class="mb-4 type-body-muted">
+                Overlapping avatar stacks for team previews, assignees, and participant lists.
+              </p>
+              <?= $avatar_group_content ?>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

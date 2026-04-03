@@ -3,24 +3,7 @@
 $page_title   = 'Modals';
 $page_current = 'modals';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('modals'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (string $name, array $props): string {
   ob_start();
@@ -277,25 +260,23 @@ ob_start();
 <?php
 $modal_demo_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="mt-2 type-h1">Modal UI Library</h1>
         <p class="mt-2 max-w-3xl type-body-muted">
           Practical modal contexts for production workflows, from form entry to confirmation and step flows.
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Modal component showcase">
+      <section class="card__list" aria-label="Modal component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Modal Context Demos</h2>
@@ -305,10 +286,11 @@ layout('layout-start', [
           </header>
           <?= $modal_demo_content ?>
         </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
 
 <?php
 component('modal', [
@@ -356,4 +338,4 @@ component('modal', [
   'footer'      => $step_modal_footer,
 ]);
 ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

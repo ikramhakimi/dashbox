@@ -3,24 +3,7 @@
 $page_title   = 'Unpaid Orders';
 $page_current = 'orders-unpaid';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -85,30 +68,29 @@ $orders_search = $capture('search-input', [
   'placeholder' => 'Find unpaid orders',
 ]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
+    <section class="card" aria-label="Unpaid orders list">
+      <div class="card__head">
+        <?php
+        component('page-header', [
+          'title'       => 'Unpaid Orders',
+          'description' => 'Focus queue for outstanding payments and follow-ups.',
+        ]);
+        ?>
+      </div>
 
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php
-      component('page-header', [
-        'title'       => 'Unpaid Orders',
-        'description' => 'Focus queue for outstanding payments and follow-ups.',
-      ]);
-      ?>
-
-      <div class="max-w-sm">
+      <div class="card__body max-w-sm">
         <?= $orders_search ?>
       </div>
 
-      <article class="card space-y-6" aria-label="Unpaid orders list">
+      <article class="card__table">
         <?php
         component('table', [
+          'class'   => 'table--comfortable',
           'headers' => [
             ['label' => 'Order', 'align' => 'left'],
             ['label' => 'Customer', 'align' => 'left'],
@@ -122,6 +104,4 @@ layout('layout-start', [
         ?>
       </article>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

@@ -1,0 +1,52 @@
+@layer base {
+  :root {
+    --list-item-padding-x: 0;
+    --list-item-padding-y: 10px;
+    --list-item-padding-y-comfortable: 14px;
+    --list-divider-color: theme("colors.gray.100");
+  }
+}
+
+@layer components {
+  /*
+   * List Anatomy:
+   * .list
+   * ├── .list__item
+   * │   ├── .list__main
+   * │   │   ├── .list__title
+   * │   │   └── .list__meta
+   * │   └── .list__aside (optional)
+   * └── .list--comfortable (modifier)
+   */
+  .list {
+    @apply divide-y;
+    --tw-divide-opacity: 1;
+    border-color: var(--list-divider-color);
+  }
+
+  .list__item {
+    @apply flex items-center justify-between gap-3;
+    padding-inline: var(--list-item-padding-x);
+    padding-block: var(--list-item-padding-y);
+  }
+
+  .list__main {
+    @apply min-w-0;
+  }
+
+  .list__title {
+    @apply type-body;
+  }
+
+  .list__meta {
+    @apply type-meta mt-1;
+  }
+
+  .list__aside {
+    @apply shrink-0 type-meta;
+  }
+
+  .list--comfortable .list__item {
+    padding-block: var(--list-item-padding-y-comfortable);
+  }
+}

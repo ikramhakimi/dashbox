@@ -3,24 +3,7 @@
 $page_title   = 'Drawers (Interactive JS Component)';
 $page_current = 'drawers';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('drawers'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -195,18 +178,13 @@ ob_start();
 <?php
 $drawer_js_doc_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="mt-2 type-h1">
           Drawers (Interactive JS Component)
         </h1>
@@ -215,28 +193,35 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Drawer component showcase">
-        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
-          <header>
-            <h2 class="type-h2">JS Documentation</h2>
-            <p class="mt-1 type-body-muted">Implementation paths for drawer interactive behavior.</p>
-          </header>
-          <?= $drawer_js_doc_content ?>
-        </article>
-
-        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
-          <header>
-            <h2 class="type-h2">Drawer Trigger Variations</h2>
-            <p class="mt-1 type-body-muted">
-              Right, left, and large detail drawer for different workflows.
-            </p>
-          </header>
-          <?= $drawer_trigger_content ?>
-        </article>
+      <section class="card__list" aria-label="Drawer component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
+              <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+                <header>
+                  <h2 class="type-h2">JS Documentation</h2>
+                  <p class="mt-1 type-body-muted">Implementation paths for drawer interactive behavior.</p>
+                </header>
+                <?= $drawer_js_doc_content ?>
+              </article>
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
+              <article class="space-y-4 py-7 first:pt-0 last:pb-0">
+                <header>
+                  <h2 class="type-h2">Drawer Trigger Variations</h2>
+                  <p class="mt-1 type-body-muted">
+                    Right, left, and large detail drawer for different workflows.
+                  </p>
+                </header>
+                <?= $drawer_trigger_content ?>
+              </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
 
 <?php
 component('drawer', [
@@ -269,4 +254,4 @@ component('drawer', [
   'size'        => 'lg',
 ]);
 ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

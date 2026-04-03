@@ -9,7 +9,7 @@
     @apply flex flex-wrap gap-2;
   }
   .otp__control {
-    @apply h-9 w-9 rounded-md border border-gray-300 bg-white text-center text-lg font-semibold text-dark outline-none transition-all duration-200;
+    @apply h-10 w-10 rounded-md border border-gray-300 bg-white text-center text-lg font-semibold text-dark outline-none transition-all duration-200;
   }
   .otp__control:focus {
     @apply border-gray-400 ring-2 ring-gray-200;

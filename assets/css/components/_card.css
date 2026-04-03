@@ -1,0 +1,157 @@
+@layer base {
+  :root {
+    --card-padding-x: 24px;
+    --card-padding-y: 24px;
+    --card-child-gap: 24px;
+
+    --card-border-width: 1px;
+    --card-border-style: solid;
+    --card-border-color: var(--app-border);
+    --card-divider-color: var(--app-divider);
+
+    --card-radius: 0.5rem;
+    --card-bg: var(--app-surface);
+    --card-shadow: none;
+
+    --card-icon-size: 3rem;
+    --card-icon-radius: 0.375rem;
+    --card-icon-bg: var(--app-surface-muted);
+  }
+}
+
+@layer components {
+  /*
+   * Card Anatomy:
+   * .card
+   * ├── .card-media (optional)
+   * ├── .card__head
+   * │   ├── .card__title
+   * │   └── .card__description
+   * ├── .card__table (optional)
+   * ├── .card__list (optional)
+   * ├── .card__body
+   * └── .card__actions
+   */
+  /*
+   * Card Metric Anatomy:
+   * .card.card--metric
+   * └── .card__body
+   *     ├── .card__metric-head
+   *     │   ├── type-caption
+   *     │   └── .card__icon (optional)
+   *     ├── type-h2
+   *     └── .card__meta
+   *         ├── .badge
+   *         └── type-meta
+   */
+  .card {
+    display: grid;
+    row-gap: var(--card-child-gap);
+    padding-inline: 0;
+    padding-top: var(--card-padding-y);
+    padding-bottom: 0;
+    border-width: var(--card-border-width);
+    border-style: var(--card-border-style);
+    border-color: var(--card-border-color);
+    border-radius: var(--card-radius);
+    background-color: var(--card-bg);
+    box-shadow: var(--card-shadow);
+  }
+
+  .card > .card__head,
+  .card > .card__table,
+  .card > .card__list,
+  .card > .card__body,
+  .card > .card__actions {
+    padding-inline: var(--card-padding-x);
+  }
+
+  .card > .card__head {
+  }
+
+  .card > .card__actions {
+    padding-block: var(--card-padding-y);
+    border-top: 1px solid var(--card-divider-color);
+  }
+
+  .card > .card__body:last-child {
+    padding-bottom: var(--card-padding-y);
+  }
+
+  .card > .card__table {
+    margin-inline: calc(var(--card-padding-x) * -1);
+  }
+
+  .card > .card__list {
+    margin-inline: calc(var(--card-padding-x) * -1);
+  }
+
+  .card > .card__list .list__item {
+    padding-inline: var(--card-padding-x);
+  }
+
+  .card > .card__table .table__cell:first-child {
+    padding-left: var(--card-padding-x);
+  }
+
+  .card > .card__table .table__cell:last-child {
+    padding-right: var(--card-padding-x);
+  }
+
+  .card > .card__table:last-child {
+    padding-bottom: var(--card-padding-y);
+  }
+
+  .card > .card__list:last-child {
+    padding-bottom: var(--card-padding-y);
+  }
+
+  .card__title {
+    @apply type-h3;
+  }
+
+  .card__description {
+    margin-top: 4px;
+  }
+
+  .card__icon {
+    display: inline-flex;
+    width: var(--card-icon-size);
+    height: var(--card-icon-size);
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--card-icon-radius);
+    background-color: var(--card-icon-bg);
+    @apply leading-none icon-dark;
+  }
+
+  .card--metric > .card__body {
+    @apply space-y-3;
+  }
+
+  .card--metric .card__metric-head {
+    @apply relative flex items-center gap-2;
+  }
+
+  .card--metric .card__icon {
+    @apply absolute right-0 top-0;
+  }
+
+  .card--metric .card__meta {
+    @apply flex items-center gap-2;
+  }
+
+  .card-media {
+    display: block;
+    width: 100%;
+  }
+
+  .card > .card-media:first-child {
+    margin-top: calc(var(--card-padding-y) * -1);
+  }
+
+  .card > .card-media:first-child > * {
+    border-top-left-radius: calc(var(--card-radius) - 1px);
+    border-top-right-radius: calc(var(--card-radius) - 1px);
+  }
+}

@@ -1,26 +1,55 @@
+@layer base {
+  :root {
+    --app-body-bg: theme("colors.gray.100");
+    --app-surface: theme("colors.white");
+    --app-surface-muted: theme("colors.gray.50");
+    --app-surface-disabled: theme("colors.gray.100");
+    --app-border: theme("colors.gray.200");
+    --app-border-strong: theme("colors.gray.300");
+    --app-border-emphasis: theme("colors.gray.500");
+    --app-divider: theme("colors.gray.100");
+    --app-hover-bg: theme("colors.gray.100");
+    --app-focus-ring: theme("colors.gray.200");
+
+    --app-text-primary: theme("colors.gray.900");
+    --app-text-body: theme("colors.gray.700");
+    --app-text-secondary: theme("colors.gray.600");
+    --app-text-muted: theme("colors.gray.500");
+    --app-text-disabled: theme("colors.gray.400");
+
+    --app-icon-default: theme("colors.gray.600");
+    --app-icon-muted: theme("colors.gray.400");
+  }
+}
+
 @layer components {
+  .app-body {
+    @apply min-h-screen font-sans text-[14px] text-secondary;
+    background-color: var(--app-body-bg);
+  }
+
   .text-dark {
-    @apply text-gray-900;
+    color: var(--app-text-primary);
   }
 
   .text-body {
-    @apply text-gray-700;
+    color: var(--app-text-body);
   }
 
   .text-primary {
-    @apply text-gray-900;
+    color: var(--app-text-primary);
   }
 
   .text-secondary {
-    @apply text-gray-600;
+    color: var(--app-text-secondary);
   }
 
   .text-muted {
-    @apply text-gray-500;
+    color: var(--app-text-muted);
   }
 
   .text-disabled {
-    @apply text-gray-400;
+    color: var(--app-text-disabled);
   }
 
   .text-link {
@@ -72,14 +101,30 @@
   }
 
   .icon-default {
-    @apply text-gray-600;
+    color: var(--app-icon-default);
   }
 
   .icon-dark {
-    @apply text-gray-900;
+    color: var(--app-text-primary);
   }
 
   .icon-muted {
-    @apply text-gray-400;
+    color: var(--app-icon-muted);
+  }
+
+  .icon-primary {
+    @apply text-primary;
+  }
+
+  .icon-secondary {
+    @apply text-secondary;
+  }
+
+  .icon-positive {
+    @apply text-success;
+  }
+
+  .icon-negative {
+    @apply text-danger;
   }
 }

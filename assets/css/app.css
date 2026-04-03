@@ -1,6 +1,6 @@
 @import "./components/_utilities.css";
 @import "./components/_sidebar.css";
-@import "./components/_card-base.css";
+@import "./components/_card.css";
 @import "./components/_chart-placeholder.css";
 @import "./components/_chart.css";
 @import "./components/_table.css";
@@ -10,6 +10,7 @@
 @import "./components/_button.css";
 @import "./components/_empty-state.css";
 @import "./components/_input.css";
+@import "./components/_rating.css";
 @import "./components/_input-group.css";
 @import "./components/_feature-editor.css";
 @import "./components/_form-section.css";
@@ -33,6 +34,7 @@
 @import "./components/_tabs.css";
 @import "./components/_toast.css";
 @import "./components/_calendar.css";
+@import "./components/_list.css";
 
 @tailwind base;
 @tailwind components;

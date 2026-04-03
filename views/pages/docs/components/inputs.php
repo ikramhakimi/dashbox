@@ -3,24 +3,7 @@
 $page_title   = 'Inputs';
 $page_current = 'inputs';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('inputs'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -34,7 +17,7 @@ ob_start();
   <div>
     <p class="type-caption type-semibold">Standard Inputs</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('input', [
           'id'          => 'demo-input-text',
           'label'       => 'Text Input',
@@ -43,7 +26,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('search-input', [
           'id'          => 'demo-input-search',
           'label'       => 'Search Input',
@@ -51,7 +34,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('input-group', [
           'id'          => 'demo-input-icon-right',
           'label'       => 'Icon + Input (Right)',
@@ -61,7 +44,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('password-input', [
           'id'          => 'demo-input-password',
           'label'       => 'Password Input',
@@ -70,7 +53,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('input', [
           'id'         => 'demo-input-error',
           'label'      => 'Input Error State',
@@ -90,7 +73,7 @@ ob_start();
   <div>
     <p class="type-caption type-semibold">Long Form Fields</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('textarea', [
           'id'          => 'demo-textarea',
           'label'       => 'Textarea',
@@ -99,7 +82,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('select', [
           'id'      => 'demo-select',
           'label'   => 'Select',
@@ -124,7 +107,7 @@ ob_start();
   <div>
     <p class="type-caption type-semibold">Boolean & Single Choice</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('checkbox', [
           'id'        => 'demo-checkbox',
           'label'     => 'Email notifications',
@@ -140,7 +123,7 @@ ob_start();
         </div>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('radio', [
           'id'      => 'demo-radio-a',
           'name'    => 'billing_cycle',
@@ -169,7 +152,7 @@ ob_start();
   <div>
     <p class="type-caption type-semibold">Switch Patterns</p>
     <div class="mt-3">
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('switch', [
           'id'        => 'demo-switch',
           'label'     => 'Enable dark mode',
@@ -242,7 +225,7 @@ ob_start();
   <div>
     <p class="type-caption type-semibold">Specialized Inputs</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('upload', [
           'id'        => 'demo-upload',
           'label'     => 'File Input / Upload',
@@ -251,7 +234,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('otp-input', [
           'label'     => 'OTP / PIN Input',
           'name'      => 'otp_code',
@@ -265,7 +248,7 @@ ob_start();
   <div>
     <p class="type-caption type-semibold">Date & Time</p>
     <div class="mt-3 grid gap-4 md:grid-cols-2">
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('datetime-input', [
           'id'    => 'demo-date',
           'label' => 'Date Input',
@@ -273,7 +256,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4">
+      <div class="rounded-lg border border-gray-100 bg-white p-4">
         <?= $capture('datetime-input', [
           'id'    => 'demo-time',
           'label' => 'Time Input',
@@ -281,7 +264,7 @@ ob_start();
         ]) ?>
       </div>
 
-      <div class="py-4 md:col-span-2">
+      <div class="rounded-lg border border-gray-100 bg-white p-4 md:col-span-2">
         <?= $capture('datetime-input', [
           'id'    => 'demo-datetime',
           'label' => 'Datetime-Local Input',
@@ -294,25 +277,23 @@ ob_start();
 <?php
 $special_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="mt-2 type-h1">Input UI Library</h1>
         <p class="mt-2 max-w-3xl type-body-muted">
           Hierarchical reference for text, choice, and specialized form controls in the dashboard system.
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Input component showcase">
+      <section class="card__list" aria-label="Input component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Text & Search Inputs</h2>
@@ -322,7 +303,10 @@ layout('layout-start', [
           </header>
           <?= $text_search_content ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Textarea & Select</h2>
@@ -332,7 +316,10 @@ layout('layout-start', [
           </header>
           <?= $textarea_select_content ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Checkbox & Radio</h2>
@@ -342,7 +329,10 @@ layout('layout-start', [
           </header>
           <?= $choice_content ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Switch</h2>
@@ -352,7 +342,10 @@ layout('layout-start', [
           </header>
           <?= $switch_content ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Upload, OTP & DateTime</h2>
@@ -362,8 +355,9 @@ layout('layout-start', [
           </header>
           <?= $special_content ?>
         </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

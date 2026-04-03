@@ -3,24 +3,7 @@
 $page_title   = 'Create Package';
 $page_current = 'packages-create';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -73,43 +56,23 @@ ob_start();
 <?php
 $package_preview_drawer_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
+    <section class="card">
+      <div class="card__head">
       <?php
       component('page-header', [
         'title'       => 'Create Package',
-        'description' => 'Create a new package with pricing details and publish settings.',
+        // 'description' => 'Create a new package with pricing details and publish settings.',
       ]);
       ?>
+      </div>
 
-      <article class="card" aria-label="Create package form">
-        <form action="#" method="post">
-          <section class="form-section hidden">
-            <div class="form-section__grid">
-              <div class="form-section__full">
-                <?php
-                component('dropzone', [
-                  'id'        => 'product-photo',
-                  'name'      => 'product_photo',
-                  'label'     => 'Package Main Photo',
-                  'accept'    => 'image/*',
-                  'help_text' => 'Upload package image in JPG, PNG, or WEBP format.',
-                  'states'    => [
-                    'square' => true,
-                  ],
-                ]);
-                ?>
-              </div>
-            </div>
-          </section>
+      <article class="card__body" aria-label="Create package form">
+        <form class="form" action="#" method="post">
 
           <section class="form-section">
             <div class="form-section__grid">
@@ -352,15 +315,15 @@ layout('layout-start', [
             <div class="form-actions__group">
               <?php
               component('button', [
-                'label'      => 'Preview Card',
-                'type'       => 'button',
-                'attributes' => ['data-drawer-open' => $package_preview_drawer_id],
-              ]);
-
-              component('button', [
                 'label'   => 'Save Package',
                 'variant' => 'primary',
                 'type'    => 'submit',
+              ]);
+
+              component('button', [
+                'label'      => 'Preview Card',
+                'type'       => 'button',
+                'attributes' => ['data-drawer-open' => $package_preview_drawer_id],
               ]);
               ?>
             </div>
@@ -368,8 +331,6 @@ layout('layout-start', [
         </form>
       </article>
     </section>
-  </main>
-</div>
 <?php
 component('drawer', [
   'id'          => $package_preview_drawer_id,
@@ -380,4 +341,4 @@ component('drawer', [
   'size'        => 'lg',
 ]);
 ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

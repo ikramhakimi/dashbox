@@ -3,34 +3,13 @@
 $page_title   = 'Create Portfolio';
 $page_current = 'portfolio-create';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl space-y-6">
       <?php
       component('page-header', [
@@ -40,7 +19,7 @@ layout('layout-start', [
       ?>
 
       <article class="card" aria-label="Create portfolio form">
-        <form action="#" method="post" enctype="multipart/form-data">
+        <form class="card__body" action="#" method="post" enctype="multipart/form-data">
           <section class="form-section">
             <div class="form-section__grid">
               <div class="form-section__full">
@@ -118,14 +97,14 @@ layout('layout-start', [
             <div class="form-actions__group">
               <?php
               component('button', [
-                'label' => 'Save Draft',
-                'href'  => asset('/portfolio'),
-              ]);
-
-              component('button', [
                 'label'   => 'Publish Portfolio',
                 'variant' => 'primary',
                 'type'    => 'submit',
+              ]);
+
+              component('button', [
+                'label' => 'Save Draft',
+                'href'  => asset('/portfolio'),
               ]);
               ?>
             </div>
@@ -133,6 +112,4 @@ layout('layout-start', [
         </form>
       </article>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

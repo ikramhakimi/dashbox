@@ -9,7 +9,9 @@
     @apply ml-1 text-danger;
   }
   .textarea__control {
-    @apply w-full rounded-md border border-gray-300 bg-white px-4 py-3 text-dark outline-none transition-all duration-200;
+    @apply w-full rounded-md border px-4 py-3 text-dark outline-none transition-all duration-200;
+    border-color: var(--app-border-strong);
+    background-color: var(--app-surface);
     font-size: inherit;
   }
   .textarea--lg .textarea__control {
@@ -19,13 +21,17 @@
     @apply text-disabled;
   }
   .textarea__control:focus {
-    @apply border-gray-500 ring-2 ring-gray-200;
+    @apply ring-2;
+    border-color: var(--app-border-emphasis);
+    --tw-ring-color: var(--app-focus-ring);
   }
   .textarea__control:disabled {
-    @apply cursor-not-allowed bg-gray-100 text-muted;
+    @apply cursor-not-allowed text-muted;
+    background-color: var(--app-surface-disabled);
   }
   .textarea__control[readonly] {
-    @apply bg-gray-50 text-body;
+    @apply text-body;
+    background-color: var(--app-surface-muted);
   }
   .textarea__control--invalid {
     @apply border-rose-300 bg-rose-50/40 ring-rose-100;

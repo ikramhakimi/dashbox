@@ -6,31 +6,43 @@
   }
 
   .type-h1 {
-    @apply font-semibold tracking-tight text-dark;
-    font-size: 32px;
-    line-height: 40px;
+    @apply font-semibold text-dark;
+    font-size: 36px;
+    line-height: 44px;
   }
 
   .type-h2 {
-    @apply font-semibold tracking-tight text-dark;
-    font-size: 24px;
-    line-height: 32px;
+    @apply font-semibold text-dark;
+    font-size: 28px;
+    line-height: 36px;
   }
 
   .type-h3 {
-    @apply font-semibold tracking-tight text-dark;
+    @apply font-semibold text-dark;
+    font-size: 20px;
+    line-height: 28px;
+  }
+
+  .type-h4 {
+    @apply font-semibold text-dark;
     font-size: 16px;
     line-height: 24px;
   }
 
-  .type-body {
-    @apply text-body;
+  .type-h5 {
+    @apply font-semibold text-dark;
     font-size: 14px;
     line-height: 22px;
   }
 
-  .type-body-muted {
-    @apply text-muted;
+  .type-h6 {
+    @apply font-semibold text-dark;
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .type-body {
+    @apply text-body;
     font-size: 14px;
     line-height: 22px;
   }

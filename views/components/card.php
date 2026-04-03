@@ -58,7 +58,7 @@ $actions     = isset($actions) ? (string) $actions : '';
       <?php if (!empty($widgets)): ?>
         <div class="grid gap-4 md:grid-cols-4">
           <?php foreach ($widgets as $widget): ?>
-            <?php component('card-widget', $widget); ?>
+            <?php component('card-metric', $widget); ?>
           <?php endforeach; ?>
         </div>
       <?php endif; ?>

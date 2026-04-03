@@ -3,24 +3,7 @@
 $page_title   = 'Table Component';
 $page_current = 'tables';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('tables'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -119,25 +102,23 @@ ob_start();
 <?php
 $booking_actions_right = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="mt-2 type-h1">Table</h1>
         <p class="mt-2 max-w-3xl type-body-muted">
           Foundation table with minimal columns and flexible cell composition.
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Table component showcase">
+      <section class="card__list" aria-label="Table component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <?= $capture('alert', [
           'variant'     => 'info',
           'show_icon'   => true,
@@ -151,33 +132,41 @@ layout('layout-start', [
               Avatar, image placeholder, badges, button, and row actions in one structure.
             </p>
           </header>
+          <div class="rounded-lg border border-gray-100 bg-white p-4">
+            <h4 class="type-h4">Table Demo</h4>
+            <p class="mb-4 type-body-muted">
+              Operational table composition with mixed row content and inline controls.
+            </p>
+            <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
+              <div class="flex flex-wrap items-end gap-2">
+                <?= $booking_actions_left ?>
+              </div>
+              <div class="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
+                <?= $booking_actions_right ?>
+              </div>
+            </div>
 
-          <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">
-            <div class="flex flex-wrap items-end gap-2">
-              <?= $booking_actions_left ?>
-            </div>
-            <div class="flex flex-wrap items-center justify-start gap-2 lg:justify-end">
-              <?= $booking_actions_right ?>
-            </div>
+            <?php
+            component('table', [
+              'headers' => $booking_table['headers'],
+              'rows'    => $booking_table['rows'],
+            ]);
+            ?>
+
+            <?= $capture('pagination', [
+              'current_page' => 1,
+              'total_pages'  => 3,
+              'show_info'    => true,
+              'total_items'  => $booking_table['total'],
+              'per_page'     => 1,
+              'base_url'     => asset('/docs/components/tables?page=%d'),
+            ]) ?>
           </div>
-
-          <?php
-          component('table', [
-            'headers' => $booking_table['headers'],
-            'rows'    => $booking_table['rows'],
-          ]);
-          ?>
-
-          <?= $capture('pagination', [
-            'current_page' => 1,
-            'total_pages'  => 3,
-            'show_info'    => true,
-            'total_items'  => $booking_table['total'],
-            'per_page'     => 1,
-            'base_url'     => asset('/docs/elements/tables?page=%d'),
-          ]) ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Empty State Table</h2>
@@ -185,28 +174,34 @@ layout('layout-start', [
               Default empty behavior when no records are available.
             </p>
           </header>
+          <div class="rounded-lg border border-gray-100 bg-white p-4">
+            <h4 class="type-h4">Table Demo</h4>
+            <p class="mb-4 type-body-muted">
+              Empty-state rendering with fallback messaging and disabled pagination path.
+            </p>
+            <?php
+            component('table', [
+              'headers'       => $empty_table['headers'],
+              'rows'          => $empty_table['rows'],
+              'empty_title'   => 'No booking records yet',
+              'empty_message' => 'Try creating a new booking or adjust your active filters.',
+              'empty_deco'    => '(o_o)/',
+            ]);
+            ?>
 
-          <?php
-          component('table', [
-            'headers'       => $empty_table['headers'],
-            'rows'          => $empty_table['rows'],
-            'empty_title'   => 'No booking records yet',
-            'empty_message' => 'Try creating a new booking or adjust your active filters.',
-            'empty_deco'    => '(o_o)/',
-          ]);
-          ?>
-
-          <?= $capture('pagination', [
-            'current_page' => 1,
-            'total_pages'  => 1,
-            'show_info'    => true,
-            'total_items'  => 0,
-            'per_page'     => 10,
-            'base_url'     => asset('/docs/elements/tables?page=%d'),
-          ]) ?>
+            <?= $capture('pagination', [
+              'current_page' => 1,
+              'total_pages'  => 1,
+              'show_info'    => true,
+              'total_items'  => 0,
+              'per_page'     => 10,
+              'base_url'     => asset('/docs/components/tables?page=%d'),
+            ]) ?>
+          </div>
         </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

@@ -9,6 +9,7 @@ import { initChart } from './chart.js';
 import { initFeatureEditor } from './feature-editor.js';
 import { initIconFinder } from './icon-finder.js';
 import { initTypographyPlayground } from './typography-playground.js';
+import { initRating } from './rating.js';
 
 const initApp = () => {
   initSubmenu();
@@ -22,6 +23,7 @@ const initApp = () => {
   initFeatureEditor();
   initIconFinder();
   initTypographyPlayground();
+  initRating();
 };
 
 if (document.readyState === 'loading') {

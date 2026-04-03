@@ -3,24 +3,7 @@
 $page_title   = 'Typography';
 $page_current = 'typography';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children('typography'),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $text_token_options = [
   ['class' => 'text-dark',      'label' => 'Text Dark'],
@@ -64,6 +47,9 @@ ob_start();
   <p class="type-h1">Heading 1</p>
   <p class="type-h2">Heading 2</p>
   <p class="type-h3">Heading 3</p>
+  <p class="type-h4">Heading 4</p>
+  <p class="type-h5">Heading 5</p>
+  <p class="type-h6">Heading 6</p>
 </div>
 <?php
 $typography_headings_content = (string) ob_get_clean();
@@ -84,25 +70,23 @@ ob_start();
 <?php
 $typography_body_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="type-h1 mt-2">Typography</h1>
         <p class="type-body-muted mt-2 max-w-3xl">
           Type scale, body styles, and link treatment for consistent content hierarchy.
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Typography showcase">
+      <section class="card__list" aria-label="Typography showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Headings Scale</h2>
@@ -112,7 +96,10 @@ layout('layout-start', [
           </header>
           <?= $typography_headings_content ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Body, Caption, and Link</h2>
@@ -122,7 +109,10 @@ layout('layout-start', [
           </header>
           <?= $typography_body_content ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Font Weight Tokens</h2>
@@ -170,7 +160,10 @@ layout('layout-start', [
             </table>
           </div>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Text & Icon Color Tokens</h2>
@@ -275,7 +268,10 @@ layout('layout-start', [
             </table>
           </div>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Text Color Migration Guide</h2>
@@ -305,7 +301,10 @@ layout('layout-start', [
             </table>
           </div>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Usage Do / Don’t</h2>
@@ -336,7 +335,10 @@ layout('layout-start', [
             </div>
           </div>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Accessibility Check</h2>
@@ -354,7 +356,10 @@ layout('layout-start', [
             </ul>
           </div>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0" data-typography-playground>
           <header>
             <h2 class="type-h2">Live Typography Playground</h2>
@@ -433,8 +438,9 @@ layout('layout-start', [
             </div>
           </div>
         </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

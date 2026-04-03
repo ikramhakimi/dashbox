@@ -1,3 +1,18 @@
+const colors = require('tailwindcss/colors');
+
+const neutral_palettes = {
+  gray: colors.gray,
+  slate: colors.slate,
+  zinc: colors.zinc,
+  neutral: colors.neutral,
+  stone: colors.stone
+};
+
+const raw_neutral_palette = String(process.env.NEUTRAL_PALETTE || 'gray')
+  .trim()
+  .toLowerCase();
+const neutral_palette = neutral_palettes[raw_neutral_palette] || neutral_palettes.gray;
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -98,8 +113,14 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        // One-file neutral switch:
+        // - default: gray
+        // - set NEUTRAL_PALETTE to: gray | slate | zinc | neutral | stone | mist
+        gray: neutral_palette,
+      },
       fontFamily: {
-        sans: ['ui-sans-serif','Inter', 'system-ui', 'sans-serif'],
+        sans: ['Outfit', 'ui-sans-serif', 'Inter', 'system-ui', 'sans-serif'],
       },
     },
   },

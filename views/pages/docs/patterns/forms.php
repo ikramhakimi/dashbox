@@ -3,24 +3,7 @@
 $page_title   = 'Form Patterns';
 $page_current = 'forms';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children('forms'),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items('', $page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -794,42 +777,46 @@ ob_start();
 <?php
 $forms_header = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl space-y-6">
       <?= $forms_header ?>
 
-      <section class="space-y-6" aria-label="Form patterns showcase">
+      <section class="space-y-4" aria-label="Form patterns showcase">
         <article class="card">
-          <?= $pattern_add_user_content ?>
+          <div class="card__body">
+            <?= $pattern_add_user_content ?>
+          </div>
         </article>
 
         <article class="card">
-          <?= $pattern_add_product_content ?>
+          <div class="card__body">
+            <?= $pattern_add_product_content ?>
+          </div>
         </article>
 
         <article class="card">
-          <?= $pattern_theme_settings_content ?>
+          <div class="card__body">
+            <?= $pattern_theme_settings_content ?>
+          </div>
         </article>
 
         <article class="card">
-          <?= $pattern_booking_content ?>
+          <div class="card__body">
+            <?= $pattern_booking_content ?>
+          </div>
         </article>
 
         <article class="card">
-          <?= $pattern_import_content ?>
+          <div class="card__body">
+            <?= $pattern_import_content ?>
+          </div>
         </article>
       </section>
     </section>
-  </main>
-</div>
 <?php
 component('modal', [
   'id'          => 'form-modal-add-user',
@@ -871,4 +858,4 @@ component('modal', [
   'dismissible' => true,
 ]);
 ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

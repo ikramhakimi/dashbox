@@ -22,29 +22,31 @@ if ($trend_mode === '') {
 }
 ?>
 <article class="<?= e($component_class) ?>">
-  <div class="card__content relative flex flex-col gap-3">
-    <div class="card__heading flex flex-col items-start justify-start gap-2">
+  <div class="card__body">
+    <div class="card__metric-head">
+      <p class="type-caption"><?= e($title) ?></p>
       <?php if ($show_icon): ?>
-        <div class="card__icon absolute right-0 top-0 inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gray-100 text-secondary">
-        <?php
-        component('icon', [
-          'icon_name' => $icon_name,
-          'icon_size' => $icon_size,
-        ]);
-        ?>
+        <div class="card__icon">
+          <?php
+          component('icon', [
+            'icon_name' => $icon_name,
+            'icon_size' => $icon_size,
+          ]);
+          ?>
         </div>
       <?php endif; ?>
-      <div class="card__label type-body-muted"><?= e($title) ?></div>
     </div>
-    <p class="card__value type-h1 type-normal"><?= e($value) ?></p>
-    <div class="card__meta flex items-center justify-start gap-2">
+
+    <p class="type-h2"><?= e($value) ?></p>
+
+    <div class="card__meta">
       <?php
       component('badge', [
         'trend_value' => $trend,
         'trend_mode'  => $trend_mode,
       ]);
       ?>
-      <span class="card__note type-body-muted"><?= e($note) ?></span>
+      <p class="type-meta"><?= e($note) ?></p>
     </div>
   </div>
 </article>

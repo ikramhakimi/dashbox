@@ -25,6 +25,9 @@ When making any change, prioritize maintainability, readability, accessibility, 
   - `Will not change:` any non-requested patterns/variants/classes/behaviors.
 - STRICT: Do not introduce new UI patterns/classes/modifiers/sections unless explicitly requested.
 - STRICT: If a style/pattern is not already present in the target page or explicitly requested, do not add it.
+- STRICT: `views/pages/docs/patterns/nuggets.php` is a bird's-eye overview page of the existing design
+  system. Do not introduce new UI patterns/components there unless the requested component does not
+  exist yet in the system.
 - STRICT: Use minimal patch mode for page updates:
   - edit existing structure first,
   - avoid adding new abstractions,
@@ -72,6 +75,9 @@ When making any change, prioritize maintainability, readability, accessibility, 
 This project uses **BEM (Block, Element, Modifier)** methodology for all CSS class naming.
 
 BEM is mandatory for all reusable UI components and must remain consistent across the entire codebase.
+- Nuggets card naming rule: every card inside `views/pages/docs/patterns/nuggets.php` must include
+  a purpose class using the format `nugget-[purpose]` (example: `nugget-invoice`,
+  `nugget-colors`, `nugget-icons`).
 
 ## CSS Hygiene
 - Do not add unnecessary CSS rules. Prefer utility classes and existing component styles first.
@@ -82,7 +88,11 @@ BEM is mandatory for all reusable UI components and must remain consistent acros
 - Keep declarations grouped by purpose (base, state, modifier, responsive) and ordered consistently within each component file.
 - When formatting CSS, prefer project-wide consistent formatting (Prettier) before finalizing.
 - For reusable status/pill UI, use a generic `badge.php` component and express variants via modifiers (e.g. `badge--positive`, `badge--negative`, `badge--neutral`).
+- Button sizing rule: default to `.button` size for standard actions; use `.button--sm` only when the user explicitly requests compact UI or when density-constrained contexts require it.
+- Typography sizing rule: default to system typography classes (`type-*`) and component-level text styles; do not default to `text-sm`/`text-xs` unless compact density is explicitly required.
+- Typography emphasis rule: use `text-muted` for helper/meta/support text only; use `type-body` or equivalent body styles for long-form paragraph copy.
 - Tailwind styles must be authored in `assets/css/app.css` using `@tailwind base;`, `@tailwind components;`, and `@tailwind utilities;`.
+- For CSS color variables/tokens in component files, define values from Tailwind tokens via `theme("colors...")`; avoid hardcoded hex/rgb values unless explicitly required.
 - Place reusable utility abstractions inside `@layer components` and keep them minimal.
 - Always serve compiled CSS from `assets/build/app.css`; do not rely on Tailwind CDN runtime scripts in templates.
 - Keep Tailwind `content` paths up to date (e.g. `views/**/*.php`) so utilities are generated correctly.

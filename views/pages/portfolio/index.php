@@ -3,24 +3,7 @@
 $page_title   = 'All Portfolio';
 $page_current = 'portfolio';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -118,24 +101,22 @@ $filter = $capture('select', [
   ],
 ]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
+    <section class="card" aria-label="Portfolio table">
+      <div class="card__head">
+        <?php
+        component('page-header', [
+          'title'       => 'All Portfolio',
+          'description' => 'Manage published and draft portfolio sets in one place.',
+        ]);
+        ?>
+      </div>
 
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php
-      component('page-header', [
-        'title'       => 'All Portfolio',
-        'description' => 'Manage published and draft portfolio sets in one place.',
-      ]);
-      ?>
-
-      <div class="inline-flex flex-wrap items-end gap-3" aria-label="Portfolio filters">
+      <div class="card__body inline-flex flex-wrap items-end gap-3" aria-label="Portfolio filters">
         <div class="w-80">
           <?= $search ?>
         </div>
@@ -144,9 +125,10 @@ layout('layout-start', [
         </div>
       </div>
 
-      <article class="card space-y-6" aria-label="Portfolio table">
+      <article class="card__table">
         <?php
         component('table', [
+          'class'   => 'table--comfortable',
           'headers' => [
             ['label' => 'Portfolio', 'align' => 'left'],
             ['label' => 'Images', 'align' => 'left'],
@@ -156,7 +138,11 @@ layout('layout-start', [
           ],
           'rows' => $rows,
         ]);
+        ?>
+      </article>
 
+      <footer class="card__actions">
+        <?php
         component('pagination', [
           'current_page' => 1,
           'total_pages'  => 3,
@@ -167,8 +153,6 @@ layout('layout-start', [
           'base_url'     => asset('/portfolio?page=%d'),
         ]);
         ?>
-      </article>
+      </footer>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

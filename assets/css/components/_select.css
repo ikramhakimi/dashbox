@@ -12,7 +12,9 @@
     @apply relative;
   }
   .select__control {
-    @apply h-9 w-full appearance-none rounded-md border border-gray-300 bg-white px-4 py-0 pr-10 text-dark outline-none transition-all duration-200;
+    @apply h-10 w-full appearance-none rounded-md border px-4 py-0 pr-10 text-dark outline-none transition-all duration-200;
+    border-color: var(--app-border-strong);
+    background-color: var(--app-surface);
     font-size: inherit;
   }
   .select--lg .select__control {
@@ -22,10 +24,13 @@
     @apply min-h-28 pr-4;
   }
   .select__control:focus {
-    @apply border-gray-500 ring-2 ring-gray-200;
+    @apply ring-2;
+    border-color: var(--app-border-emphasis);
+    --tw-ring-color: var(--app-focus-ring);
   }
   .select__control:disabled {
-    @apply cursor-not-allowed bg-gray-100 text-muted;
+    @apply cursor-not-allowed text-muted;
+    background-color: var(--app-surface-disabled);
   }
   .select__control--invalid {
     @apply border-rose-300 bg-rose-50/40 ring-rose-100;

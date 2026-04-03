@@ -3,24 +3,7 @@
 $page_title   = 'All Orders';
 $page_current = 'orders';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -267,24 +250,22 @@ $orders_filter = $capture('select', [
   ],
 ]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
+    <section class="card" aria-label="Orders list">
+      <div class="card__head">
+        <?php
+        component('page-header', [
+          'title'       => 'All Orders',
+          'description' => 'Track all bookings, payment progress, and session status in one list.',
+        ]);
+        ?>
+      </div>
 
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php
-      component('page-header', [
-        'title'       => 'All Orders',
-        'description' => 'Track all bookings, payment progress, and session status in one list.',
-      ]);
-      ?>
-
-      <div class="inline-flex flex-wrap items-end gap-3">
+      <div class="card__body inline-flex flex-wrap items-end gap-3">
         <div class="w-72">
           <?= $orders_search ?>
         </div>
@@ -293,9 +274,10 @@ layout('layout-start', [
         </div>
       </div>
 
-      <article class="card space-y-6" aria-label="Orders list">
+      <article class="card__table">
         <?php
         component('table', [
+          'class' => 'table--comfortable',
           'headers' => [
             ['label' => 'Order', 'align' => 'left'],
             ['label' => 'Customer', 'align' => 'left'],
@@ -305,7 +287,11 @@ layout('layout-start', [
           ],
           'rows' => $table_rows,
         ]);
+        ?>
+      </article>
 
+      <footer class="card__actions">
+        <?php
         component('pagination', [
           'current_page' => $current_page,
           'total_pages'  => $total_pages,
@@ -316,10 +302,8 @@ layout('layout-start', [
           'base_url'     => asset('/orders?page=%d'),
         ]);
         ?>
-      </article>
+      </footer>
     </section>
-  </main>
-</div>
 <?php foreach ($order_drawers as $order_drawer): ?>
   <?php
   component('drawer', [
@@ -333,4 +317,4 @@ layout('layout-start', [
   ]);
   ?>
 <?php endforeach; ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

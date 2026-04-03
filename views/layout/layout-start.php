@@ -6,7 +6,7 @@
   <title><?= e($page_title ?? 'Dashboard') ?></title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet"> -->
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap" rel="stylesheet">
   <!-- <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap" rel="stylesheet"> -->
   <!-- <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet"> -->
    <!-- <link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@100..900&display=swap" rel="stylesheet"> -->
@@ -35,7 +35,7 @@ $ui_elements_pages = [
 ];
 
 $page_current = isset($page_current) ? (string) $page_current : '';
-$body_class   = 'min-h-screen bg-gray-100 font-sans text-[14px] text-dark';
+$body_class   = 'app-body';
 
 if (in_array($page_current, $ui_elements_pages, true)) {
   $body_class .= ' page-ui-elements';

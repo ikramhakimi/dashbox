@@ -1,0 +1,53 @@
+@layer components {
+  .rating {
+    @apply w-full;
+  }
+
+  .rating__label {
+    @apply block font-semibold text-body;
+  }
+
+  .rating__required {
+    @apply ml-0.5 text-red-600;
+  }
+
+  .rating__stars {
+    @apply inline-flex items-center gap-1;
+  }
+
+  .rating__star {
+    @apply inline-flex h-10 w-5 items-center justify-center rounded-md text-gray-300 transition;
+  }
+
+  .rating__star .icon {
+    @apply h-5 w-5;
+  }
+
+  .rating__star--active {
+    @apply text-amber-500;
+  }
+
+  .rating__star--active .icon path {
+    fill: var(--rating-star-gradient);
+  }
+
+  .rating__radio {
+    @apply sr-only;
+  }
+
+  .rating__radio:focus-visible + .rating__star {
+    @apply outline-none ring-2 ring-gray-300 ring-offset-1;
+  }
+
+  .rating__radio:disabled + .rating__star {
+    @apply cursor-not-allowed opacity-50;
+  }
+
+  .rating__hint {
+    @apply text-xs text-muted;
+  }
+
+  .rating__error {
+    @apply text-xs text-danger;
+  }
+}

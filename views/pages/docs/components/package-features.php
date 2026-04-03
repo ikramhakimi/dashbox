@@ -3,24 +3,7 @@
 $page_title   = 'Package Features (Interactive JS Component)';
 $page_current = 'package-features';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children($page_current),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items($page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -136,18 +119,13 @@ ob_start();
 <?php
 $package_features_editor_content = (string) ob_get_clean();
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Elements</p>
+    <section class="card">
+      <header class="card__head">
         <h1 class="mt-2 type-h1">
           Package Features (Interactive JS Component)
         </h1>
@@ -156,7 +134,10 @@ layout('layout-start', [
         </p>
       </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Package features component showcase">
+      <section class="card__list" aria-label="Package features component showcase">
+        <ul class="list">
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">JS Documentation</h2>
@@ -166,7 +147,10 @@ layout('layout-start', [
           </header>
           <?= $package_features_js_doc_content ?>
         </article>
-
+            </section>
+          </li>
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Feature List Editor</h2>
@@ -176,10 +160,11 @@ layout('layout-start', [
           </header>
           <?= $package_features_editor_content ?>
         </article>
+            </section>
+          </li>
+        </ul>
       </section>
     </section>
-  </main>
-</div>
 <?php
 component('drawer', [
   'id'          => $package_preview_drawer_id,
@@ -190,4 +175,4 @@ component('drawer', [
   'size'        => 'lg',
 ]);
 ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

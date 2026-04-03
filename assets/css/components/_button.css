@@ -1,13 +1,14 @@
 @layer components {
   .button {
-    @apply inline-flex h-9 items-center justify-center gap-2 rounded-md border border-gray-400/70 px-4 py-0 font-medium text-body shadow-sm transition-all duration-200;
-    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gray-300 focus-visible:ring-offset-2;
-    --button-bg-top: theme("colors.white");
+    @apply inline-flex h-10 items-center justify-center gap-2 rounded-md border px-4 py-0 font-medium shadow-sm transition-all duration-200;
+    @apply focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2;
+    --button-bg-top: var(--app-surface);
     --button-bg-bottom: theme("colors.gray.100");
-    --button-bg-top-hover: theme("colors.white");
+    --button-bg-top-hover: var(--app-surface);
     --button-bg-bottom-hover: theme("colors.gray.200");
-    --button-text: theme("colors.gray.700");
-    --button-border: rgb(156 163 175 / 0.6);
+    --button-text: var(--app-text-body);
+    --button-border: var(--app-border-strong);
+    --button-focus-ring: var(--app-focus-ring);
     font-size: inherit;
     background-image: linear-gradient(
       to bottom,
@@ -17,6 +18,7 @@
     background-color: var(--button-bg-bottom);
     color: var(--button-text);
     border-color: var(--button-border);
+    --tw-ring-color: var(--button-focus-ring);
   }
 
   .button:hover {
@@ -38,12 +40,13 @@
   }
 
   .button--primary {
-    --button-bg-top: theme("colors.gray.700");
+    --button-bg-top: theme("colors.gray.600");
     --button-bg-bottom: theme("colors.gray.800");
-    --button-bg-top-hover: theme("colors.gray.800");
-    --button-bg-bottom-hover: theme("colors.gray.900");
+    --button-bg-top-hover: theme("colors.gray.600");
+    --button-bg-bottom-hover: theme("colors.gray.900");;
     --button-text: theme("colors.white");
-    --button-border: theme("colors.gray.900");
+    --button-border: var(--app-text-primary);
+    --button-focus-ring: var(--app-focus-ring);
   }
 
   .button--danger {
@@ -56,7 +59,7 @@
   }
 
   .button--icon-only {
-    @apply h-9 w-9 px-0;
+    @apply h-10 w-10 px-0;
   }
 
   .button--icon-only.button--lg {

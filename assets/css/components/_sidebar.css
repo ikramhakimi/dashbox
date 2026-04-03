@@ -1,9 +1,40 @@
 @layer components {
-  .sidebar {
-    @apply border-r border-gray-200 bg-gray-100;
+  .app-sidebar {
+    @apply hidden h-screen w-72 shrink-0 overflow-y-auto;
+    @apply lg:fixed lg:left-0 lg:top-0 lg:z-40 lg:block;
+    background-color: var(--app-body-bg);
   }
 
-  .content {
+  .app-sidebar__inner {
+    @apply flex min-h-full flex-col pl-3 pr-0 py-5;
+  }
+
+  .app-sidebar__list,
+  .app-sidebar__sublist {
+    @apply m-0 list-none p-0;
+  }
+
+  .app-sidebar__list > .sidebar__item + .sidebar__item {
+    margin-top: -4px;
+  }
+
+  @media (min-width: 1024px) {
+    .app-sidebar .sidebar__toggle [data-submenu-icon] {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .app-sidebar .sidebar__toggle:hover [data-submenu-icon] {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .app-sidebar .sidebar__toggle[aria-expanded="true"] [data-submenu-icon] {
+      transform: rotate(-90deg);
+    }
+  }
+
+  .app-content {
     @apply lg:ml-72;
   }
 }

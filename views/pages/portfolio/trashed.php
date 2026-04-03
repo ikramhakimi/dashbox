@@ -3,24 +3,7 @@
 $page_title   = 'Trashed Portfolio';
 $page_current = 'portfolio-trashed';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -70,26 +53,25 @@ foreach ($trashed_items as $item) {
   ];
 }
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
+    <section class="card" aria-label="Trashed portfolio list">
+      <div class="card__head">
+        <?php
+        component('page-header', [
+          'title'       => 'Trashed Portfolio',
+          'description' => 'Restore or permanently remove deleted portfolio items.',
+        ]);
+        ?>
+      </div>
 
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php
-      component('page-header', [
-        'title'       => 'Trashed Portfolio',
-        'description' => 'Restore or permanently remove deleted portfolio items.',
-      ]);
-      ?>
-
-      <article class="card space-y-6" aria-label="Trashed portfolio list">
+      <article class="card__table">
         <?php
         component('table', [
+          'class'   => 'table--comfortable',
           'headers' => [
             ['label' => 'Portfolio', 'align' => 'left'],
             ['label' => 'Deleted', 'align' => 'left'],
@@ -100,6 +82,4 @@ layout('layout-start', [
         ?>
       </article>
     </section>
-  </main>
-</div>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>

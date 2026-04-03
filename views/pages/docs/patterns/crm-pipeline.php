@@ -3,24 +3,7 @@
 $page_title   = 'CRM Pipeline';
 $page_current = 'crm-pipeline';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children($page_current),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items('', $page_current);
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -403,7 +386,7 @@ ob_start();
 <div class="space-y-4">
   <div class="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
     <?php foreach ($pipeline_widgets as $pipeline_widget): ?>
-      <?php component('card-widget', $pipeline_widget); ?>
+      <?php component('card-metric', $pipeline_widget); ?>
     <?php endforeach; ?>
   </div>
 </div>
@@ -521,15 +504,11 @@ $modal_footer = '
   </div>
 ';
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
-
-  <main class="content flex-1 p-4 lg:p-10">
     <section class="mx-auto max-w-7xl space-y-6">
       <?= $crm_header ?>
       <?= $crm_summary ?>
@@ -538,8 +517,6 @@ layout('layout-start', [
       echo $crm_table_card;
       ?>
     </section>
-  </main>
-</div>
 <?php
 component('modal', [
   'id'          => 'crm-add-lead-modal',
@@ -551,5 +528,5 @@ component('modal', [
   'dismissible' => true,
 ]);
 
-layout('layout-end');
+layout('app-end');
 ?>

@@ -3,24 +3,7 @@
 $page_title   = 'All Users';
 $page_current = 'users';
 
-$menu_items = [
-  [
-    'label' => 'Overview',
-    'href'  => asset('/'),
-  ],
-  [
-    'label'    => 'UI Elements',
-    'children' => ui_elements_sidebar_children(),
-  ],
-  [
-    'label'    => 'UI Patterns',
-    'children' => ui_patterns_sidebar_children(),
-  ],
-  [
-    'label' => 'Settings',
-    'href'  => '#',
-  ],
-];
+$menu_items = build_main_menu_items();
 
 $capture = static function (string $component_name, array $props): string {
   ob_start();
@@ -243,54 +226,53 @@ $users_filter = $capture('select', [
   ],
 ]);
 
-layout('layout-start', [
+layout('app-start', [
   'page_title'   => $page_title,
   'page_current' => $page_current,
 ]);
 ?>
-<div class="flex min-h-screen">
-  <?php component('sidebar', ['menu_items' => $menu_items]); ?>
+    <section class="card" aria-label="Users list">
+      <div class="card__head">
+        <?php
+        component('page-header', [
+          'title'       => 'All Users',
+          'description' => 'Live-style user listing with search, status badges, and compact navigation.',
+        ]);
+        ?>
+      </div>
 
-  <main class="content flex-1 p-4 lg:p-10">
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php
-      component('page-header', [
-        'title'       => 'All Users',
-        'description' => 'Live-style user listing with search, status badges, and compact navigation.',
-      ]);
-      ?>
-
-      <section class="space-y-6" aria-label="Users table">
-        <div class="inline-flex flex-wrap items-end gap-3">
-          <div class="w-72">
-            <?= $users_actions_left ?>
-          </div>
-          <div class="w-56">
-            <?= $users_filter ?>
-          </div>
+      <div class="card__body inline-flex flex-wrap items-end gap-3">
+        <div class="w-72">
+          <?= $users_actions_left ?>
         </div>
+        <div class="w-56">
+          <?= $users_filter ?>
+        </div>
+      </div>
 
-        <article class="card space-y-6" aria-label="Users list">
-          <?php
-          component('table', [
-            'headers' => ['User', 'Role', 'Status', 'Last Active', ['label' => '', 'align' => 'right']],
-            'rows'    => $user_table_rows,
-          ]);
+      <article class="card__table">
+        <?php
+        component('table', [
+          'class'   => 'table--comfortable',
+          'headers' => ['User', 'Role', 'Status', 'Last Active', ['label' => '', 'align' => 'right']],
+          'rows'    => $user_table_rows,
+        ]);
+        ?>
+      </article>
 
-          component('pagination', [
-            'current_page' => $current_page,
-            'total_pages'  => max(1, (int) ceil($total_users / $per_page)),
-            'show_info'    => true,
-            'total_items'  => $total_users,
-            'per_page'     => $per_page,
-            'base_url'     => asset('/users?page=%d'),
-          ]);
-          ?>
-        </article>
-      </section>
+      <footer class="card__actions">
+        <?php
+        component('pagination', [
+          'current_page' => $current_page,
+          'total_pages'  => max(1, (int) ceil($total_users / $per_page)),
+          'show_info'    => true,
+          'total_items'  => $total_users,
+          'per_page'     => $per_page,
+          'base_url'     => asset('/users?page=%d'),
+        ]);
+        ?>
+      </footer>
     </section>
-  </main>
-</div>
 <?php foreach ($user_drawers as $user_drawer): ?>
   <?php
   component('drawer', [
@@ -304,4 +286,4 @@ layout('layout-start', [
   ]);
   ?>
 <?php endforeach; ?>
-<?php layout('layout-end'); ?>
+<?php layout('app-end'); ?>
