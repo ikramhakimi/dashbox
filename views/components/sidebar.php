@@ -4,7 +4,7 @@ $menu_items      = is_array($menu_items ?? null) ? $menu_items : [];
 $filtered_items  = [];
 $ui_items_map    = [];
 $menu_icons      = [
-  'overview'    => 'home-5-fill',
+  'overview'    => 'home-6-line',
   'users'       => 'user-3-line',
   'customers'   => 'group-line',
   'packages'    => 'box-2-line',
@@ -13,6 +13,7 @@ $menu_icons      = [
   'orders'      => 'file-list-2-line',
   'feedback'    => 'chat-smile-3-line',
   'sales'       => 'bar-chart-2-line',
+  'analytics'   => 'line-chart-line',
   'website'     => 'global-line',
   'payment gateway' => 'bank-card-line',
   'ui components' => 'layers',
@@ -59,6 +60,7 @@ $has_packages_menu  = false;
 $has_portfolio_menu = false;
 $has_feedback_menu  = false;
 $has_sales_menu     = false;
+$has_analytics_menu = false;
 $has_orders_menu    = false;
 $has_website_menu   = false;
 $has_payment_gateway_menu = false;
@@ -81,6 +83,9 @@ foreach ($menu_items as $menu_item) {
   }
   if ($label === 'sales') {
     $has_sales_menu = true;
+  }
+  if ($label === 'analytics') {
+    $has_analytics_menu = true;
   }
   if ($label === 'orders') {
     $has_orders_menu = true;
@@ -234,6 +239,41 @@ if (!$has_sales_menu) {
   }
 }
 
+if (!$has_analytics_menu) {
+  $analytics_active = '';
+  if ($normalized_path === '/analytics' || $normalized_path === '/analytics/enhanced') {
+    $analytics_active = 'analytics-overview';
+  } elseif ($normalized_path === '/analytics/pageviews') {
+    $analytics_active = 'analytics-pageviews';
+  } elseif ($normalized_path === '/analytics/sources') {
+    $analytics_active = 'analytics-sources';
+  } elseif ($normalized_path === '/analytics/campaigns') {
+    $analytics_active = 'analytics-campaigns';
+  } elseif ($normalized_path === '/analytics/clicks') {
+    $analytics_active = 'analytics-clicks';
+  }
+
+  $analytics_menu = [
+    'label'    => 'Analytics',
+    'children' => analytics_sidebar_children($analytics_active),
+  ];
+
+  $sales_index = null;
+  foreach ($menu_items as $index => $menu_item) {
+    $label = isset($menu_item['label']) ? strtolower((string) $menu_item['label']) : '';
+    if ($label === 'sales') {
+      $sales_index = $index;
+      break;
+    }
+  }
+
+  if ($sales_index === null) {
+    $menu_items[] = $analytics_menu;
+  } else {
+    array_splice($menu_items, $sales_index + 1, 0, [$analytics_menu]);
+  }
+}
+
 if (!$has_website_menu) {
   $website_active = '';
   if ($normalized_path === '/website/settings') {
@@ -259,6 +299,7 @@ if (!$has_payment_gateway_menu) {
 $menu_order_map = [
   'overview'  => 10,
   'sales'     => 20,
+  'analytics' => 25,
   'orders'    => 30,
   'feedback'  => 61,
   'packages'  => 40,

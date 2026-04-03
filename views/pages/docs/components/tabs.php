@@ -22,7 +22,7 @@ ob_start();
 <div class="grid gap-4">
   <div class="rounded-lg border border-gray-100 bg-white p-4">
     <h4 class="type-h4">Default</h4>
-    <p class="mb-4 type-body-muted">Base tab navigation for common section switching.</p>
+    <p class="mb-4 text-muted">Base tab navigation for common section switching.</p>
     <?= $capture([
       'items' => [
         ['label' => 'Overview', 'href' => '#', 'active' => true],
@@ -34,7 +34,7 @@ ob_start();
 
   <div class="rounded-lg border border-gray-100 bg-white p-4">
     <h4 class="type-h4">With Icons</h4>
-    <p class="mb-4 type-body-muted">Tab labels with icons to reinforce section meaning.</p>
+    <p class="mb-4 text-muted">Tab labels with icons to reinforce section meaning.</p>
     <?= $capture([
       'items' => [
         ['label' => 'Overview', 'href' => '#', 'icon_name' => 'activity', 'active' => true],
@@ -46,7 +46,7 @@ ob_start();
 
   <div class="rounded-lg border border-gray-100 bg-white p-4">
     <h4 class="type-h4">Tabs + Button Side By Side</h4>
-    <p class="mb-4 type-body-muted">Combine tab navigation with inline action controls.</p>
+    <p class="mb-4 text-muted">Combine tab navigation with inline action controls.</p>
     <div class="max-w-full overflow-x-auto">
       <div class="inline-flex items-center gap-3 whitespace-nowrap">
         <?= $capture([
@@ -62,6 +62,31 @@ ob_start();
       </div>
     </div>
   </div>
+
+  <div class="rounded-lg border border-gray-100 bg-white p-4">
+    <h4 class="type-h4">Equal Width Tabs</h4>
+    <p class="mb-4 text-muted">Use equal widths when each tab should carry the same visual weight.</p>
+    <?= $capture([
+      'equal' => true,
+      'items' => [
+        ['label' => 'Overview', 'href' => '#', 'active' => true],
+        ['label' => 'Bookings', 'href' => '#'],
+        ['label' => 'Revenue', 'href' => '#'],
+      ],
+    ]) ?>
+  </div>
+
+  <div class="rounded-lg border border-gray-100 bg-white p-4">
+    <h4 class="type-h4">With Pills</h4>
+    <p class="mb-4 text-muted">Use count pills to show pending items or grouped totals by tab.</p>
+    <?= $capture([
+      'items' => [
+        ['label' => 'All Orders', 'href' => '#', 'pill' => '24', 'active' => true],
+        ['label' => 'Pending', 'href' => '#', 'pill' => '8'],
+        ['label' => 'Completed', 'href' => '#', 'pill' => '16'],
+      ],
+    ]) ?>
+  </div>
 </div>
 <?php
 $tabs_content = (string) ob_get_clean();
@@ -74,7 +99,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Tabs UI Library</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Foundation tabs with icon support and active states.
         </p>
       </header>
@@ -86,7 +111,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Tabs Variations</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Default and icon tab patterns for dashboard sections.
             </p>
           </header>

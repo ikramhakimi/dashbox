@@ -458,7 +458,7 @@ layout('app-start', [
                   </div>
                   <span class="badge badge--positive absolute bottom-4 left-1/2 -translate-x-1/2">+10%</span>
                 </div>
-                <p class="text-center type-body-muted">
+                <p class="text-center text-muted">
                   You earned RM 3,287 today, higher than last month.
                   <br>
                   Keep up your momentum!

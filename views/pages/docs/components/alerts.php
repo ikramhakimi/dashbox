@@ -17,7 +17,7 @@ ob_start();
   <li class="list__item">
     <section class="w-full max-w-4xl py-4">
       <h3 class="type-h3">Soft Variants</h3>
-      <p class="mb-4 type-body-muted">
+      <p class="mb-4 text-muted">
         Default alert variants for informational, success, warning, and danger messaging.
       </p>
       <div class="grid grid-cols-2 gap-3">
@@ -48,7 +48,7 @@ ob_start();
   <li class="list__item">
     <section class="w-full max-w-4xl py-4">
       <h3 class="type-h3">With / Without Icon</h3>
-      <p class="mb-4 type-body-muted">
+      <p class="mb-4 text-muted">
         Compare icon-led alerts versus minimal alerts for dense content areas.
       </p>
       <div class="space-y-3">
@@ -71,7 +71,7 @@ ob_start();
   <li class="list__item">
     <section class="w-full max-w-4xl py-4">
       <h3 class="type-h3">Dismissible</h3>
-      <p class="mb-4 type-body-muted">
+      <p class="mb-4 text-muted">
         Alerts with close controls for temporary notices and user-managed visibility.
       </p>
       <div class="space-y-3">
@@ -95,7 +95,7 @@ ob_start();
   <li class="list__item">
     <section class="w-full max-w-4xl py-4">
       <h3 class="type-h3">Inline Alert</h3>
-      <p class="mb-4 type-body-muted">
+      <p class="mb-4 text-muted">
         Compact inline alert style for embedding status updates within flowing content.
       </p>
       <div class="space-y-3">
@@ -119,7 +119,7 @@ ob_start();
   <li class="list__item">
     <section class="w-full max-w-4xl py-4">
       <h3 class="type-h3">Alert With Link</h3>
-      <p class="mb-4 type-body-muted">
+      <p class="mb-4 text-muted">
         Action-oriented alerts that include a direct link to the next recommended step.
       </p>
       <div class="space-y-3">
@@ -153,7 +153,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Alert UI Component</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Soft alert variants with title and description, icon toggle, and dismiss behavior.
         </p>
       </header>

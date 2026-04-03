@@ -19,7 +19,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="type-h1">Button UI Component</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           High-fidelity button system for primary actions, secondary actions, and contextual controls.
         </p>
       </header>
@@ -29,11 +29,11 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Variants</h3>
-              <p class="mb-4 type-body-muted">Primary, default, and danger buttons.</p>
+              <p class="mb-4 text-muted">Primary, default, and danger buttons.</p>
               <div class="grid gap-4 md:grid-cols-2">
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">Primary</h4>
-                    <p class="mb-4 type-body-muted">Primary CTA styles for dominant actions.</p>
+                    <p class="mb-4 text-muted">Primary CTA styles for dominant actions.</p>
                     <div class="flex flex-wrap gap-2">
                       <?= $capture_button(['label' => 'Primary', 'variant' => 'primary']) ?>
                       <?= $capture_button(['label' => 'Primary Link', 'variant' => 'primary', 'href' => '#']) ?>
@@ -41,7 +41,7 @@ layout('app-start', [
                   </div>
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">Default</h4>
-                    <p class="mb-4 type-body-muted">Standard button style for regular actions.</p>
+                    <p class="mb-4 text-muted">Standard button style for regular actions.</p>
                     <div class="flex flex-wrap gap-2">
                       <?= $capture_button(['label' => 'Default']) ?>
                       <?= $capture_button(['label' => 'Default Link', 'href' => '#']) ?>
@@ -49,7 +49,7 @@ layout('app-start', [
                   </div>
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">Default (Alt)</h4>
-                    <p class="mb-4 type-body-muted">Alternative neutral treatment in the same hierarchy.</p>
+                    <p class="mb-4 text-muted">Alternative neutral treatment in the same hierarchy.</p>
                     <div class="flex flex-wrap gap-2">
                       <?= $capture_button(['label' => 'Default Alt']) ?>
                       <?= $capture_button(['label' => 'Default Alt Link', 'href' => '#']) ?>
@@ -57,7 +57,7 @@ layout('app-start', [
                   </div>
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">Danger</h4>
-                    <p class="mb-4 type-body-muted">Destructive action style with stronger caution cue.</p>
+                    <p class="mb-4 text-muted">Destructive action style with stronger caution cue.</p>
                     <div class="flex flex-wrap gap-2">
                       <?= $capture_button(['label' => 'Danger', 'variant' => 'danger']) ?>
                       <?= $capture_button(['label' => 'Danger Link', 'variant' => 'danger', 'href' => '#']) ?>
@@ -70,13 +70,13 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Sizes & States</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Scale and behavior examples for different interaction contexts.
               </p>
               <div class="grid gap-4 md:grid-cols-2">
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">Sizes</h4>
-                    <p class="mb-4 type-body-muted">Default and large sizes for density flexibility.</p>
+                    <p class="mb-4 text-muted">Default and large sizes for density flexibility.</p>
                     <div class="flex flex-wrap items-center gap-2">
                       <?= $capture_button(['label' => 'Default', 'variant' => 'primary']) ?>
                       <?= $capture_button(['label' => 'Large', 'variant' => 'primary', 'size' => 'lg']) ?>
@@ -84,7 +84,7 @@ layout('app-start', [
                   </div>
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">States</h4>
-                    <p class="mb-4 type-body-muted">Enabled and disabled examples across button types.</p>
+                    <p class="mb-4 text-muted">Enabled and disabled examples across button types.</p>
                     <div class="flex flex-wrap items-center gap-2">
                       <?= $capture_button(['label' => 'Enabled']) ?>
                       <?= $capture_button(['label' => 'Disabled', 'disabled' => true]) ?>
@@ -98,13 +98,13 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Icon Variations</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Icon + text, text + icon, and icon-only button patterns.
               </p>
               <div class="grid gap-4 md:grid-cols-2">
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">Icon + Text</h4>
-                    <p class="mb-4 type-body-muted">Leading icon with text label for clear intent.</p>
+                    <p class="mb-4 text-muted">Leading icon with text label for clear intent.</p>
                     <div class="flex flex-wrap items-center gap-2">
                       <?= $capture_button([
                         'label'         => 'Add New',
@@ -116,7 +116,7 @@ layout('app-start', [
                   </div>
                   <div class="rounded-lg border border-gray-100 bg-white p-4">
                     <h4 class="type-h4">Text + Icon</h4>
-                    <p class="mb-4 type-body-muted">Trailing icon pattern for forward actions.</p>
+                    <p class="mb-4 text-muted">Trailing icon pattern for forward actions.</p>
                     <div class="flex flex-wrap items-center gap-2">
                       <?= $capture_button([
                         'label'         => 'View Team',
@@ -127,7 +127,7 @@ layout('app-start', [
                   </div>
                   <div class="rounded-lg border border-gray-100 bg-white p-4 md:col-span-2">
                     <h4 class="type-h4">Icon Only</h4>
-                    <p class="mb-4 type-body-muted">Compact icon-only controls with explicit aria labels.</p>
+                    <p class="mb-4 text-muted">Compact icon-only controls with explicit aria labels.</p>
                     <div class="flex flex-wrap items-center gap-2">
                       <?= $capture_button([
                         'label'      => 'Open Tickets',

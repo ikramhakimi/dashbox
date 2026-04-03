@@ -27,10 +27,26 @@
   .tabs__icon .icon {
     @apply h-4 w-4;
   }
+
+  .tabs__pill {
+    @apply inline-flex min-w-6 items-center justify-center rounded-full bg-gray-900 px-1.5 py-0.5 text-[11px] font-semibold leading-none text-white;
+  }
   .tabs--lg .tabs__list {
     @apply h-12;
   }
   .tabs--lg .tabs__tab {
     @apply h-12 rounded-md px-5 text-base;
+  }
+
+  .tabs--equal .tabs__list {
+    @apply flex w-full;
+  }
+
+  .tabs--equal .tabs__item {
+    @apply flex-1;
+  }
+
+  .tabs--equal .tabs__tab {
+    @apply w-full;
   }
 }

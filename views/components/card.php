@@ -14,7 +14,7 @@ $actions     = isset($actions) ? (string) $actions : '';
     <header class="card__header flex items-start justify-between gap-3">
       <div class="min-w-0">
         <h2 class="type-h3"><?= e($title) ?></h2>
-        <p class="mt-1 type-body-muted"><?= e($subtitle) ?></p>
+        <p class="mt-1 text-muted"><?= e($subtitle) ?></p>
       </div>
 
       <?php if ($actions !== ''): ?>
@@ -48,7 +48,7 @@ $actions     = isset($actions) ? (string) $actions : '';
           </div>
           <span class="badge badge--positive absolute bottom-4 left-1/2 -translate-x-1/2">+10%</span>
         </div>
-        <p class="text-center type-body-muted">
+        <p class="text-center text-muted">
           You earned RM 3,287 today, higher than last month.
           <br>
           Keep up your momentum!

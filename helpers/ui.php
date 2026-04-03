@@ -233,6 +233,28 @@ function sales_sidebar_children(string $active_page = ''): array
   return $children;
 }
 
+function analytics_sidebar_children(string $active_page = ''): array
+{
+  $items = [
+    'analytics-overview'           => ['label' => 'Overview', 'path' => '/analytics/enhanced'],
+    'analytics-pageviews'          => ['label' => 'Pageviews', 'path' => '/analytics/pageviews'],
+    'analytics-sources'            => ['label' => 'Sources', 'path' => '/analytics/sources'],
+    'analytics-campaigns'          => ['label' => 'Campaigns', 'path' => '/analytics/campaigns'],
+    'analytics-clicks'             => ['label' => 'Clicks', 'path' => '/analytics/clicks'],
+  ];
+
+  $children = [];
+  foreach ($items as $slug => $item) {
+    $children[] = [
+      'label'  => $item['label'],
+      'href'   => asset($item['path']),
+      'active' => $slug === $active_page,
+    ];
+  }
+
+  return $children;
+}
+
 function website_sidebar_children(string $active_page = ''): array
 {
   $items = [
@@ -254,8 +276,10 @@ function website_sidebar_children(string $active_page = ''): array
 
 function build_booking_table_dataset(array $orders, array $options = []): array
 {
-  $action_button_size = isset($options['action_button_size']) ? (string) $options['action_button_size'] : 'sm';
-  $action_menu_size   = isset($options['action_menu_size']) ? (string) $options['action_menu_size'] : 'sm';
+  $action_button_size      = isset($options['action_button_size']) ? (string) $options['action_button_size'] : 'sm';
+  $action_menu_size        = isset($options['action_menu_size']) ? (string) $options['action_menu_size'] : 'sm';
+  $action_button_icon_only = !empty($options['action_button_icon_only']);
+  $action_button_icon_name = isset($options['action_button_icon_name']) ? (string) $options['action_button_icon_name'] : 'pencil-line';
 
   $allowed_action_sizes = ['default', 'md', 'sm', 'lg'];
   if (!in_array($action_button_size, $allowed_action_sizes, true)) {
@@ -393,10 +417,13 @@ function build_booking_table_dataset(array $orders, array $options = []): array
 
     ob_start();
     component('button', [
-      'label'   => 'Manage',
-      'variant' => 'neutral',
-      'size'    => $action_button_size,
-      'href'    => isset($order['manage_url']) ? (string) $order['manage_url'] : '#',
+      'label'      => 'Manage',
+      'variant'    => 'neutral',
+      'size'       => $action_button_size,
+      'href'       => isset($order['manage_url']) ? (string) $order['manage_url'] : '#',
+      'icon_name'  => $action_button_icon_name,
+      'icon_only'  => $action_button_icon_only,
+      'aria_label' => 'Manage booking',
     ]);
     $manage_button = (string) ob_get_clean();
 

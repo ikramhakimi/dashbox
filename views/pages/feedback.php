@@ -118,28 +118,15 @@ layout('app-start', [
 
       <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         <?php foreach ($kpi_cards as $kpi_card): ?>
-          <article class="card card--metric" aria-label="<?= e($kpi_card['label']) ?>">
-            <div class="card__body">
-              <div class="card__metric-head">
-                <p class="type-caption"><?= e($kpi_card['label']) ?></p>
-                <div class="card__icon">
-                  <?php component('icon', [
-                    'icon_name' => $kpi_card['icon'],
-                    'icon_size' => 24,
-                    'icon_set'  => 'remix',
-                  ]); ?>
-                </div>
-              </div>
-              <p class="type-h2"><?= e($kpi_card['value']) ?></p>
-              <div class="card__meta">
-                <?php component('badge', [
-                  'label' => $kpi_card['badge']['label'],
-                  'mode'  => $kpi_card['badge']['mode'],
-                ]); ?>
-                <p class="type-meta"><?= e($kpi_card['meta']) ?></p>
-              </div>
-            </div>
-          </article>
+          <?php component('card-metric', [
+            'title'      => $kpi_card['label'],
+            'value'      => $kpi_card['value'],
+            'trend'      => $kpi_card['badge']['label'],
+            'trend_mode' => $kpi_card['badge']['mode'],
+            'note'       => $kpi_card['meta'],
+            'icon_name'  => $kpi_card['icon'],
+            'icon_set'   => 'remix',
+          ]); ?>
         <?php endforeach; ?>
       </div>
 

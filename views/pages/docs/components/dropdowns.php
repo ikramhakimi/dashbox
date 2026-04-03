@@ -213,7 +213,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Dropdown (Interactive JS Component)</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Reusable dropdown menu for action lists, row menus, and account navigation.
         </p>
       </header>
@@ -225,7 +225,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">JS Documentation</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Implementation paths for dropdown interactive behavior.
             </p>
           </header>
@@ -238,7 +238,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Default Dropdown</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Button trigger with dividers, labels, disabled and danger actions.
             </p>
           </header>
@@ -251,7 +251,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Trigger Variations</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Neutral style, icon+text trigger, and icon-only trigger.
             </p>
           </header>
@@ -264,7 +264,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Button Size Variations</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Dropdown trigger reuses button tokens: sm, default, lg, including icon-only.
             </p>
           </header>
@@ -277,7 +277,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Link Trigger Dropdown</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Use anchor trigger while keeping JS toggle and outside-click dismiss.
             </p>
           </header>
@@ -290,7 +290,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Navigation Dropdown</h2>
-            <p class="mt-1 type-body-muted">Simple link-style trigger for navigation groups.</p>
+            <p class="mt-1 text-muted">Simple link-style trigger for navigation groups.</p>
           </header>
           <?= $dropdown_navigation_content ?>
         </article>

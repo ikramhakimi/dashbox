@@ -37,7 +37,7 @@ if ($trend_mode === '') {
       <?php endif; ?>
     </div>
 
-    <p class="type-h2"><?= e($value) ?></p>
+    <p class="type-h1 card__metric-number"><?= e($value) ?></p>
 
     <div class="card__meta">
       <?php

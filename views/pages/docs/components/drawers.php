@@ -114,18 +114,18 @@ $drawer_filter_footer = '
 $drawer_detail_content = '
   <div class="space-y-4">
     <div class="space-y-1">
-      <p class="type-body-muted">Order ID</p>
+      <p class="text-muted">Order ID</p>
       <p class="type-medium text-dark">ORD-2026-1042</p>
     </div>
     <div class="space-y-1">
-      <p class="type-body-muted">Customer</p>
+      <p class="text-muted">Customer</p>
       <p class="type-medium text-dark">Aina Syafiqa</p>
-      <p class="type-body-muted">+60 12-333 9191</p>
+      <p class="text-muted">+60 12-333 9191</p>
     </div>
     <div class="space-y-1">
-      <p class="type-body-muted">Session</p>
+      <p class="text-muted">Session</p>
       <p class="type-medium text-dark">Portrait Session</p>
-      <p class="type-body-muted">2 Apr 2026, 10:30 AM</p>
+      <p class="text-muted">2 Apr 2026, 10:30 AM</p>
     </div>
   </div>
 ';
@@ -188,7 +188,7 @@ layout('app-start', [
         <h1 class="mt-2 type-h1">
           Drawers (Interactive JS Component)
         </h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Slide-in side panel for profile editing, filter tools, and order detail preview.
         </p>
       </header>
@@ -200,7 +200,7 @@ layout('app-start', [
               <article class="space-y-4 py-7 first:pt-0 last:pb-0">
                 <header>
                   <h2 class="type-h2">JS Documentation</h2>
-                  <p class="mt-1 type-body-muted">Implementation paths for drawer interactive behavior.</p>
+                  <p class="mt-1 text-muted">Implementation paths for drawer interactive behavior.</p>
                 </header>
                 <?= $drawer_js_doc_content ?>
               </article>
@@ -211,7 +211,7 @@ layout('app-start', [
               <article class="space-y-4 py-7 first:pt-0 last:pb-0">
                 <header>
                   <h2 class="type-h2">Drawer Trigger Variations</h2>
-                  <p class="mt-1 type-body-muted">
+                  <p class="mt-1 text-muted">
                     Right, left, and large detail drawer for different workflows.
                   </p>
                 </header>

@@ -130,28 +130,15 @@ layout('app-start', [
 
       <div class="grid gap-4 md:grid-cols-3">
         <?php foreach ($segment_widgets as $segment_widget): ?>
-          <article class="card card--metric" aria-label="<?= e($segment_widget['title']) ?>">
-            <div class="card__body">
-              <div class="card__metric-head">
-                <p class="type-caption"><?= e($segment_widget['title']) ?></p>
-                <div class="card__icon">
-                  <?php component('icon', [
-                    'icon_name' => $segment_widget['icon'],
-                    'icon_size' => 24,
-                    'icon_set'  => 'remix',
-                  ]); ?>
-                </div>
-              </div>
-              <p class="type-h2"><?= e($segment_widget['value']) ?></p>
-              <div class="card__meta">
-                <?php component('badge', [
-                  'label' => $segment_widget['badge']['label'],
-                  'mode'  => $segment_widget['badge']['mode'],
-                ]); ?>
-                <p class="type-meta"><?= e($segment_widget['meta']) ?></p>
-              </div>
-            </div>
-          </article>
+          <?php component('card-metric', [
+            'title'      => $segment_widget['title'],
+            'value'      => $segment_widget['value'],
+            'trend'      => $segment_widget['badge']['label'],
+            'trend_mode' => $segment_widget['badge']['mode'],
+            'note'       => $segment_widget['meta'],
+            'icon_name'  => $segment_widget['icon'],
+            'icon_set'   => 'remix',
+          ]); ?>
         <?php endforeach; ?>
       </div>
 

@@ -63,7 +63,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Pagination</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Foundation pagination with active state, disabled edges, and optional result info.
         </p>
       </header>
@@ -75,7 +75,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Default (Prev + Next Clamp)</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Connected previous and next controls as primary pagination navigation.
             </p>
           </header>
@@ -90,7 +90,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Pagination with Info</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Include showing range and total items for better context.
             </p>
           </header>
@@ -105,7 +105,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Single Page / Empty State</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Disabled controls when only one page is available.
             </p>
           </header>

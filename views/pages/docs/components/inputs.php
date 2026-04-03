@@ -285,7 +285,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Input UI Library</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Hierarchical reference for text, choice, and specialized form controls in the dashboard system.
         </p>
       </header>
@@ -297,7 +297,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Text & Search Inputs</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Base input, search input, and password input variants.
             </p>
           </header>
@@ -310,7 +310,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Textarea & Select</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Multiline text area and dropdown selection controls.
             </p>
           </header>
@@ -323,7 +323,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Checkbox & Radio</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Binary controls and mutually exclusive option controls.
             </p>
           </header>
@@ -336,7 +336,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Switch</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Comprehensive switch layouts: inline, reverse, and divided-list patterns.
             </p>
           </header>
@@ -349,7 +349,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Upload, OTP & DateTime</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Specialized form controls for files, codes, and date/time.
             </p>
           </header>

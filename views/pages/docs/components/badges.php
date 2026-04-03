@@ -22,7 +22,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Badge UI Component</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Reference page for all badge modes and practical examples.
         </p>
       </header>
@@ -32,7 +32,7 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Badge Modes</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Default visual variants supported by the badge component.
               </p>
               <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -67,7 +67,7 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Badge Component Examples</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Output rendered through reusable badge component.
               </p>
               <div class="rounded-lg border border-gray-100 bg-white p-4">

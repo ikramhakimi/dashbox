@@ -63,7 +63,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Empty State</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Reusable empty state blocks for no data, no search result, and temporary error states.
         </p>
       </header>
@@ -75,7 +75,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Default Empty State</h2>
-            <p class="mt-1 type-body-muted">Primary CTA for first-time setup or onboarding flow.</p>
+            <p class="mt-1 text-muted">Primary CTA for first-time setup or onboarding flow.</p>
           </header>
           <?= $empty_state_default_content ?>
         </article>
@@ -86,7 +86,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Search Empty State</h2>
-            <p class="mt-1 type-body-muted">Use descriptive copy with recovery actions.</p>
+            <p class="mt-1 text-muted">Use descriptive copy with recovery actions.</p>
           </header>
           <?= $empty_state_search_content ?>
         </article>
@@ -97,7 +97,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Error Recovery Empty State</h2>
-            <p class="mt-1 type-body-muted">Guides users when loading fails and offers next steps.</p>
+            <p class="mt-1 text-muted">Guides users when loading fails and offers next steps.</p>
           </header>
           <?= $empty_state_error_content ?>
         </article>

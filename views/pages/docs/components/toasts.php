@@ -61,7 +61,7 @@ ob_start();
 
   <div class="py-4">
     <p class="mb-3 type-caption type-semibold">Floating Toast Demo</p>
-    <p class="mb-3 type-body-muted">
+    <p class="mb-3 text-muted">
       Trigger floating toasts from top-right stack (auto dismiss in 4 seconds).
     </p>
     <div class="flex flex-wrap gap-2">
@@ -115,7 +115,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Toast UI Library</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Lightweight feedback toasts for transient notifications and action confirmation.
         </p>
       </header>
@@ -127,7 +127,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Toast Variations</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Variant tones with optional icon and dismiss action.
             </p>
           </header>

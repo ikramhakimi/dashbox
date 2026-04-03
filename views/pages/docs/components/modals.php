@@ -87,7 +87,7 @@ $delete_modal_content = '
     <p class="type-body">
       This will permanently delete <span class="type-semibold text-dark">Project Mercury</span>.
     </p>
-    <p class="type-body-muted">You cannot undo this action.</p>
+    <p class="text-muted">You cannot undo this action.</p>
   </div>
 ';
 
@@ -160,14 +160,14 @@ $detail_modal_content = '
     <div class="space-y-2 py-2">
       <p class="type-caption type-semibold">Customer</p>
       <p class="type-body text-dark">Nadia Syahirah</p>
-      <p class="type-body-muted">nadia@example.com</p>
-      <p class="type-body-muted">+60 12-345 6789</p>
+      <p class="text-muted">nadia@example.com</p>
+      <p class="text-muted">+60 12-345 6789</p>
     </div>
     <div class="space-y-2 py-2">
       <p class="type-caption type-semibold">Order</p>
       <p class="type-body text-dark">ORD-2026-00991</p>
-      <p class="type-body-muted">Created: 29 Mar 2026</p>
-      <p class="type-body-muted">Status: Processing</p>
+      <p class="text-muted">Created: 29 Mar 2026</p>
+      <p class="text-muted">Status: Processing</p>
     </div>
   </div>
 ';
@@ -268,7 +268,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Modal UI Library</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Practical modal contexts for production workflows, from form entry to confirmation and step flows.
         </p>
       </header>
@@ -280,7 +280,7 @@ layout('app-start', [
         <article class="space-y-4 py-7 first:pt-0 last:pb-0">
           <header>
             <h2 class="type-h2">Modal Context Demos</h2>
-            <p class="mt-1 type-body-muted">
+            <p class="mt-1 text-muted">
               Five production-ready modal examples covering common dashboard use cases.
             </p>
           </header>

@@ -64,7 +64,7 @@ layout('app-start', [
                 'label'      => 'Required Rating',
                 'required'   => true,
                 'value'      => 0,
-                'error_text' => 'Please select at least one star before submitting.',
+                'error_text' => 'A quick star rating helps us improve your next experience.',
               ]) ?>
             </div>
 

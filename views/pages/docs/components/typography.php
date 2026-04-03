@@ -58,7 +58,7 @@ ob_start();
 ?>
 <div class="space-y-3">
   <p class="type-body">This is the default body style for dashboard content and descriptions.</p>
-  <p class="type-body-muted">This is muted body text used for secondary information and helper copy.</p>
+  <p class="text-muted">This is muted body text used for secondary information and helper copy.</p>
   <p class="type-meta">This is meta text for table secondary lines and field briefs.</p>
   <p class="type-small">This is small text for compact metadata and supporting labels.</p>
   <p class="type-caption">Caption / Overline</p>
@@ -78,7 +78,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="type-h1 mt-2">Typography</h1>
-        <p class="type-body-muted mt-2 max-w-3xl">
+        <p class="text-muted mt-2 max-w-3xl">
           Type scale, body styles, and link treatment for consistent content hierarchy.
         </p>
       </header>

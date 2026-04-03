@@ -428,7 +428,7 @@ ob_start();
 <article class="card space-y-6" aria-label="Pipeline workspace table">
   <header class="space-y-1">
     <h2 class="type-h2">Pipeline Workspace</h2>
-    <p class="type-body-muted">Review stage, priority, and assigned owner before taking action.</p>
+    <p class="text-muted">Review stage, priority, and assigned owner before taking action.</p>
   </header>
 
   <div class="grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto] lg:items-end">

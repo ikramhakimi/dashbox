@@ -2,6 +2,7 @@
 
 $items      = isset($items) && is_array($items) ? $items : [];
 $size       = isset($size) && $size !== '' ? (string) $size : 'md';
+$equal      = !empty($equal);
 $attributes = isset($attributes) && is_array($attributes) ? $attributes : [];
 
 if ($items === []) {
@@ -21,6 +22,9 @@ if ($items === []) {
 $root_classes = [$component_class];
 if ($size === 'lg') {
   $root_classes[] = 'tabs--lg';
+}
+if ($equal) {
+  $root_classes[] = 'tabs--equal';
 }
 
 $render_attributes = static function (array $attrs): string {
@@ -68,6 +72,7 @@ $root_attributes['aria-label']= isset($attributes['aria-label']) ? (string) $att
       $item_label    = isset($item['label']) ? (string) $item['label'] : 'Tab';
       $item_href     = isset($item['href']) ? (string) $item['href'] : '#';
       $item_icon     = isset($item['icon_name']) ? (string) $item['icon_name'] : '';
+      $item_pill     = isset($item['pill']) ? trim((string) $item['pill']) : '';
       $item_active   = !empty($item['active']);
       $item_disabled = !empty($item['disabled']);
 
@@ -92,6 +97,9 @@ $root_attributes['aria-label']= isset($attributes['aria-label']) ? (string) $att
             <span class="tabs__icon" aria-hidden="true"><?= $render_icon($item_icon) ?></span>
           <?php endif; ?>
           <span><?= e($item_label) ?></span>
+          <?php if ($item_pill !== ''): ?>
+            <span class="tabs__pill"><?= e($item_pill) ?></span>
+          <?php endif; ?>
         </a>
       </li>
     <?php endforeach; ?>

@@ -177,23 +177,27 @@ layout('app-start', [
   'page_current' => $page_current,
 ]);
 ?>
-    <section class="mx-auto max-w-7xl space-y-6">
-      <?php
-      component('page-header', [
-        'title'       => 'Sales Calendar',
-        'description' => 'Show total sales for each day in calendar mode.',
-      ]);
-      ?>
+<section class="card">
+  <div class="card__head">
+    <?php
+    component('page-header', [
+      'title'       => 'Sales Calendar',
+      'description' => 'Show total sales for each day in calendar mode.',
+    ]);
+    ?>
+  </div>
 
-      <?php
-      component('calendar', [
-        'month_label' => $month_label,
-        'week_labels' => $week_labels,
-        'days'        => $calendar_days,
-        'attributes'  => ['aria-label' => 'Sales calendar view'],
-      ]);
-      ?>
-    </section>
+  <div class="card__body">
+    <?php
+    component('calendar', [
+      'month_label' => $month_label,
+      'week_labels' => $week_labels,
+      'days'        => $calendar_days,
+      'attributes'  => ['aria-label' => 'Sales calendar view'],
+    ]);
+    ?>
+  </div>
+</section>
 
 <?php foreach ($session_drawers as $session_drawer): ?>
   <?php
@@ -208,7 +212,7 @@ layout('app-start', [
 
           <div class="space-y-1">
             <p class="type-body type-semibold text-dark"><?= e($session_meta['customer_name']) ?></p>
-            <p class="type-body-muted"><?= e($session_meta['customer_phone']) ?></p>
+            <p class="text-muted"><?= e($session_meta['customer_phone']) ?></p>
             <p class="type-body type-secondary">
               <?= e($session_meta['package_name']) ?> (<?= e((string) $session_meta['pax']) ?> pax)
             </p>

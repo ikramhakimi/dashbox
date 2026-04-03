@@ -29,9 +29,9 @@ if ($error_text !== '') {
   <svg width="0" height="0" class="sr-only" aria-hidden="true" focusable="false">
     <defs>
       <linearGradient id="<?= e($gradient_id) ?>" x1="0%" y1="0%" x2="100%" y2="100%">
-        <stop offset="0%" stop-color="#f59e0b" />
-        <stop offset="50%" stop-color="#f59e0b" />
-        <stop offset="50%" stop-color="#d97706" />
+        <stop offset="0%" stop-color="#fcd34d" />
+        <stop offset="40%" stop-color="#fbbf24" />
+        <stop offset="60%" stop-color="#f59e0b" />
         <stop offset="100%" stop-color="#d97706" />
       </linearGradient>
     </defs>

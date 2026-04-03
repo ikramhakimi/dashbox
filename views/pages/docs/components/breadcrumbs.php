@@ -19,7 +19,7 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Breadcrumb UI Component</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
+        <p class="mt-2 max-w-3xl text-muted">
           Slash and chevron separators, icon support, and compact breadcrumb variant.
         </p>
       </header>
@@ -29,7 +29,7 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Slash Separator</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Classic slash-style breadcrumb for straightforward nested paths.
               </p>
               <div class="rounded-lg border border-gray-100 bg-white p-4">
@@ -49,7 +49,7 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Chevron Separator (SVG)</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Directional breadcrumb separators to emphasize hierarchy flow.
               </p>
               <div class="rounded-lg border border-gray-100 bg-white p-4">
@@ -68,7 +68,7 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">With Icon</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Icon-assisted breadcrumb items for richer navigation context.
               </p>
               <div class="rounded-lg border border-gray-100 bg-white p-4">
@@ -87,7 +87,7 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Compact</h3>
-              <p class="mb-4 type-body-muted">
+              <p class="mb-4 text-muted">
                 Dense variant for constrained layouts and compact utility contexts.
               </p>
               <div class="rounded-lg border border-gray-100 bg-white p-4">

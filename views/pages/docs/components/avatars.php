@@ -83,8 +83,8 @@ layout('app-start', [
     <section class="card">
       <header class="card__head">
         <h1 class="mt-2 type-h1">Avatar UI Component</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
-          Avatar component with image and initials fallback, size variants, and group stacking.
+        <p class="mt-2 max-w-3xl text-muted">
+          Use avatars to represent customers, team members, and ownership context with consistent fallback behavior.
         </p>
       </header>
 
@@ -93,8 +93,8 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Size Variations</h3>
-              <p class="mb-4 type-body-muted">
-                Small, default, and large avatar sizes for different density contexts.
+              <p class="mb-4 text-muted">
+                Use <code>sm</code> in dense tables, default in cards/forms, and <code>lg</code> for profile-focused surfaces.
               </p>
               <?= $avatar_sizes_content ?>
             </section>
@@ -103,8 +103,8 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Initials Tones</h3>
-              <p class="mb-4 type-body-muted">
-                Fallback initials with balanced tone combinations for when images are unavailable.
+              <p class="mb-4 text-muted">
+                When photos are unavailable, initials still provide clear identity anchors in lists and records.
               </p>
               <?= $avatar_fallback_content ?>
             </section>
@@ -113,10 +113,42 @@ layout('app-start', [
           <li class="list__item">
             <section class="w-full max-w-4xl py-4">
               <h3 class="type-h3">Avatar Group</h3>
-              <p class="mb-4 type-body-muted">
-                Overlapping avatar stacks for team previews, assignees, and participant lists.
+              <p class="mb-4 text-muted">
+                Overlapping groups work well for assignees, participants, and shared ownership previews.
               </p>
               <?= $avatar_group_content ?>
+            </section>
+          </li>
+
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
+              <h3 class="type-h3">Usage Patterns</h3>
+              <p class="mb-4 text-muted">
+                Pick one pattern per context to keep identity presentation consistent across the product.
+              </p>
+              <div class="rounded-lg border border-gray-100 bg-white p-4">
+                <ul class="list-disc space-y-2 pl-5">
+                  <li><span class="type-semibold">Table rows:</span> avatar + name + secondary meta.</li>
+                  <li><span class="type-semibold">Cards:</span> avatar near title to show owner/responsible person.</li>
+                  <li><span class="type-semibold">Group previews:</span> max 3 visible + overflow badge (e.g. <code>+3</code>).</li>
+                </ul>
+              </div>
+            </section>
+          </li>
+
+          <li class="list__item">
+            <section class="w-full max-w-4xl py-4">
+              <h3 class="type-h3">Accessibility Notes</h3>
+              <p class="mb-4 text-muted">
+                Avatars are visual identity cues, but context should remain understandable without images.
+              </p>
+              <div class="rounded-lg border border-gray-100 bg-white p-4">
+                <ul class="list-disc space-y-2 pl-5">
+                  <li>Provide meaningful <code>alt</code> text for user photos.</li>
+                  <li>Use initials fallback so identity remains visible if image fails to load.</li>
+                  <li>For decorative-only avatars, hide from assistive tech using appropriate ARIA attributes.</li>
+                </ul>
+              </div>
             </section>
           </li>
         </ul>

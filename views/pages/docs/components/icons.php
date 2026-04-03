@@ -74,21 +74,20 @@ layout('app-start', [
   'page_current' => $page_current,
 ]);
 ?>
-    <section class="mx-auto max-w-7xl">
-      <header class="mb-8 border-b border-gray-200 pb-6">
-        <p class="type-caption type-semibold">UI Components</p>
-        <h1 class="type-h1">Icons UI Library</h1>
-        <p class="mt-2 max-w-3xl type-body-muted">
-          Shared icon set with reusable sizes for buttons, inputs, cards, and navigation.
-        </p>
-      </header>
+<section class="card">
+  <header class="card__head">
+    <h1 class="mt-2 type-h1">Icons UI Component</h1>
+    <p class="mt-2 max-w-3xl text-muted">
+      Shared icon set with reusable sizes for buttons, inputs, cards, and navigation.
+    </p>
+  </header>
 
-      <section class="divide-y divide-gray-100" aria-label="Icon component showcase">
-        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
-          <header>
-            <h2 class="type-h2">Icon Sizes</h2>
-            <p class="mt-1 type-body-muted">Available `icon_size` values for the icon component.</p>
-          </header>
+  <section class="card__list" aria-label="Icon component showcase">
+    <ul class="list">
+      <li class="list__item">
+        <section class="w-full max-w-4xl py-4">
+          <h3 class="type-h3">Icon Sizes</h3>
+          <p class="mb-4 text-muted">Available <code>icon_size</code> values for the icon component.</p>
 
           <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <?php foreach ($icon_sizes as $icon_size): ?>
@@ -101,13 +100,13 @@ layout('app-start', [
               </div>
             <?php endforeach; ?>
           </div>
-        </article>
+        </section>
+      </li>
 
-        <article class="space-y-4 py-7 first:pt-0 last:pb-0">
-          <header>
-            <h2 class="type-h2">Remix Icon Categories</h2>
-            <p class="mt-1 type-body-muted">Browse icons by category and filter by name instantly.</p>
-          </header>
+      <li class="list__item">
+        <section class="w-full py-4">
+          <h3 class="type-h3">Remix Icon Categories</h3>
+          <p class="mb-4 text-muted">Browse icons by category and filter by name instantly.</p>
 
           <div class="space-y-4" data-icon-finder>
             <?php
@@ -122,17 +121,17 @@ layout('app-start', [
             ]);
             ?>
 
-            <p class="hidden type-body-muted" data-icon-finder-empty>
+            <p class="hidden text-muted" data-icon-finder-empty>
               No icons found. Try another keyword.
             </p>
           </div>
 
-          <div class="space-y-6" data-icon-finder-grid>
+          <div class="mt-4 space-y-6" data-icon-finder-grid>
             <?php foreach ($icon_categories as $icon_category): ?>
               <section data-icon-finder-group>
                 <header class="mb-3 flex items-center justify-between gap-3">
-                  <h3 class="type-h3"><?= e($icon_category['name']) ?></h3>
-                  <p class="type-body-muted"><?= e((string) count($icon_category['icons'])) ?> icons</p>
+                  <h3 class="type-h4"><?= e($icon_category['name']) ?></h3>
+                  <p class="text-muted"><?= e((string) count($icon_category['icons'])) ?> icons</p>
                 </header>
 
                 <div class="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -156,7 +155,9 @@ layout('app-start', [
               </section>
             <?php endforeach; ?>
           </div>
-        </article>
-      </section>
-    </section>
+        </section>
+      </li>
+    </ul>
+  </section>
+</section>
 <?php layout('app-end'); ?>

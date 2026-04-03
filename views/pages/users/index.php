@@ -155,26 +155,26 @@ foreach ($users_on_page as $user_index => $user) {
         <?= $avatar ?>
         <div class="space-y-1">
           <p class="type-medium text-dark"><?= e($user['name']) ?></p>
-          <p class="type-body-muted"><?= e($user['email']) ?></p>
+          <p class="text-muted"><?= e($user['email']) ?></p>
         </div>
       </div>
     </div>
 
     <div class="grid gap-4 sm:grid-cols-2">
       <div class="space-y-1 rounded-lg border border-gray-200 p-3">
-        <p class="type-body-muted">Role</p>
+        <p class="text-muted">Role</p>
         <div><?= $role_badge ?></div>
       </div>
       <div class="space-y-1 rounded-lg border border-gray-200 p-3">
-        <p class="type-body-muted">Account Status</p>
+        <p class="text-muted">Account Status</p>
         <div><?= $status_badge ?></div>
       </div>
       <div class="space-y-1 rounded-lg border border-gray-200 p-3">
-        <p class="type-body-muted">Last Active</p>
+        <p class="text-muted">Last Active</p>
         <p class="type-medium text-dark"><?= e($user['last_active']) ?></p>
       </div>
       <div class="space-y-1 rounded-lg border border-gray-200 p-3">
-        <p class="type-body-muted">Security</p>
+        <p class="text-muted">Security</p>
         <p class="type-medium text-dark">2FA Enabled</p>
       </div>
     </div>
